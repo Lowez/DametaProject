@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace DametaProject
 {
-    public partial class LoginSalesForm : Form
+    public partial class LoginAdmin : Form
     {
-        public LoginSalesForm()
+        public LoginAdmin()
         {
             InitializeComponent();
         }

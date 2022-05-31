@@ -36,7 +36,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Name = "HomeSalesForm";
-            this.Text = "Bem vindo(a) [inserir nome de usuario que logou]";
+            this.Text = "Bem vindo(a) [Nome do Usuário]";
             this.ResumeLayout(false);
 
         }

@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Messaging" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -87,17 +88,17 @@
     <Compile Include="HomeSalesForm.Designer.cs">
       <DependentUpon>HomeSalesForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="LoginManagerForm.cs">
+    <Compile Include="LoginAdmin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LoginManagerForm.Designer.cs">
-      <DependentUpon>LoginManagerForm.cs</DependentUpon>
+    <Compile Include="LoginAdmin.Designer.cs">
+      <DependentUpon>LoginAdmin.cs</DependentUpon>
     </Compile>
-    <Compile Include="LoginSalesForm.cs">
+    <Compile Include="LoginCaixa.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LoginSalesForm.Designer.cs">
-      <DependentUpon>LoginSalesForm.cs</DependentUpon>
+    <Compile Include="LoginCaixa.Designer.cs">
+      <DependentUpon>LoginCaixa.cs</DependentUpon>
     </Compile>
     <Compile Include="WelcomeForm.cs">
       <SubType>Form</SubType>
@@ -112,6 +113,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="HomeSalesForm.resx">
       <DependentUpon>HomeSalesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginAdmin.resx">
+      <DependentUpon>LoginAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginCaixa.resx">
+      <DependentUpon>LoginCaixa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WelcomeForm.resx">
       <DependentUpon>WelcomeForm.cs</DependentUpon>
