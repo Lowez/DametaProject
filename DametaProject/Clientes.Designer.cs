@@ -47,9 +47,22 @@
             this.btExcluir = new System.Windows.Forms.Button();
             this.btAlterar = new System.Windows.Forms.Button();
             this.btIncluir = new System.Windows.Forms.Button();
+            this.dameta_dbDataSet = new DametaProject.dameta_dbDataSet();
+            this.dametadbDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.premiumusuariosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.premium_usuariosTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.premium_usuariosTableAdapter();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nascimentoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cPFDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.telefoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cEPDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cidadesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dametadbDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.premiumusuariosBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // txID
@@ -67,6 +80,7 @@
             this.btConsultar.TabIndex = 27;
             this.btConsultar.Text = "Consultar";
             this.btConsultar.UseVisualStyleBackColor = true;
+            this.btConsultar.Click += new System.EventHandler(this.btConsultar_Click);
             // 
             // clientesBindingSource
             // 
@@ -83,15 +97,19 @@
             // 
             // dataGridView1
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.DataSource = this.clientesBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(55, 211);
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idDataGridViewTextBoxColumn,
+            this.nomeDataGridViewTextBoxColumn,
+            this.nascimentoDataGridViewTextBoxColumn,
+            this.cPFDataGridViewTextBoxColumn,
+            this.telefoneDataGridViewTextBoxColumn,
+            this.cEPDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.premiumusuariosBindingSource;
+            this.dataGridView1.Location = new System.Drawing.Point(55, 212);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(563, 207);
+            this.dataGridView1.Size = new System.Drawing.Size(637, 207);
             this.dataGridView1.TabIndex = 26;
             // 
             // cidadesBindingSource
@@ -171,16 +189,17 @@
             // 
             // btLimpar
             // 
-            this.btLimpar.Location = new System.Drawing.Point(543, 30);
+            this.btLimpar.Location = new System.Drawing.Point(598, 30);
             this.btLimpar.Name = "btLimpar";
             this.btLimpar.Size = new System.Drawing.Size(75, 38);
             this.btLimpar.TabIndex = 51;
             this.btLimpar.Text = "Limpar Form";
             this.btLimpar.UseVisualStyleBackColor = true;
+            this.btLimpar.Click += new System.EventHandler(this.btLimpar_Click);
             // 
             // btExcluir
             // 
-            this.btExcluir.Location = new System.Drawing.Point(543, 74);
+            this.btExcluir.Location = new System.Drawing.Point(598, 74);
             this.btExcluir.Name = "btExcluir";
             this.btExcluir.Size = new System.Drawing.Size(75, 38);
             this.btExcluir.TabIndex = 50;
@@ -189,16 +208,17 @@
             // 
             // btAlterar
             // 
-            this.btAlterar.Location = new System.Drawing.Point(449, 74);
+            this.btAlterar.Location = new System.Drawing.Point(504, 74);
             this.btAlterar.Name = "btAlterar";
             this.btAlterar.Size = new System.Drawing.Size(75, 38);
             this.btAlterar.TabIndex = 49;
             this.btAlterar.Text = "Alterar";
             this.btAlterar.UseVisualStyleBackColor = true;
+            this.btAlterar.Click += new System.EventHandler(this.btAlterar_Click);
             // 
             // btIncluir
             // 
-            this.btIncluir.Location = new System.Drawing.Point(449, 30);
+            this.btIncluir.Location = new System.Drawing.Point(504, 30);
             this.btIncluir.Name = "btIncluir";
             this.btIncluir.Size = new System.Drawing.Size(75, 38);
             this.btIncluir.TabIndex = 48;
@@ -206,11 +226,72 @@
             this.btIncluir.UseVisualStyleBackColor = true;
             this.btIncluir.Click += new System.EventHandler(this.btIncluir_Click);
             // 
+            // dameta_dbDataSet
+            // 
+            this.dameta_dbDataSet.DataSetName = "dameta_dbDataSet";
+            this.dameta_dbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // dametadbDataSetBindingSource
+            // 
+            this.dametadbDataSetBindingSource.DataSource = this.dameta_dbDataSet;
+            this.dametadbDataSetBindingSource.Position = 0;
+            // 
+            // premiumusuariosBindingSource
+            // 
+            this.premiumusuariosBindingSource.DataMember = "premium_usuarios";
+            this.premiumusuariosBindingSource.DataSource = this.dametadbDataSetBindingSource;
+            // 
+            // premium_usuariosTableAdapter
+            // 
+            this.premium_usuariosTableAdapter.ClearBeforeFill = true;
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nomeDataGridViewTextBoxColumn
+            // 
+            this.nomeDataGridViewTextBoxColumn.DataPropertyName = "nome";
+            this.nomeDataGridViewTextBoxColumn.HeaderText = "nome";
+            this.nomeDataGridViewTextBoxColumn.Name = "nomeDataGridViewTextBoxColumn";
+            this.nomeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nascimentoDataGridViewTextBoxColumn
+            // 
+            this.nascimentoDataGridViewTextBoxColumn.DataPropertyName = "nascimento";
+            this.nascimentoDataGridViewTextBoxColumn.HeaderText = "nascimento";
+            this.nascimentoDataGridViewTextBoxColumn.Name = "nascimentoDataGridViewTextBoxColumn";
+            this.nascimentoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // cPFDataGridViewTextBoxColumn
+            // 
+            this.cPFDataGridViewTextBoxColumn.DataPropertyName = "CPF";
+            this.cPFDataGridViewTextBoxColumn.HeaderText = "CPF";
+            this.cPFDataGridViewTextBoxColumn.Name = "cPFDataGridViewTextBoxColumn";
+            this.cPFDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // telefoneDataGridViewTextBoxColumn
+            // 
+            this.telefoneDataGridViewTextBoxColumn.DataPropertyName = "telefone";
+            this.telefoneDataGridViewTextBoxColumn.HeaderText = "telefone";
+            this.telefoneDataGridViewTextBoxColumn.Name = "telefoneDataGridViewTextBoxColumn";
+            this.telefoneDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // cEPDataGridViewTextBoxColumn
+            // 
+            this.cEPDataGridViewTextBoxColumn.DataPropertyName = "CEP";
+            this.cEPDataGridViewTextBoxColumn.HeaderText = "CEP";
+            this.cEPDataGridViewTextBoxColumn.Name = "cEPDataGridViewTextBoxColumn";
+            this.cEPDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // Clientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(659, 440);
+            this.ClientSize = new System.Drawing.Size(745, 440);
             this.Controls.Add(this.btLimpar);
             this.Controls.Add(this.btExcluir);
             this.Controls.Add(this.btAlterar);
@@ -229,9 +310,13 @@
             this.Controls.Add(this.label1);
             this.Name = "Clientes";
             this.Text = "Clientes";
+            this.Load += new System.EventHandler(this.Clientes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cidadesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dametadbDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.premiumusuariosBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -257,5 +342,15 @@
         private System.Windows.Forms.Button btExcluir;
         private System.Windows.Forms.Button btAlterar;
         private System.Windows.Forms.Button btIncluir;
+        private System.Windows.Forms.BindingSource dametadbDataSetBindingSource;
+        private dameta_dbDataSet dameta_dbDataSet;
+        private System.Windows.Forms.BindingSource premiumusuariosBindingSource;
+        private dameta_dbDataSetTableAdapters.premium_usuariosTableAdapter premium_usuariosTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nomeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nascimentoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cPFDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn telefoneDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cEPDataGridViewTextBoxColumn;
     }
 }
