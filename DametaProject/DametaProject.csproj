@@ -52,6 +52,11 @@
     <Compile Include="Clientes.Designer.cs">
       <DependentUpon>Clientes.cs</DependentUpon>
     </Compile>
+    <Compile Include="dameta_dbDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dameta_dbDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Fornecedores.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,7 +79,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Produtos.resx">
       <DependentUpon>Produtos.cs</DependentUpon>
-     </EmbeddedResource>
+    </EmbeddedResource>
     <Compile Include="HomeManagerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,6 +130,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="dameta_dbDataSet.xsc">
+      <DependentUpon>dameta_dbDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="dameta_dbDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dameta_dbDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dameta_dbDataSet.xss">
+      <DependentUpon>dameta_dbDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
