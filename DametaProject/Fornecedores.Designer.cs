@@ -32,6 +32,7 @@
             this.btLimpar = new System.Windows.Forms.Button();
             this.btExcluir = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.clientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mtxTelefone = new System.Windows.Forms.MaskedTextBox();
             this.txNome = new System.Windows.Forms.TextBox();
             this.nomeLabel = new System.Windows.Forms.Label();
@@ -41,8 +42,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btConsultar = new System.Windows.Forms.Button();
             this.telefoneLabel = new System.Windows.Forms.Label();
-            this.clientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cidadesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.mtxCPF = new System.Windows.Forms.MaskedTextBox();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cidadesBindingSource)).BeginInit();
@@ -73,16 +75,20 @@
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.DataSource = this.clientesBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(49, 169);
+            this.dataGridView1.Location = new System.Drawing.Point(49, 189);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(565, 207);
+            this.dataGridView1.Size = new System.Drawing.Size(565, 187);
             this.dataGridView1.TabIndex = 42;
+            // 
+            // clientesBindingSource
+            // 
+            this.clientesBindingSource.DataMember = "Clientes";
             // 
             // mtxTelefone
             // 
             this.mtxTelefone.ForeColor = System.Drawing.Color.Yellow;
-            this.mtxTelefone.Location = new System.Drawing.Point(96, 125);
+            this.mtxTelefone.Location = new System.Drawing.Point(96, 118);
             this.mtxTelefone.Mask = "000,000,000-00";
             this.mtxTelefone.Name = "mtxTelefone";
             this.mtxTelefone.Size = new System.Drawing.Size(118, 20);
@@ -150,25 +156,40 @@
             // telefoneLabel
             // 
             this.telefoneLabel.AutoSize = true;
-            this.telefoneLabel.Location = new System.Drawing.Point(46, 128);
+            this.telefoneLabel.Location = new System.Drawing.Point(46, 121);
             this.telefoneLabel.Name = "telefoneLabel";
             this.telefoneLabel.Size = new System.Drawing.Size(52, 13);
             this.telefoneLabel.TabIndex = 36;
             this.telefoneLabel.Text = "Telefone:";
             // 
-            // clientesBindingSource
-            // 
-            this.clientesBindingSource.DataMember = "Clientes";
-            // 
             // cidadesBindingSource
             // 
             this.cidadesBindingSource.DataMember = "Cidades";
+            // 
+            // mtxCPF
+            // 
+            this.mtxCPF.Location = new System.Drawing.Point(96, 151);
+            this.mtxCPF.Mask = "99,999,999/9999-99";
+            this.mtxCPF.Name = "mtxCPF";
+            this.mtxCPF.Size = new System.Drawing.Size(118, 20);
+            this.mtxCPF.TabIndex = 49;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(49, 154);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(30, 13);
+            this.label3.TabIndex = 48;
+            this.label3.Text = "CPF:";
             // 
             // Fornecedores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(666, 418);
+            this.Controls.Add(this.mtxCPF);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.btLimpar);
             this.Controls.Add(this.btExcluir);
             this.Controls.Add(this.dataGridView1);
@@ -207,5 +228,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btConsultar;
         private System.Windows.Forms.Label telefoneLabel;
+        private System.Windows.Forms.MaskedTextBox mtxCPF;
+        private System.Windows.Forms.Label label3;
     }
 }
