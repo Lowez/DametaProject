@@ -61,14 +61,12 @@
             this.label9 = new System.Windows.Forms.Label();
             this.generosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.generosTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.generosTableAdapter();
-            this.estadosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nascimentoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cPFDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.telefoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cidades_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.estados_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cEPDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -77,7 +75,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cidadesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.generosBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.estadosBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // txID
@@ -112,7 +109,6 @@
             this.cPFDataGridViewTextBoxColumn,
             this.telefoneDataGridViewTextBoxColumn,
             this.cidades_id,
-            this.estados_id,
             this.cEPDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.premiumusuariosBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(55, 243);
@@ -269,7 +265,6 @@
             // cbUF
             // 
             this.cbUF.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.cidadesBindingSource, "ID_Cidade", true));
-            this.cbUF.DataSource = this.estadosBindingSource;
             this.cbUF.DisplayMember = "UF";
             this.cbUF.FormattingEnabled = true;
             this.cbUF.Location = new System.Drawing.Point(522, 207);
@@ -347,12 +342,8 @@
             // 
             this.generosTableAdapter.ClearBeforeFill = true;
             // 
-            // estadosBindingSource
+         
             // 
-            this.estadosBindingSource.DataMember = "estados";
-            this.estadosBindingSource.DataSource = this.dametadbDataSetBindingSource;
-            // 
-            // estadosTableAdapter
             // 
             // 
             // idDataGridViewTextBoxColumn
@@ -396,11 +387,7 @@
             this.cidades_id.HeaderText = "cidades_id";
             this.cidades_id.Name = "cidades_id";
             // 
-            // estados_id
-            // 
-            this.estados_id.DataPropertyName = "estados_id";
-            this.estados_id.HeaderText = "estados_id";
-            this.estados_id.Name = "estados_id";
+          
             // 
             // cEPDataGridViewTextBoxColumn
             // 
@@ -448,7 +435,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cidadesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.generosBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.estadosBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -488,15 +474,12 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.BindingSource generosBindingSource;
         private dameta_dbDataSetTableAdapters.generosTableAdapter generosTableAdapter;
-        private System.Windows.Forms.BindingSource estadosBindingSource;
-        private dameta_dbDataSetTableAdapters.estadosTableAdapter estadosTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nomeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nascimentoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn cPFDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn telefoneDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn cidades_id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn estados_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn cEPDataGridViewTextBoxColumn;
     }
 }
