@@ -19,7 +19,9 @@ namespace DametaProject
 
         private void btEnviarEmail_Click(object sender, EventArgs e)
         {
-            CodigoValidacao codigoValidacao = new CodigoValidacao();
+            string email = "";
+
+            CodigoValidacao codigoValidacao = new CodigoValidacao(email);
 
             codigoValidacao.Show();
         }

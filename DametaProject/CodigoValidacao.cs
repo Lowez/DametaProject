@@ -12,7 +12,7 @@ namespace DametaProject
 {
     public partial class CodigoValidacao : Form
     {
-        public CodigoValidacao()
+        public CodigoValidacao(string email)
         {
             InitializeComponent();
         }
