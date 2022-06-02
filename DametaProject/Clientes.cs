@@ -25,6 +25,10 @@ namespace DametaProject
 
         private void Clientes_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'dameta_dbDataSet.estados' table. You can move, or remove it, as needed.
+            this.estadosTableAdapter.Fill(this.dameta_dbDataSet.estados);
+            // TODO: This line of code loads data into the 'dameta_dbDataSet.generos' table. You can move, or remove it, as needed.
+            this.generosTableAdapter.Fill(this.dameta_dbDataSet.generos);
             // TODO: esta linha de código carrega dados na tabela 'dameta_dbDataSet.premium_usuarios'. Você pode movê-la ou removê-la conforme necessário.
             this.premium_usuariosTableAdapter.Fill(this.dameta_dbDataSet.premium_usuarios);
 
@@ -43,17 +47,32 @@ namespace DametaProject
             conn = new SqlConnection(connectionString);
 
             comm = new SqlCommand(
-                "INSERT INTO Clientes (Nome, CPF, ID_Cidade) " +
-                "VALUES (@Nome, @CPF, @ID_Cidade)", conn);
+                "INSERT INTO Clientes (nome, nascimento, CPF, telefone, CEP, estados_id, cidades_id, generos_id) " +
+                "VALUES (@nome, @nascimento, @CPF, @telefone, @CEP, @estados_id, @cidades_id, @generos_id)", conn);
 
-            comm.Parameters.Add("@Nome", System.Data.SqlDbType.NVarChar);
-            comm.Parameters["@Nome"].Value = txNome.Text;
+            comm.Parameters.Add("@nome", System.Data.SqlDbType.NVarChar);
+            comm.Parameters["@nome"].Value = txNome.Text;
+
+            comm.Parameters.Add("@nascimento", System.Data.SqlDbType.Date);
+            comm.Parameters["@nascimento"].Value = dtpDataNasc.Value;
 
             comm.Parameters.Add("@CPF", System.Data.SqlDbType.NVarChar);
             comm.Parameters["@CPF"].Value = mtxCPF.Text;
 
-            comm.Parameters.Add("@ID_Cidade", System.Data.SqlDbType.Int);
-            comm.Parameters["@ID_Cidade"].Value = Convert.ToInt32(cbCidade.SelectedValue);
+            comm.Parameters.Add("@telefone", System.Data.SqlDbType.NVarChar);
+            comm.Parameters["@telefone"].Value = txNome.Text;
+
+            comm.Parameters.Add("@CEP", System.Data.SqlDbType.NVarChar);
+            comm.Parameters["@CEP"].Value = mtxCEP.Text;
+
+            comm.Parameters.Add("@estado_id", System.Data.SqlDbType.Int);
+            comm.Parameters["@estado_id"].Value = Convert.ToInt32(cbCidade.SelectedValue);
+
+            comm.Parameters.Add("@cidade_id", System.Data.SqlDbType.Int);
+            comm.Parameters["@cidade_id"].Value = Convert.ToInt32(cbCidade.SelectedValue);
+
+            comm.Parameters.Add("@genero_id", System.Data.SqlDbType.Int);
+            comm.Parameters["@genero_id"].Value = Convert.ToInt32(cbGenero.SelectedValue);
 
 
             try
@@ -116,11 +135,13 @@ namespace DametaProject
             conn = new SqlConnection(connectionString);
 
             comm = new SqlCommand(
-                "SELECT Cli.ID_Cliente, Cli.Nome, Cli.CPF, Cli.ID_Cidade, " +
+                "SELECT Cli.id, Cli.nome, Cli.nascimento, Cli.CPF, Cli.telefone, Cli.CEP, Cli.estados_id, Cli.cidades_id, Cli.generos_id " +
                 "Cid.ID_Cidade, Cid.NomeCid, Cid.UF " +
+                "Gen.Nome " +
                 "FROM Clientes AS Cli " +
                 "INNER JOIN Cidades AS Cid " +
-                "ON Cli.ID_Cliente = @ID AND Cid.ID_Cidade = Cli.ID_Cidade", conn);
+                "INNER JOIN Generos AS Gen " +
+                "ON Cli.id = @ID AND Cid.id = Cli.cidades_id AND Gen.id = Cli.generos_id" , conn);
 
             comm.Parameters.Add("@ID", System.Data.SqlDbType.Int);
             comm.Parameters["@ID"].Value = Convert.ToInt32(txID.Text);
@@ -325,7 +346,7 @@ namespace DametaProject
             txNome.Clear();
             mtxCPF.Clear();
             cbCidade.Text = "";
-            txUF.Clear();
+            cbUF.Text = "";
             txID.Focus();
         }
 
