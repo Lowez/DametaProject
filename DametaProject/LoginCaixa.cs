@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace DametaProject
 {
-    public partial class LoginManagerForm : Form
+    public partial class LoginCaixa : Form
     {
-        public LoginManagerForm()
+        public LoginCaixa()
         {
             InitializeComponent();
+        }
+
+        private void LoginSalesForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
