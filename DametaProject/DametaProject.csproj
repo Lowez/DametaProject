@@ -53,11 +53,28 @@
     <Compile Include="Clientes.Designer.cs">
       <DependentUpon>Clientes.cs</DependentUpon>
     </Compile>
+    <Compile Include="CodigoValidacao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CodigoValidacao.Designer.cs">
+      <DependentUpon>CodigoValidacao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dameta_dbDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dameta_dbDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Fornecedores.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Fornecedores.Designer.cs">
       <DependentUpon>Fornecedores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Funcionarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Funcionarios.Designer.cs">
+      <DependentUpon>Funcionarios.cs</DependentUpon>
     </Compile>
     <Compile Include="Produtos.cs">
       <SubType>Form</SubType>
@@ -70,12 +87,18 @@
     <EmbeddedResource Include="Clientes.resx">
       <DependentUpon>Clientes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CodigoValidacao.resx">
+      <DependentUpon>CodigoValidacao.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Fornecedores.resx">
       <DependentUpon>Fornecedores.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Funcionarios.resx">
+      <DependentUpon>Funcionarios.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Produtos.resx">
       <DependentUpon>Produtos.cs</DependentUpon>
-     </EmbeddedResource>
+    </EmbeddedResource>
     <Compile Include="HomeManagerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,6 +123,12 @@
     <Compile Include="LoginCaixa.Designer.cs">
       <DependentUpon>LoginCaixa.cs</DependentUpon>
     </Compile>
+    <Compile Include="ResetSenha.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ResetSenha.Designer.cs">
+      <DependentUpon>ResetSenha.cs</DependentUpon>
+    </Compile>
     <Compile Include="WelcomeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,6 +149,9 @@
     <EmbeddedResource Include="LoginCaixa.resx">
       <DependentUpon>LoginCaixa.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ResetSenha.resx">
+      <DependentUpon>ResetSenha.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WelcomeForm.resx">
       <DependentUpon>WelcomeForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -132,6 +164,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="dameta_dbDataSet.xsc">
+      <DependentUpon>dameta_dbDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="dameta_dbDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dameta_dbDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dameta_dbDataSet.xss">
+      <DependentUpon>dameta_dbDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

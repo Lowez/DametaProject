@@ -31,8 +31,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.lblResetSenha = new System.Windows.Forms.LinkLabel();
+            this.btEntrar = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -41,10 +41,10 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(36, 59);
+            this.label4.Font = new System.Drawing.Font("Noto Serif Hebrew", 9.749999F);
+            this.label4.Location = new System.Drawing.Point(53, 61);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(308, 18);
+            this.label4.Size = new System.Drawing.Size(274, 16);
             this.label4.TabIndex = 14;
             this.label4.Text = "Por favor, entre com sua conta Administrativa\r\n";
             // 
@@ -68,26 +68,26 @@
             this.maskedTextBox1.Size = new System.Drawing.Size(226, 23);
             this.maskedTextBox1.TabIndex = 7;
             // 
-            // linkLabel1
+            // lblResetSenha
             // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(134, 340);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(113, 13);
-            this.linkLabel1.TabIndex = 12;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Esqueceu sua senha?";
+            this.lblResetSenha.AutoSize = true;
+            this.lblResetSenha.Location = new System.Drawing.Point(134, 340);
+            this.lblResetSenha.Name = "lblResetSenha";
+            this.lblResetSenha.Size = new System.Drawing.Size(113, 13);
+            this.lblResetSenha.TabIndex = 12;
+            this.lblResetSenha.TabStop = true;
+            this.lblResetSenha.Text = "Esqueceu sua senha?";
             // 
-            // button1
+            // btEntrar
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.Location = new System.Drawing.Point(141, 284);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(98, 43);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Entrar";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btEntrar.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btEntrar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btEntrar.Location = new System.Drawing.Point(141, 284);
+            this.btEntrar.Name = "btEntrar";
+            this.btEntrar.Size = new System.Drawing.Size(98, 43);
+            this.btEntrar.TabIndex = 10;
+            this.btEntrar.Text = "Entrar";
+            this.btEntrar.UseVisualStyleBackColor = false;
             // 
             // label2
             // 
@@ -125,8 +125,8 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.maskedTextBox1);
-            this.Controls.Add(this.linkLabel1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.lblResetSenha);
+            this.Controls.Add(this.btEntrar);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox2);
@@ -142,8 +142,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.MaskedTextBox maskedTextBox1;
-        private System.Windows.Forms.LinkLabel linkLabel1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.LinkLabel lblResetSenha;
+        private System.Windows.Forms.Button btEntrar;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox2;

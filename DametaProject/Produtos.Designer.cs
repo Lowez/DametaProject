@@ -33,21 +33,24 @@
             System.Windows.Forms.Label precoUnitLabel;
             System.Windows.Forms.Label nomeLabel;
             System.Windows.Forms.Label CodigoProdutoLabel;
+            System.Windows.Forms.Label label1;
             this.btLimparForm = new System.Windows.Forms.Button();
             this.btExcluir = new System.Windows.Forms.Button();
             this.btAlterar = new System.Windows.Forms.Button();
             this.btConsultar = new System.Windows.Forms.Button();
             this.btIncluir = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.produtosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cbCategoria = new System.Windows.Forms.ComboBox();
             this.txPrecoUnit = new System.Windows.Forms.TextBox();
             this.txNome = new System.Windows.Forms.TextBox();
             this.txCodigoProduto = new System.Windows.Forms.TextBox();
-            this.produtosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             categoriaLabel = new System.Windows.Forms.Label();
             precoUnitLabel = new System.Windows.Forms.Label();
             nomeLabel = new System.Windows.Forms.Label();
             CodigoProdutoLabel = new System.Windows.Forms.Label();
+            label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.produtosBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -55,7 +58,7 @@
             // categoriaLabel
             // 
             categoriaLabel.AutoSize = true;
-            categoriaLabel.Location = new System.Drawing.Point(14, 107);
+            categoriaLabel.Location = new System.Drawing.Point(14, 110);
             categoriaLabel.Name = "categoriaLabel";
             categoriaLabel.Size = new System.Drawing.Size(55, 13);
             categoriaLabel.TabIndex = 25;
@@ -140,11 +143,15 @@
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.DataSource = this.produtosBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(17, 144);
+            this.dataGridView1.Location = new System.Drawing.Point(17, 173);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(596, 181);
+            this.dataGridView1.Size = new System.Drawing.Size(596, 152);
             this.dataGridView1.TabIndex = 27;
+            // 
+            // produtosBindingSource
+            // 
+            this.produtosBindingSource.DataMember = "Produtos";
             // 
             // cbCategoria
             // 
@@ -180,15 +187,35 @@
             this.txCodigoProduto.Size = new System.Drawing.Size(85, 20);
             this.txCodigoProduto.TabIndex = 21;
             // 
-            // produtosBindingSource
+            // comboBox1
             // 
-            this.produtosBindingSource.DataMember = "Produtos";
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "CPU",
+            "GPU",
+            "Monitor",
+            "SSD"});
+            this.comboBox1.Location = new System.Drawing.Point(75, 134);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 34;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(14, 137);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(64, 13);
+            label1.TabIndex = 33;
+            label1.Text = "Fornecedor:";
             // 
             // Produtos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(620, 351);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(label1);
             this.Controls.Add(this.btLimparForm);
             this.Controls.Add(this.btExcluir);
             this.Controls.Add(this.btAlterar);
@@ -225,5 +252,6 @@
         private System.Windows.Forms.TextBox txPrecoUnit;
         private System.Windows.Forms.TextBox txNome;
         private System.Windows.Forms.TextBox txCodigoProduto;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
