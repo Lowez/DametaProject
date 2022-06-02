@@ -21,5 +21,12 @@ namespace DametaProject
         {
 
         }
+
+        private void lblResetSenha_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ResetSenha resetSenha = new ResetSenha();
+
+            resetSenha.Show();
+        }
     }
 }
