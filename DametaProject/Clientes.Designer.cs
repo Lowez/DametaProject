@@ -32,37 +32,53 @@
             this.txID = new System.Windows.Forms.TextBox();
             this.btConsultar = new System.Windows.Forms.Button();
             this.clientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.label5 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.premiumusuariosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dametadbDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dameta_dbDataSet = new DametaProject.dameta_dbDataSet();
             this.cidadesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txNome = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.mtxCPF = new System.Windows.Forms.MaskedTextBox();
-            this.cbCidade = new System.Windows.Forms.ComboBox();
-            this.txUF = new System.Windows.Forms.TextBox();
             this.btLimpar = new System.Windows.Forms.Button();
             this.btExcluir = new System.Windows.Forms.Button();
             this.btAlterar = new System.Windows.Forms.Button();
             this.btIncluir = new System.Windows.Forms.Button();
-            this.dameta_dbDataSet = new DametaProject.dameta_dbDataSet();
-            this.dametadbDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.premiumusuariosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.premium_usuariosTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.premium_usuariosTableAdapter();
+            this.mtxCEP = new System.Windows.Forms.MaskedTextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.dtpDataNasc = new System.Windows.Forms.DateTimePicker();
+            this.cbUF = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.cbCidade = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.cbGenero = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.generosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.generosTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.generosTableAdapter();
+            this.estadosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.estadosTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.estadosTableAdapter();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nascimentoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cPFDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.telefoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cidades_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.estados_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cEPDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cidadesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dametadbDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.premiumusuariosBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dametadbDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cidadesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.generosBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.estadosBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // txID
@@ -86,15 +102,6 @@
             // 
             this.clientesBindingSource.DataMember = "Clientes";
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(271, 176);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(24, 13);
-            this.label5.TabIndex = 24;
-            this.label5.Text = "UF:";
-            // 
             // dataGridView1
             // 
             this.dataGridView1.AutoGenerateColumns = false;
@@ -105,12 +112,29 @@
             this.nascimentoDataGridViewTextBoxColumn,
             this.cPFDataGridViewTextBoxColumn,
             this.telefoneDataGridViewTextBoxColumn,
+            this.cidades_id,
+            this.estados_id,
             this.cEPDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.premiumusuariosBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(55, 212);
+            this.dataGridView1.Location = new System.Drawing.Point(55, 243);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(637, 207);
             this.dataGridView1.TabIndex = 26;
+            // 
+            // premiumusuariosBindingSource
+            // 
+            this.premiumusuariosBindingSource.DataMember = "premium_usuarios";
+            this.premiumusuariosBindingSource.DataSource = this.dametadbDataSetBindingSource;
+            // 
+            // dametadbDataSetBindingSource
+            // 
+            this.dametadbDataSetBindingSource.DataSource = this.dameta_dbDataSet;
+            this.dametadbDataSetBindingSource.Position = 0;
+            // 
+            // dameta_dbDataSet
+            // 
+            this.dameta_dbDataSet.DataSetName = "dameta_dbDataSet";
+            this.dameta_dbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // cidadesBindingSource
             // 
@@ -138,7 +162,7 @@
             // 
             this.txNome.Location = new System.Drawing.Point(99, 88);
             this.txNome.Name = "txNome";
-            this.txNome.Size = new System.Drawing.Size(301, 20);
+            this.txNome.Size = new System.Drawing.Size(363, 20);
             this.txNome.TabIndex = 19;
             // 
             // label3
@@ -150,42 +174,13 @@
             this.label3.TabIndex = 20;
             this.label3.Text = "CPF:";
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(52, 176);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(43, 13);
-            this.label4.TabIndex = 21;
-            this.label4.Text = "Cidade:";
-            // 
             // mtxCPF
             // 
-            this.mtxCPF.Location = new System.Drawing.Point(99, 129);
+            this.mtxCPF.Location = new System.Drawing.Point(104, 129);
             this.mtxCPF.Mask = "000,000,000-00";
             this.mtxCPF.Name = "mtxCPF";
             this.mtxCPF.Size = new System.Drawing.Size(118, 20);
             this.mtxCPF.TabIndex = 22;
-            // 
-            // cbCidade
-            // 
-            this.cbCidade.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.cidadesBindingSource, "ID_Cidade", true));
-            this.cbCidade.DataSource = this.cidadesBindingSource;
-            this.cbCidade.DisplayMember = "NomeCid";
-            this.cbCidade.FormattingEnabled = true;
-            this.cbCidade.Location = new System.Drawing.Point(101, 173);
-            this.cbCidade.Name = "cbCidade";
-            this.cbCidade.Size = new System.Drawing.Size(121, 21);
-            this.cbCidade.TabIndex = 23;
-            this.cbCidade.ValueMember = "ID_Cidade";
-            // 
-            // txUF
-            // 
-            this.txUF.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.cidadesBindingSource, "UF", true));
-            this.txUF.Location = new System.Drawing.Point(302, 173);
-            this.txUF.Name = "txUF";
-            this.txUF.Size = new System.Drawing.Size(37, 20);
-            this.txUF.TabIndex = 25;
             // 
             // btLimpar
             // 
@@ -226,29 +221,146 @@
             this.btIncluir.UseVisualStyleBackColor = true;
             this.btIncluir.Click += new System.EventHandler(this.btIncluir_Click);
             // 
-            // dameta_dbDataSet
-            // 
-            this.dameta_dbDataSet.DataSetName = "dameta_dbDataSet";
-            this.dameta_dbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // dametadbDataSetBindingSource
-            // 
-            this.dametadbDataSetBindingSource.DataSource = this.dameta_dbDataSet;
-            this.dametadbDataSetBindingSource.Position = 0;
-            // 
-            // premiumusuariosBindingSource
-            // 
-            this.premiumusuariosBindingSource.DataMember = "premium_usuarios";
-            this.premiumusuariosBindingSource.DataSource = this.dametadbDataSetBindingSource;
-            // 
             // premium_usuariosTableAdapter
             // 
             this.premium_usuariosTableAdapter.ClearBeforeFill = true;
             // 
+            // mtxCEP
+            // 
+            this.mtxCEP.Location = new System.Drawing.Point(104, 207);
+            this.mtxCEP.Mask = "00000-000";
+            this.mtxCEP.Name = "mtxCEP";
+            this.mtxCEP.Size = new System.Drawing.Size(118, 20);
+            this.mtxCEP.TabIndex = 53;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(52, 210);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(31, 13);
+            this.label6.TabIndex = 52;
+            this.label6.Text = "CEP:";
+            // 
+            // maskedTextBox1
+            // 
+            this.maskedTextBox1.Location = new System.Drawing.Point(104, 168);
+            this.maskedTextBox1.Mask = "(00)00000-0000";
+            this.maskedTextBox1.Name = "maskedTextBox1";
+            this.maskedTextBox1.Size = new System.Drawing.Size(118, 20);
+            this.maskedTextBox1.TabIndex = 55;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(50, 171);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(52, 13);
+            this.label7.TabIndex = 54;
+            this.label7.Text = "Telefone:";
+            // 
+            // dtpDataNasc
+            // 
+            this.dtpDataNasc.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDataNasc.Location = new System.Drawing.Point(363, 128);
+            this.dtpDataNasc.Name = "dtpDataNasc";
+            this.dtpDataNasc.Size = new System.Drawing.Size(99, 20);
+            this.dtpDataNasc.TabIndex = 57;
+            // 
+            // cbUF
+            // 
+            this.cbUF.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.cidadesBindingSource, "ID_Cidade", true));
+            this.cbUF.DataSource = this.estadosBindingSource;
+            this.cbUF.DisplayMember = "UF";
+            this.cbUF.FormattingEnabled = true;
+            this.cbUF.Location = new System.Drawing.Point(522, 207);
+            this.cbUF.Name = "cbUF";
+            this.cbUF.Size = new System.Drawing.Size(48, 21);
+            this.cbUF.TabIndex = 61;
+            this.cbUF.ValueMember = "UF";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(492, 211);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(24, 13);
+            this.label5.TabIndex = 60;
+            this.label5.Text = "UF:";
+            // 
+            // cbCidade
+            // 
+            this.cbCidade.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.cidadesBindingSource, "ID_Cidade", true));
+            this.cbCidade.DataSource = this.cidadesBindingSource;
+            this.cbCidade.DisplayMember = "NomeCid";
+            this.cbCidade.FormattingEnabled = true;
+            this.cbCidade.Location = new System.Drawing.Point(301, 207);
+            this.cbCidade.Name = "cbCidade";
+            this.cbCidade.Size = new System.Drawing.Size(161, 21);
+            this.cbCidade.TabIndex = 59;
+            this.cbCidade.ValueMember = "ID_Cidade";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(250, 210);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(43, 13);
+            this.label4.TabIndex = 58;
+            this.label4.Text = "Cidade:";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(250, 132);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(105, 13);
+            this.label8.TabIndex = 62;
+            this.label8.Text = "Data de nascimento:";
+            // 
+            // cbGenero
+            // 
+            this.cbGenero.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.cidadesBindingSource, "ID_Cidade", true));
+            this.cbGenero.DataSource = this.generosBindingSource;
+            this.cbGenero.DisplayMember = "nome";
+            this.cbGenero.FormattingEnabled = true;
+            this.cbGenero.Location = new System.Drawing.Point(301, 167);
+            this.cbGenero.Name = "cbGenero";
+            this.cbGenero.Size = new System.Drawing.Size(161, 21);
+            this.cbGenero.TabIndex = 64;
+            this.cbGenero.ValueMember = "nome";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(250, 171);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(45, 13);
+            this.label9.TabIndex = 63;
+            this.label9.Text = "Genero:";
+            // 
+            // generosBindingSource
+            // 
+            this.generosBindingSource.DataMember = "generos";
+            this.generosBindingSource.DataSource = this.dametadbDataSetBindingSource;
+            // 
+            // generosTableAdapter
+            // 
+            this.generosTableAdapter.ClearBeforeFill = true;
+            // 
+            // estadosBindingSource
+            // 
+            this.estadosBindingSource.DataMember = "estados";
+            this.estadosBindingSource.DataSource = this.dametadbDataSetBindingSource;
+            // 
+            // estadosTableAdapter
+            // 
+            this.estadosTableAdapter.ClearBeforeFill = true;
+            // 
             // idDataGridViewTextBoxColumn
             // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "id";
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Codigo";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Codigo";
             this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
             this.idDataGridViewTextBoxColumn.ReadOnly = true;
             // 
@@ -280,6 +392,18 @@
             this.telefoneDataGridViewTextBoxColumn.Name = "telefoneDataGridViewTextBoxColumn";
             this.telefoneDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // cidades_id
+            // 
+            this.cidades_id.DataPropertyName = "cidades_id";
+            this.cidades_id.HeaderText = "cidades_id";
+            this.cidades_id.Name = "cidades_id";
+            // 
+            // estados_id
+            // 
+            this.estados_id.DataPropertyName = "estados_id";
+            this.estados_id.HeaderText = "estados_id";
+            this.estados_id.Name = "estados_id";
+            // 
             // cEPDataGridViewTextBoxColumn
             // 
             this.cEPDataGridViewTextBoxColumn.DataPropertyName = "CEP";
@@ -291,18 +415,26 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(745, 440);
+            this.ClientSize = new System.Drawing.Size(745, 473);
+            this.Controls.Add(this.cbGenero);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.cbUF);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.cbCidade);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.dtpDataNasc);
+            this.Controls.Add(this.maskedTextBox1);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.mtxCEP);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.btLimpar);
             this.Controls.Add(this.btExcluir);
             this.Controls.Add(this.btAlterar);
             this.Controls.Add(this.btIncluir);
             this.Controls.Add(this.btConsultar);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.txUF);
-            this.Controls.Add(this.cbCidade);
             this.Controls.Add(this.mtxCPF);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txNome);
             this.Controls.Add(this.label2);
@@ -313,10 +445,12 @@
             this.Load += new System.EventHandler(this.Clientes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cidadesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dametadbDataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.premiumusuariosBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dametadbDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cidadesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.generosBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.estadosBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -327,17 +461,13 @@
         private System.Windows.Forms.TextBox txID;
         private System.Windows.Forms.Button btConsultar;
         private System.Windows.Forms.BindingSource clientesBindingSource;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.BindingSource cidadesBindingSource;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txNome;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.MaskedTextBox mtxCPF;
-        private System.Windows.Forms.ComboBox cbCidade;
-        private System.Windows.Forms.TextBox txUF;
         private System.Windows.Forms.Button btLimpar;
         private System.Windows.Forms.Button btExcluir;
         private System.Windows.Forms.Button btAlterar;
@@ -346,11 +476,29 @@
         private dameta_dbDataSet dameta_dbDataSet;
         private System.Windows.Forms.BindingSource premiumusuariosBindingSource;
         private dameta_dbDataSetTableAdapters.premium_usuariosTableAdapter premium_usuariosTableAdapter;
+        private System.Windows.Forms.MaskedTextBox mtxCEP;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.DateTimePicker dtpDataNasc;
+        private System.Windows.Forms.ComboBox cbUF;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox cbCidade;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ComboBox cbGenero;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.BindingSource generosBindingSource;
+        private dameta_dbDataSetTableAdapters.generosTableAdapter generosTableAdapter;
+        private System.Windows.Forms.BindingSource estadosBindingSource;
+        private dameta_dbDataSetTableAdapters.estadosTableAdapter estadosTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nomeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nascimentoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn cPFDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn telefoneDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cidades_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn estados_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn cEPDataGridViewTextBoxColumn;
     }
 }
