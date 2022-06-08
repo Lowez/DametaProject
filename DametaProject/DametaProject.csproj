@@ -111,17 +111,11 @@
     <Compile Include="HomeSalesForm.Designer.cs">
       <DependentUpon>HomeSalesForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="LoginAdmin.cs">
+    <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LoginAdmin.Designer.cs">
-      <DependentUpon>LoginAdmin.cs</DependentUpon>
-    </Compile>
-    <Compile Include="LoginCaixa.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="LoginCaixa.Designer.cs">
-      <DependentUpon>LoginCaixa.cs</DependentUpon>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
     </Compile>
     <Compile Include="ResetSenha.cs">
       <SubType>Form</SubType>
@@ -143,11 +137,8 @@
     <EmbeddedResource Include="HomeSalesForm.resx">
       <DependentUpon>HomeSalesForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoginAdmin.resx">
-      <DependentUpon>LoginAdmin.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="LoginCaixa.resx">
-      <DependentUpon>LoginCaixa.cs</DependentUpon>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ResetSenha.resx">
       <DependentUpon>ResetSenha.cs</DependentUpon>

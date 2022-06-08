@@ -72,6 +72,7 @@
             this.Controls.Add(this.btValidarCodigo);
             this.Controls.Add(this.maskedTextBox1);
             this.Name = "CodigoValidacao";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CodigoValidacao";
             this.ResumeLayout(false);
             this.PerformLayout();
