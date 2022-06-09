@@ -30,13 +30,12 @@ namespace DametaProject
             conn = new SqlConnection(connectionString);
 
             comm = new SqlCommand(
-                "SELECT Pro.cod_produto, Pro.produtoNome, Pro.preco, Pro.estoque_id, Pro.fornecedores_id, Pro.tipo_produtos_id " +
-                "Est.id, Est.qtd, For.id, For.fornecedorNome, Tipo.id, Tipo.tipoNome " +
-                "FROM Produtos AS Pro " +
-                "INNER JOIN estoque AS Est " +
-                "INNER JOIN fornecedores AS For " +
-                "INNER JOIN tipo_produtos AS Tipo " +
-                "ON Pro.id = @ID AND Est.id = Pro.estoque_id AND For.id = Pro.fornecedores_id AND Tipo.id = Pro.tipo_produtos_id", conn);
+            "SELECT pro.cod_produto, pro.produtoNome, pro.preco, pro.estoque_id, pro.fornecedores_id, pro.tipo_produtos_id, est.id, est.qtd, forn.id, forn.fornecedoresNome, Tipo.id, Tipo.tipoNome " +
+            "FROM produtos AS pro " +
+                "INNER JOIN estoque AS Est  ON Est.id = pro.estoque_id " +
+                "INNER JOIN fornecedores AS Forn  ON Forn.id = pro.fornecedores_id " +
+                "INNER JOIN tipo_produtos AS Tipo  ON Tipo.id = pro.tipo_produtos_id " +
+                "WHERE pro.cod_produto = 2", conn);
 
             comm.Parameters.Add("@ID", System.Data.SqlDbType.Int);
             comm.Parameters["@ID"].Value = Convert.ToInt32(txID.Text);
@@ -109,32 +108,25 @@ namespace DametaProject
             conn = new SqlConnection(connectionString);
 
             comm = new SqlCommand(
-                "INSERT INTO Clientes (nome, nascimento, CPF, telefone, CEP, estados_id, cidades_id, generos_id) " +
-                "VALUES (@nome, @nascimento, @CPF, @telefone, @CEP, @estados_id, @cidades_id, @generos_id)", conn);
+                "INSERT INTO produtos (produtoNome, preco, tipo_produtos_id, fornecedores_id, qtd) " +
+                "VALUES (@produtoNome, @preco, @tipo_produtos_id, @fornecedores_id, @qtd)", conn);
 
-            comm.Parameters.Add("@nome", System.Data.SqlDbType.NVarChar);
-            comm.Parameters["@nome"].Value = txNome.Text;
+            comm.Parameters.Add("@produtoNome", System.Data.SqlDbType.NVarChar);
+            comm.Parameters["@produtoNome"].Value = txNome.Text;
 
-            comm.Parameters.Add("@nascimento", System.Data.SqlDbType.Date);
-            comm.Parameters["@nascimento"].Value = dtpDataNasc.Value;
+            comm.Parameters.Add("@preco", System.Data.SqlDbType.Date);
+            comm.Parameters["@preco"].Value = txPrecoUnit.Text;
 
-            comm.Parameters.Add("@CPF", System.Data.SqlDbType.NVarChar);
-            comm.Parameters["@CPF"].Value = mtxCPF.Text;
+            comm.Parameters.Add("@tipo_produtos_id", System.Data.SqlDbType.Int);
+            comm.Parameters["@tipo_produtos_id"].Value = Convert.ToInt32(cbTipo.SelectedValue);
 
-            comm.Parameters.Add("@telefone", System.Data.SqlDbType.NVarChar);
-            comm.Parameters["@telefone"].Value = txNome.Text;
+            comm.Parameters.Add("@fornecedores_id", System.Data.SqlDbType.Int);
+            comm.Parameters["@fornecedores_id"].Value = Convert.ToInt32(cbFornecedor.SelectedValue);
 
-            comm.Parameters.Add("@CEP", System.Data.SqlDbType.NVarChar);
-            comm.Parameters["@CEP"].Value = mtxCEP.Text;
+            comm.Parameters.Add("@estoque_id", System.Data.SqlDbType.Int);
+            comm.Parameters["@estoque_id"].Value = Convert.ToInt32(cbFornecedor.SelectedValue);
 
-            comm.Parameters.Add("@estado_id", System.Data.SqlDbType.Int);
-            comm.Parameters["@estado_id"].Value = Convert.ToInt32(cbCidade.SelectedValue);
 
-            comm.Parameters.Add("@cidade_id", System.Data.SqlDbType.Int);
-            comm.Parameters["@cidade_id"].Value = Convert.ToInt32(cbCidade.SelectedValue);
-
-            comm.Parameters.Add("@genero_id", System.Data.SqlDbType.Int);
-            comm.Parameters["@genero_id"].Value = Convert.ToInt32(cbGenero.SelectedValue);
 
 
             try
@@ -185,155 +177,155 @@ namespace DametaProject
             }
         }
 
-        private void btAlterar_Click(object sender, EventArgs e)
-        {
-            SqlConnection conn;
-            SqlCommand comm;
-            bool bIsOperationOK = true;
+        //        private void btAlterar_Click(object sender, EventArgs e)
+        //        {
+        //            SqlConnection conn;
+        //            SqlCommand comm;
+        //            bool bIsOperationOK = true;
 
-            string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
+        //            string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
 
-            conn = new SqlConnection(connectionString);
+        //            conn = new SqlConnection(connectionString);
 
-            comm = new SqlCommand(
-                "UPDATE Clientes SET Nome=@Nome, CPF=@CPF, ID_Cidade=@ID_Cidade " +
-                "WHERE ID_Cliente = @ID_Cliente", conn);
+        //            comm = new SqlCommand(
+        //                "UPDATE Clientes SET Nome=@Nome, CPF=@CPF, ID_Cidade=@ID_Cidade " +
+        //                "WHERE ID_Cliente = @ID_Cliente", conn);
 
-            comm.Parameters.Add("@ID_Cliente", System.Data.SqlDbType.Int);
-            comm.Parameters["@ID_Cliente"].Value = Convert.ToInt32(txID.Text);
+        //            comm.Parameters.Add("@ID_Cliente", System.Data.SqlDbType.Int);
+        //            comm.Parameters["@ID_Cliente"].Value = Convert.ToInt32(txID.Text);
 
-            comm.Parameters.Add("@Nome", System.Data.SqlDbType.NVarChar);
-            comm.Parameters["@Nome"].Value = txNome.Text;
+        //            comm.Parameters.Add("@Nome", System.Data.SqlDbType.NVarChar);
+        //            comm.Parameters["@Nome"].Value = txNome.Text;
 
-            comm.Parameters.Add("@CPF", System.Data.SqlDbType.NVarChar);
-            comm.Parameters["@CPF"].Value = mtxCPF.Text;
+        //            comm.Parameters.Add("@CPF", System.Data.SqlDbType.NVarChar);
+        //            comm.Parameters["@CPF"].Value = mtxCPF.Text;
 
-            comm.Parameters.Add("@ID_Cidade", System.Data.SqlDbType.Int);
-            comm.Parameters["@ID_Cidade"].Value = Convert.ToInt32(cbCidade.SelectedValue.ToString());
+        //            comm.Parameters.Add("@ID_Cidade", System.Data.SqlDbType.Int);
+        //            comm.Parameters["@ID_Cidade"].Value = Convert.ToInt32(cbCidade.SelectedValue.ToString());
 
-            try
-            {
-                try
-                {
-                    conn.Open();
-                }
-                catch (Exception error)
-                {
-                    bIsOperationOK = false;
-                    MessageBox.Show(error.Message,
-                        "Erro ao abrir conexão com o Banco de Dados",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                }
+        //            try
+        //            {
+        //                try
+        //                {
+        //                    conn.Open();
+        //                }
+        //                catch (Exception error)
+        //                {
+        //                    bIsOperationOK = false;
+        //                    MessageBox.Show(error.Message,
+        //                        "Erro ao abrir conexão com o Banco de Dados",
+        //                        MessageBoxButtons.OK,
+        //                        MessageBoxIcon.Error);
+        //                }
 
-                try
-                {
-                    comm.ExecuteNonQuery();
-                }
-                catch (Exception error)
-                {
-                    bIsOperationOK = false;
-                    MessageBox.Show(error.Message,
-                        "Erro ao tentar executar o comando SQL",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                }
-            }
-            catch { }
-            finally
-            {
-                conn.Close();
+        //                try
+        //                {
+        //                    comm.ExecuteNonQuery();
+        //                }
+        //                catch (Exception error)
+        //                {
+        //                    bIsOperationOK = false;
+        //                    MessageBox.Show(error.Message,
+        //                        "Erro ao tentar executar o comando SQL",
+        //                        MessageBoxButtons.OK,
+        //                        MessageBoxIcon.Error);
+        //                }
+        //            }
+        //            catch { }
+        //            finally
+        //            {
+        //                conn.Close();
 
-                if (bIsOperationOK == true)
-                {
-                    MessageBox.Show("Registro Alterado!",
-                        "UPDATE",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
-                }
-            }
+        //                if (bIsOperationOK == true)
+        //                {
+        //                    MessageBox.Show("Registro Alterado!",
+        //                        "UPDATE",
+        //                        MessageBoxButtons.OK,
+        //                        MessageBoxIcon.Information);
+        //                }
+        //            }
 
-            AtualizaListaDeClientes();
-            btLimpar_Click(sender, e);
-        }
+        //            AtualizaListaDeClientes();
+        //            btLimpar_Click(sender, e);
+        //        }
 
-        private void btExcluir_Click(object sender, EventArgs e)
-        {
-            SqlConnection conn;
-            SqlCommand comm;
-            bool bIsOperationOK = true;
+        //        private void btExcluir_Click(object sender, EventArgs e)
+        //        {
+        //            SqlConnection conn;
+        //            SqlCommand comm;
+        //            bool bIsOperationOK = true;
 
-            string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
+        //            string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
 
-            conn = new SqlConnection(connectionString);
+        //            conn = new SqlConnection(connectionString);
 
-            comm = new SqlCommand(
-                "UPDATE Clientes SET Nome=@Nome, CPF=@CPF, ID_Cidade=@ID_Cidade " +
-                "WHERE ID_Cliente = @ID_Cliente", conn);
+        //            comm = new SqlCommand(
+        //                "UPDATE Clientes SET Nome=@Nome, CPF=@CPF, ID_Cidade=@ID_Cidade " +
+        //                "WHERE ID_Cliente = @ID_Cliente", conn);
 
-            comm.Parameters.Add("@ID_Cliente", System.Data.SqlDbType.Int);
-            comm.Parameters["@ID_Cliente"].Value = Convert.ToInt32(txID.Text);
+        //            comm.Parameters.Add("@ID_Cliente", System.Data.SqlDbType.Int);
+        //            comm.Parameters["@ID_Cliente"].Value = Convert.ToInt32(txID.Text);
 
-            comm.Parameters.Add("@Nome", System.Data.SqlDbType.NVarChar);
-            comm.Parameters["@Nome"].Value = txNome.Text;
+        //            comm.Parameters.Add("@Nome", System.Data.SqlDbType.NVarChar);
+        //            comm.Parameters["@Nome"].Value = txNome.Text;
 
-            comm.Parameters.Add("@CPF", System.Data.SqlDbType.NVarChar);
-            comm.Parameters["@CPF"].Value = mtxCPF.Text;
+        //            comm.Parameters.Add("@CPF", System.Data.SqlDbType.NVarChar);
+        //            comm.Parameters["@CPF"].Value = mtxCPF.Text;
 
-            comm.Parameters.Add("@ID_Cidade", System.Data.SqlDbType.Int);
-            comm.Parameters["@ID_Cidade"].Value = Convert.ToInt32(cbCidade.SelectedValue.ToString());
+        //            comm.Parameters.Add("@ID_Cidade", System.Data.SqlDbType.Int);
+        //            comm.Parameters["@ID_Cidade"].Value = Convert.ToInt32(cbCidade.SelectedValue.ToString());
 
-            try
-            {
-                try
-                {
-                    conn.Open();
-                }
-                catch (Exception error)
-                {
-                    bIsOperationOK = false;
-                    MessageBox.Show(error.Message,
-                        "Erro ao abrir conexão com o Banco de Dados",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                }
+        //            try
+        //            {
+        //                try
+        //                {
+        //                    conn.Open();
+        //                }
+        //                catch (Exception error)
+        //                {
+        //                    bIsOperationOK = false;
+        //                    MessageBox.Show(error.Message,
+        //                        "Erro ao abrir conexão com o Banco de Dados",
+        //                        MessageBoxButtons.OK,
+        //                        MessageBoxIcon.Error);
+        //                }
 
-                try
-                {
-                    comm.ExecuteNonQuery();
-                }
-                catch (Exception error)
-                {
-                    bIsOperationOK = false;
-                    MessageBox.Show(error.Message,
-                        "Erro ao tentar executar o comando SQL",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                }
-            }
-            catch { }
-            finally
-            {
-                conn.Close();
+        //                try
+        //                {
+        //                    comm.ExecuteNonQuery();
+        //                }
+        //                catch (Exception error)
+        //                {
+        //                    bIsOperationOK = false;
+        //                    MessageBox.Show(error.Message,
+        //                        "Erro ao tentar executar o comando SQL",
+        //                        MessageBoxButtons.OK,
+        //                        MessageBoxIcon.Error);
+        //                }
+        //            }
+        //            catch { }
+        //            finally
+        //            {
+        //                conn.Close();
 
-                if (bIsOperationOK == true)
-                {
-                    MessageBox.Show("Registro Alterado!",
-                        "UPDATE",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
-                }
-            }
+        //                if (bIsOperationOK == true)
+        //                {
+        //                    MessageBox.Show("Registro Alterado!",
+        //                        "UPDATE",
+        //                        MessageBoxButtons.OK,
+        //                        MessageBoxIcon.Information);
+        //                }
+        //            }
 
-            AtualizaListaDeClientes();
-            btLimpar_Click(sender, e);
-        }
+        //            AtualizaListaDeClientes();
+        //            btLimpar_Click(sender, e);
+        //        }
 
-        private void Produtos_Load(object sender, EventArgs e)
-        {
-            // TODO: This line of code loads data into the 'dameta_dbDataSet.produtos' table. You can move, or remove it, as needed.
-            this.produtosTableAdapter.Fill(this.dameta_dbDataSet.produtos);
+        //        private void Produtos_Load(object sender, EventArgs e)
+        //        {
+        //            // TODO: This line of code loads data into the 'dameta_dbDataSet.produtos' table. You can move, or remove it, as needed.
+        //            this.produtosTableAdapter.Fill(this.dameta_dbDataSet.produtos);
 
-        }
+        //        }
     }
 }

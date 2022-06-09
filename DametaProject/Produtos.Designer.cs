@@ -123,7 +123,7 @@
             this.btExcluir.TabIndex = 31;
             this.btExcluir.Text = "Excluir";
             this.btExcluir.UseVisualStyleBackColor = true;
-            this.btExcluir.Click += new System.EventHandler(this.btExcluir_Click);
+            //this.btExcluir.Click += new System.EventHandler(this.btExcluir_Click);
             // 
             // btAlterar
             // 
@@ -133,7 +133,7 @@
             this.btAlterar.TabIndex = 30;
             this.btAlterar.Text = "Alterar";
             this.btAlterar.UseVisualStyleBackColor = true;
-            this.btAlterar.Click += new System.EventHandler(this.btAlterar_Click);
+            //this.btAlterar.Click += new System.EventHandler(this.btAlterar_Click);
             // 
             // btConsultar
             // 
@@ -153,7 +153,7 @@
             this.btIncluir.TabIndex = 29;
             this.btIncluir.Text = "Incluir";
             this.btIncluir.UseVisualStyleBackColor = true;
-            this.btIncluir.Click += new System.EventHandler(this.btIncluir_Click);
+            //this.btIncluir.Click += new System.EventHandler(this.btIncluir_Click);
             // 
             // dataGridView1
             // 
@@ -329,7 +329,7 @@
             this.Controls.Add(CodigoProdutoLabel);
             this.Name = "Produtos";
             this.Text = "Produtos";
-            this.Load += new System.EventHandler(this.Produtos_Load);
+            //this.Load += new System.EventHandler(this.Produtos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.produtosBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).EndInit();
