@@ -55,11 +55,11 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(210, 185);
+            this.label1.Location = new System.Drawing.Point(246, 185);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(140, 29);
+            this.label1.Size = new System.Drawing.Size(73, 29);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Funcionário";
+            this.label1.Text = "Caixa";
             // 
             // label2
             // 
@@ -90,9 +90,9 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(205, 109);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(356, 29);
+            this.label3.Size = new System.Drawing.Size(307, 29);
             this.label3.TabIndex = 4;
-            this.label3.Text = "Selecione sua forma de acesso:";
+            this.label3.Text = "O que gostaria de acessar?";
             // 
             // label4
             // 

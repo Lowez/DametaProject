@@ -15,10 +15,13 @@ namespace DametaProject
     {
         // Variável a ser usada ao usuário tentar logar para que seja encaminhado para o Caixa ou Admin, entre outras validações
         private string modo_login;
+        public WelcomeForm form_inicial;
 
-        public Login(string label_frase, int tipo_login)
+        public Login(string label_frase, int tipo_login, WelcomeForm form)
         {
             InitializeComponent();
+
+            form_inicial = form;
 
             // Caso receba 0 na chamada do Form, significa que um acesso ao setor de caixa está sendo feito, caso contrário é um acesso de admin
             if (tipo_login == 0)
@@ -45,85 +48,113 @@ namespace DametaProject
 
         private void btLogar_Click(object sender, EventArgs e)
         {
-            // Validação para login de Caixa
-            if (modo_login == "caixa")
+            SqlConnection conn;
+            SqlCommand comm;
+            SqlDataReader reader;
+
+            conn = new SqlConnection(Properties.Settings.Default.dameta_dbConnectionString);
+
+            comm = new SqlCommand(
+                "SELECT * FROM funcionarios " +
+                "WHERE CPF = @CPF AND senha = @senha", conn);
+
+            comm.Parameters.Add("@CPF", SqlDbType.NVarChar);
+            comm.Parameters["@CPF"].Value = mtxCPF.Text;
+
+            comm.Parameters.Add("@senha", SqlDbType.NVarChar);
+            comm.Parameters["@senha"].Value = txSenha.Text;
+            try
             {
-                SqlConnection conn;
-                SqlCommand comm;
-                SqlDataReader reader;
-
-                conn = new SqlConnection(Properties.Settings.Default.dameta_dbConnectionString);
-
-                comm = new SqlCommand(
-                    "SELECT * FROM funcionarios " +
-                    "WHERE CPF = @CPF AND senha = @senha", conn);
-
-                comm.Parameters.Add("@CPF", SqlDbType.NVarChar);
-                comm.Parameters["@CPF"].Value = mtxCPF.Text;
-
-                comm.Parameters.Add("@senha", SqlDbType.NVarChar);
-                comm.Parameters["@senha"].Value = txSenha.Text;
-
+                // Tenta abrir a conexão com o Banco de Dados
                 try
                 {
-                    // Tenta abrir a conexão com o Banco de Dados
-                    try
-                    {
-                        conn.Open();
-                    }
-                    catch (SqlException error)
-                    {
-                        MessageBox.Show(error.Message,
-                            "Houve um problema ao tentar abrir a conexão com a base de dados",
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Error);
-                    }
+                    conn.Open();
+                }
+                catch (SqlException error)
+                {
+                    MessageBox.Show(error.Message,
+                        "Houve um problema ao tentar abrir a conexão com a base de dados",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
 
-                    // Tenta executar o comando e login
-                    try
-                    {
-                        reader = comm.ExecuteReader();
+                // Tenta executar o comando e login
+                try
+                {
+                    reader = comm.ExecuteReader();
 
+                    // Validação para login de Caixa
+                    if (modo_login == "caixa")
+                    {
                         // Caso o reader consiga ler o usuário foi identificado
                         if (reader.Read())
                         {
-                            lblIncorreto.Visible = false;
-                        } else
+                            // Checa se o usuário é um operador de caixa ou administrador
+                            if (reader["cargos_id"].ToString() != "1" && reader["cargos_id"].ToString() != "2")
+                            {
+                                MessageBox.Show("Você deve ser um Operador de Caixa ou Administrador para acessar esta sessão" + reader["cargos_id"].ToString(),
+                                    "Erro!",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error);
+                            }
+                            else
+                            {
+                                HomeSalesForm home_caixa = new HomeSalesForm(reader["nome"].ToString(), form_inicial);
+
+                                home_caixa.Show();
+                                this.Close();
+                            }
+
+                            reader.Close();
+                        }
+                        else
                         {
-                            lblIncorreto.Visible = true;
+                            MessageBox.Show("CPF ou Senha incorretos!",
+                                "Erro!",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
                         }
                     }
-                    catch (Exception error)
+                    // Validação para login de Admin
+                    else if (modo_login == "admin")
                     {
-                        MessageBox.Show(error.Message,
-                            "Erro ao tentar executar comando",
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Error);
+                        // Caso o reader consiga ler, o usuário foi identificado
+                        if (reader.Read())
+                        {
+                            // Checa se o usuário é um administrador
+                            if (reader["cargos_id"].ToString() != "2")
+                            {
+                                MessageBox.Show("Você deve ser um Administrador para acessar esta sessão",
+                                    "Erro!",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error);
+                            }
+                            else
+                            {
+                                HomeManagerForm home_admin = new HomeManagerForm(reader["nome"].ToString(), form_inicial);
+
+                                home_admin.Show();
+                                this.Close();
+                            }
+
+                            reader.Close();
+                        }
                     }
+
+
                 }
-                catch { }
-                finally
+                catch (Exception error)
                 {
-
+                    MessageBox.Show(error.Message,
+                        "Erro ao tentar executar comando",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
                 }
-
-                /*
-                reader = comm.ExecuteReader();
-
-                if (reader.Read())
-                {
-                    cbCliente.Text = reader["Nome"].ToString();
-                    dtpDataVenda.Text = reader["Data_Venda"].ToString();
-                    txPrecoTotal.Text = reader["Preco_Total"].ToString();
-                }
-
-                reader.Close();
-                */
             }
-            // Validação para login de Admin
-            else if (modo_login == "admin")
+            catch { }
+            finally
             {
-
+                conn.Close();
             }
         }
     }

@@ -19,13 +19,13 @@ namespace DametaProject
 
         private void btAcessoCaixa_Click(object sender, EventArgs e)
         {
-            Login loginForm = new Login("Por favor, entre com seu Usuário Operador de Caixa", 0);
+            Login loginForm = new Login("Por favor, entre com seu Usuário Operador de Caixa", 0, this);
             loginForm.Show();
         }
 
         private void btAcessoAdmin_Click(object sender, EventArgs e)
         {
-            Login loginForm = new Login("Por favor, entre com sua conta Administrativa", 1);
+            Login loginForm = new Login("Por favor, entre com sua conta Administrativa", 1, this);
             loginForm.Show();
         }
     }

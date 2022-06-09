@@ -34,7 +34,6 @@
             this.btLogar = new System.Windows.Forms.Button();
             this.lblResetSenha = new System.Windows.Forms.LinkLabel();
             this.mtxCPF = new System.Windows.Forms.MaskedTextBox();
-            this.lblIncorreto = new System.Windows.Forms.Label();
             this.lblFraseLogin = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -98,24 +97,12 @@
             this.mtxCPF.Size = new System.Drawing.Size(226, 23);
             this.mtxCPF.TabIndex = 1;
             // 
-            // lblIncorreto
-            // 
-            this.lblIncorreto.AutoSize = true;
-            this.lblIncorreto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.lblIncorreto.Location = new System.Drawing.Point(125, 243);
-            this.lblIncorreto.Name = "lblIncorreto";
-            this.lblIncorreto.Size = new System.Drawing.Size(125, 13);
-            this.lblIncorreto.TabIndex = 5;
-            this.lblIncorreto.Text = "CPF ou Senha incorretos";
-            this.lblIncorreto.Visible = false;
-            // 
             // lblFraseLogin
             // 
-            this.lblFraseLogin.AutoSize = true;
-            this.lblFraseLogin.Font = new System.Drawing.Font("Noto Sans Hebrew", 9.75F);
-            this.lblFraseLogin.Location = new System.Drawing.Point(28, 57);
+            this.lblFraseLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.lblFraseLogin.Location = new System.Drawing.Point(12, 57);
             this.lblFraseLogin.Name = "lblFraseLogin";
-            this.lblFraseLogin.Size = new System.Drawing.Size(319, 18);
+            this.lblFraseLogin.Size = new System.Drawing.Size(353, 16);
             this.lblFraseLogin.TabIndex = 6;
             this.lblFraseLogin.Text = "Por favor, entre com seu Usuário Operador de Caixa";
             this.lblFraseLogin.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -126,7 +113,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(377, 377);
             this.Controls.Add(this.lblFraseLogin);
-            this.Controls.Add(this.lblIncorreto);
             this.Controls.Add(this.mtxCPF);
             this.Controls.Add(this.lblResetSenha);
             this.Controls.Add(this.btLogar);
@@ -149,7 +135,6 @@
         private System.Windows.Forms.Button btLogar;
         private System.Windows.Forms.LinkLabel lblResetSenha;
         private System.Windows.Forms.MaskedTextBox mtxCPF;
-        private System.Windows.Forms.Label lblIncorreto;
         private System.Windows.Forms.Label lblFraseLogin;
     }
 }
