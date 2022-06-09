@@ -42,8 +42,9 @@
             this.salarioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cargosidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.estabelecimentosidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.funcionariosBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.funcionariosBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.dameta_dbDataSet = new DametaProject.dameta_dbDataSet();
+            this.funcionariosBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.mtxTelefone = new System.Windows.Forms.MaskedTextBox();
             this.txNome = new System.Windows.Forms.TextBox();
             this.nomeLabel = new System.Windows.Forms.Label();
@@ -64,17 +65,22 @@
             this.label6 = new System.Windows.Forms.Label();
             this.cbEstabelecimento = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.c = new System.Windows.Forms.CheckBox();
+            this.cbSenha = new System.Windows.Forms.CheckBox();
             this.funcionariosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.funcionariosTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.funcionariosTableAdapter();
             this.dtpDataNascimento = new System.Windows.Forms.DateTimePicker();
             this.label8 = new System.Windows.Forms.Label();
-            this.funcionariosBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.generosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.generosTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.generosTableAdapter();
+            this.cargosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cargosTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.cargosTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.funcionariosBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.funcionariosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.funcionariosBindingSource2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.funcionariosBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.funcionariosBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.generosBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cargosBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // mtxCPF
@@ -194,15 +200,20 @@
             this.estabelecimentosidDataGridViewTextBoxColumn.ReadOnly = true;
             this.estabelecimentosidDataGridViewTextBoxColumn.Width = 120;
             // 
-            // funcionariosBindingSource1
+            // funcionariosBindingSource2
             // 
-            this.funcionariosBindingSource1.DataMember = "funcionarios";
-            this.funcionariosBindingSource1.DataSource = this.dameta_dbDataSet;
+            this.funcionariosBindingSource2.DataMember = "funcionarios";
+            this.funcionariosBindingSource2.DataSource = this.dameta_dbDataSet;
             // 
             // dameta_dbDataSet
             // 
             this.dameta_dbDataSet.DataSetName = "dameta_dbDataSet";
             this.dameta_dbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // funcionariosBindingSource1
+            // 
+            this.funcionariosBindingSource1.DataMember = "funcionarios";
+            this.funcionariosBindingSource1.DataSource = this.dameta_dbDataSet;
             // 
             // mtxTelefone
             // 
@@ -235,6 +246,7 @@
             this.txID.Name = "txID";
             this.txID.Size = new System.Drawing.Size(53, 20);
             this.txID.TabIndex = 51;
+            this.txID.TextChanged += new System.EventHandler(this.txID_TextChanged);
             // 
             // btAlterar
             // 
@@ -265,7 +277,7 @@
             // 
             // btConsultar
             // 
-            this.btConsultar.Location = new System.Drawing.Point(205, 24);
+            this.btConsultar.Location = new System.Drawing.Point(224, 25);
             this.btConsultar.Name = "btConsultar";
             this.btConsultar.Size = new System.Drawing.Size(75, 38);
             this.btConsultar.TabIndex = 57;
@@ -324,7 +336,8 @@
             // 
             // cbGenero
             // 
-            this.cbGenero.DisplayMember = "NomeCid";
+            this.cbGenero.DataSource = this.generosBindingSource;
+            this.cbGenero.DisplayMember = "nome";
             this.cbGenero.FormattingEnabled = true;
             this.cbGenero.Location = new System.Drawing.Point(505, 114);
             this.cbGenero.Name = "cbGenero";
@@ -343,13 +356,11 @@
             // 
             // cbCargo
             // 
-            this.cbCargo.DisplayMember = "NomeCid";
             this.cbCargo.FormattingEnabled = true;
             this.cbCargo.Location = new System.Drawing.Point(505, 151);
             this.cbCargo.Name = "cbCargo";
             this.cbCargo.Size = new System.Drawing.Size(121, 21);
             this.cbCargo.TabIndex = 73;
-            this.cbCargo.ValueMember = "ID_Cidade";
             // 
             // label6
             // 
@@ -377,17 +388,17 @@
             this.label7.TabIndex = 74;
             this.label7.Text = "Estabelecimento:";
             // 
-            // c
+            // cbSenha
             // 
-            this.c.AutoSize = true;
-            this.c.Checked = true;
-            this.c.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.c.Location = new System.Drawing.Point(242, 191);
-            this.c.Name = "c";
-            this.c.Size = new System.Drawing.Size(136, 17);
-            this.c.TabIndex = 76;
-            this.c.Text = "Gerar automaticamente";
-            this.c.UseVisualStyleBackColor = true;
+            this.cbSenha.AutoSize = true;
+            this.cbSenha.Checked = true;
+            this.cbSenha.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbSenha.Location = new System.Drawing.Point(242, 191);
+            this.cbSenha.Name = "cbSenha";
+            this.cbSenha.Size = new System.Drawing.Size(136, 17);
+            this.cbSenha.TabIndex = 76;
+            this.cbSenha.Text = "Gerar automaticamente";
+            this.cbSenha.UseVisualStyleBackColor = true;
             // 
             // funcionariosBindingSource
             // 
@@ -415,10 +426,23 @@
             this.label8.TabIndex = 77;
             this.label8.Text = "Data de Nascimento:";
             // 
-            // funcionariosBindingSource2
+            // generosBindingSource
             // 
-            this.funcionariosBindingSource2.DataMember = "funcionarios";
-            this.funcionariosBindingSource2.DataSource = this.dameta_dbDataSet;
+            this.generosBindingSource.DataMember = "generos";
+            this.generosBindingSource.DataSource = this.dameta_dbDataSet;
+            // 
+            // generosTableAdapter
+            // 
+            this.generosTableAdapter.ClearBeforeFill = true;
+            // 
+            // cargosBindingSource
+            // 
+            this.cargosBindingSource.DataMember = "cargos";
+            this.cargosBindingSource.DataSource = this.dameta_dbDataSet;
+            // 
+            // cargosTableAdapter
+            // 
+            this.cargosTableAdapter.ClearBeforeFill = true;
             // 
             // Funcionarios
             // 
@@ -427,7 +451,7 @@
             this.ClientSize = new System.Drawing.Size(821, 450);
             this.Controls.Add(this.dtpDataNascimento);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.c);
+            this.Controls.Add(this.cbSenha);
             this.Controls.Add(this.cbEstabelecimento);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.cbCargo);
@@ -457,10 +481,12 @@
             this.Text = "Funcionarios";
             this.Load += new System.EventHandler(this.Funcionarios_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.funcionariosBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.funcionariosBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.funcionariosBindingSource2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.funcionariosBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.funcionariosBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.generosBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cargosBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -493,7 +519,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cbEstabelecimento;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.CheckBox c;
+        private System.Windows.Forms.CheckBox cbSenha;
         private dameta_dbDataSet dameta_dbDataSet;
         private System.Windows.Forms.BindingSource funcionariosBindingSource;
         private dameta_dbDataSetTableAdapters.funcionariosTableAdapter funcionariosTableAdapter;
@@ -509,5 +535,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn estabelecimentosidDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource funcionariosBindingSource1;
         private System.Windows.Forms.BindingSource funcionariosBindingSource2;
+        private System.Windows.Forms.BindingSource generosBindingSource;
+        private dameta_dbDataSetTableAdapters.generosTableAdapter generosTableAdapter;
+        private System.Windows.Forms.BindingSource cargosBindingSource;
+        private dameta_dbDataSetTableAdapters.cargosTableAdapter cargosTableAdapter;
     }
 }
