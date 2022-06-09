@@ -12,9 +12,15 @@ namespace DametaProject
 {
     public partial class HomeSalesForm : Form
     {
-        public HomeSalesForm()
+        public Form form_inicial;
+        public HomeSalesForm(string nome, WelcomeForm form)
         {
             InitializeComponent();
+
+            form_inicial = form;
+
+            // Adiciona o nome do  usuário que está logando no título do formulário
+            this.Text = "Bem vindo(a) " + nome;
         }
     }
 }
