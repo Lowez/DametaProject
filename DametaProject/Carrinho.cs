@@ -10,14 +10,17 @@ using System.Windows.Forms;
 
 namespace DametaProject
 {
-    public partial class HomeSalesForm : Form
+    public partial class Carrinho : Form
     {
         public Form form_inicial;
-        public HomeSalesForm(string nome, WelcomeForm form)
+        public Carrinho(string nome, WelcomeForm form)
         {
             InitializeComponent();
 
             form_inicial = form;
+
+            NovaCompra novaCompra = new NovaCompra(this);
+            novaCompra.Show();
 
             // Adiciona o nome do  usuário que está logando no título do formulário
             this.Text = "Bem vindo(a) " + nome;

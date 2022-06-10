@@ -76,6 +76,18 @@
     <Compile Include="Funcionarios.Designer.cs">
       <DependentUpon>Funcionarios.cs</DependentUpon>
     </Compile>
+    <Compile Include="NovaCompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NovaCompra.Designer.cs">
+      <DependentUpon>NovaCompra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PremiumUserCheck.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PremiumUserCheck.Designer.cs">
+      <DependentUpon>PremiumUserCheck.cs</DependentUpon>
+    </Compile>
     <Compile Include="Produtos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +108,12 @@
     <EmbeddedResource Include="Funcionarios.resx">
       <DependentUpon>Funcionarios.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="NovaCompra.resx">
+      <DependentUpon>NovaCompra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PremiumUserCheck.resx">
+      <DependentUpon>PremiumUserCheck.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Produtos.resx">
       <DependentUpon>Produtos.cs</DependentUpon>
     </EmbeddedResource>
@@ -105,11 +123,11 @@
     <Compile Include="HomeManagerForm.Designer.cs">
       <DependentUpon>HomeManagerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="HomeSalesForm.cs">
+    <Compile Include="Carrinho.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="HomeSalesForm.Designer.cs">
-      <DependentUpon>HomeSalesForm.cs</DependentUpon>
+    <Compile Include="Carrinho.Designer.cs">
+      <DependentUpon>Carrinho.cs</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -134,8 +152,8 @@
     <EmbeddedResource Include="HomeManagerForm.resx">
       <DependentUpon>HomeManagerForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="HomeSalesForm.resx">
-      <DependentUpon>HomeSalesForm.cs</DependentUpon>
+    <EmbeddedResource Include="Carrinho.resx">
+      <DependentUpon>Carrinho.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
