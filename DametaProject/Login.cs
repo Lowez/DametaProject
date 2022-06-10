@@ -96,12 +96,16 @@ namespace DametaProject
                                     "Erro!",
                                     MessageBoxButtons.OK,
                                     MessageBoxIcon.Error);
+
+                                txSenha.Text = "";
+                                mtxCPF.Text = "";
                             }
                             else
                             {
-                                HomeSalesForm home_caixa = new HomeSalesForm(reader["nome"].ToString(), form_inicial);
+                                Carrinho home_caixa = new Carrinho(reader["nome"].ToString(), form_inicial);
 
                                 home_caixa.Show();
+                                form_inicial.Hide();
                                 this.Close();
                             }
 
@@ -113,6 +117,9 @@ namespace DametaProject
                                 "Erro!",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
+
+                            txSenha.Text = "";
+                            mtxCPF.Text = "";
                         }
                     }
                     // Validação para login de Admin
@@ -128,16 +135,30 @@ namespace DametaProject
                                     "Erro!",
                                     MessageBoxButtons.OK,
                                     MessageBoxIcon.Error);
+
+                                txSenha.Text = "";
+                                mtxCPF.Text = "";
                             }
                             else
                             {
                                 HomeManagerForm home_admin = new HomeManagerForm(reader["nome"].ToString(), form_inicial);
 
                                 home_admin.Show();
+                                form_inicial.Hide();
                                 this.Close();
                             }
 
                             reader.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("CPF ou Senha incorretos!",
+                                "Erro!",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+
+                            txSenha.Text = "";
+                            mtxCPF.Text = "";
                         }
                     }
 
