@@ -44,6 +44,7 @@
             this.cbxPremiumUser.TabIndex = 1;
             this.cbxPremiumUser.Text = "Usuário Premium Dameta";
             this.cbxPremiumUser.UseVisualStyleBackColor = true;
+            this.cbxPremiumUser.CheckedChanged += new System.EventHandler(this.cbxPremiumUser_CheckedChanged);
             // 
             // mtxCPF
             // 
@@ -76,6 +77,7 @@
             this.btContinuar.TabIndex = 4;
             this.btContinuar.Text = "Continuar";
             this.btContinuar.UseVisualStyleBackColor = false;
+            this.btContinuar.Click += new System.EventHandler(this.btContinuar_Click);
             // 
             // PremiumUserCheck
             // 

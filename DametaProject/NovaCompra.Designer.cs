@@ -55,6 +55,7 @@
             this.btSair.TabIndex = 1;
             this.btSair.Text = "Sair";
             this.btSair.UseVisualStyleBackColor = false;
+            this.btSair.Click += new System.EventHandler(this.btSair_Click);
             // 
             // label1
             // 
