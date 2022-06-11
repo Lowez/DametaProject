@@ -96,15 +96,12 @@ namespace DametaProject
                                     "Erro!",
                                     MessageBoxButtons.OK,
                                     MessageBoxIcon.Error);
-
-                                txSenha.Text = "";
-                                mtxCPF.Text = "";
                             }
                             else
                             {
-                                Carrinho home_caixa = new Carrinho(reader["nome"].ToString(), form_inicial);
+                                NovaCompra nova_compra = new NovaCompra(reader["nome"].ToString(), form_inicial);
 
-                                home_caixa.Show();
+                                nova_compra.Show();
                                 form_inicial.Hide();
                                 this.Close();
                             }
@@ -117,9 +114,6 @@ namespace DametaProject
                                 "Erro!",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
-
-                            txSenha.Text = "";
-                            mtxCPF.Text = "";
                         }
                     }
                     // Validação para login de Admin
@@ -135,9 +129,6 @@ namespace DametaProject
                                     "Erro!",
                                     MessageBoxButtons.OK,
                                     MessageBoxIcon.Error);
-
-                                txSenha.Text = "";
-                                mtxCPF.Text = "";
                             }
                             else
                             {
@@ -156,9 +147,6 @@ namespace DametaProject
                                 "Erro!",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
-
-                            txSenha.Text = "";
-                            mtxCPF.Text = "";
                         }
                     }
 

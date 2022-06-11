@@ -19,11 +19,11 @@ namespace DametaProject
 
             form_inicial = form;
 
-            NovaCompra novaCompra = new NovaCompra(this);
-            novaCompra.Show();
-
             // Adiciona o nome do  usuário que está logando no título do formulário
             this.Text = "Bem vindo(a) " + nome;
+
+            // Desabilita o carrinho em seu início, para o funcionário selecionar se vai abrir uma nova compra ou sair do sistema
+            this.Enabled = false;
         }
     }
 }
