@@ -60,6 +60,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.cbGenero = new System.Windows.Forms.ComboBox();
+            this.generosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label5 = new System.Windows.Forms.Label();
             this.cbCargo = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -70,7 +71,6 @@
             this.funcionariosTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.funcionariosTableAdapter();
             this.dtpDataNascimento = new System.Windows.Forms.DateTimePicker();
             this.label8 = new System.Windows.Forms.Label();
-            this.generosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.generosTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.generosTableAdapter();
             this.cargosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cargosTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.cargosTableAdapter();
@@ -78,8 +78,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.funcionariosBindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.funcionariosBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.funcionariosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.generosBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.funcionariosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cargosBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -108,6 +108,7 @@
             this.btLimpar.TabIndex = 61;
             this.btLimpar.Text = "Limpar Form";
             this.btLimpar.UseVisualStyleBackColor = true;
+            this.btLimpar.Click += new System.EventHandler(this.btLimpar_Click);
             // 
             // btExcluir
             // 
@@ -246,7 +247,6 @@
             this.txID.Name = "txID";
             this.txID.Size = new System.Drawing.Size(53, 20);
             this.txID.TabIndex = 51;
-            this.txID.TextChanged += new System.EventHandler(this.txID_TextChanged);
             // 
             // btAlterar
             // 
@@ -265,6 +265,7 @@
             this.btIncluir.TabIndex = 58;
             this.btIncluir.Text = "Incluir";
             this.btIncluir.UseVisualStyleBackColor = true;
+            this.btIncluir.Click += new System.EventHandler(this.btIncluir_Click);
             // 
             // label1
             // 
@@ -344,6 +345,11 @@
             this.cbGenero.Size = new System.Drawing.Size(121, 21);
             this.cbGenero.TabIndex = 71;
             this.cbGenero.ValueMember = "ID_Cidade";
+            // 
+            // generosBindingSource
+            // 
+            this.generosBindingSource.DataMember = "generos";
+            this.generosBindingSource.DataSource = this.dameta_dbDataSet;
             // 
             // label5
             // 
@@ -426,11 +432,6 @@
             this.label8.TabIndex = 77;
             this.label8.Text = "Data de Nascimento:";
             // 
-            // generosBindingSource
-            // 
-            this.generosBindingSource.DataMember = "generos";
-            this.generosBindingSource.DataSource = this.dameta_dbDataSet;
-            // 
             // generosTableAdapter
             // 
             this.generosTableAdapter.ClearBeforeFill = true;
@@ -484,8 +485,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.funcionariosBindingSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.funcionariosBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.funcionariosBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.generosBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.funcionariosBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cargosBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
