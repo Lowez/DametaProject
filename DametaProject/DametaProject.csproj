@@ -76,6 +76,12 @@
     <Compile Include="Funcionarios.Designer.cs">
       <DependentUpon>Funcionarios.cs</DependentUpon>
     </Compile>
+    <Compile Include="InfosCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InfosCliente.Designer.cs">
+      <DependentUpon>InfosCliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="NovaCompra.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +113,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Funcionarios.resx">
       <DependentUpon>Funcionarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InfosCliente.resx">
+      <DependentUpon>InfosCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NovaCompra.resx">
       <DependentUpon>NovaCompra.cs</DependentUpon>

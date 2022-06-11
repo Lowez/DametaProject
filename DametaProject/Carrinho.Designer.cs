@@ -29,6 +29,11 @@
         private void InitializeComponent()
         {
             this.dvgCarrinho = new System.Windows.Forms.DataGridView();
+            this.Código_Produto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Qtd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ValorUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ValorParcial = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dameta_dbDataSet = new DametaProject.dameta_dbDataSet();
             this.btConcluirCompra = new System.Windows.Forms.Button();
             this.txCodigoProd = new System.Windows.Forms.TextBox();
@@ -38,28 +43,23 @@
             this.lblValorTotal = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lblTotalItens = new System.Windows.Forms.Label();
-            this.txNomeProd = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.txTipoProd = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.rbtQtd = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.btAdicionar = new System.Windows.Forms.Button();
-            this.btRemover = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.txValorTParcial = new System.Windows.Forms.TextBox();
             this.txValorUnit = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.Código_Produto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Qtd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ValorUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ValorParcial = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btRemover = new System.Windows.Forms.Button();
+            this.btAdicionar = new System.Windows.Forms.Button();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.rbtQtd = new System.Windows.Forms.RadioButton();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txTipoProd = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txNomeProd = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblTotalItens = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dvgCarrinho)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -78,6 +78,35 @@
             this.dvgCarrinho.Name = "dvgCarrinho";
             this.dvgCarrinho.Size = new System.Drawing.Size(569, 465);
             this.dvgCarrinho.TabIndex = 0;
+            // 
+            // Código_Produto
+            // 
+            this.Código_Produto.HeaderText = "Código_Produto";
+            this.Código_Produto.Name = "Código_Produto";
+            this.Código_Produto.ReadOnly = true;
+            // 
+            // Nome
+            // 
+            this.Nome.HeaderText = "Nome";
+            this.Nome.Name = "Nome";
+            this.Nome.ReadOnly = true;
+            this.Nome.Width = 175;
+            // 
+            // Qtd
+            // 
+            this.Qtd.HeaderText = "Qtd";
+            this.Qtd.Name = "Qtd";
+            this.Qtd.Width = 50;
+            // 
+            // ValorUnit
+            // 
+            this.ValorUnit.HeaderText = "ValorUnit";
+            this.ValorUnit.Name = "ValorUnit";
+            // 
+            // ValorParcial
+            // 
+            this.ValorParcial.HeaderText = "ValorParcial";
+            this.ValorParcial.Name = "ValorParcial";
             // 
             // dameta_dbDataSet
             // 
@@ -176,125 +205,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Produto à adicionar";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(501, 480);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(110, 20);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "Total de Itens:";
-            // 
-            // lblTotalItens
-            // 
-            this.lblTotalItens.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalItens.Location = new System.Drawing.Point(617, 480);
-            this.lblTotalItens.Name = "lblTotalItens";
-            this.lblTotalItens.Size = new System.Drawing.Size(57, 20);
-            this.lblTotalItens.TabIndex = 11;
-            this.lblTotalItens.Text = "0";
-            this.lblTotalItens.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // txNomeProd
-            // 
-            this.txNomeProd.Location = new System.Drawing.Point(19, 107);
-            this.txNomeProd.Name = "txNomeProd";
-            this.txNomeProd.ReadOnly = true;
-            this.txNomeProd.Size = new System.Drawing.Size(166, 20);
-            this.txNomeProd.TabIndex = 7;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(117, 152);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(24, 13);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Qtd";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(120, 168);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(65, 20);
-            this.textBox1.TabIndex = 9;
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txTipoProd
-            // 
-            this.txTipoProd.Location = new System.Drawing.Point(214, 107);
-            this.txTipoProd.Name = "txTipoProd";
-            this.txTipoProd.ReadOnly = true;
-            this.txTipoProd.Size = new System.Drawing.Size(166, 20);
-            this.txTipoProd.TabIndex = 10;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(211, 91);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(83, 13);
-            this.label4.TabIndex = 11;
-            this.label4.Text = "Tipo do Produto";
-            // 
-            // rbtQtd
-            // 
-            this.rbtQtd.AutoSize = true;
-            this.rbtQtd.Checked = true;
-            this.rbtQtd.Location = new System.Drawing.Point(100, 171);
-            this.rbtQtd.Name = "rbtQtd";
-            this.rbtQtd.Size = new System.Drawing.Size(14, 13);
-            this.rbtQtd.TabIndex = 12;
-            this.rbtQtd.TabStop = true;
-            this.rbtQtd.UseVisualStyleBackColor = true;
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(209, 171);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(14, 13);
-            this.radioButton1.TabIndex = 15;
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(229, 168);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(65, 20);
-            this.textBox2.TabIndex = 14;
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label5.Location = new System.Drawing.Point(226, 152);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(31, 13);
-            this.label5.TabIndex = 13;
-            this.label5.Text = "Peso";
-            // 
-            // btAdicionar
-            // 
-            this.btAdicionar.Location = new System.Drawing.Point(110, 287);
-            this.btAdicionar.Name = "btAdicionar";
-            this.btAdicionar.Size = new System.Drawing.Size(75, 23);
-            this.btAdicionar.TabIndex = 16;
-            this.btAdicionar.Text = "Adicionar";
-            this.btAdicionar.UseVisualStyleBackColor = true;
-            // 
-            // btRemover
-            // 
-            this.btRemover.Location = new System.Drawing.Point(209, 287);
-            this.btRemover.Name = "btRemover";
-            this.btRemover.Size = new System.Drawing.Size(75, 23);
-            this.btRemover.TabIndex = 17;
-            this.btRemover.Text = "Remover";
-            this.btRemover.UseVisualStyleBackColor = true;
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -331,36 +241,126 @@
             this.label7.TabIndex = 18;
             this.label7.Text = "Valor Unitário";
             // 
-            // Código_Produto
+            // btRemover
             // 
-            this.Código_Produto.HeaderText = "Código_Produto";
-            this.Código_Produto.Name = "Código_Produto";
-            this.Código_Produto.ReadOnly = true;
+            this.btRemover.Location = new System.Drawing.Point(209, 287);
+            this.btRemover.Name = "btRemover";
+            this.btRemover.Size = new System.Drawing.Size(75, 23);
+            this.btRemover.TabIndex = 17;
+            this.btRemover.Text = "Remover";
+            this.btRemover.UseVisualStyleBackColor = true;
             // 
-            // Nome
+            // btAdicionar
             // 
-            this.Nome.HeaderText = "Nome";
-            this.Nome.Name = "Nome";
-            this.Nome.ReadOnly = true;
-            this.Nome.Width = 175;
+            this.btAdicionar.Location = new System.Drawing.Point(110, 287);
+            this.btAdicionar.Name = "btAdicionar";
+            this.btAdicionar.Size = new System.Drawing.Size(75, 23);
+            this.btAdicionar.TabIndex = 16;
+            this.btAdicionar.Text = "Adicionar";
+            this.btAdicionar.UseVisualStyleBackColor = true;
             // 
-            // Qtd
+            // radioButton1
             // 
-            this.Qtd.HeaderText = "Qtd";
-            this.Qtd.Name = "Qtd";
-            this.Qtd.Width = 50;
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(209, 171);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(14, 13);
+            this.radioButton1.TabIndex = 15;
+            this.radioButton1.UseVisualStyleBackColor = true;
             // 
-            // ValorUnit
+            // textBox2
             // 
-            this.ValorUnit.HeaderText = "ValorUnit";
-            this.ValorUnit.Name = "ValorUnit";
+            this.textBox2.Location = new System.Drawing.Point(229, 168);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(65, 20);
+            this.textBox2.TabIndex = 14;
+            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // ValorParcial
+            // label5
             // 
-            this.ValorParcial.HeaderText = "ValorParcial";
-            this.ValorParcial.Name = "ValorParcial";
+            this.label5.AutoSize = true;
+            this.label5.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.label5.Location = new System.Drawing.Point(226, 152);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(31, 13);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "Peso";
             // 
-            // HomeSalesForm
+            // rbtQtd
+            // 
+            this.rbtQtd.AutoSize = true;
+            this.rbtQtd.Checked = true;
+            this.rbtQtd.Location = new System.Drawing.Point(100, 171);
+            this.rbtQtd.Name = "rbtQtd";
+            this.rbtQtd.Size = new System.Drawing.Size(14, 13);
+            this.rbtQtd.TabIndex = 12;
+            this.rbtQtd.TabStop = true;
+            this.rbtQtd.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(211, 91);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(83, 13);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Tipo do Produto";
+            // 
+            // txTipoProd
+            // 
+            this.txTipoProd.Location = new System.Drawing.Point(214, 107);
+            this.txTipoProd.Name = "txTipoProd";
+            this.txTipoProd.ReadOnly = true;
+            this.txTipoProd.Size = new System.Drawing.Size(166, 20);
+            this.txTipoProd.TabIndex = 10;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(120, 168);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(65, 20);
+            this.textBox1.TabIndex = 9;
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(117, 152);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(24, 13);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Qtd";
+            // 
+            // txNomeProd
+            // 
+            this.txNomeProd.Location = new System.Drawing.Point(19, 107);
+            this.txNomeProd.Name = "txNomeProd";
+            this.txNomeProd.ReadOnly = true;
+            this.txNomeProd.Size = new System.Drawing.Size(166, 20);
+            this.txNomeProd.TabIndex = 7;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(459, 480);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(110, 20);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Total de Itens:";
+            // 
+            // lblTotalItens
+            // 
+            this.lblTotalItens.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalItens.Location = new System.Drawing.Point(575, 480);
+            this.lblTotalItens.Name = "lblTotalItens";
+            this.lblTotalItens.Size = new System.Drawing.Size(57, 20);
+            this.lblTotalItens.TabIndex = 11;
+            this.lblTotalItens.Text = "0";
+            this.lblTotalItens.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // Carrinho
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -373,7 +373,7 @@
             this.Controls.Add(this.dvgCarrinho);
             this.Controls.Add(this.groupBox1);
             this.Enabled = false;
-            this.Name = "HomeSalesForm";
+            this.Name = "Carrinho";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Bem vindo(a) [Nome do Usuário]";
             ((System.ComponentModel.ISupportInitialize)(this.dvgCarrinho)).EndInit();
