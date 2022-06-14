@@ -65,7 +65,7 @@ namespace DametaProject
                     if (reader.Read())
                     {
                         string preco = reader["preco"].ToString();
-                        preco = preco.Remove(preco.Length - 2);
+                        if(preco.Length() > 4) preco = preco.Remove(preco.Length - 2);
                         txNome.Text = reader["produtoNome"].ToString();
                         txPrecoUnit.Text = preco;
                         txQtdEstoque.Text = reader["qtd"].ToString();
@@ -95,9 +95,9 @@ namespace DametaProject
         {
             txID.Clear();
             txNome.Clear();
+            txPrecoUnit.Clear();
             cbTipo.Text = "";
             cbFornecedor.Text = "";
-            txPrecoUnit.Clear();
             txQtdEstoque.Clear();
             txID.Focus();
         }
@@ -130,9 +130,6 @@ namespace DametaProject
 
            comm.Parameters.Add("@estoque_id", System.Data.SqlDbType.Int);
            comm.Parameters["@estoque_id"].Value = Convert.ToInt32(txQtdEstoque.Text);
-
-
-
 
            try
            {
@@ -182,8 +179,8 @@ namespace DametaProject
            }
         }
 
-               private void btAlterar_Click(object sender, EventArgs e)
-               {
+        private void btAlterar_Click(object sender, EventArgs e)
+        {
                    SqlConnection conn;
                    SqlCommand comm;
                    bool bIsOperationOK = true;
@@ -195,7 +192,7 @@ namespace DametaProject
                    comm = new SqlCommand(
                     
                        "UPDATE produtos SET nome=@nome, preco=@preco, tipo_produtos_id=@tipo_produtos_id, fornecedores_id=@fornecedores_id, estoque_id=@estoque_id " +
-                       "WHERE id = @id", conn);
+                       "WHERE cod_produto = @id", conn);
 
                    comm.Parameters.Add("@id", System.Data.SqlDbType.Int);
                    comm.Parameters["@id"].Value = Convert.ToInt32(txID.Text);
@@ -261,8 +258,8 @@ namespace DametaProject
                    btLimpar_Click(sender, e);
                }
 
-               private void btExcluir_Click(object sender, EventArgs e)
-               {
+         private void btExcluir_Click(object sender, EventArgs e)
+        {
             SqlConnection conn;
             SqlCommand comm;
             bool bIsOperationOK = true;
@@ -277,11 +274,11 @@ namespace DametaProject
             // Cria um comando SQL para exclusão de dados da tabela
             comm = new SqlCommand(
                 "DELETE FROM Produtos " +
-                "WHERE ID_Produto = @ID_Produto", conn);
+                "WHERE cod_produto = @id", conn);
 
             // Apaga o registro do banco de dados a partir da chave primária 'Codigo'
-            comm.Parameters.Add("@ID_Produto", System.Data.SqlDbType.Int);
-            comm.Parameters["@ID_Produto"].Value = Convert.ToInt32(txID.Text);
+            comm.Parameters.Add("@id", System.Data.SqlDbType.Int);
+            comm.Parameters["@id"].Value = Convert.ToInt32(txID.Text);
 
             // Usa tratamento de excessão para se certificar que a operação
             // foi bem executada. Senão, exibe as mensagens de erro para o usuário.
@@ -351,9 +348,9 @@ namespace DametaProject
 
             // Cria um comando SQL para seleção de dados na tabela
             comm = new SqlCommand(
-                "SELECT ID_Produto, Descricao, PrecoUnit, Categoria " +
-                "FROM Produtos " +
-                "WHERE ID_Produto=@ID_Produto ", conn);
+                "SELECT cod_produto, nome, preco, tipo_produtos_id, fornecedores_id, estoque_id " +
+                "FROM produtos " +
+                "WHERE cod_produto=@ID_Produto ", conn);
 
 
             // Recupera o registro do banco de dados a partir da chave primária 'Codigo'
