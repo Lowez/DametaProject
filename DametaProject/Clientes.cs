@@ -25,8 +25,6 @@ namespace DametaProject
 
         private void Clientes_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'dameta_dbDataSet.estados' table. You can move, or remove it, as needed.
-            this.estadosTableAdapter.Fill(this.dameta_dbDataSet.estados);
             // TODO: This line of code loads data into the 'dameta_dbDataSet.generos' table. You can move, or remove it, as needed.
             this.generosTableAdapter.Fill(this.dameta_dbDataSet.generos);
             // TODO: esta linha de código carrega dados na tabela 'dameta_dbDataSet.premium_usuarios'. Você pode movê-la ou removê-la conforme necessário.
@@ -265,7 +263,23 @@ namespace DametaProject
 
         }
 
-        private void btExcluir_Click(object sender, EventArgs e)
+            
+
+        
+
+       
+
+        private void btLimpar_Click(object sender, EventArgs e)
+        {
+            txID.Clear();
+            txNome.Clear();
+            mtxCPF.Clear();
+            cbCidade.Text = "";
+            cbUF.Text = "";
+            txID.Focus();
+        }
+
+        private void btExcluir_Click_1(object sender, EventArgs e)
         {
             SqlConnection conn;
             SqlCommand comm;
@@ -335,21 +349,6 @@ namespace DametaProject
 
             AtualizaListaDeClientes();
             btLimpar_Click(sender, e);
-
         }
-
-       
-
-        private void btLimpar_Click(object sender, EventArgs e)
-        {
-            txID.Clear();
-            txNome.Clear();
-            mtxCPF.Clear();
-            cbCidade.Text = "";
-            cbUF.Text = "";
-            txID.Focus();
-        }
-
- 
     }
 }
