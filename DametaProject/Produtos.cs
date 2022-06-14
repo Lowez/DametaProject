@@ -97,233 +97,318 @@ namespace DametaProject
             txNome.Clear();
             cbTipo.Text = "";
             cbFornecedor.Text = "";
+            txPrecoUnit.Clear();
+            txQtdEstoque.Clear();
             txID.Focus();
         }
 
-        //private void btIncluir_Click(object sender, EventArgs e)
-        //{
-        //    SqlConnection conn;
-        //    SqlCommand comm;
-        //    bool bIsOperationOK = true;
+        private void btIncluir_Click(object sender, EventArgs e)
+        {
+           SqlConnection conn;
+           SqlCommand comm;
+           bool bIsOperationOK = true;
 
-        //    string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
+           string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
 
-        //    conn = new SqlConnection(connectionString);
+           conn = new SqlConnection(connectionString);
 
-        //    comm = new SqlCommand(
-        //        "INSERT INTO produtos (produtoNome, preco, tipo_produtos_id, fornecedores_id, qtd) " +
-        //        "VALUES (@produtoNome, @preco, @tipo_produtos_id, @fornecedores_id, @qtd)", conn);
+           comm = new SqlCommand(
+               "INSERT INTO produtos (nome, preco, tipo_produtos_id, fornecedores_id, estoque_id) " +
+               "VALUES (@nome, @preco, @tipo_produtos_id, @fornecedores_id, @estoque_id)", conn);
 
-        //    comm.Parameters.Add("@produtoNome", System.Data.SqlDbType.NVarChar);
-        //    comm.Parameters["@produtoNome"].Value = txNome.Text;
+           comm.Parameters.Add("@nome", System.Data.SqlDbType.NVarChar);
+           comm.Parameters["@nome"].Value = txNome.Text;
 
-        //    comm.Parameters.Add("@preco", System.Data.SqlDbType.Date);
-        //    comm.Parameters["@preco"].Value = txPrecoUnit.Text;
+           comm.Parameters.Add("@preco", System.Data.SqlDbType.Money);
+           comm.Parameters["@preco"].Value = Convert.ToDecimal(txPrecoUnit.Text);
 
-        //    comm.Parameters.Add("@tipo_produtos_id", System.Data.SqlDbType.Int);
-        //    comm.Parameters["@tipo_produtos_id"].Value = Convert.ToInt32(cbTipo.SelectedValue);
+           comm.Parameters.Add("@tipo_produtos_id", System.Data.SqlDbType.Int);
+           comm.Parameters["@tipo_produtos_id"].Value = Convert.ToInt32(cbTipo.SelectedValue);
 
-        //    comm.Parameters.Add("@fornecedores_id", System.Data.SqlDbType.Int);
-        //    comm.Parameters["@fornecedores_id"].Value = Convert.ToInt32(cbFornecedor.SelectedValue);
+           comm.Parameters.Add("@fornecedores_id", System.Data.SqlDbType.Int);
+           comm.Parameters["@fornecedores_id"].Value = Convert.ToInt32(cbFornecedor.SelectedValue);
 
-        //    comm.Parameters.Add("@estoque_id", System.Data.SqlDbType.Int);
-        //    comm.Parameters["@estoque_id"].Value = Convert.ToInt32(cbFornecedor.SelectedValue);
-
-
+           comm.Parameters.Add("@estoque_id", System.Data.SqlDbType.Int);
+           comm.Parameters["@estoque_id"].Value = Convert.ToInt32(txQtdEstoque.Text);
 
 
-        //    try
-        //    {
-        //        try
-        //        {
-        //            // Abre a conexão com o Banco de Dados
-        //            conn.Open();
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            bIsOperationOK = false;
-        //            MessageBox.Show(ex.Message,
-        //                "Erro ao tentar abrir o Banco de Dados",
-        //                MessageBoxButtons.OK,
-        //                MessageBoxIcon.Error);
-        //        }
 
-        //        try
-        //        {
-        //            comm.ExecuteNonQuery();
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            bIsOperationOK = false;
-        //            MessageBox.Show(ex.Message,
-        //                "Erro ao tentar executar o comando SQL.",
-        //                MessageBoxButtons.OK,
-        //                MessageBoxIcon.Error);
-        //        }
-        //    }
-        //    catch { }
-        //    finally
-        //    {
-        //        // Fecha a conexão com o Bando de Dados
-        //        conn.Close();
 
-        //        if (bIsOperationOK == true)
-        //        {
-        //            MessageBox.Show("Cliente Cadastrado com sucesso!",
-        //                "INSERT",
-        //                MessageBoxButtons.OK,
-        //                MessageBoxIcon.Information);
+           try
+           {
+               try
+               {
+                   // Abre a conexão com o Banco de Dados
+                   conn.Open();
+               }
+               catch (Exception ex)
+               {
+                   bIsOperationOK = false;
+                   MessageBox.Show(ex.Message,
+                       "Erro ao tentar abrir o Banco de Dados",
+                       MessageBoxButtons.OK,
+                       MessageBoxIcon.Error);
+               }
 
-        //            AtualizaListaDeClientes();
-        //            btLimpar_Click(sender, e);
-        //        }
-        //    }
-        //}
+               try
+               {
+                   comm.ExecuteNonQuery();
+               }
+               catch (Exception ex)
+               {
+                   bIsOperationOK = false;
+                   MessageBox.Show(ex.Message,
+                       "Erro ao tentar executar o comando SQL.",
+                       MessageBoxButtons.OK,
+                       MessageBoxIcon.Error);
+               }
+           }
+           catch { }
+           finally
+           {
+               // Fecha a conexão com o Bando de Dados
+               conn.Close();
 
-        //        private void btAlterar_Click(object sender, EventArgs e)
-        //        {
-        //            SqlConnection conn;
-        //            SqlCommand comm;
-        //            bool bIsOperationOK = true;
+               if (bIsOperationOK == true)
+               {
+                   MessageBox.Show("Cliente Cadastrado com sucesso!",
+                       "INSERT",
+                       MessageBoxButtons.OK,
+                       MessageBoxIcon.Information);
 
-        //            string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
+                   Produtos_Load();
+                   btLimpar_Click(sender, e);
+               }
+           }
+        }
 
-        //            conn = new SqlConnection(connectionString);
+               private void btAlterar_Click(object sender, EventArgs e)
+               {
+                   SqlConnection conn;
+                   SqlCommand comm;
+                   bool bIsOperationOK = true;
 
-        //            comm = new SqlCommand(
-        //                "UPDATE Clientes SET Nome=@Nome, CPF=@CPF, ID_Cidade=@ID_Cidade " +
-        //                "WHERE ID_Cliente = @ID_Cliente", conn);
+                   string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
 
-        //            comm.Parameters.Add("@ID_Cliente", System.Data.SqlDbType.Int);
-        //            comm.Parameters["@ID_Cliente"].Value = Convert.ToInt32(txID.Text);
+                   conn = new SqlConnection(connectionString);
 
-        //            comm.Parameters.Add("@Nome", System.Data.SqlDbType.NVarChar);
-        //            comm.Parameters["@Nome"].Value = txNome.Text;
+                   comm = new SqlCommand(
+                    
+                       "UPDATE produtos SET nome=@nome, preco=@preco, tipo_produtos_id=@tipo_produtos_id, fornecedores_id=@fornecedores_id, estoque_id=@estoque_id " +
+                       "WHERE id = @id", conn);
 
-        //            comm.Parameters.Add("@CPF", System.Data.SqlDbType.NVarChar);
-        //            comm.Parameters["@CPF"].Value = mtxCPF.Text;
+                   comm.Parameters.Add("@id", System.Data.SqlDbType.Int);
+                   comm.Parameters["@id"].Value = Convert.ToInt32(txID.Text);
 
-        //            comm.Parameters.Add("@ID_Cidade", System.Data.SqlDbType.Int);
-        //            comm.Parameters["@ID_Cidade"].Value = Convert.ToInt32(cbCidade.SelectedValue.ToString());
+                   comm.Parameters.Add("@nome", System.Data.SqlDbType.NVarChar);
+                   comm.Parameters["@nome"].Value = txNome.Text;
 
-        //            try
-        //            {
-        //                try
-        //                {
-        //                    conn.Open();
-        //                }
-        //                catch (Exception error)
-        //                {
-        //                    bIsOperationOK = false;
-        //                    MessageBox.Show(error.Message,
-        //                        "Erro ao abrir conexão com o Banco de Dados",
-        //                        MessageBoxButtons.OK,
-        //                        MessageBoxIcon.Error);
-        //                }
+                   comm.Parameters.Add("@preco", System.Data.SqlDbType.Money);
+                   comm.Parameters["@preco"].Value = Convert.ToDecimal(txPrecoUnit.Text); 
 
-        //                try
-        //                {
-        //                    comm.ExecuteNonQuery();
-        //                }
-        //                catch (Exception error)
-        //                {
-        //                    bIsOperationOK = false;
-        //                    MessageBox.Show(error.Message,
-        //                        "Erro ao tentar executar o comando SQL",
-        //                        MessageBoxButtons.OK,
-        //                        MessageBoxIcon.Error);
-        //                }
-        //            }
-        //            catch { }
-        //            finally
-        //            {
-        //                conn.Close();
+                   comm.Parameters.Add("@tipo_produtos_id", System.Data.SqlDbType.Int);
+                   comm.Parameters["@tipo_produtos_id"].Value = Convert.ToInt32(cbTipo.SelectedValue.ToString());
 
-        //                if (bIsOperationOK == true)
-        //                {
-        //                    MessageBox.Show("Registro Alterado!",
-        //                        "UPDATE",
-        //                        MessageBoxButtons.OK,
-        //                        MessageBoxIcon.Information);
-        //                }
-        //            }
+                   comm.Parameters.Add("@fornecedores_id", System.Data.SqlDbType.Int);
+                   comm.Parameters["@fornecedores_id"].Value = Convert.ToInt32(cbTipo.SelectedValue.ToString());
+                   
+                   comm.Parameters.Add("@estoque_id", System.Data.SqlDbType.Int);
+                   comm.Parameters["@estoque_id"].Value = Convert.ToInt32(cbTipo.SelectedValue.ToString());
 
-        //            AtualizaListaDeClientes();
-        //            btLimpar_Click(sender, e);
-        //        }
+                   try
+                   {
+                       try
+                       {
+                           conn.Open();
+                       }
+                       catch (Exception error)
+                       {
+                           bIsOperationOK = false;
+                           MessageBox.Show(error.Message,
+                               "Erro ao abrir conexão com o Banco de Dados",
+                               MessageBoxButtons.OK,
+                               MessageBoxIcon.Error);
+                       }
 
-        //        private void btExcluir_Click(object sender, EventArgs e)
-        //        {
-        //            SqlConnection conn;
-        //            SqlCommand comm;
-        //            bool bIsOperationOK = true;
+                       try
+                       {
+                           comm.ExecuteNonQuery();
+                       }
+                       catch (Exception error)
+                       {
+                           bIsOperationOK = false;
+                           MessageBox.Show(error.Message,
+                               "Erro ao tentar executar o comando SQL",
+                               MessageBoxButtons.OK,
+                               MessageBoxIcon.Error);
+                       }
+                   }
+                   catch { }
+                   finally
+                   {
+                       conn.Close();
 
-        //            string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
+                       if (bIsOperationOK == true)
+                       {
+                           MessageBox.Show("Registro Alterado!",
+                               "UPDATE",
+                               MessageBoxButtons.OK,
+                               MessageBoxIcon.Information);
+                       }
+                   }
 
-        //            conn = new SqlConnection(connectionString);
+                   Produtos_Load();
+                   btLimpar_Click(sender, e);
+               }
 
-        //            comm = new SqlCommand(
-        //                "UPDATE Clientes SET Nome=@Nome, CPF=@CPF, ID_Cidade=@ID_Cidade " +
-        //                "WHERE ID_Cliente = @ID_Cliente", conn);
+               private void btExcluir_Click(object sender, EventArgs e)
+               {
+            SqlConnection conn;
+            SqlCommand comm;
+            bool bIsOperationOK = true;
 
-        //            comm.Parameters.Add("@ID_Cliente", System.Data.SqlDbType.Int);
-        //            comm.Parameters["@ID_Cliente"].Value = Convert.ToInt32(txID.Text);
+            // Lê a string que representa os dados da conexão, 
+            // contidos no arquivo app.config
+            string connectionString = Properties.Settings.Default.CARRINHOConnectionString;
 
-        //            comm.Parameters.Add("@Nome", System.Data.SqlDbType.NVarChar);
-        //            comm.Parameters["@Nome"].Value = txNome.Text;
+            // Inicializa a conexão com o Banco de Dados
+            conn = new SqlConnection(connectionString);
 
-        //            comm.Parameters.Add("@CPF", System.Data.SqlDbType.NVarChar);
-        //            comm.Parameters["@CPF"].Value = mtxCPF.Text;
+            // Cria um comando SQL para exclusão de dados da tabela
+            comm = new SqlCommand(
+                "DELETE FROM Produtos " +
+                "WHERE ID_Produto = @ID_Produto", conn);
 
-        //            comm.Parameters.Add("@ID_Cidade", System.Data.SqlDbType.Int);
-        //            comm.Parameters["@ID_Cidade"].Value = Convert.ToInt32(cbCidade.SelectedValue.ToString());
+            // Apaga o registro do banco de dados a partir da chave primária 'Codigo'
+            comm.Parameters.Add("@ID_Produto", System.Data.SqlDbType.Int);
+            comm.Parameters["@ID_Produto"].Value = Convert.ToInt32(txID.Text);
 
-        //            try
-        //            {
-        //                try
-        //                {
-        //                    conn.Open();
-        //                }
-        //                catch (Exception error)
-        //                {
-        //                    bIsOperationOK = false;
-        //                    MessageBox.Show(error.Message,
-        //                        "Erro ao abrir conexão com o Banco de Dados",
-        //                        MessageBoxButtons.OK,
-        //                        MessageBoxIcon.Error);
-        //                }
+            // Usa tratamento de excessão para se certificar que a operação
+            // foi bem executada. Senão, exibe as mensagens de erro para o usuário.
+            try
+            {
+                try
+                {
+                    // Abre a Conexão com o BD
+                    conn.Open();
+                }
+                catch (Exception error)
+                {
+                    bIsOperationOK = false;
+                    MessageBox.Show(error.Message,
+                        "Erro ao abrir conexão com o Banco de Dados",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
 
-        //                try
-        //                {
-        //                    comm.ExecuteNonQuery();
-        //                }
-        //                catch (Exception error)
-        //                {
-        //                    bIsOperationOK = false;
-        //                    MessageBox.Show(error.Message,
-        //                        "Erro ao tentar executar o comando SQL",
-        //                        MessageBoxButtons.OK,
-        //                        MessageBoxIcon.Error);
-        //                }
-        //            }
-        //            catch { }
-        //            finally
-        //            {
-        //                conn.Close();
+                try
+                {
+                    // Executa o Commando SQL
+                    comm.ExecuteNonQuery();
+                }
+                catch (Exception error)
+                {
+                    bIsOperationOK = false;
+                    MessageBox.Show(error.Message,
+                        "Erro ao executar comando SQL",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch { }
+            finally
+            {
+                // Fecha a Conexão com o BD
+                conn.Close();
 
-        //                if (bIsOperationOK == true)
-        //                {
-        //                    MessageBox.Show("Registro Alterado!",
-        //                        "UPDATE",
-        //                        MessageBoxButtons.OK,
-        //                        MessageBoxIcon.Information);
-        //                }
-        //            }
+                if (bIsOperationOK == true)
+                {
+                    // Chama Função que atualiza os dados no DataGridView
+                    MessageBox.Show("Registro Excluído!",
+                        "Banco de Dados",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-        //            AtualizaListaDeClientes();
-        //            btLimpar_Click(sender, e);
-        //        }
+                    // Chama o mesmo método usado no botão Limpar
+                    btLimparForm_Click(sender, e);
+                }
+            }
 
+            Produtos_Load();
+        }
+
+        private void dataGridView1_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            int ID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[0].Value);
+
+            SqlConnection conn;
+            SqlCommand comm;
+            SqlDataReader reader;
+
+            // Lê a string que representa os dados da conexão, 
+            // contidos no arquivo app.config
+            string connectionString = Properties.Settings.Default.CARRINHOConnectionString;
+
+            // Inicializa a conexão com o Banco de Dados
+            conn = new SqlConnection(connectionString);
+
+            // Cria um comando SQL para seleção de dados na tabela
+            comm = new SqlCommand(
+                "SELECT ID_Produto, Descricao, PrecoUnit, Categoria " +
+                "FROM Produtos " +
+                "WHERE ID_Produto=@ID_Produto ", conn);
+
+
+            // Recupera o registro do banco de dados a partir da chave primária 'Codigo'
+            comm.Parameters.Add("@ID_Produto", System.Data.SqlDbType.Int);
+            comm.Parameters["@ID_Produto"].Value = ID;
+            txID.Text = Convert.ToString(ID);
+
+            try
+            {
+                try
+                {
+                    // Abre a Conexão com o BD
+                    conn.Open();
+                }
+                catch (Exception error)
+                {
+                    MessageBox.Show(error.Message,
+                        "Erro ao abrir conexão com o Banco de Dados",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                try
+                {
+                    // Executa o Commando SQL
+                    reader = comm.ExecuteReader();
+
+                    // Lê os dados do BD e passa para os campos do Form
+                    if (reader.Read())
+                    {
+                        txDescricao.Text = reader["Descricao"].ToString();
+                        //txPrecoUnit.Text = String.Format("{0:C2}", reader["PrecoUnit"]);
+                        txPrecoUnit.Text = reader["PrecoUnit"].ToString();
+                        cbCategoria.Text = reader["Categoria"].ToString();
+
+                    }
+
+                    // Fecha o reader
+                    reader.Close();
+                }
+                catch (Exception error)
+                {
+                    MessageBox.Show(error.Message,
+                        "Erro ao executar comando SQL",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch { }
+            finally
+            {
+                // Termina a conexão com o banco de dados
+                conn.Close();
+            }
+        }
+
+        
         private void Produtos_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'dameta_dbDataSet.produtos' table. You can move, or remove it, as needed.
