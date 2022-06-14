@@ -133,9 +133,9 @@ namespace DametaProject
             conn = new SqlConnection(connectionString);
 
             comm = new SqlCommand(
-                "SELECT Cli.id, Cli.nome, Cli.nascimento, Cli.CPF, Cli.telefone, Cli.CEP, Cli.estados_id, Cli.cidades_id, Cli.generos_id " +
-                "Cid.ID_Cidade, Cid.NomeCid, Cid.UF " +
-                "Gen.Nome " +
+                "SELECT Cli.id, Cli.nome as nomeCliente, Cli.nascimento, Cli.CPF, Cli.telefone, Cli.CEP, Cli.estados_id, Cli.cidades_id, Cli.generos_id " +
+                "Cid.ID_Cidade, Cid.nome as cidNome, Cid.UF " +
+                "Gen.Nome as nomeGen " +
                 "FROM Clientes AS Cli " +
                 "INNER JOIN Cidades AS Cid " +
                 "INNER JOIN Generos AS Gen " +
@@ -167,9 +167,13 @@ namespace DametaProject
                     // Se encontrou um cliente...
                     if (reader.Read())
                     {
-                        txNome.Text = reader["Nome"].ToString();
+                        txNome.Text = reader["clienteNome"].ToString();
                         mtxCPF.Text = reader["CPF"].ToString();
-                        cbCidade.Text = reader["NomeCid"].ToString();
+                        cbGenero.Text = reader["nomeGen"].ToString();
+                        cbCidade.Text = reader["nomeCid"].ToString();
+                        cbUF.Text = reader["UF"].ToString();
+                        dtpDataNasc.Text = reader["nascimento"].ToString();
+                        mtxCEP.Text = reader["CEP"].ToString();
                     }
 
                     reader.Close();
@@ -263,23 +267,7 @@ namespace DametaProject
 
         }
 
-            
-
-        
-
-       
-
-        private void btLimpar_Click(object sender, EventArgs e)
-        {
-            txID.Clear();
-            txNome.Clear();
-            mtxCPF.Clear();
-            cbCidade.Text = "";
-            cbUF.Text = "";
-            txID.Focus();
-        }
-
-        private void btExcluir_Click_1(object sender, EventArgs e)
+        private void btExcluir_Click(object sender, EventArgs e)
         {
             SqlConnection conn;
             SqlCommand comm;
@@ -349,6 +337,21 @@ namespace DametaProject
 
             AtualizaListaDeClientes();
             btLimpar_Click(sender, e);
+
         }
+
+       
+
+        private void btLimpar_Click(object sender, EventArgs e)
+        {
+            txID.Clear();
+            txNome.Clear();
+            mtxCPF.Clear();
+            cbCidade.Text = "";
+            cbUF.Text = "";
+            txID.Focus();
+        }
+
+ 
     }
 }

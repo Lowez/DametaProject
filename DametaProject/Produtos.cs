@@ -66,7 +66,6 @@ namespace DametaProject
                     {
                         string preco = reader["preco"].ToString();
                         preco = preco.Remove(preco.Length - 2);
-                        Console.WriteLine(preco);
                         txNome.Text = reader["produtoNome"].ToString();
                         txPrecoUnit.Text = preco;
                         txQtdEstoque.Text = reader["qtd"].ToString();
