@@ -205,7 +205,7 @@ namespace DametaProject
             conn = new SqlConnection(connectionString);
 
             comm = new SqlCommand(
-                "UPDATE Clientes SET Nome=@Nome, CPF=@CPF, ID_Cidade=@ID_Cidade " +
+                "UPDATE premium_usuarios SET nome=@nome, CPF=@CPF, ID_Cidade=@ID_Cidade " +
                 "WHERE ID_Cliente = @ID_Cliente", conn);
 
             comm.Parameters.Add("@ID_Cliente", System.Data.SqlDbType.Int);
@@ -267,7 +267,19 @@ namespace DametaProject
 
         }
 
-        private void btExcluir_Click(object sender, EventArgs e)
+  
+
+        private void btLimpar_Click(object sender, EventArgs e)
+        {
+            txID.Clear();
+            txNome.Clear();
+            mtxCPF.Clear();
+            cbCidade.Text = "";
+            cbUF.Text = "";
+            txID.Focus();
+        }
+
+        private void btExcluir_Click_1(object sender, EventArgs e)
         {
             SqlConnection conn;
             SqlCommand comm;
@@ -339,19 +351,5 @@ namespace DametaProject
             btLimpar_Click(sender, e);
 
         }
-
-       
-
-        private void btLimpar_Click(object sender, EventArgs e)
-        {
-            txID.Clear();
-            txNome.Clear();
-            mtxCPF.Clear();
-            cbCidade.Text = "";
-            cbUF.Text = "";
-            txID.Focus();
-        }
-
- 
     }
 }

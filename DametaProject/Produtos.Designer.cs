@@ -113,7 +113,6 @@
             this.btLimparForm.TabIndex = 32;
             this.btLimparForm.Text = "Limpar Form";
             this.btLimparForm.UseVisualStyleBackColor = true;
-            this.btLimparForm.Click += new System.EventHandler(this.btLimparForm_Click);
             // 
             // btExcluir
             // 

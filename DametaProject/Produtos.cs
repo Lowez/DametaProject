@@ -13,6 +13,26 @@ namespace DametaProject
 {
     public partial class Produtos : Form
     {
+
+        private void Produtos_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'dameta_dbDataSet.produtos' table. You can move, or remove it, as needed.
+            this.produtosTableAdapter.Fill(this.dameta_dbDataSet.produtos);
+
+        }
+
+
+        private void btLimpar_Click(object sender, EventArgs e)
+        {
+            txID.Clear();
+            txNome.Clear();
+            txPrecoUnit.Clear();
+            cbTipo.Text = "";
+            cbFornecedor.Text = "";
+            txQtdEstoque.Clear();
+            txID.Focus();
+        }
+
         public Produtos()
         {
             InitializeComponent();
@@ -65,7 +85,7 @@ namespace DametaProject
                     if (reader.Read())
                     {
                         string preco = reader["preco"].ToString();
-                        if(preco.Length() > 4) preco = preco.Remove(preco.Length - 2);
+                        preco = preco.Remove(preco.Length - 2);
                         txNome.Text = reader["produtoNome"].ToString();
                         txPrecoUnit.Text = preco;
                         txQtdEstoque.Text = reader["qtd"].ToString();
@@ -89,17 +109,6 @@ namespace DametaProject
                 // Fecha a conexão com o Bando de Dados
                 conn.Close();
             }
-        }
-
-        private void btLimparForm_Click(object sender, EventArgs e)
-        {
-            txID.Clear();
-            txNome.Clear();
-            txPrecoUnit.Clear();
-            cbTipo.Text = "";
-            cbFornecedor.Text = "";
-            txQtdEstoque.Clear();
-            txID.Focus();
         }
 
         private void btIncluir_Click(object sender, EventArgs e)
@@ -173,7 +182,7 @@ namespace DametaProject
                        MessageBoxButtons.OK,
                        MessageBoxIcon.Information);
 
-                   Produtos_Load();
+                   Produtos_Load(sender, e);
                    btLimpar_Click(sender, e);
                }
            }
@@ -254,7 +263,7 @@ namespace DametaProject
                        }
                    }
 
-                   Produtos_Load();
+                   Produtos_Load(sender, e);
                    btLimpar_Click(sender, e);
                }
 
@@ -266,7 +275,7 @@ namespace DametaProject
 
             // Lê a string que representa os dados da conexão, 
             // contidos no arquivo app.config
-            string connectionString = Properties.Settings.Default.CARRINHOConnectionString;
+            string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
 
             // Inicializa a conexão com o Banco de Dados
             conn = new SqlConnection(connectionString);
@@ -324,11 +333,12 @@ namespace DametaProject
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     // Chama o mesmo método usado no botão Limpar
-                    btLimparForm_Click(sender, e);
+                    btLimpar_Click(sender, e);
                 }
             }
 
-            Produtos_Load();
+            Produtos_Load(sender, e);
+            btLimpar_Click(sender, e);
         }
 
         private void dataGridView1_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -341,7 +351,7 @@ namespace DametaProject
 
             // Lê a string que representa os dados da conexão, 
             // contidos no arquivo app.config
-            string connectionString = Properties.Settings.Default.CARRINHOConnectionString;
+            string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
 
             // Inicializa a conexão com o Banco de Dados
             conn = new SqlConnection(connectionString);
@@ -380,10 +390,13 @@ namespace DametaProject
                     // Lê os dados do BD e passa para os campos do Form
                     if (reader.Read())
                     {
-                        txDescricao.Text = reader["Descricao"].ToString();
-                        //txPrecoUnit.Text = String.Format("{0:C2}", reader["PrecoUnit"]);
-                        txPrecoUnit.Text = reader["PrecoUnit"].ToString();
-                        cbCategoria.Text = reader["Categoria"].ToString();
+                        string preco = reader["preco"].ToString();
+                        preco = preco.Remove(preco.Length - 2);
+                        txNome.Text = reader["produtoNome"].ToString();
+                        txPrecoUnit.Text = preco;
+                        txQtdEstoque.Text = reader["qtd"].ToString();
+                        cbFornecedor.Text = reader["fornecedoresNome"].ToString();
+                        cbTipo.Text = reader["tipoNome"].ToString();
 
                     }
 
@@ -406,11 +419,6 @@ namespace DametaProject
         }
 
         
-        private void Produtos_Load(object sender, EventArgs e)
-        {
-            // TODO: This line of code loads data into the 'dameta_dbDataSet.produtos' table. You can move, or remove it, as needed.
-            this.produtosTableAdapter.Fill(this.dameta_dbDataSet.produtos);
 
-        }
     }
 }
