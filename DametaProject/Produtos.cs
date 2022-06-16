@@ -111,161 +111,8 @@ namespace DametaProject
             }
         }
 
-        private void btIncluir_Click(object sender, EventArgs e)
-        {
-           SqlConnection conn;
-           SqlCommand comm;
-           bool bIsOperationOK = true;
-
-           string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
-
-           conn = new SqlConnection(connectionString);
-
-           comm = new SqlCommand(
-               "INSERT INTO produtos (nome, preco, tipo_produtos_id, fornecedores_id, estoque_id) " +
-               "VALUES (@nome, @preco, @tipo_produtos_id, @fornecedores_id, @estoque_id)", conn);
-
-           comm.Parameters.Add("@nome", System.Data.SqlDbType.NVarChar);
-           comm.Parameters["@nome"].Value = txNome.Text;
-
-           comm.Parameters.Add("@preco", System.Data.SqlDbType.Money);
-           comm.Parameters["@preco"].Value = Convert.ToDecimal(txPrecoUnit.Text);
-
-           comm.Parameters.Add("@tipo_produtos_id", System.Data.SqlDbType.Int);
-           comm.Parameters["@tipo_produtos_id"].Value = Convert.ToInt32(cbTipo.SelectedValue);
-
-           comm.Parameters.Add("@fornecedores_id", System.Data.SqlDbType.Int);
-           comm.Parameters["@fornecedores_id"].Value = Convert.ToInt32(cbFornecedor.SelectedValue);
-
-           comm.Parameters.Add("@estoque_id", System.Data.SqlDbType.Int);
-           comm.Parameters["@estoque_id"].Value = Convert.ToInt32(txQtdEstoque.Text);
-
-           try
-           {
-               try
-               {
-                   // Abre a conexão com o Banco de Dados
-                   conn.Open();
-               }
-               catch (Exception ex)
-               {
-                   bIsOperationOK = false;
-                   MessageBox.Show(ex.Message,
-                       "Erro ao tentar abrir o Banco de Dados",
-                       MessageBoxButtons.OK,
-                       MessageBoxIcon.Error);
-               }
-
-               try
-               {
-                   comm.ExecuteNonQuery();
-               }
-               catch (Exception ex)
-               {
-                   bIsOperationOK = false;
-                   MessageBox.Show(ex.Message,
-                       "Erro ao tentar executar o comando SQL.",
-                       MessageBoxButtons.OK,
-                       MessageBoxIcon.Error);
-               }
-           }
-           catch { }
-           finally
-           {
-               // Fecha a conexão com o Bando de Dados
-               conn.Close();
-
-               if (bIsOperationOK == true)
-               {
-                   MessageBox.Show("Cliente Cadastrado com sucesso!",
-                       "INSERT",
-                       MessageBoxButtons.OK,
-                       MessageBoxIcon.Information);
-
-                   Produtos_Load(sender, e);
-                   btLimpar_Click(sender, e);
-               }
-           }
-        }
-
-        private void btAlterar_Click(object sender, EventArgs e)
-        {
-                   SqlConnection conn;
-                   SqlCommand comm;
-                   bool bIsOperationOK = true;
-
-                   string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
-
-                   conn = new SqlConnection(connectionString);
-
-                   comm = new SqlCommand(
-                    
-                       "UPDATE produtos SET nome=@nome, preco=@preco, tipo_produtos_id=@tipo_produtos_id, fornecedores_id=@fornecedores_id, estoque_id=@estoque_id " +
-                       "WHERE cod_produto = @id", conn);
-
-                   comm.Parameters.Add("@id", System.Data.SqlDbType.Int);
-                   comm.Parameters["@id"].Value = Convert.ToInt32(txID.Text);
-
-                   comm.Parameters.Add("@nome", System.Data.SqlDbType.NVarChar);
-                   comm.Parameters["@nome"].Value = txNome.Text;
-
-                   comm.Parameters.Add("@preco", System.Data.SqlDbType.Money);
-                   comm.Parameters["@preco"].Value = Convert.ToDecimal(txPrecoUnit.Text); 
-
-                   comm.Parameters.Add("@tipo_produtos_id", System.Data.SqlDbType.Int);
-                   comm.Parameters["@tipo_produtos_id"].Value = Convert.ToInt32(cbTipo.SelectedValue.ToString());
-
-                   comm.Parameters.Add("@fornecedores_id", System.Data.SqlDbType.Int);
-                   comm.Parameters["@fornecedores_id"].Value = Convert.ToInt32(cbTipo.SelectedValue.ToString());
-                   
-                   comm.Parameters.Add("@estoque_id", System.Data.SqlDbType.Int);
-                   comm.Parameters["@estoque_id"].Value = Convert.ToInt32(cbTipo.SelectedValue.ToString());
-
-                   try
-                   {
-                       try
-                       {
-                           conn.Open();
-                       }
-                       catch (Exception error)
-                       {
-                           bIsOperationOK = false;
-                           MessageBox.Show(error.Message,
-                               "Erro ao abrir conexão com o Banco de Dados",
-                               MessageBoxButtons.OK,
-                               MessageBoxIcon.Error);
-                       }
-
-                       try
-                       {
-                           comm.ExecuteNonQuery();
-                       }
-                       catch (Exception error)
-                       {
-                           bIsOperationOK = false;
-                           MessageBox.Show(error.Message,
-                               "Erro ao tentar executar o comando SQL",
-                               MessageBoxButtons.OK,
-                               MessageBoxIcon.Error);
-                       }
-                   }
-                   catch { }
-                   finally
-                   {
-                       conn.Close();
-
-                       if (bIsOperationOK == true)
-                       {
-                           MessageBox.Show("Registro Alterado!",
-                               "UPDATE",
-                               MessageBoxButtons.OK,
-                               MessageBoxIcon.Information);
-                       }
-                   }
-
-                   Produtos_Load(sender, e);
-                   btLimpar_Click(sender, e);
-               }
+ 
+               
 
          private void btExcluir_Click(object sender, EventArgs e)
         {
@@ -341,84 +188,247 @@ namespace DametaProject
             btLimpar_Click(sender, e);
         }
 
-        private void dataGridView1_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        
+
+        private void btIncluir_Click_1(object sender, EventArgs e)
         {
-            int ID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[0].Value);
 
             SqlConnection conn;
             SqlCommand comm;
-            SqlDataReader reader;
+            bool bIsOperationOK = true;
 
-            // Lê a string que representa os dados da conexão, 
-            // contidos no arquivo app.config
             string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
 
-            // Inicializa a conexão com o Banco de Dados
             conn = new SqlConnection(connectionString);
 
-            // Cria um comando SQL para seleção de dados na tabela
             comm = new SqlCommand(
-                "SELECT cod_produto, nome, preco, tipo_produtos_id, fornecedores_id, estoque_id " +
-                "FROM produtos " +
-                "WHERE cod_produto=@ID_Produto ", conn);
+                "INSERT INTO produtos (cod_produto, nome, preco, tipo_produtos_id, fornecedores_id, estoque_id) " +
+                "VALUES (@id, @nome, @preco, @tipo_produtos_id, @fornecedores_id, @estoque_id)", conn);
 
+            comm.Parameters.Add("@id", System.Data.SqlDbType.Int);
+            comm.Parameters["@id"].Value = Convert.ToInt32(txID.Text);
 
-            // Recupera o registro do banco de dados a partir da chave primária 'Codigo'
-            comm.Parameters.Add("@ID_Produto", System.Data.SqlDbType.Int);
-            comm.Parameters["@ID_Produto"].Value = ID;
-            txID.Text = Convert.ToString(ID);
+            comm.Parameters.Add("@nome", System.Data.SqlDbType.NVarChar);
+            comm.Parameters["@nome"].Value = txNome.Text;
+
+            comm.Parameters.Add("@preco", System.Data.SqlDbType.Money);
+            comm.Parameters["@preco"].Value = Convert.ToDecimal(txPrecoUnit.Text);
+
+            comm.Parameters.Add("@tipo_produtos_id", System.Data.SqlDbType.Int);
+            comm.Parameters["@tipo_produtos_id"].Value = Convert.ToInt32(cbTipo.SelectedValue.ToString());
+
+            comm.Parameters.Add("@fornecedores_id", System.Data.SqlDbType.Int);
+            comm.Parameters["@fornecedores_id"].Value = Convert.ToInt32(cbTipo.SelectedValue.ToString());
+
+            comm.Parameters.Add("@estoque_id", System.Data.SqlDbType.Int);
+            comm.Parameters["@estoque_id"].Value = Convert.ToInt32(cbTipo.SelectedValue.ToString());
+
 
             try
             {
                 try
                 {
-                    // Abre a Conexão com o BD
+                    // Abre a conexão com o Banco de Dados
                     conn.Open();
                 }
-                catch (Exception error)
+                catch (Exception ex)
                 {
-                    MessageBox.Show(error.Message,
-                        "Erro ao abrir conexão com o Banco de Dados",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    bIsOperationOK = false;
+                    MessageBox.Show(ex.Message,
+                        "Erro ao tentar abrir o Banco de Dados",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
                 }
 
                 try
                 {
-                    // Executa o Commando SQL
-                    reader = comm.ExecuteReader();
-
-                    // Lê os dados do BD e passa para os campos do Form
-                    if (reader.Read())
-                    {
-                        string preco = reader["preco"].ToString();
-                        preco = preco.Remove(preco.Length - 2);
-                        txNome.Text = reader["produtoNome"].ToString();
-                        txPrecoUnit.Text = preco;
-                        txQtdEstoque.Text = reader["qtd"].ToString();
-                        cbFornecedor.Text = reader["fornecedoresNome"].ToString();
-                        cbTipo.Text = reader["tipoNome"].ToString();
-
-                    }
-
-                    // Fecha o reader
-                    reader.Close();
+                    comm.ExecuteNonQuery();
                 }
-                catch (Exception error)
+                catch (Exception ex)
                 {
-                    MessageBox.Show(error.Message,
-                        "Erro ao executar comando SQL",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    bIsOperationOK = false;
+                    MessageBox.Show(ex.Message,
+                        "Erro ao tentar executar o comando SQL.",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
                 }
             }
             catch { }
             finally
             {
-                // Termina a conexão com o banco de dados
+                // Fecha a conexão com o Bando de Dados
                 conn.Close();
+
+                if (bIsOperationOK == true)
+                {
+                    MessageBox.Show("Cliente Cadastrado com sucesso!",
+                        "INSERT",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+
+                    Produtos_Load(sender, e);
+                    btLimpar_Click(sender, e);
+                }
             }
         }
 
-        
+        private void btAlterar_Click(object sender, EventArgs e)
+        {
+            SqlConnection conn;
+            SqlCommand comm;
+            bool bIsOperationOK = true;
 
+            string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
+
+            conn = new SqlConnection(connectionString);
+
+            comm = new SqlCommand(
+
+                "UPDATE produtos SET cod_produto = @id, nome=@nome, preco=@preco, tipo_produtos_id=@tipo_produtos_id, fornecedores_id=@fornecedores_id, estoque_id=@estoque_id " +
+                "WHERE cod_produto = @id", conn);
+
+            comm.Parameters.Add("@id", System.Data.SqlDbType.Int);
+            comm.Parameters["@id"].Value = Convert.ToInt32(txID.Text);
+
+            comm.Parameters.Add("@nome", System.Data.SqlDbType.NVarChar);
+            comm.Parameters["@nome"].Value = txNome.Text;
+
+            comm.Parameters.Add("@preco", System.Data.SqlDbType.Money);
+            comm.Parameters["@preco"].Value = Convert.ToDecimal(txPrecoUnit.Text);
+
+            comm.Parameters.Add("@tipo_produtos_id", System.Data.SqlDbType.Int);
+            comm.Parameters["@tipo_produtos_id"].Value = Convert.ToInt32(cbTipo.SelectedValue.ToString());
+
+            comm.Parameters.Add("@fornecedores_id", System.Data.SqlDbType.Int);
+            comm.Parameters["@fornecedores_id"].Value = Convert.ToInt32(cbTipo.SelectedValue.ToString());
+
+            comm.Parameters.Add("@estoque_id", System.Data.SqlDbType.Int);
+            comm.Parameters["@estoque_id"].Value = Convert.ToInt32(cbTipo.SelectedValue.ToString());
+
+            try
+            {
+                try
+                {
+                    conn.Open();
+                }
+                catch (Exception error)
+                {
+                    bIsOperationOK = false;
+                    MessageBox.Show(error.Message,
+                        "Erro ao abrir conexão com o Banco de Dados",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
+
+                try
+                {
+                    comm.ExecuteNonQuery();
+                }
+                catch (Exception error)
+                {
+                    bIsOperationOK = false;
+                    MessageBox.Show(error.Message,
+                        "Erro ao tentar executar o comando SQL",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
+            }
+            catch { }
+            finally
+            {
+                conn.Close();
+
+                if (bIsOperationOK == true)
+                {
+                    MessageBox.Show("Registro Alterado!",
+                        "UPDATE",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                }
+            }
+
+            Produtos_Load(sender, e);
+            btLimpar_Click(sender, e);
+        }
+
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            {
+                int ID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[0].Value);
+
+                SqlConnection conn;
+                SqlCommand comm;
+                SqlDataReader reader;
+
+                // Lê a string que representa os dados da conexão, 
+                // contidos no arquivo app.config
+                string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
+
+                // Inicializa a conexão com o Banco de Dados
+                conn = new SqlConnection(connectionString);
+
+                // Cria um comando SQL para seleção de dados na tabela
+                comm = new SqlCommand(
+                    "SELECT cod_produto, nome, preco, tipo_produtos_id, fornecedores_id, estoque_id " +
+                    "FROM produtos " +
+                    "WHERE cod_produto=@ID_Produto ", conn);
+
+
+                // Recupera o registro do banco de dados a partir da chave primária 'Codigo'
+                comm.Parameters.Add("@ID_Produto", System.Data.SqlDbType.Int);
+                comm.Parameters["@ID_Produto"].Value = ID;
+                txID.Text = Convert.ToString(ID);
+
+                try
+                {
+                    try
+                    {
+                        // Abre a Conexão com o BD
+                        conn.Open();
+                    }
+                    catch (Exception error)
+                    {
+                        MessageBox.Show(error.Message,
+                            "Erro ao abrir conexão com o Banco de Dados",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                    try
+                    {
+                        // Executa o Commando SQL
+                        reader = comm.ExecuteReader();
+
+                        // Lê os dados do BD e passa para os campos do Form
+                        if (reader.Read())
+                        {
+                            string preco = reader["preco"].ToString();
+                            preco = preco.Remove(preco.Length - 2);
+                            txNome.Text = reader["produtoNome"].ToString();
+                            txPrecoUnit.Text = preco;
+                            txQtdEstoque.Text = reader["qtd"].ToString();
+                            cbFornecedor.Text = reader["fornecedoresNome"].ToString();
+                            cbTipo.Text = reader["tipoNome"].ToString();
+
+                        }
+
+                        // Fecha o reader
+                        reader.Close();
+                    }
+                    catch (Exception error)
+                    {
+                        MessageBox.Show(error.Message,
+                            "Erro ao executar comando SQL",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch { }
+                finally
+                {
+                    // Termina a conexão com o banco de dados
+                    conn.Close();
+                }
+            }
+        }
     }
 }

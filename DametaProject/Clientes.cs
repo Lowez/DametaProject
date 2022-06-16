@@ -25,6 +25,8 @@ namespace DametaProject
 
         private void Clientes_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'dameta_dbDataSet.cidades' table. You can move, or remove it, as needed.
+            this.cidadesTableAdapter.Fill(this.dameta_dbDataSet.cidades);
             // TODO: This line of code loads data into the 'dameta_dbDataSet.generos' table. You can move, or remove it, as needed.
             this.generosTableAdapter.Fill(this.dameta_dbDataSet.generos);
             // TODO: esta linha de código carrega dados na tabela 'dameta_dbDataSet.premium_usuarios'. Você pode movê-la ou removê-la conforme necessário.
@@ -134,7 +136,7 @@ namespace DametaProject
 
             comm = new SqlCommand(
                 "SELECT Cli.id, Cli.nome as nomeCliente, Cli.nascimento, Cli.CPF, Cli.telefone, Cli.CEP, Cli.estados_id, Cli.cidades_id, Cli.generos_id " +
-                "Cid.ID_Cidade, Cid.nome as cidNome, Cid.UF " +
+                "Cid.id, Cid.nome as cidNome, Cid.UF " +
                 "Gen.Nome as nomeGen " +
                 "FROM Clientes AS Cli " +
                 "INNER JOIN Cidades AS Cid " +
@@ -205,7 +207,7 @@ namespace DametaProject
             conn = new SqlConnection(connectionString);
 
             comm = new SqlCommand(
-                "UPDATE premium_usuarios SET nome=@nome, CPF=@CPF, ID_Cidade=@ID_Cidade " +
+                "UPDATE premium_usuarios SET nome=@nome, CPF=@CPF, cidades_id=@cidades_id " +
                 "WHERE ID_Cliente = @ID_Cliente", conn);
 
             comm.Parameters.Add("@ID_Cliente", System.Data.SqlDbType.Int);
@@ -217,8 +219,8 @@ namespace DametaProject
             comm.Parameters.Add("@CPF", System.Data.SqlDbType.NVarChar);
             comm.Parameters["@CPF"].Value = mtxCPF.Text;
 
-            comm.Parameters.Add("@ID_Cidade", System.Data.SqlDbType.Int);
-            comm.Parameters["@ID_Cidade"].Value = Convert.ToInt32(cbCidade.SelectedValue.ToString());
+            comm.Parameters.Add("@cidades_id", System.Data.SqlDbType.Int);
+            comm.Parameters["@cidades_id"].Value = Convert.ToInt32(cbCidade.SelectedValue.ToString());
 
             try
             {
@@ -290,7 +292,7 @@ namespace DametaProject
             conn = new SqlConnection(connectionString);
 
             comm = new SqlCommand(
-                "UPDATE Clientes SET Nome=@Nome, CPF=@CPF, ID_Cidade=@ID_Cidade " +
+                "UPDATE Clientes SET Nome=@Nome, CPF=@CPF, cidades_id=@cidades_id " +
                 "WHERE ID_Cliente = @ID_Cliente", conn);
 
             comm.Parameters.Add("@ID_Cliente", System.Data.SqlDbType.Int);
@@ -302,8 +304,8 @@ namespace DametaProject
             comm.Parameters.Add("@CPF", System.Data.SqlDbType.NVarChar);
             comm.Parameters["@CPF"].Value = mtxCPF.Text;
 
-            comm.Parameters.Add("@ID_Cidade", System.Data.SqlDbType.Int);
-            comm.Parameters["@ID_Cidade"].Value = Convert.ToInt32(cbCidade.SelectedValue.ToString());
+            comm.Parameters.Add("@cidades_id", System.Data.SqlDbType.Int);
+            comm.Parameters["@cidades_id"].Value = Convert.ToInt32(cbCidade.SelectedValue.ToString());
 
             try
             {
@@ -351,5 +353,7 @@ namespace DametaProject
             btLimpar_Click(sender, e);
 
         }
+
+
     }
 }
