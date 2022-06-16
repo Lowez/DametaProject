@@ -1,7 +1,7 @@
-CREATE DATABASE dameta_teste
+CREATE DATABASE dameta_db
 GO
 
-USE dameta_teste
+USE dameta_db
 GO
 
 -- Creates Table
