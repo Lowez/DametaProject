@@ -25,7 +25,8 @@ namespace DametaProject
 
         private void Clientes_Load(object sender, EventArgs e)
         {
-
+            // TODO: This line of code loads data into the 'dameta_dbDataSet.cidades' table. You can move, or remove it, as needed.
+            this.cidadesTableAdapter.Fill(this.dameta_dbDataSet.cidades);
             // TODO: This line of code loads data into the 'dameta_dbDataSet.generos' table. You can move, or remove it, as needed.
             this.generosTableAdapter.Fill(this.dameta_dbDataSet.generos);
             // TODO: esta linha de código carrega dados na tabela 'dameta_dbDataSet.premium_usuarios'. Você pode movê-la ou removê-la conforme necessário.
@@ -134,9 +135,9 @@ namespace DametaProject
             conn = new SqlConnection(connectionString);
 
             comm = new SqlCommand(
-                "SELECT Cli.id, Cli.nome, Cli.nascimento, Cli.CPF, Cli.telefone, Cli.CEP, Cli.estados_id, Cli.cidades_id, Cli.generos_id " +
-                "Cid.ID_Cidade, Cid.NomeCid, Cid.UF " +
-                "Gen.Nome " +
+                "SELECT Cli.id, Cli.nome as nomeCliente, Cli.nascimento, Cli.CPF, Cli.telefone, Cli.CEP, Cli.estados_id, Cli.cidades_id, Cli.generos_id " +
+                "Cid.id, Cid.nome as cidNome, Cid.UF " +
+                "Gen.Nome as nomeGen " +
                 "FROM Clientes AS Cli " +
                 "INNER JOIN Cidades AS Cid " +
                 "INNER JOIN Generos AS Gen " +
@@ -168,9 +169,13 @@ namespace DametaProject
                     // Se encontrou um cliente...
                     if (reader.Read())
                     {
-                        txNome.Text = reader["Nome"].ToString();
+                        txNome.Text = reader["clienteNome"].ToString();
                         mtxCPF.Text = reader["CPF"].ToString();
-                        cbCidade.Text = reader["NomeCid"].ToString();
+                        cbGenero.Text = reader["nomeGen"].ToString();
+                        cbCidade.Text = reader["nomeCid"].ToString();
+                        cbUF.Text = reader["UF"].ToString();
+                        dtpDataNasc.Text = reader["nascimento"].ToString();
+                        mtxCEP.Text = reader["CEP"].ToString();
                     }
 
                     reader.Close();
@@ -202,7 +207,7 @@ namespace DametaProject
             conn = new SqlConnection(connectionString);
 
             comm = new SqlCommand(
-                "UPDATE Clientes SET Nome=@Nome, CPF=@CPF, ID_Cidade=@ID_Cidade " +
+                "UPDATE premium_usuarios SET nome=@nome, CPF=@CPF, cidades_id=@cidades_id " +
                 "WHERE ID_Cliente = @ID_Cliente", conn);
 
             comm.Parameters.Add("@ID_Cliente", System.Data.SqlDbType.Int);
@@ -214,8 +219,8 @@ namespace DametaProject
             comm.Parameters.Add("@CPF", System.Data.SqlDbType.NVarChar);
             comm.Parameters["@CPF"].Value = mtxCPF.Text;
 
-            comm.Parameters.Add("@ID_Cidade", System.Data.SqlDbType.Int);
-            comm.Parameters["@ID_Cidade"].Value = Convert.ToInt32(cbCidade.SelectedValue.ToString());
+            comm.Parameters.Add("@cidades_id", System.Data.SqlDbType.Int);
+            comm.Parameters["@cidades_id"].Value = Convert.ToInt32(cbCidade.SelectedValue.ToString());
 
             try
             {
@@ -264,80 +269,7 @@ namespace DametaProject
 
         }
 
-        private void btExcluir_Click(object sender, EventArgs e)
-        {
-            SqlConnection conn;
-            SqlCommand comm;
-            bool bIsOperationOK = true;
-
-            string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
-
-            conn = new SqlConnection(connectionString);
-
-            comm = new SqlCommand(
-                "UPDATE Clientes SET Nome=@Nome, CPF=@CPF, ID_Cidade=@ID_Cidade " +
-                "WHERE ID_Cliente = @ID_Cliente", conn);
-
-            comm.Parameters.Add("@ID_Cliente", System.Data.SqlDbType.Int);
-            comm.Parameters["@ID_Cliente"].Value = Convert.ToInt32(txID.Text);
-
-            comm.Parameters.Add("@Nome", System.Data.SqlDbType.NVarChar);
-            comm.Parameters["@Nome"].Value = txNome.Text;
-
-            comm.Parameters.Add("@CPF", System.Data.SqlDbType.NVarChar);
-            comm.Parameters["@CPF"].Value = mtxCPF.Text;
-
-            comm.Parameters.Add("@ID_Cidade", System.Data.SqlDbType.Int);
-            comm.Parameters["@ID_Cidade"].Value = Convert.ToInt32(cbCidade.SelectedValue.ToString());
-
-            try
-            {
-                try
-                {
-                    conn.Open();
-                }
-                catch (Exception error)
-                {
-                    bIsOperationOK = false;
-                    MessageBox.Show(error.Message,
-                        "Erro ao abrir conexão com o Banco de Dados",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                }
-
-                try
-                {
-                    comm.ExecuteNonQuery();
-                }
-                catch (Exception error)
-                {
-                    bIsOperationOK = false;
-                    MessageBox.Show(error.Message,
-                        "Erro ao tentar executar o comando SQL",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                }
-            }
-            catch { }
-            finally
-            {
-                conn.Close();
-
-                if (bIsOperationOK == true)
-                {
-                    MessageBox.Show("Registro Alterado!",
-                        "UPDATE",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
-                }
-            }
-
-            AtualizaListaDeClientes();
-            btLimpar_Click(sender, e);
-
-        }
-
-       
+  
 
         private void btLimpar_Click(object sender, EventArgs e)
         {
@@ -349,6 +281,79 @@ namespace DametaProject
             txID.Focus();
         }
 
- 
+        private void btExcluir_Click_1(object sender, EventArgs e)
+        {
+            SqlConnection conn;
+            SqlCommand comm;
+            bool bIsOperationOK = true;
+
+            string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
+
+            conn = new SqlConnection(connectionString);
+
+            comm = new SqlCommand(
+                "UPDATE Clientes SET Nome=@Nome, CPF=@CPF, cidades_id=@cidades_id " +
+                "WHERE ID_Cliente = @ID_Cliente", conn);
+
+            comm.Parameters.Add("@ID_Cliente", System.Data.SqlDbType.Int);
+            comm.Parameters["@ID_Cliente"].Value = Convert.ToInt32(txID.Text);
+
+            comm.Parameters.Add("@Nome", System.Data.SqlDbType.NVarChar);
+            comm.Parameters["@Nome"].Value = txNome.Text;
+
+            comm.Parameters.Add("@CPF", System.Data.SqlDbType.NVarChar);
+            comm.Parameters["@CPF"].Value = mtxCPF.Text;
+
+            comm.Parameters.Add("@cidades_id", System.Data.SqlDbType.Int);
+            comm.Parameters["@cidades_id"].Value = Convert.ToInt32(cbCidade.SelectedValue.ToString());
+
+            try
+            {
+                try
+                {
+                    conn.Open();
+                }
+                catch (Exception error)
+                {
+                    bIsOperationOK = false;
+                    MessageBox.Show(error.Message,
+                        "Erro ao abrir conexão com o Banco de Dados",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
+
+                try
+                {
+                    comm.ExecuteNonQuery();
+                }
+                catch (Exception error)
+                {
+                    bIsOperationOK = false;
+                    MessageBox.Show(error.Message,
+                        "Erro ao tentar executar o comando SQL",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
+            }
+            catch { }
+            finally
+            {
+                conn.Close();
+
+                if (bIsOperationOK == true)
+                {
+                    MessageBox.Show("Registro Alterado!",
+                        "UPDATE",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                }
+            }
+
+            AtualizaListaDeClientes();
+            btLimpar_Click(sender, e);
+
+        }
+
+
     }
 }

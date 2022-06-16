@@ -32,8 +32,14 @@
             this.btLimpar = new System.Windows.Forms.Button();
             this.btExcluir = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.telefoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cNPJDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fornecedoresBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dametadbDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dameta_dbDataSet = new DametaProject.dameta_dbDataSet();
             this.clientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.mtxTelefone = new System.Windows.Forms.MaskedTextBox();
             this.txNome = new System.Windows.Forms.TextBox();
             this.nomeLabel = new System.Windows.Forms.Label();
             this.txID = new System.Windows.Forms.TextBox();
@@ -43,68 +49,109 @@
             this.btConsultar = new System.Windows.Forms.Button();
             this.telefoneLabel = new System.Windows.Forms.Label();
             this.cidadesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.mtxCPF = new System.Windows.Forms.MaskedTextBox();
+            this.mtxCNPJ = new System.Windows.Forms.MaskedTextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.mtxTelefone = new System.Windows.Forms.MaskedTextBox();
+            this.fornecedoresTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.fornecedoresTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fornecedoresBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dametadbDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cidadesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // btLimpar
             // 
-            this.btLimpar.Location = new System.Drawing.Point(539, 26);
+            this.btLimpar.Location = new System.Drawing.Point(384, 160);
             this.btLimpar.Name = "btLimpar";
-            this.btLimpar.Size = new System.Drawing.Size(75, 38);
+            this.btLimpar.Size = new System.Drawing.Size(100, 40);
             this.btLimpar.TabIndex = 47;
             this.btLimpar.Text = "Limpar Form";
             this.btLimpar.UseVisualStyleBackColor = true;
+            this.btLimpar.Click += new System.EventHandler(this.btLimpar_Click);
             // 
             // btExcluir
             // 
-            this.btExcluir.Location = new System.Drawing.Point(539, 70);
+            this.btExcluir.Location = new System.Drawing.Point(384, 115);
             this.btExcluir.Name = "btExcluir";
-            this.btExcluir.Size = new System.Drawing.Size(75, 38);
+            this.btExcluir.Size = new System.Drawing.Size(100, 40);
             this.btExcluir.TabIndex = 46;
             this.btExcluir.Text = "Excluir";
             this.btExcluir.UseVisualStyleBackColor = true;
+            this.btExcluir.Click += new System.EventHandler(this.btExcluir_Click);
             // 
             // dataGridView1
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.DataSource = this.clientesBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(49, 189);
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idDataGridViewTextBoxColumn,
+            this.nomeDataGridViewTextBoxColumn,
+            this.telefoneDataGridViewTextBoxColumn,
+            this.cNPJDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.fornecedoresBindingSource;
+            this.dataGridView1.Location = new System.Drawing.Point(41, 207);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(565, 187);
+            this.dataGridView1.Size = new System.Drawing.Size(443, 187);
             this.dataGridView1.TabIndex = 42;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nomeDataGridViewTextBoxColumn
+            // 
+            this.nomeDataGridViewTextBoxColumn.DataPropertyName = "nome";
+            this.nomeDataGridViewTextBoxColumn.HeaderText = "nome";
+            this.nomeDataGridViewTextBoxColumn.Name = "nomeDataGridViewTextBoxColumn";
+            // 
+            // telefoneDataGridViewTextBoxColumn
+            // 
+            this.telefoneDataGridViewTextBoxColumn.DataPropertyName = "telefone";
+            this.telefoneDataGridViewTextBoxColumn.HeaderText = "telefone";
+            this.telefoneDataGridViewTextBoxColumn.Name = "telefoneDataGridViewTextBoxColumn";
+            // 
+            // cNPJDataGridViewTextBoxColumn
+            // 
+            this.cNPJDataGridViewTextBoxColumn.DataPropertyName = "CNPJ";
+            this.cNPJDataGridViewTextBoxColumn.HeaderText = "CNPJ";
+            this.cNPJDataGridViewTextBoxColumn.Name = "cNPJDataGridViewTextBoxColumn";
+            // 
+            // fornecedoresBindingSource
+            // 
+            this.fornecedoresBindingSource.DataMember = "fornecedores";
+            this.fornecedoresBindingSource.DataSource = this.dametadbDataSetBindingSource;
+            // 
+            // dametadbDataSetBindingSource
+            // 
+            this.dametadbDataSetBindingSource.DataSource = this.dameta_dbDataSet;
+            this.dametadbDataSetBindingSource.Position = 0;
+            // 
+            // dameta_dbDataSet
+            // 
+            this.dameta_dbDataSet.DataSetName = "dameta_dbDataSet";
+            this.dameta_dbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // clientesBindingSource
             // 
             this.clientesBindingSource.DataMember = "Clientes";
             // 
-            // mtxTelefone
-            // 
-            this.mtxTelefone.ForeColor = System.Drawing.Color.Yellow;
-            this.mtxTelefone.Location = new System.Drawing.Point(96, 118);
-            this.mtxTelefone.Mask = "000,000,000-00";
-            this.mtxTelefone.Name = "mtxTelefone";
-            this.mtxTelefone.Size = new System.Drawing.Size(118, 20);
-            this.mtxTelefone.TabIndex = 38;
-            // 
             // txNome
             // 
-            this.txNome.Location = new System.Drawing.Point(96, 84);
+            this.txNome.Location = new System.Drawing.Point(85, 84);
             this.txNome.Name = "txNome";
-            this.txNome.Size = new System.Drawing.Size(301, 20);
+            this.txNome.Size = new System.Drawing.Size(226, 20);
             this.txNome.TabIndex = 35;
             // 
             // nomeLabel
             // 
             this.nomeLabel.AutoSize = true;
-            this.nomeLabel.Location = new System.Drawing.Point(46, 87);
+            this.nomeLabel.Location = new System.Drawing.Point(35, 87);
             this.nomeLabel.Name = "nomeLabel";
             this.nomeLabel.Size = new System.Drawing.Size(38, 13);
             this.nomeLabel.TabIndex = 34;
@@ -112,33 +159,35 @@
             // 
             // txID
             // 
-            this.txID.Location = new System.Drawing.Point(163, 36);
+            this.txID.Location = new System.Drawing.Point(152, 36);
             this.txID.Name = "txID";
             this.txID.Size = new System.Drawing.Size(53, 20);
             this.txID.TabIndex = 33;
             // 
             // btAlterar
             // 
-            this.btAlterar.Location = new System.Drawing.Point(445, 70);
+            this.btAlterar.Location = new System.Drawing.Point(384, 70);
             this.btAlterar.Name = "btAlterar";
-            this.btAlterar.Size = new System.Drawing.Size(75, 38);
+            this.btAlterar.Size = new System.Drawing.Size(100, 40);
             this.btAlterar.TabIndex = 45;
             this.btAlterar.Text = "Alterar";
             this.btAlterar.UseVisualStyleBackColor = true;
+            this.btAlterar.Click += new System.EventHandler(this.btAlterar_Click);
             // 
             // btIncluir
             // 
-            this.btIncluir.Location = new System.Drawing.Point(445, 26);
+            this.btIncluir.Location = new System.Drawing.Point(384, 25);
             this.btIncluir.Name = "btIncluir";
-            this.btIncluir.Size = new System.Drawing.Size(75, 38);
+            this.btIncluir.Size = new System.Drawing.Size(100, 40);
             this.btIncluir.TabIndex = 44;
             this.btIncluir.Text = "Incluir";
             this.btIncluir.UseVisualStyleBackColor = true;
+            this.btIncluir.Click += new System.EventHandler(this.btIncluir_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(46, 39);
+            this.label1.Location = new System.Drawing.Point(35, 39);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(115, 13);
             this.label1.TabIndex = 32;
@@ -146,17 +195,18 @@
             // 
             // btConsultar
             // 
-            this.btConsultar.Location = new System.Drawing.Point(222, 26);
+            this.btConsultar.Location = new System.Drawing.Point(211, 26);
             this.btConsultar.Name = "btConsultar";
-            this.btConsultar.Size = new System.Drawing.Size(75, 38);
+            this.btConsultar.Size = new System.Drawing.Size(100, 40);
             this.btConsultar.TabIndex = 43;
             this.btConsultar.Text = "Consultar";
             this.btConsultar.UseVisualStyleBackColor = true;
+            this.btConsultar.Click += new System.EventHandler(this.btConsultar_Click);
             // 
             // telefoneLabel
             // 
             this.telefoneLabel.AutoSize = true;
-            this.telefoneLabel.Location = new System.Drawing.Point(46, 121);
+            this.telefoneLabel.Location = new System.Drawing.Point(35, 121);
             this.telefoneLabel.Name = "telefoneLabel";
             this.telefoneLabel.Size = new System.Drawing.Size(52, 13);
             this.telefoneLabel.TabIndex = 36;
@@ -166,34 +216,47 @@
             // 
             this.cidadesBindingSource.DataMember = "Cidades";
             // 
-            // mtxCPF
+            // mtxCNPJ
             // 
-            this.mtxCPF.Location = new System.Drawing.Point(96, 151);
-            this.mtxCPF.Mask = "99,999,999/9999-99";
-            this.mtxCPF.Name = "mtxCPF";
-            this.mtxCPF.Size = new System.Drawing.Size(118, 20);
-            this.mtxCPF.TabIndex = 49;
+            this.mtxCNPJ.Location = new System.Drawing.Point(85, 151);
+            this.mtxCNPJ.Mask = "99,999,999/9999-99";
+            this.mtxCNPJ.Name = "mtxCNPJ";
+            this.mtxCNPJ.Size = new System.Drawing.Size(118, 20);
+            this.mtxCNPJ.TabIndex = 49;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(49, 154);
+            this.label3.Location = new System.Drawing.Point(38, 154);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(30, 13);
+            this.label3.Size = new System.Drawing.Size(37, 13);
             this.label3.TabIndex = 48;
-            this.label3.Text = "CPF:";
+            this.label3.Text = "CNPJ:";
+            // 
+            // mtxTelefone
+            // 
+            this.mtxTelefone.ForeColor = System.Drawing.Color.Black;
+            this.mtxTelefone.Location = new System.Drawing.Point(85, 118);
+            this.mtxTelefone.Mask = "(99)99999-9999";
+            this.mtxTelefone.Name = "mtxTelefone";
+            this.mtxTelefone.Size = new System.Drawing.Size(118, 20);
+            this.mtxTelefone.TabIndex = 56;
+            // 
+            // fornecedoresTableAdapter
+            // 
+            this.fornecedoresTableAdapter.ClearBeforeFill = true;
             // 
             // Fornecedores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(666, 418);
-            this.Controls.Add(this.mtxCPF);
+            this.ClientSize = new System.Drawing.Size(523, 418);
+            this.Controls.Add(this.mtxTelefone);
+            this.Controls.Add(this.mtxCNPJ);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btLimpar);
             this.Controls.Add(this.btExcluir);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.mtxTelefone);
             this.Controls.Add(this.txNome);
             this.Controls.Add(this.nomeLabel);
             this.Controls.Add(this.txID);
@@ -205,6 +268,9 @@
             this.Name = "Fornecedores";
             this.Text = "Fornecedores";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fornecedoresBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dametadbDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cidadesBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -218,7 +284,6 @@
         private System.Windows.Forms.Button btExcluir;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.BindingSource clientesBindingSource;
-        private System.Windows.Forms.MaskedTextBox mtxTelefone;
         private System.Windows.Forms.TextBox txNome;
         private System.Windows.Forms.Label nomeLabel;
         private System.Windows.Forms.TextBox txID;
@@ -228,7 +293,16 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btConsultar;
         private System.Windows.Forms.Label telefoneLabel;
-        private System.Windows.Forms.MaskedTextBox mtxCPF;
+        private System.Windows.Forms.MaskedTextBox mtxCNPJ;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.MaskedTextBox mtxTelefone;
+        private dameta_dbDataSet dameta_dbDataSet;
+        private System.Windows.Forms.BindingSource dametadbDataSetBindingSource;
+        private System.Windows.Forms.BindingSource fornecedoresBindingSource;
+        private dameta_dbDataSetTableAdapters.fornecedoresTableAdapter fornecedoresTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nomeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn telefoneDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cNPJDataGridViewTextBoxColumn;
     }
 }
