@@ -84,7 +84,7 @@
             this.txDataNascimento.Location = new System.Drawing.Point(31, 95);
             this.txDataNascimento.Name = "txDataNascimento";
             this.txDataNascimento.ReadOnly = true;
-            this.txDataNascimento.Size = new System.Drawing.Size(101, 20);
+            this.txDataNascimento.Size = new System.Drawing.Size(215, 20);
             this.txDataNascimento.TabIndex = 3;
             // 
             // label3

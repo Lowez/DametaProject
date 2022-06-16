@@ -43,6 +43,7 @@
             this.lblValorTotal = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txValorTParcial = new System.Windows.Forms.TextBox();
             this.txValorUnit = new System.Windows.Forms.TextBox();
@@ -55,11 +56,12 @@
             this.rbtQtd = new System.Windows.Forms.RadioButton();
             this.label4 = new System.Windows.Forms.Label();
             this.txTipoProd = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txQtd = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txNomeProd = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lblTotalItens = new System.Windows.Forms.Label();
+            this.btSair = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dvgCarrinho)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -156,6 +158,7 @@
             this.btConsultar.TabIndex = 6;
             this.btConsultar.Text = "Buscar";
             this.btConsultar.UseVisualStyleBackColor = true;
+            this.btConsultar.Click += new System.EventHandler(this.btConsultar_Click);
             // 
             // lblValorTotal
             // 
@@ -179,6 +182,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.txValorTParcial);
             this.groupBox1.Controls.Add(this.txValorUnit);
@@ -191,7 +195,7 @@
             this.groupBox1.Controls.Add(this.rbtQtd);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.txTipoProd);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.txQtd);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.txNomeProd);
             this.groupBox1.Controls.Add(this.txCodigoProd);
@@ -205,10 +209,21 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Produto à adicionar";
             // 
+            // label5
+            // 
+            this.label5.BackColor = System.Drawing.SystemColors.Control;
+            this.label5.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label5.Location = new System.Drawing.Point(6, 197);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(394, 23);
+            this.label5.TabIndex = 22;
+            this.label5.Text = "_________________________________________________________________________________" +
+    "____________________________________________";
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(211, 208);
+            this.label6.Location = new System.Drawing.Point(211, 220);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(66, 13);
             this.label6.TabIndex = 21;
@@ -216,7 +231,7 @@
             // 
             // txValorTParcial
             // 
-            this.txValorTParcial.Location = new System.Drawing.Point(214, 224);
+            this.txValorTParcial.Location = new System.Drawing.Point(214, 236);
             this.txValorTParcial.Name = "txValorTParcial";
             this.txValorTParcial.ReadOnly = true;
             this.txValorTParcial.Size = new System.Drawing.Size(166, 20);
@@ -225,7 +240,7 @@
             // 
             // txValorUnit
             // 
-            this.txValorUnit.Location = new System.Drawing.Point(19, 224);
+            this.txValorUnit.Location = new System.Drawing.Point(19, 163);
             this.txValorUnit.Name = "txValorUnit";
             this.txValorUnit.ReadOnly = true;
             this.txValorUnit.Size = new System.Drawing.Size(166, 20);
@@ -235,7 +250,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(16, 208);
+            this.label7.Location = new System.Drawing.Point(16, 147);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(70, 13);
             this.label7.TabIndex = 18;
@@ -315,22 +330,22 @@
             this.txTipoProd.Size = new System.Drawing.Size(166, 20);
             this.txTipoProd.TabIndex = 10;
             // 
-            // textBox1
+            // txQtd
             // 
-            this.textBox1.Location = new System.Drawing.Point(120, 168);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(65, 20);
-            this.textBox1.TabIndex = 9;
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txQtd.Location = new System.Drawing.Point(120, 236);
+            this.txQtd.Name = "txQtd";
+            this.txQtd.Size = new System.Drawing.Size(65, 20);
+            this.txQtd.TabIndex = 9;
+            this.txQtd.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(117, 152);
+            this.label3.Location = new System.Drawing.Point(117, 220);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(24, 13);
+            this.label3.Size = new System.Drawing.Size(53, 13);
             this.label3.TabIndex = 8;
-            this.label3.Text = "Qtd";
+            this.label3.Text = "Qtd/Peso";
             // 
             // txNomeProd
             // 
@@ -360,11 +375,23 @@
             this.lblTotalItens.Text = "0";
             this.lblTotalItens.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // btSair
+            // 
+            this.btSair.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btSair.Location = new System.Drawing.Point(12, 12);
+            this.btSair.Name = "btSair";
+            this.btSair.Size = new System.Drawing.Size(111, 38);
+            this.btSair.TabIndex = 12;
+            this.btSair.Text = "Sair";
+            this.btSair.UseVisualStyleBackColor = false;
+            this.btSair.Click += new System.EventHandler(this.btSair_Click);
+            // 
             // Carrinho
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1027, 555);
+            this.Controls.Add(this.btSair);
             this.Controls.Add(this.lblTotalItens);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
@@ -406,7 +433,7 @@
         private System.Windows.Forms.RadioButton rbtQtd;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txTipoProd;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txQtd;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btRemover;
         private System.Windows.Forms.Button btAdicionar;
@@ -419,5 +446,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Qtd;
         private System.Windows.Forms.DataGridViewTextBoxColumn ValorUnit;
         private System.Windows.Forms.DataGridViewTextBoxColumn ValorParcial;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btSair;
     }
 }
