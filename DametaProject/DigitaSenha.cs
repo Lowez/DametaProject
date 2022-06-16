@@ -18,9 +18,9 @@ namespace DametaProject
             InitializeComponent();
         }
 
-        private void DigitaSenha_Load(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            if (txConfirmacaoSenha.Text!=txSenha.Text)
+            if (txConfirmacaoSenha.Text != txSenha.Text)
             {
                 MessageBox.Show("Senhas diferentes",
                     "As senhas devem ser iguais",
@@ -34,7 +34,10 @@ namespace DametaProject
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
                 this.DialogResult = DialogResult.OK;
+                this.Close();
+                Dado.senha = txSenha.Text;
             }
+            
         }
     }
 }

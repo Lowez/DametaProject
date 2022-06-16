@@ -25,8 +25,7 @@ namespace DametaProject
 
         private void Clientes_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'dameta_dbDataSet.estados' table. You can move, or remove it, as needed.
-            this.estadosTableAdapter.Fill(this.dameta_dbDataSet.estados);
+
             // TODO: This line of code loads data into the 'dameta_dbDataSet.generos' table. You can move, or remove it, as needed.
             this.generosTableAdapter.Fill(this.dameta_dbDataSet.generos);
             // TODO: esta linha de código carrega dados na tabela 'dameta_dbDataSet.premium_usuarios'. Você pode movê-la ou removê-la conforme necessário.

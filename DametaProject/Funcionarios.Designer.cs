@@ -34,17 +34,6 @@
             this.btLimpar = new System.Windows.Forms.Button();
             this.btExcluir = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nascimentoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cPFDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.salarioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cargosidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.estabelecimentosidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.funcionariosBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
-            this.dameta_dbDataSet = new DametaProject.dameta_dbDataSet();
-            this.funcionariosBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.mtxTelefone = new System.Windows.Forms.MaskedTextBox();
             this.txNome = new System.Windows.Forms.TextBox();
             this.nomeLabel = new System.Windows.Forms.Label();
@@ -60,27 +49,37 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.cbGenero = new System.Windows.Forms.ComboBox();
-            this.generosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label5 = new System.Windows.Forms.Label();
             this.cbCargo = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.cbEstabelecimento = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.cbSenha = new System.Windows.Forms.CheckBox();
-            this.funcionariosBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.funcionariosTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.funcionariosTableAdapter();
             this.dtpDataNascimento = new System.Windows.Forms.DateTimePicker();
             this.label8 = new System.Windows.Forms.Label();
+            this.dameta_dbDataSet = new DametaProject.dameta_dbDataSet();
+            this.funcionariosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.funcionariosTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.funcionariosTableAdapter();
+            this.generosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.generosTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.generosTableAdapter();
             this.cargosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cargosTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.cargosTableAdapter();
+            this.estabelecimentosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.estabelecimentosTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.estabelecimentosTableAdapter();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cargosidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.salarioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.estabelecimentosidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cPFDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.telefoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.funcionariosBindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.funcionariosBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.generosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.funcionariosBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.generosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cargosBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.estabelecimentosBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // mtxCPF
@@ -118,6 +117,7 @@
             this.btExcluir.TabIndex = 60;
             this.btExcluir.Text = "Excluir";
             this.btExcluir.UseVisualStyleBackColor = true;
+            this.btExcluir.Click += new System.EventHandler(this.btExcluir_Click);
             // 
             // dataGridView1
             // 
@@ -128,93 +128,18 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn,
             this.nomeDataGridViewTextBoxColumn,
-            this.nascimentoDataGridViewTextBoxColumn,
+            this.cargosidDataGridViewTextBoxColumn,
+            this.salarioDataGridViewTextBoxColumn,
+            this.estabelecimentosidDataGridViewTextBoxColumn,
             this.emailDataGridViewTextBoxColumn,
             this.cPFDataGridViewTextBoxColumn,
-            this.salarioDataGridViewTextBoxColumn,
-            this.cargosidDataGridViewTextBoxColumn,
-            this.estabelecimentosidDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.funcionariosBindingSource2;
+            this.telefoneDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.funcionariosBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(28, 236);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(769, 187);
             this.dataGridView1.TabIndex = 56;
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idDataGridViewTextBoxColumn.Width = 40;
-            // 
-            // nomeDataGridViewTextBoxColumn
-            // 
-            this.nomeDataGridViewTextBoxColumn.DataPropertyName = "nome";
-            this.nomeDataGridViewTextBoxColumn.HeaderText = "nome";
-            this.nomeDataGridViewTextBoxColumn.Name = "nomeDataGridViewTextBoxColumn";
-            this.nomeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // nascimentoDataGridViewTextBoxColumn
-            // 
-            this.nascimentoDataGridViewTextBoxColumn.DataPropertyName = "nascimento";
-            this.nascimentoDataGridViewTextBoxColumn.HeaderText = "nascimento";
-            this.nascimentoDataGridViewTextBoxColumn.Name = "nascimentoDataGridViewTextBoxColumn";
-            this.nascimentoDataGridViewTextBoxColumn.ReadOnly = true;
-            this.nascimentoDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // emailDataGridViewTextBoxColumn
-            // 
-            this.emailDataGridViewTextBoxColumn.DataPropertyName = "email";
-            this.emailDataGridViewTextBoxColumn.HeaderText = "email";
-            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
-            this.emailDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // cPFDataGridViewTextBoxColumn
-            // 
-            this.cPFDataGridViewTextBoxColumn.DataPropertyName = "CPF";
-            this.cPFDataGridViewTextBoxColumn.HeaderText = "CPF";
-            this.cPFDataGridViewTextBoxColumn.Name = "cPFDataGridViewTextBoxColumn";
-            this.cPFDataGridViewTextBoxColumn.ReadOnly = true;
-            this.cPFDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // salarioDataGridViewTextBoxColumn
-            // 
-            this.salarioDataGridViewTextBoxColumn.DataPropertyName = "salario";
-            this.salarioDataGridViewTextBoxColumn.HeaderText = "salario";
-            this.salarioDataGridViewTextBoxColumn.Name = "salarioDataGridViewTextBoxColumn";
-            this.salarioDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // cargosidDataGridViewTextBoxColumn
-            // 
-            this.cargosidDataGridViewTextBoxColumn.DataPropertyName = "cargos_id";
-            this.cargosidDataGridViewTextBoxColumn.HeaderText = "cargos_id";
-            this.cargosidDataGridViewTextBoxColumn.Name = "cargosidDataGridViewTextBoxColumn";
-            this.cargosidDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // estabelecimentosidDataGridViewTextBoxColumn
-            // 
-            this.estabelecimentosidDataGridViewTextBoxColumn.DataPropertyName = "estabelecimentos_id";
-            this.estabelecimentosidDataGridViewTextBoxColumn.HeaderText = "estabelecimentos_id";
-            this.estabelecimentosidDataGridViewTextBoxColumn.Name = "estabelecimentosidDataGridViewTextBoxColumn";
-            this.estabelecimentosidDataGridViewTextBoxColumn.ReadOnly = true;
-            this.estabelecimentosidDataGridViewTextBoxColumn.Width = 120;
-            // 
-            // funcionariosBindingSource2
-            // 
-            this.funcionariosBindingSource2.DataMember = "funcionarios";
-            this.funcionariosBindingSource2.DataSource = this.dameta_dbDataSet;
-            // 
-            // dameta_dbDataSet
-            // 
-            this.dameta_dbDataSet.DataSetName = "dameta_dbDataSet";
-            this.dameta_dbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // funcionariosBindingSource1
-            // 
-            this.funcionariosBindingSource1.DataMember = "funcionarios";
-            this.funcionariosBindingSource1.DataSource = this.dameta_dbDataSet;
             // 
             // mtxTelefone
             // 
@@ -256,6 +181,7 @@
             this.btAlterar.TabIndex = 59;
             this.btAlterar.Text = "Alterar";
             this.btAlterar.UseVisualStyleBackColor = true;
+            this.btAlterar.Click += new System.EventHandler(this.btAlterar_Click);
             // 
             // btIncluir
             // 
@@ -284,6 +210,7 @@
             this.btConsultar.TabIndex = 57;
             this.btConsultar.Text = "Consultar";
             this.btConsultar.UseVisualStyleBackColor = true;
+            this.btConsultar.Click += new System.EventHandler(this.btConsultar_Click);
             // 
             // telefoneLabel
             // 
@@ -337,6 +264,7 @@
             // 
             // cbGenero
             // 
+            this.cbGenero.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.generosBindingSource, "id", true));
             this.cbGenero.DataSource = this.generosBindingSource;
             this.cbGenero.DisplayMember = "nome";
             this.cbGenero.FormattingEnabled = true;
@@ -344,12 +272,7 @@
             this.cbGenero.Name = "cbGenero";
             this.cbGenero.Size = new System.Drawing.Size(121, 21);
             this.cbGenero.TabIndex = 71;
-            this.cbGenero.ValueMember = "ID_Cidade";
-            // 
-            // generosBindingSource
-            // 
-            this.generosBindingSource.DataMember = "generos";
-            this.generosBindingSource.DataSource = this.dameta_dbDataSet;
+            this.cbGenero.ValueMember = "id";
             // 
             // label5
             // 
@@ -362,11 +285,15 @@
             // 
             // cbCargo
             // 
+            this.cbCargo.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.cargosBindingSource, "id", true));
+            this.cbCargo.DataSource = this.cargosBindingSource;
+            this.cbCargo.DisplayMember = "nome";
             this.cbCargo.FormattingEnabled = true;
             this.cbCargo.Location = new System.Drawing.Point(505, 151);
             this.cbCargo.Name = "cbCargo";
             this.cbCargo.Size = new System.Drawing.Size(121, 21);
             this.cbCargo.TabIndex = 73;
+            this.cbCargo.ValueMember = "id";
             // 
             // label6
             // 
@@ -379,11 +306,15 @@
             // 
             // cbEstabelecimento
             // 
+            this.cbEstabelecimento.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.estabelecimentosBindingSource, "id", true));
+            this.cbEstabelecimento.DataSource = this.estabelecimentosBindingSource;
+            this.cbEstabelecimento.DisplayMember = "nome";
             this.cbEstabelecimento.FormattingEnabled = true;
             this.cbEstabelecimento.Location = new System.Drawing.Point(505, 190);
             this.cbEstabelecimento.Name = "cbEstabelecimento";
             this.cbEstabelecimento.Size = new System.Drawing.Size(121, 21);
             this.cbEstabelecimento.TabIndex = 75;
+            this.cbEstabelecimento.ValueMember = "id";
             // 
             // label7
             // 
@@ -406,15 +337,6 @@
             this.cbSenha.Text = "Gerar automaticamente";
             this.cbSenha.UseVisualStyleBackColor = true;
             // 
-            // funcionariosBindingSource
-            // 
-            this.funcionariosBindingSource.DataMember = "funcionarios";
-            this.funcionariosBindingSource.DataSource = this.dameta_dbDataSet;
-            // 
-            // funcionariosTableAdapter
-            // 
-            this.funcionariosTableAdapter.ClearBeforeFill = true;
-            // 
             // dtpDataNascimento
             // 
             this.dtpDataNascimento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
@@ -432,6 +354,25 @@
             this.label8.TabIndex = 77;
             this.label8.Text = "Data de Nascimento:";
             // 
+            // dameta_dbDataSet
+            // 
+            this.dameta_dbDataSet.DataSetName = "dameta_dbDataSet";
+            this.dameta_dbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // funcionariosBindingSource
+            // 
+            this.funcionariosBindingSource.DataMember = "funcionarios";
+            this.funcionariosBindingSource.DataSource = this.dameta_dbDataSet;
+            // 
+            // funcionariosTableAdapter
+            // 
+            this.funcionariosTableAdapter.ClearBeforeFill = true;
+            // 
+            // generosBindingSource
+            // 
+            this.generosBindingSource.DataMember = "generos";
+            this.generosBindingSource.DataSource = this.dameta_dbDataSet;
+            // 
             // generosTableAdapter
             // 
             this.generosTableAdapter.ClearBeforeFill = true;
@@ -444,6 +385,75 @@
             // cargosTableAdapter
             // 
             this.cargosTableAdapter.ClearBeforeFill = true;
+            // 
+            // estabelecimentosBindingSource
+            // 
+            this.estabelecimentosBindingSource.DataMember = "estabelecimentos";
+            this.estabelecimentosBindingSource.DataSource = this.dameta_dbDataSet;
+            // 
+            // estabelecimentosTableAdapter
+            // 
+            this.estabelecimentosTableAdapter.ClearBeforeFill = true;
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn.Width = 40;
+            // 
+            // nomeDataGridViewTextBoxColumn
+            // 
+            this.nomeDataGridViewTextBoxColumn.DataPropertyName = "nome";
+            this.nomeDataGridViewTextBoxColumn.HeaderText = "nome";
+            this.nomeDataGridViewTextBoxColumn.Name = "nomeDataGridViewTextBoxColumn";
+            this.nomeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // cargosidDataGridViewTextBoxColumn
+            // 
+            this.cargosidDataGridViewTextBoxColumn.DataPropertyName = "cargos_id";
+            this.cargosidDataGridViewTextBoxColumn.HeaderText = "cargos_id";
+            this.cargosidDataGridViewTextBoxColumn.Name = "cargosidDataGridViewTextBoxColumn";
+            this.cargosidDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // salarioDataGridViewTextBoxColumn
+            // 
+            this.salarioDataGridViewTextBoxColumn.DataPropertyName = "salario";
+            this.salarioDataGridViewTextBoxColumn.HeaderText = "salario";
+            this.salarioDataGridViewTextBoxColumn.Name = "salarioDataGridViewTextBoxColumn";
+            this.salarioDataGridViewTextBoxColumn.ReadOnly = true;
+            this.salarioDataGridViewTextBoxColumn.Width = 70;
+            // 
+            // estabelecimentosidDataGridViewTextBoxColumn
+            // 
+            this.estabelecimentosidDataGridViewTextBoxColumn.DataPropertyName = "estabelecimentos_id";
+            this.estabelecimentosidDataGridViewTextBoxColumn.HeaderText = "estabelecimentos_id";
+            this.estabelecimentosidDataGridViewTextBoxColumn.Name = "estabelecimentosidDataGridViewTextBoxColumn";
+            this.estabelecimentosidDataGridViewTextBoxColumn.ReadOnly = true;
+            this.estabelecimentosidDataGridViewTextBoxColumn.Width = 120;
+            // 
+            // emailDataGridViewTextBoxColumn
+            // 
+            this.emailDataGridViewTextBoxColumn.DataPropertyName = "email";
+            this.emailDataGridViewTextBoxColumn.HeaderText = "email";
+            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
+            this.emailDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // cPFDataGridViewTextBoxColumn
+            // 
+            this.cPFDataGridViewTextBoxColumn.DataPropertyName = "CPF";
+            this.cPFDataGridViewTextBoxColumn.HeaderText = "CPF";
+            this.cPFDataGridViewTextBoxColumn.Name = "cPFDataGridViewTextBoxColumn";
+            this.cPFDataGridViewTextBoxColumn.ReadOnly = true;
+            this.cPFDataGridViewTextBoxColumn.Width = 50;
+            // 
+            // telefoneDataGridViewTextBoxColumn
+            // 
+            this.telefoneDataGridViewTextBoxColumn.DataPropertyName = "telefone";
+            this.telefoneDataGridViewTextBoxColumn.HeaderText = "telefone";
+            this.telefoneDataGridViewTextBoxColumn.Name = "telefoneDataGridViewTextBoxColumn";
+            this.telefoneDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // Funcionarios
             // 
@@ -482,12 +492,11 @@
             this.Text = "Funcionarios";
             this.Load += new System.EventHandler(this.Funcionarios_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.funcionariosBindingSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.funcionariosBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.generosBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.funcionariosBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.generosBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cargosBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.estabelecimentosBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -521,24 +530,24 @@
         private System.Windows.Forms.ComboBox cbEstabelecimento;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.CheckBox cbSenha;
+        private System.Windows.Forms.DateTimePicker dtpDataNascimento;
+        private System.Windows.Forms.Label label8;
         private dameta_dbDataSet dameta_dbDataSet;
         private System.Windows.Forms.BindingSource funcionariosBindingSource;
         private dameta_dbDataSetTableAdapters.funcionariosTableAdapter funcionariosTableAdapter;
-        private System.Windows.Forms.DateTimePicker dtpDataNascimento;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nomeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nascimentoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cPFDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn salarioDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cargosidDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn estabelecimentosidDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource funcionariosBindingSource1;
-        private System.Windows.Forms.BindingSource funcionariosBindingSource2;
         private System.Windows.Forms.BindingSource generosBindingSource;
         private dameta_dbDataSetTableAdapters.generosTableAdapter generosTableAdapter;
         private System.Windows.Forms.BindingSource cargosBindingSource;
         private dameta_dbDataSetTableAdapters.cargosTableAdapter cargosTableAdapter;
+        private System.Windows.Forms.BindingSource estabelecimentosBindingSource;
+        private dameta_dbDataSetTableAdapters.estabelecimentosTableAdapter estabelecimentosTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nomeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cargosidDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn salarioDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn estabelecimentosidDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cPFDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn telefoneDataGridViewTextBoxColumn;
     }
 }

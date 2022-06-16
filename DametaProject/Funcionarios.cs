@@ -25,6 +25,14 @@ namespace DametaProject
 
         private void Funcionarios_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'dameta_dbDataSet.estabelecimentos' table. You can move, or remove it, as needed.
+            this.estabelecimentosTableAdapter.Fill(this.dameta_dbDataSet.estabelecimentos);
+            // TODO: This line of code loads data into the 'dameta_dbDataSet.cargos' table. You can move, or remove it, as needed.
+            this.cargosTableAdapter.Fill(this.dameta_dbDataSet.cargos);
+            // TODO: This line of code loads data into the 'dameta_dbDataSet.generos' table. You can move, or remove it, as needed.
+            this.generosTableAdapter.Fill(this.dameta_dbDataSet.generos);
+            // TODO: This line of code loads data into the 'dameta_dbDataSet.funcionarios' table. You can move, or remove it, as needed.
+            this.funcionariosTableAdapter.Fill(this.dameta_dbDataSet.funcionarios);
             // TODO: This line of code loads data into the 'dameta_dbDataSet.cargos' table. You can move, or remove it, as needed.
             this.cargosTableAdapter.Fill(this.dameta_dbDataSet.cargos);
             // TODO: This line of code loads data into the 'dameta_dbDataSet.generos' table. You can move, or remove it, as needed.
@@ -46,14 +54,14 @@ namespace DametaProject
             conn = new SqlConnection(connectionString);
 
             comm = new SqlCommand(
-                "SELECT func.id, func.nome, func.CPF, func.nascimento, func.email, "+
-                "func.CPF, func.salario, func.generos_id, func.cargos_id, func.estabelecimentos_id, "+
-                "gen.id, gen.nome, car.id, car.nome, estab.id, estab.nome "+
-                "FROM funcionarios AS func " +
-                "INNER JOIN generos AS gen ON gen.id = func.generos_id " +
-                "INNER JOIN cargos AS car ON car.id = func.cargos_id " +
-                "INNER JOIN estabelecimentos AS estab ON estab.id = func.estabelecimentos_id  " +
-                "WHERE func.id = @ID ", conn);
+                "SELECT func.id, func.nome, func.CPF, func.nascimento, func.email, func.CPF, func.salario, "+
+                "func.telefone, func.generos_id, func.cargos_id, func.estabelecimentos_id, gen.id, gen.nome, "+
+                "car.id, car.nome, estab.id, estab.nome "+
+                "FROM funcionarios AS func "+
+                "INNER JOIN generos AS gen ON gen.id = func.generos_id "+
+                "INNER JOIN cargos AS car ON car.id = func.cargos_id "+
+                "INNER JOIN estabelecimentos AS estab ON estab.id = func.estabelecimentos_id "+
+                "WHERE func.id = @ID", conn);
 
             comm.Parameters.Add("@ID", System.Data.SqlDbType.Int);
             comm.Parameters["@ID"].Value = Convert.ToInt32(txID.Text);
@@ -115,29 +123,29 @@ namespace DametaProject
         {
             {
 
-                string senha;
+                string senha = "";
                 if (cbSenha.Checked == true)
+                {
+                    string chars = "abcdefghjkmnpqrstuvwxyz023456789";
+                    Random random = new Random();
+                    for (int f = 0; f < 6; f++)
+                    {
+                        senha = senha + chars.Substring(random.Next(0, chars.Length - 1), 1);
+                    }
+                }
+                else
                 {
                     using (var form = new DigitaSenha())
                     {
                         var result = form.ShowDialog();
                         if (result == DialogResult.OK)
                         {
-                            string Nome = form.dados.Nome;
-                            string Descricao = form.dados.Descricao;
-                            int Idade = form.dados.Idade;
-
-                            textBox1.Text = Nome;
-                            textBox2.Text = Descricao;
-                            textBox3.Text = Convert.ToString(Idade);
+                            senha = form.Dado.senha;
                         }
-                else
-                {
-                    senha = "Digitada";
+                    }
                 }
                 SqlConnection conn;
                 SqlCommand comm;
-                SqlDataReader reader;
                 bool bIsOperationOK = true;
 
                 string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
@@ -145,8 +153,8 @@ namespace DametaProject
                 conn = new SqlConnection(connectionString);
 
                 comm = new SqlCommand(
-                    "INSERT INTO funcionarios (nome, nascimento, email, CPF, senha, salario,generos_id,cargos_id, estabelecimentos_id) " +
-                    "VALUES (@nome,@nascimento, @email, @CPF, @senha, @salario, @generos_id, @cargos_id, @estabelecimentos_id)", conn);
+                    "INSERT INTO funcionarios (nome, nascimento, email, CPF, senha, salario, telefone, generos_id,cargos_id, estabelecimentos_id) " +
+                    "VALUES (@nome,@nascimento, @email, @CPF, @senha, @salario, @telefone, @generos_id, @cargos_id, @estabelecimentos_id)", conn);
 
                 comm.Parameters.Add("@nome", System.Data.SqlDbType.NVarChar);
                 comm.Parameters["@nome"].Value = txNome.Text;
@@ -165,15 +173,18 @@ namespace DametaProject
 
                 comm.Parameters.Add("@salario", System.Data.SqlDbType.Money);
                 comm.Parameters["@salario"].Value = Convert.ToDouble(txSalario.Text);
-                
-                comm.Parameters.Add("@genero_id", System.Data.SqlDbType.NVarChar);
-                comm.Parameters["@genero_id"].Value = cbGenero.Text;
 
-                comm.Parameters.Add("@cargos_id", System.Data.SqlDbType.NVarChar);
-                comm.Parameters["@cargos_id"].Value = cbCargo.Text;
+                comm.Parameters.Add("@telefone", System.Data.SqlDbType.NVarChar);
+                comm.Parameters["@telefone"].Value = mtxTelefone.Text;
 
-                comm.Parameters.Add("@estabelecimento_id", System.Data.SqlDbType.NVarChar);
-                comm.Parameters["@estabelecimento_id"].Value = cbEstabelecimento.Text;
+                comm.Parameters.Add("@genero_id", System.Data.SqlDbType.Int);
+                comm.Parameters["@genero_id"].Value = cbGenero.SelectedValue;
+
+                comm.Parameters.Add("@cargos_id", System.Data.SqlDbType.Int);
+                comm.Parameters["@cargos_id"].Value = cbCargo.SelectedValue;
+
+                comm.Parameters.Add("@estabelecimento_id", System.Data.SqlDbType.Int);
+                comm.Parameters["@estabelecimento_id"].Value = cbEstabelecimento.SelectedValue;
 
                 try
                 {
@@ -223,11 +234,11 @@ namespace DametaProject
                 }
             }
         }
-
         private void AtualizaListaDeFuncionarios()
         {
             this.funcionariosTableAdapter.Fill(this.dameta_dbDataSet.funcionarios);
         }
+
         private void btLimpar_Click(object sender, EventArgs e)
         {
             txID.Clear();
@@ -241,6 +252,158 @@ namespace DametaProject
             cbGenero.Text = "";
             cbEstabelecimento.Text = "";
             dtpDataNascimento.Text = DateTime.Now.ToShortDateString();
+        }
+
+        private void btAlterar_Click(object sender, EventArgs e)
+        {
+            SqlConnection conn;
+            SqlCommand comm;
+            bool bIsOperationOK = true;
+
+            string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
+
+            conn = new SqlConnection(connectionString);
+
+            comm = new SqlCommand(
+                "UPDATE funcionarios SET nome=@nome, nascimento=@nascimento, email = @email, CPF=@CPF, salario=@salario, telefone = @telefone, generos_id = @generos_id, cargos_id = @cargos_id, estabelecimento_id=@estabelecimento_id  " +
+                "WHERE id = @id", conn);
+
+            comm.Parameters.Add("@id", System.Data.SqlDbType.Int);
+            comm.Parameters["@id"].Value = Convert.ToInt32(txID.Text);
+
+            comm.Parameters.Add("@nome", System.Data.SqlDbType.NVarChar);
+            comm.Parameters["@nome"].Value = txNome.Text;
+
+            comm.Parameters.Add("@nascimento", System.Data.SqlDbType.NVarChar);
+            comm.Parameters["@nascimento"].Value = dtpDataNascimento.Text;
+
+            comm.Parameters.Add("@email", System.Data.SqlDbType.NVarChar);
+            comm.Parameters["@email"].Value = txEmail.Text;
+
+            comm.Parameters.Add("@CPF", System.Data.SqlDbType.NVarChar);
+            comm.Parameters["@CPF"].Value = mtxCPF.Text;
+
+            comm.Parameters.Add("@salario", System.Data.SqlDbType.Money);
+            comm.Parameters["@salario"].Value = Convert.ToDouble(txSalario.Text);
+
+            comm.Parameters.Add("@telefone", System.Data.SqlDbType.NVarChar);
+            comm.Parameters["@telefone"].Value = mtxTelefone.Text;
+
+            comm.Parameters.Add("@genero_id", System.Data.SqlDbType.Int);
+            comm.Parameters["@genero_id"].Value = cbGenero.SelectedValue;
+
+            comm.Parameters.Add("@cargos_id", System.Data.SqlDbType.Int);
+            comm.Parameters["@cargos_id"].Value = cbCargo.SelectedValue;
+
+            comm.Parameters.Add("@estabelecimento_id", System.Data.SqlDbType.Int);
+            comm.Parameters["@estabelecimento_id"].Value = cbEstabelecimento.SelectedValue;
+
+            try
+            {
+                try
+                {
+                    conn.Open();
+                }
+                catch (Exception error)
+                {
+                    bIsOperationOK = false;
+                    MessageBox.Show(error.Message,
+                        "Erro ao abrir conexão com o Banco de Dados",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
+
+                try
+                {
+                    comm.ExecuteNonQuery();
+                }
+                catch (Exception error)
+                {
+                    bIsOperationOK = false;
+                    MessageBox.Show(error.Message,
+                        "Erro ao tentar executar o comando SQL",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
+            }
+            catch { }
+            finally
+            {
+                conn.Close();
+
+                if (bIsOperationOK == true)
+                {
+                    MessageBox.Show("Registro Alterado!",
+                        "UPDATE",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                }
+            }
+            AtualizaListaDeFuncionarios();
+            btLimpar_Click(sender, e);
+        }
+
+        private void btExcluir_Click(object sender, EventArgs e)
+        {
+            SqlConnection conn;
+            SqlCommand comm;
+            bool bIsOperationOK = true;
+            
+            string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
+
+            conn = new SqlConnection(connectionString);
+
+            comm = new SqlCommand(
+                "DELETE FROM funcionarios " +
+                "WHERE id = @id", conn);
+
+            comm.Parameters.Add("@id", System.Data.SqlDbType.Int);
+            comm.Parameters["@id"].Value = Convert.ToInt32(txID.Text);
+
+            try
+            {
+                try
+                {
+                    conn.Open();
+                }
+                catch (Exception error)
+                {
+                    bIsOperationOK = false;
+                    MessageBox.Show(error.Message,
+                        "Erro ao abrir conexão com o Banco de Dados",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
+
+                try
+                {
+                    comm.ExecuteNonQuery();
+                }
+                catch (Exception error)
+                {
+                    bIsOperationOK = false;
+                    MessageBox.Show(error.Message,
+                        "Erro ao tentar executar o comando SQL",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
+            }
+            catch { }
+            finally
+            {
+                conn.Close();
+
+                if (bIsOperationOK == true)
+                {
+                    MessageBox.Show("Registro Excluído!",
+                        "DELETE",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                }
+            }
+
+            AtualizaListaDeFuncionarios();
+            btLimpar_Click(sender, e);
         }
     }
 }

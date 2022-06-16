@@ -18,14 +18,14 @@ namespace DametaProject
         }
 
         private void HomeEstabelecimentos_Load(object sender, EventArgs e)
+        { 
+
+        }
+
+        private void btInserir_Click(object sender, EventArgs e)
         {
-
-
-
-
-
-
-
+            estabelecimentos form = new estabelecimentos(true);
+            form.Show();
 
         }
     }
