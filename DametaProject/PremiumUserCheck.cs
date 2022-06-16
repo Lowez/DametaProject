@@ -39,7 +39,7 @@ namespace DametaProject
                     conn = new SqlConnection(Properties.Settings.Default.dameta_dbConnectionString);
 
                     comm = new SqlCommand(
-                        "SELECT CPF FROM funcionarios " +
+                        "SELECT CPF FROM premium_usuarios " +
                         "WHERE CPF = @CPF", conn);
 
                     comm.Parameters.Add("@CPF", SqlDbType.NVarChar);
@@ -67,9 +67,9 @@ namespace DametaProject
 
                             if (reader.Read())
                             {
-                                string nome_do_cliente = reader["CPF"].ToString();
+                                string CPF_cliente = reader["CPF"].ToString();
 
-                                InfosCliente infosCliente = new InfosCliente(nome_do_cliente, form_novacompra, this, form_carrinho);
+                                InfosCliente infosCliente = new InfosCliente(CPF_cliente, form_novacompra, this, form_carrinho);
                                 infosCliente.Show();
                             } else
                             {
