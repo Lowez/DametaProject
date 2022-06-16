@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace DametaProject
 {
-    public partial class HomeManagerForm : Form
+    public partial class Carrinho : Form
     {
         public Form form_inicial;
-        public HomeManagerForm(string nome, WelcomeForm form)
+        public Carrinho(string nome, WelcomeForm form)
         {
             InitializeComponent();
 
@@ -21,16 +21,9 @@ namespace DametaProject
 
             // Adiciona o nome do  usuário que está logando no título do formulário
             this.Text = "Bem vindo(a) " + nome;
-        }
 
-        private void btEstabelecimentos_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btFuncionarios_Click(object sender, EventArgs e)
-        {
-
+            // Desabilita o carrinho em seu início, para o funcionário selecionar se vai abrir uma nova compra ou sair do sistema
+            this.Enabled = false;
         }
     }
 }

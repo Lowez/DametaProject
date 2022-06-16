@@ -976,7 +976,7 @@ SELECT id, nome FROM tipo_produtos WHERE (id = @id)</CommandText>
               <xs:element name="CNPJ" msprop:Generator_ColumnPropNameInRow="CNPJ" msprop:Generator_ColumnPropNameInTable="CNPJColumn" msprop:Generator_ColumnVarNameInTable="columnCNPJ" msprop:Generator_UserColumnName="CNPJ">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
-                    <xs:maxLength value="16" />
+                    <xs:maxLength value="20" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>

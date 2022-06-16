@@ -3161,7 +3161,7 @@ namespace DametaProject {
                 this.columntelefone.AllowDBNull = false;
                 this.columntelefone.MaxLength = 14;
                 this.columnCNPJ.AllowDBNull = false;
-                this.columnCNPJ.MaxLength = 16;
+                this.columnCNPJ.MaxLength = 20;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
