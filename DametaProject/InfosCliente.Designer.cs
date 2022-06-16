@@ -33,6 +33,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txDataNascimento = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txIdade = new System.Windows.Forms.TextBox();
             this.mtxCPF = new System.Windows.Forms.MaskedTextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.mtxTelefone = new System.Windows.Forms.MaskedTextBox();
@@ -84,6 +86,23 @@
             this.txDataNascimento.ReadOnly = true;
             this.txDataNascimento.Size = new System.Drawing.Size(215, 20);
             this.txDataNascimento.TabIndex = 3;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(142, 79);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(37, 13);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Idade:";
+            // 
+            // txIdade
+            // 
+            this.txIdade.Location = new System.Drawing.Point(145, 95);
+            this.txIdade.Name = "txIdade";
+            this.txIdade.ReadOnly = true;
+            this.txIdade.Size = new System.Drawing.Size(101, 20);
+            this.txIdade.TabIndex = 5;
             // 
             // mtxCPF
             // 
@@ -144,6 +163,8 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.mtxCPF);
             this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.txIdade);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txDataNascimento);
             this.Controls.Add(this.label1);
@@ -165,6 +186,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txDataNascimento;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txIdade;
         private System.Windows.Forms.MaskedTextBox mtxCPF;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.MaskedTextBox mtxTelefone;

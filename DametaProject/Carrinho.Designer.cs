@@ -50,6 +50,10 @@
             this.label7 = new System.Windows.Forms.Label();
             this.btRemover = new System.Windows.Forms.Button();
             this.btAdicionar = new System.Windows.Forms.Button();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.rbtQtd = new System.Windows.Forms.RadioButton();
             this.label4 = new System.Windows.Forms.Label();
             this.txTipoProd = new System.Windows.Forms.TextBox();
             this.txQtd = new System.Windows.Forms.TextBox();
@@ -185,6 +189,10 @@
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.btRemover);
             this.groupBox1.Controls.Add(this.btAdicionar);
+            this.groupBox1.Controls.Add(this.radioButton1);
+            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.rbtQtd);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.txTipoProd);
             this.groupBox1.Controls.Add(this.txQtd);
@@ -265,6 +273,45 @@
             this.btAdicionar.TabIndex = 16;
             this.btAdicionar.Text = "Adicionar";
             this.btAdicionar.UseVisualStyleBackColor = true;
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(209, 171);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(14, 13);
+            this.radioButton1.TabIndex = 15;
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(229, 168);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(65, 20);
+            this.textBox2.TabIndex = 14;
+            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.label5.Location = new System.Drawing.Point(226, 152);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(31, 13);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "Peso";
+            // 
+            // rbtQtd
+            // 
+            this.rbtQtd.AutoSize = true;
+            this.rbtQtd.Checked = true;
+            this.rbtQtd.Location = new System.Drawing.Point(100, 171);
+            this.rbtQtd.Name = "rbtQtd";
+            this.rbtQtd.Size = new System.Drawing.Size(14, 13);
+            this.rbtQtd.TabIndex = 12;
+            this.rbtQtd.TabStop = true;
+            this.rbtQtd.UseVisualStyleBackColor = true;
             // 
             // label4
             // 
@@ -380,6 +427,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblTotalItens;
         private System.Windows.Forms.TextBox txNomeProd;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.RadioButton rbtQtd;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txTipoProd;
         private System.Windows.Forms.TextBox txQtd;
