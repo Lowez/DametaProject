@@ -3309,6 +3309,8 @@ namespace DametaProject {
             
             private global::System.Data.DataColumn columnsalario;
             
+            private global::System.Data.DataColumn columntelefone;
+            
             private global::System.Data.DataColumn columngeneros_id;
             
             private global::System.Data.DataColumn columncargos_id;
@@ -3406,6 +3408,14 @@ namespace DametaProject {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn telefoneColumn {
+                get {
+                    return this.columntelefone;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public global::System.Data.DataColumn generos_idColumn {
                 get {
                     return this.columngeneros_id;
@@ -3465,7 +3475,7 @@ namespace DametaProject {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public funcionariosRow AddfuncionariosRow(string nome, System.DateTime nascimento, string email, string CPF, string senha, decimal salario, generosRow parentgenerosRowByFK_GENEROS_FUNCIONARIOS, cargosRow parentcargosRowByFK_CARGOS_FUNCIONARIOS, estabelecimentosRow parentestabelecimentosRowByFK_ESTABELECIMENTOS_FUNCIONARIOS) {
+            public funcionariosRow AddfuncionariosRow(string nome, System.DateTime nascimento, string email, string CPF, string senha, decimal salario, string telefone, generosRow parentgenerosRowByFK_GENEROS_FUNCIONARIOS, cargosRow parentcargosRowByFK_CARGOS_FUNCIONARIOS, estabelecimentosRow parentestabelecimentosRowByFK_ESTABELECIMENTOS_FUNCIONARIOS) {
                 funcionariosRow rowfuncionariosRow = ((funcionariosRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -3475,17 +3485,18 @@ namespace DametaProject {
                         CPF,
                         senha,
                         salario,
+                        telefone,
                         null,
                         null,
                         null};
                 if ((parentgenerosRowByFK_GENEROS_FUNCIONARIOS != null)) {
-                    columnValuesArray[7] = parentgenerosRowByFK_GENEROS_FUNCIONARIOS[0];
+                    columnValuesArray[8] = parentgenerosRowByFK_GENEROS_FUNCIONARIOS[0];
                 }
                 if ((parentcargosRowByFK_CARGOS_FUNCIONARIOS != null)) {
-                    columnValuesArray[8] = parentcargosRowByFK_CARGOS_FUNCIONARIOS[0];
+                    columnValuesArray[9] = parentcargosRowByFK_CARGOS_FUNCIONARIOS[0];
                 }
                 if ((parentestabelecimentosRowByFK_ESTABELECIMENTOS_FUNCIONARIOS != null)) {
-                    columnValuesArray[9] = parentestabelecimentosRowByFK_ESTABELECIMENTOS_FUNCIONARIOS[0];
+                    columnValuesArray[10] = parentestabelecimentosRowByFK_ESTABELECIMENTOS_FUNCIONARIOS[0];
                 }
                 rowfuncionariosRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowfuncionariosRow);
@@ -3523,6 +3534,7 @@ namespace DametaProject {
                 this.columnCPF = base.Columns["CPF"];
                 this.columnsenha = base.Columns["senha"];
                 this.columnsalario = base.Columns["salario"];
+                this.columntelefone = base.Columns["telefone"];
                 this.columngeneros_id = base.Columns["generos_id"];
                 this.columncargos_id = base.Columns["cargos_id"];
                 this.columnestabelecimentos_id = base.Columns["estabelecimentos_id"];
@@ -3545,6 +3557,8 @@ namespace DametaProject {
                 base.Columns.Add(this.columnsenha);
                 this.columnsalario = new global::System.Data.DataColumn("salario", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnsalario);
+                this.columntelefone = new global::System.Data.DataColumn("telefone", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntelefone);
                 this.columngeneros_id = new global::System.Data.DataColumn("generos_id", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columngeneros_id);
                 this.columncargos_id = new global::System.Data.DataColumn("cargos_id", typeof(int), null, global::System.Data.MappingType.Element);
@@ -3569,6 +3583,8 @@ namespace DametaProject {
                 this.columnsenha.AllowDBNull = false;
                 this.columnsenha.MaxLength = 50;
                 this.columnsalario.AllowDBNull = false;
+                this.columntelefone.AllowDBNull = false;
+                this.columntelefone.MaxLength = 14;
                 this.columngeneros_id.AllowDBNull = false;
                 this.columncargos_id.AllowDBNull = false;
                 this.columnestabelecimentos_id.AllowDBNull = false;
@@ -6026,6 +6042,17 @@ namespace DametaProject {
                 }
                 set {
                     this[this.tablefuncionarios.salarioColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string telefone {
+                get {
+                    return ((string)(this[this.tablefuncionarios.telefoneColumn]));
+                }
+                set {
+                    this[this.tablefuncionarios.telefoneColumn] = value;
                 }
             }
             
@@ -9893,13 +9920,14 @@ SELECT id, nome, telefone, CNPJ FROM fornecedores WHERE (id = @id)";
             tableMapping.ColumnMappings.Add("CPF", "CPF");
             tableMapping.ColumnMappings.Add("senha", "senha");
             tableMapping.ColumnMappings.Add("salario", "salario");
+            tableMapping.ColumnMappings.Add("telefone", "telefone");
             tableMapping.ColumnMappings.Add("generos_id", "generos_id");
             tableMapping.ColumnMappings.Add("cargos_id", "cargos_id");
             tableMapping.ColumnMappings.Add("estabelecimentos_id", "estabelecimentos_id");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[funcionarios] WHERE (([id] = @Original_id) AND ([nome] = @Original_nome) AND ([nascimento] = @Original_nascimento) AND ([email] = @Original_email) AND ([CPF] = @Original_CPF) AND ([senha] = @Original_senha) AND ([salario] = @Original_salario) AND ([generos_id] = @Original_generos_id) AND ([cargos_id] = @Original_cargos_id) AND ([estabelecimentos_id] = @Original_estabelecimentos_id))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[funcionarios] WHERE (([id] = @Original_id) AND ([nome] = @Original_nome) AND ([nascimento] = @Original_nascimento) AND ([email] = @Original_email) AND ([CPF] = @Original_CPF) AND ([senha] = @Original_senha) AND ([salario] = @Original_salario) AND ([telefone] = @Original_telefone) AND ([generos_id] = @Original_generos_id) AND ([cargos_id] = @Original_cargos_id) AND ([estabelecimentos_id] = @Original_estabelecimentos_id))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_nome", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "nome", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -9908,13 +9936,14 @@ SELECT id, nome, telefone, CNPJ FROM fornecedores WHERE (id = @id)";
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CPF", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CPF", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_senha", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "senha", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_salario", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "salario", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_telefone", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "telefone", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_generos_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "generos_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_cargos_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "cargos_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_estabelecimentos_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "estabelecimentos_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[funcionarios] ([nome], [nascimento], [email], [CPF], [senha], [salario], [generos_id], [cargos_id], [estabelecimentos_id]) VALUES (@nome, @nascimento, @email, @CPF, @senha, @salario, @generos_id, @cargos_id, @estabelecimentos_id);
-SELECT id, nome, nascimento, email, CPF, senha, salario, generos_id, cargos_id, estabelecimentos_id FROM funcionarios WHERE (id = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[funcionarios] ([nome], [nascimento], [email], [CPF], [senha], [salario], [telefone], [generos_id], [cargos_id], [estabelecimentos_id]) VALUES (@nome, @nascimento, @email, @CPF, @senha, @salario, @telefone, @generos_id, @cargos_id, @estabelecimentos_id);
+SELECT id, nome, nascimento, email, CPF, senha, salario, telefone, generos_id, cargos_id, estabelecimentos_id FROM funcionarios WHERE (id = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nome", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "nome", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nascimento", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "nascimento", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -9922,13 +9951,14 @@ SELECT id, nome, nascimento, email, CPF, senha, salario, generos_id, cargos_id, 
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CPF", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CPF", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@senha", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "senha", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@salario", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "salario", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@telefone", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "telefone", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@generos_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "generos_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@cargos_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "cargos_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@estabelecimentos_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "estabelecimentos_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[funcionarios] SET [nome] = @nome, [nascimento] = @nascimento, [email] = @email, [CPF] = @CPF, [senha] = @senha, [salario] = @salario, [generos_id] = @generos_id, [cargos_id] = @cargos_id, [estabelecimentos_id] = @estabelecimentos_id WHERE (([id] = @Original_id) AND ([nome] = @Original_nome) AND ([nascimento] = @Original_nascimento) AND ([email] = @Original_email) AND ([CPF] = @Original_CPF) AND ([senha] = @Original_senha) AND ([salario] = @Original_salario) AND ([generos_id] = @Original_generos_id) AND ([cargos_id] = @Original_cargos_id) AND ([estabelecimentos_id] = @Original_estabelecimentos_id));
-SELECT id, nome, nascimento, email, CPF, senha, salario, generos_id, cargos_id, estabelecimentos_id FROM funcionarios WHERE (id = @id)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[funcionarios] SET [nome] = @nome, [nascimento] = @nascimento, [email] = @email, [CPF] = @CPF, [senha] = @senha, [salario] = @salario, [telefone] = @telefone, [generos_id] = @generos_id, [cargos_id] = @cargos_id, [estabelecimentos_id] = @estabelecimentos_id WHERE (([id] = @Original_id) AND ([nome] = @Original_nome) AND ([nascimento] = @Original_nascimento) AND ([email] = @Original_email) AND ([CPF] = @Original_CPF) AND ([senha] = @Original_senha) AND ([salario] = @Original_salario) AND ([telefone] = @Original_telefone) AND ([generos_id] = @Original_generos_id) AND ([cargos_id] = @Original_cargos_id) AND ([estabelecimentos_id] = @Original_estabelecimentos_id));
+SELECT id, nome, nascimento, email, CPF, senha, salario, telefone, generos_id, cargos_id, estabelecimentos_id FROM funcionarios WHERE (id = @id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nome", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "nome", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nascimento", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "nascimento", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -9936,6 +9966,7 @@ SELECT id, nome, nascimento, email, CPF, senha, salario, generos_id, cargos_id, 
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CPF", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CPF", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@senha", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "senha", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@salario", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "salario", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@telefone", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "telefone", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@generos_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "generos_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@cargos_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "cargos_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@estabelecimentos_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "estabelecimentos_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -9946,6 +9977,7 @@ SELECT id, nome, nascimento, email, CPF, senha, salario, generos_id, cargos_id, 
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CPF", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CPF", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_senha", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "senha", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_salario", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "salario", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_telefone", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "telefone", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_generos_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "generos_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_cargos_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "cargos_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_estabelecimentos_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "estabelecimentos_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -9965,8 +9997,8 @@ SELECT id, nome, nascimento, email, CPF, senha, salario, generos_id, cargos_id, 
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT id, nome, nascimento, email, CPF, senha, salario, generos_id, cargos_id, e" +
-                "stabelecimentos_id FROM dbo.funcionarios";
+            this._commandCollection[0].CommandText = "SELECT id, nome, nascimento, email, CPF, senha, salario, telefone, generos_id, ca" +
+                "rgos_id, estabelecimentos_id FROM dbo.funcionarios";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -10027,7 +10059,7 @@ SELECT id, nome, nascimento, email, CPF, senha, salario, generos_id, cargos_id, 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_id, string Original_nome, System.DateTime Original_nascimento, string Original_email, string Original_CPF, string Original_senha, decimal Original_salario, int Original_generos_id, int Original_cargos_id, int Original_estabelecimentos_id) {
+        public virtual int Delete(int Original_id, string Original_nome, System.DateTime Original_nascimento, string Original_email, string Original_CPF, string Original_senha, decimal Original_salario, string Original_telefone, int Original_generos_id, int Original_cargos_id, int Original_estabelecimentos_id) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_id));
             if ((Original_nome == null)) {
                 throw new global::System.ArgumentNullException("Original_nome");
@@ -10055,9 +10087,15 @@ SELECT id, nome, nascimento, email, CPF, senha, salario, generos_id, cargos_id, 
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((string)(Original_senha));
             }
             this.Adapter.DeleteCommand.Parameters[6].Value = ((decimal)(Original_salario));
-            this.Adapter.DeleteCommand.Parameters[7].Value = ((int)(Original_generos_id));
-            this.Adapter.DeleteCommand.Parameters[8].Value = ((int)(Original_cargos_id));
-            this.Adapter.DeleteCommand.Parameters[9].Value = ((int)(Original_estabelecimentos_id));
+            if ((Original_telefone == null)) {
+                throw new global::System.ArgumentNullException("Original_telefone");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((string)(Original_telefone));
+            }
+            this.Adapter.DeleteCommand.Parameters[8].Value = ((int)(Original_generos_id));
+            this.Adapter.DeleteCommand.Parameters[9].Value = ((int)(Original_cargos_id));
+            this.Adapter.DeleteCommand.Parameters[10].Value = ((int)(Original_estabelecimentos_id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -10078,7 +10116,7 @@ SELECT id, nome, nascimento, email, CPF, senha, salario, generos_id, cargos_id, 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string nome, System.DateTime nascimento, string email, string CPF, string senha, decimal salario, int generos_id, int cargos_id, int estabelecimentos_id) {
+        public virtual int Insert(string nome, System.DateTime nascimento, string email, string CPF, string senha, decimal salario, string telefone, int generos_id, int cargos_id, int estabelecimentos_id) {
             if ((nome == null)) {
                 throw new global::System.ArgumentNullException("nome");
             }
@@ -10105,9 +10143,15 @@ SELECT id, nome, nascimento, email, CPF, senha, salario, generos_id, cargos_id, 
                 this.Adapter.InsertCommand.Parameters[4].Value = ((string)(senha));
             }
             this.Adapter.InsertCommand.Parameters[5].Value = ((decimal)(salario));
-            this.Adapter.InsertCommand.Parameters[6].Value = ((int)(generos_id));
-            this.Adapter.InsertCommand.Parameters[7].Value = ((int)(cargos_id));
-            this.Adapter.InsertCommand.Parameters[8].Value = ((int)(estabelecimentos_id));
+            if ((telefone == null)) {
+                throw new global::System.ArgumentNullException("telefone");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(telefone));
+            }
+            this.Adapter.InsertCommand.Parameters[7].Value = ((int)(generos_id));
+            this.Adapter.InsertCommand.Parameters[8].Value = ((int)(cargos_id));
+            this.Adapter.InsertCommand.Parameters[9].Value = ((int)(estabelecimentos_id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -10135,6 +10179,7 @@ SELECT id, nome, nascimento, email, CPF, senha, salario, generos_id, cargos_id, 
                     string CPF, 
                     string senha, 
                     decimal salario, 
+                    string telefone, 
                     int generos_id, 
                     int cargos_id, 
                     int estabelecimentos_id, 
@@ -10145,6 +10190,7 @@ SELECT id, nome, nascimento, email, CPF, senha, salario, generos_id, cargos_id, 
                     string Original_CPF, 
                     string Original_senha, 
                     decimal Original_salario, 
+                    string Original_telefone, 
                     int Original_generos_id, 
                     int Original_cargos_id, 
                     int Original_estabelecimentos_id, 
@@ -10175,40 +10221,52 @@ SELECT id, nome, nascimento, email, CPF, senha, salario, generos_id, cargos_id, 
                 this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(senha));
             }
             this.Adapter.UpdateCommand.Parameters[5].Value = ((decimal)(salario));
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(generos_id));
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(cargos_id));
-            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(estabelecimentos_id));
-            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_id));
+            if ((telefone == null)) {
+                throw new global::System.ArgumentNullException("telefone");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(telefone));
+            }
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(generos_id));
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(cargos_id));
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(estabelecimentos_id));
+            this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(Original_id));
             if ((Original_nome == null)) {
                 throw new global::System.ArgumentNullException("Original_nome");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_nome));
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Original_nome));
             }
-            this.Adapter.UpdateCommand.Parameters[11].Value = ((System.DateTime)(Original_nascimento));
+            this.Adapter.UpdateCommand.Parameters[12].Value = ((System.DateTime)(Original_nascimento));
             if ((Original_email == null)) {
                 throw new global::System.ArgumentNullException("Original_email");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Original_email));
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Original_email));
             }
             if ((Original_CPF == null)) {
                 throw new global::System.ArgumentNullException("Original_CPF");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Original_CPF));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(Original_CPF));
             }
             if ((Original_senha == null)) {
                 throw new global::System.ArgumentNullException("Original_senha");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(Original_senha));
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(Original_senha));
             }
-            this.Adapter.UpdateCommand.Parameters[15].Value = ((decimal)(Original_salario));
-            this.Adapter.UpdateCommand.Parameters[16].Value = ((int)(Original_generos_id));
-            this.Adapter.UpdateCommand.Parameters[17].Value = ((int)(Original_cargos_id));
-            this.Adapter.UpdateCommand.Parameters[18].Value = ((int)(Original_estabelecimentos_id));
-            this.Adapter.UpdateCommand.Parameters[19].Value = ((int)(id));
+            this.Adapter.UpdateCommand.Parameters[16].Value = ((decimal)(Original_salario));
+            if ((Original_telefone == null)) {
+                throw new global::System.ArgumentNullException("Original_telefone");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((string)(Original_telefone));
+            }
+            this.Adapter.UpdateCommand.Parameters[18].Value = ((int)(Original_generos_id));
+            this.Adapter.UpdateCommand.Parameters[19].Value = ((int)(Original_cargos_id));
+            this.Adapter.UpdateCommand.Parameters[20].Value = ((int)(Original_estabelecimentos_id));
+            this.Adapter.UpdateCommand.Parameters[21].Value = ((int)(id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -10236,6 +10294,7 @@ SELECT id, nome, nascimento, email, CPF, senha, salario, generos_id, cargos_id, 
                     string CPF, 
                     string senha, 
                     decimal salario, 
+                    string telefone, 
                     int generos_id, 
                     int cargos_id, 
                     int estabelecimentos_id, 
@@ -10246,10 +10305,11 @@ SELECT id, nome, nascimento, email, CPF, senha, salario, generos_id, cargos_id, 
                     string Original_CPF, 
                     string Original_senha, 
                     decimal Original_salario, 
+                    string Original_telefone, 
                     int Original_generos_id, 
                     int Original_cargos_id, 
                     int Original_estabelecimentos_id) {
-            return this.Update(nome, nascimento, email, CPF, senha, salario, generos_id, cargos_id, estabelecimentos_id, Original_id, Original_nome, Original_nascimento, Original_email, Original_CPF, Original_senha, Original_salario, Original_generos_id, Original_cargos_id, Original_estabelecimentos_id, Original_id);
+            return this.Update(nome, nascimento, email, CPF, senha, salario, telefone, generos_id, cargos_id, estabelecimentos_id, Original_id, Original_nome, Original_nascimento, Original_email, Original_CPF, Original_senha, Original_salario, Original_telefone, Original_generos_id, Original_cargos_id, Original_estabelecimentos_id, Original_id);
         }
     }
     

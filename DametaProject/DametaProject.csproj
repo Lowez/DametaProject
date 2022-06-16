@@ -82,6 +82,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dameta_dbDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DigitaSenha.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DigitaSenha.Designer.cs">
+      <DependentUpon>DigitaSenha.cs</DependentUpon>
+    </Compile>
+    <Compile Include="estabelecimentos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="estabelecimentos.Designer.cs">
+      <DependentUpon>estabelecimentos.cs</DependentUpon>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,6 +111,11 @@
     <Compile Include="Funcionarios.Designer.cs">
       <DependentUpon>Funcionarios.cs</DependentUpon>
     </Compile>
+    <Compile Include="HomeEstabelecimentos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HomeEstabelecimentos.Designer.cs">
+      <DependentUpon>HomeEstabelecimentos.cs</DependentUpon>
     <Compile Include="InfosCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,6 +148,11 @@
     <EmbeddedResource Include="CodigoValidacao.resx">
       <DependentUpon>CodigoValidacao.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DigitaSenha.resx">
+      <DependentUpon>DigitaSenha.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="estabelecimentos.resx">
+      <DependentUpon>estabelecimentos.cs</DependentUpon>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -141,6 +162,8 @@
     <EmbeddedResource Include="Funcionarios.resx">
       <DependentUpon>Funcionarios.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="HomeEstabelecimentos.resx">
+      <DependentUpon>HomeEstabelecimentos.cs</DependentUpon>
     <EmbeddedResource Include="InfosCliente.resx">
       <DependentUpon>InfosCliente.cs</DependentUpon>
     </EmbeddedResource>
