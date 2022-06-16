@@ -351,16 +351,6 @@ namespace DametaProject
             btLimpar_Click(sender, e);
         }
 
-        private void Produtos_Load_1(object sender, EventArgs e)
-        {
-            // TODO: This line of code loads data into the 'dameta_dbDataSet.tipo_produtos' table. You can move, or remove it, as needed.
-            this.tipo_produtosTableAdapter.Fill(this.dameta_dbDataSet.tipo_produtos);
-            // TODO: This line of code loads data into the 'dameta_dbDataSet.fornecedores' table. You can move, or remove it, as needed.
-            this.fornecedoresTableAdapter.Fill(this.dameta_dbDataSet.fornecedores);
-            // TODO: This line of code loads data into the 'dameta_dbDataSet.estabelecimento_produto' table. You can move, or remove it, as needed.
-            this.estabelecimento_produtoTableAdapter.Fill(this.dameta_dbDataSet.estabelecimento_produto);
-
-        }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {

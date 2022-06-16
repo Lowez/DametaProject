@@ -63,9 +63,9 @@
             // 
             // btLimpar
             // 
-            this.btLimpar.Location = new System.Drawing.Point(409, 119);
+            this.btLimpar.Location = new System.Drawing.Point(384, 160);
             this.btLimpar.Name = "btLimpar";
-            this.btLimpar.Size = new System.Drawing.Size(75, 38);
+            this.btLimpar.Size = new System.Drawing.Size(100, 40);
             this.btLimpar.TabIndex = 47;
             this.btLimpar.Text = "Limpar Form";
             this.btLimpar.UseVisualStyleBackColor = true;
@@ -73,9 +73,9 @@
             // 
             // btExcluir
             // 
-            this.btExcluir.Location = new System.Drawing.Point(409, 163);
+            this.btExcluir.Location = new System.Drawing.Point(384, 115);
             this.btExcluir.Name = "btExcluir";
-            this.btExcluir.Size = new System.Drawing.Size(75, 38);
+            this.btExcluir.Size = new System.Drawing.Size(100, 40);
             this.btExcluir.TabIndex = 46;
             this.btExcluir.Text = "Excluir";
             this.btExcluir.UseVisualStyleBackColor = true;
@@ -145,7 +145,7 @@
             // 
             this.txNome.Location = new System.Drawing.Point(85, 84);
             this.txNome.Name = "txNome";
-            this.txNome.Size = new System.Drawing.Size(301, 20);
+            this.txNome.Size = new System.Drawing.Size(226, 20);
             this.txNome.TabIndex = 35;
             // 
             // nomeLabel
@@ -166,9 +166,9 @@
             // 
             // btAlterar
             // 
-            this.btAlterar.Location = new System.Drawing.Point(409, 70);
+            this.btAlterar.Location = new System.Drawing.Point(384, 70);
             this.btAlterar.Name = "btAlterar";
-            this.btAlterar.Size = new System.Drawing.Size(75, 38);
+            this.btAlterar.Size = new System.Drawing.Size(100, 40);
             this.btAlterar.TabIndex = 45;
             this.btAlterar.Text = "Alterar";
             this.btAlterar.UseVisualStyleBackColor = true;
@@ -176,9 +176,9 @@
             // 
             // btIncluir
             // 
-            this.btIncluir.Location = new System.Drawing.Point(409, 26);
+            this.btIncluir.Location = new System.Drawing.Point(384, 25);
             this.btIncluir.Name = "btIncluir";
-            this.btIncluir.Size = new System.Drawing.Size(75, 38);
+            this.btIncluir.Size = new System.Drawing.Size(100, 40);
             this.btIncluir.TabIndex = 44;
             this.btIncluir.Text = "Incluir";
             this.btIncluir.UseVisualStyleBackColor = true;
@@ -197,7 +197,7 @@
             // 
             this.btConsultar.Location = new System.Drawing.Point(211, 26);
             this.btConsultar.Name = "btConsultar";
-            this.btConsultar.Size = new System.Drawing.Size(75, 38);
+            this.btConsultar.Size = new System.Drawing.Size(100, 40);
             this.btConsultar.TabIndex = 43;
             this.btConsultar.Text = "Consultar";
             this.btConsultar.UseVisualStyleBackColor = true;

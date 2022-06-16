@@ -33,7 +33,6 @@ namespace DametaProject
         {
             txID.Clear();
             txNome.Clear();
-
             txID.Focus();
         }
 
@@ -49,8 +48,8 @@ namespace DametaProject
             conn = new SqlConnection(connectionString);
 
             comm = new SqlCommand(
-            "SELECT  id, nome, telefone, CNPJ" +
-            "FROM forncedores " +
+            "SELECT  id, nome, telefone, CNPJ " +
+            "FROM fornecedores " +
             "WHERE id = @ID", conn);
 
             comm.Parameters.Add("@ID", System.Data.SqlDbType.Int);

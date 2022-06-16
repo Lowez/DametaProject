@@ -81,7 +81,7 @@
             // categoriaLabel
             // 
             categoriaLabel.AutoSize = true;
-            categoriaLabel.Location = new System.Drawing.Point(288, 163);
+            categoriaLabel.Location = new System.Drawing.Point(302, 164);
             categoriaLabel.Name = "categoriaLabel";
             categoriaLabel.Size = new System.Drawing.Size(85, 13);
             categoriaLabel.TabIndex = 25;
@@ -90,7 +90,7 @@
             // precoUnitLabel
             // 
             precoUnitLabel.AutoSize = true;
-            precoUnitLabel.Location = new System.Drawing.Point(97, 117);
+            precoUnitLabel.Location = new System.Drawing.Point(102, 121);
             precoUnitLabel.Name = "precoUnitLabel";
             precoUnitLabel.Size = new System.Drawing.Size(60, 13);
             precoUnitLabel.TabIndex = 23;
@@ -99,7 +99,7 @@
             // nomeLabel
             // 
             nomeLabel.AutoSize = true;
-            nomeLabel.Location = new System.Drawing.Point(97, 76);
+            nomeLabel.Location = new System.Drawing.Point(102, 80);
             nomeLabel.Name = "nomeLabel";
             nomeLabel.Size = new System.Drawing.Size(38, 13);
             nomeLabel.TabIndex = 20;
@@ -108,7 +108,7 @@
             // CodigoProdutoLabel
             // 
             CodigoProdutoLabel.AutoSize = true;
-            CodigoProdutoLabel.Location = new System.Drawing.Point(97, 32);
+            CodigoProdutoLabel.Location = new System.Drawing.Point(102, 36);
             CodigoProdutoLabel.Name = "CodigoProdutoLabel";
             CodigoProdutoLabel.Size = new System.Drawing.Size(101, 13);
             CodigoProdutoLabel.TabIndex = 19;
@@ -117,7 +117,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(288, 117);
+            label2.Location = new System.Drawing.Point(293, 121);
             label2.Name = "label2";
             label2.Size = new System.Drawing.Size(85, 13);
             label2.TabIndex = 35;
@@ -126,7 +126,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(88, 163);
+            label1.Location = new System.Drawing.Point(102, 164);
             label1.Name = "label1";
             label1.Size = new System.Drawing.Size(64, 13);
             label1.TabIndex = 37;
@@ -134,36 +134,36 @@
             // 
             // btLimparForm
             // 
-            this.btLimparForm.Location = new System.Drawing.Point(611, 28);
+            this.btLimparForm.Location = new System.Drawing.Point(609, 169);
             this.btLimparForm.Name = "btLimparForm";
-            this.btLimparForm.Size = new System.Drawing.Size(90, 30);
+            this.btLimparForm.Size = new System.Drawing.Size(100, 40);
             this.btLimparForm.TabIndex = 32;
             this.btLimparForm.Text = "Limpar Form";
             this.btLimparForm.UseVisualStyleBackColor = true;
             // 
             // btExcluir
             // 
-            this.btExcluir.Location = new System.Drawing.Point(611, 171);
+            this.btExcluir.Location = new System.Drawing.Point(609, 120);
             this.btExcluir.Name = "btExcluir";
-            this.btExcluir.Size = new System.Drawing.Size(90, 30);
+            this.btExcluir.Size = new System.Drawing.Size(100, 40);
             this.btExcluir.TabIndex = 31;
             this.btExcluir.Text = "Excluir";
             this.btExcluir.UseVisualStyleBackColor = true;
             // 
             // btAlterar
             // 
-            this.btAlterar.Location = new System.Drawing.Point(611, 120);
+            this.btAlterar.Location = new System.Drawing.Point(609, 71);
             this.btAlterar.Name = "btAlterar";
-            this.btAlterar.Size = new System.Drawing.Size(90, 30);
+            this.btAlterar.Size = new System.Drawing.Size(100, 40);
             this.btAlterar.TabIndex = 30;
             this.btAlterar.Text = "Alterar";
             this.btAlterar.UseVisualStyleBackColor = true;
             // 
             // btConsultar
             // 
-            this.btConsultar.Location = new System.Drawing.Point(285, 25);
+            this.btConsultar.Location = new System.Drawing.Point(296, 22);
             this.btConsultar.Name = "btConsultar";
-            this.btConsultar.Size = new System.Drawing.Size(90, 30);
+            this.btConsultar.Size = new System.Drawing.Size(100, 40);
             this.btConsultar.TabIndex = 28;
             this.btConsultar.Text = "Consultar";
             this.btConsultar.UseVisualStyleBackColor = true;
@@ -171,9 +171,9 @@
             // 
             // btIncluir
             // 
-            this.btIncluir.Location = new System.Drawing.Point(611, 72);
+            this.btIncluir.Location = new System.Drawing.Point(609, 22);
             this.btIncluir.Name = "btIncluir";
-            this.btIncluir.Size = new System.Drawing.Size(90, 30);
+            this.btIncluir.Size = new System.Drawing.Size(100, 40);
             this.btIncluir.TabIndex = 29;
             this.btIncluir.Text = "Incluir";
             this.btIncluir.UseVisualStyleBackColor = true;
@@ -259,11 +259,11 @@
             this.cbTipo.DataSource = this.tipoprodutosBindingSource;
             this.cbTipo.DisplayMember = "nome";
             this.cbTipo.FormattingEnabled = true;
-            this.cbTipo.Location = new System.Drawing.Point(375, 160);
+            this.cbTipo.Location = new System.Drawing.Point(389, 161);
             this.cbTipo.Name = "cbTipo";
-            this.cbTipo.Size = new System.Drawing.Size(121, 21);
+            this.cbTipo.Size = new System.Drawing.Size(112, 21);
             this.cbTipo.TabIndex = 26;
-            this.cbTipo.ValueMember = "nome";
+            this.cbTipo.ValueMember = "id";
             // 
             // tipoprodutosBindingSource
             // 
@@ -272,28 +272,28 @@
             // 
             // txPrecoUnit
             // 
-            this.txPrecoUnit.Location = new System.Drawing.Point(158, 114);
+            this.txPrecoUnit.Location = new System.Drawing.Point(163, 118);
             this.txPrecoUnit.Name = "txPrecoUnit";
             this.txPrecoUnit.Size = new System.Drawing.Size(121, 20);
             this.txPrecoUnit.TabIndex = 24;
             // 
             // txNome
             // 
-            this.txNome.Location = new System.Drawing.Point(158, 73);
+            this.txNome.Location = new System.Drawing.Point(163, 77);
             this.txNome.Name = "txNome";
             this.txNome.Size = new System.Drawing.Size(338, 20);
             this.txNome.TabIndex = 22;
             // 
             // txID
             // 
-            this.txID.Location = new System.Drawing.Point(194, 29);
+            this.txID.Location = new System.Drawing.Point(199, 33);
             this.txID.Name = "txID";
             this.txID.Size = new System.Drawing.Size(85, 20);
             this.txID.TabIndex = 21;
             // 
             // txQtdEstoque
             // 
-            this.txQtdEstoque.Location = new System.Drawing.Point(375, 114);
+            this.txQtdEstoque.Location = new System.Drawing.Point(380, 118);
             this.txQtdEstoque.Name = "txQtdEstoque";
             this.txQtdEstoque.Size = new System.Drawing.Size(121, 20);
             this.txQtdEstoque.TabIndex = 36;
@@ -308,11 +308,11 @@
             this.cbFornecedor.DataSource = this.fornecedoresBindingSource;
             this.cbFornecedor.DisplayMember = "nome";
             this.cbFornecedor.FormattingEnabled = true;
-            this.cbFornecedor.Location = new System.Drawing.Point(158, 160);
+            this.cbFornecedor.Location = new System.Drawing.Point(172, 161);
             this.cbFornecedor.Name = "cbFornecedor";
             this.cbFornecedor.Size = new System.Drawing.Size(121, 21);
             this.cbFornecedor.TabIndex = 38;
-            this.cbFornecedor.ValueMember = "nome";
+            this.cbFornecedor.ValueMember = "id";
             // 
             // fornecedoresBindingSource
             // 
@@ -361,7 +361,6 @@
             this.Controls.Add(CodigoProdutoLabel);
             this.Name = "Produtos";
             this.Text = "Produtos";
-            this.Load += new System.EventHandler(this.Produtos_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.produtosBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).EndInit();
