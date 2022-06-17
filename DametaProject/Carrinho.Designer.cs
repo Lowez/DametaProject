@@ -43,7 +43,6 @@
             this.lblValorTotal = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txValorTParcial = new System.Windows.Forms.TextBox();
             this.txValorUnit = new System.Windows.Forms.TextBox();
@@ -52,7 +51,6 @@
             this.btAdicionar = new System.Windows.Forms.Button();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.rbtQtd = new System.Windows.Forms.RadioButton();
             this.label4 = new System.Windows.Forms.Label();
             this.txTipoProd = new System.Windows.Forms.TextBox();
@@ -182,7 +180,6 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.txValorTParcial);
             this.groupBox1.Controls.Add(this.txValorUnit);
@@ -191,7 +188,6 @@
             this.groupBox1.Controls.Add(this.btAdicionar);
             this.groupBox1.Controls.Add(this.radioButton1);
             this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.rbtQtd);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.txTipoProd);
@@ -208,17 +204,6 @@
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Produto à adicionar";
-            // 
-            // label5
-            // 
-            this.label5.BackColor = System.Drawing.SystemColors.Control;
-            this.label5.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label5.Location = new System.Drawing.Point(6, 197);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(394, 23);
-            this.label5.TabIndex = 22;
-            this.label5.Text = "_________________________________________________________________________________" +
-    "____________________________________________";
             // 
             // label6
             // 
@@ -291,16 +276,6 @@
             this.textBox2.Size = new System.Drawing.Size(65, 20);
             this.textBox2.TabIndex = 14;
             this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label5.Location = new System.Drawing.Point(226, 152);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(31, 13);
-            this.label5.TabIndex = 13;
-            this.label5.Text = "Peso";
             // 
             // rbtQtd
             // 
