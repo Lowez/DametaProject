@@ -446,7 +446,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Qtd;
         private System.Windows.Forms.DataGridViewTextBoxColumn ValorUnit;
         private System.Windows.Forms.DataGridViewTextBoxColumn ValorParcial;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btSair;
     }
 }
