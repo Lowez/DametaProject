@@ -16,6 +16,7 @@ namespace DametaProject
     {
         public string senha;
     }
+
     public partial class Funcionarios : Form
     {
         public Funcionarios()
@@ -25,20 +26,14 @@ namespace DametaProject
 
         private void Funcionarios_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'dameta_dbDataSet.funcionarios' table. You can move, or remove it, as needed.
+            this.funcionariosTableAdapter.Fill(this.dameta_dbDataSet.funcionarios);
             // TODO: This line of code loads data into the 'dameta_dbDataSet.estabelecimentos' table. You can move, or remove it, as needed.
             this.estabelecimentosTableAdapter.Fill(this.dameta_dbDataSet.estabelecimentos);
             // TODO: This line of code loads data into the 'dameta_dbDataSet.cargos' table. You can move, or remove it, as needed.
             this.cargosTableAdapter.Fill(this.dameta_dbDataSet.cargos);
             // TODO: This line of code loads data into the 'dameta_dbDataSet.generos' table. You can move, or remove it, as needed.
             this.generosTableAdapter.Fill(this.dameta_dbDataSet.generos);
-            // TODO: This line of code loads data into the 'dameta_dbDataSet.funcionarios' table. You can move, or remove it, as needed.
-            this.funcionariosTableAdapter.Fill(this.dameta_dbDataSet.funcionarios);
-            // TODO: This line of code loads data into the 'dameta_dbDataSet.cargos' table. You can move, or remove it, as needed.
-            this.cargosTableAdapter.Fill(this.dameta_dbDataSet.cargos);
-            // TODO: This line of code loads data into the 'dameta_dbDataSet.generos' table. You can move, or remove it, as needed.
-            this.generosTableAdapter.Fill(this.dameta_dbDataSet.generos);
-            // TODO: This line of code loads data into the 'dameta_dbDataSet.funcionarios' table. You can move, or remove it, as needed.
-            this.funcionariosTableAdapter.Fill(this.dameta_dbDataSet.funcionarios);
 
         }
 
@@ -54,13 +49,13 @@ namespace DametaProject
             conn = new SqlConnection(connectionString);
 
             comm = new SqlCommand(
-                "SELECT func.id, func.nome, func.CPF, func.nascimento, func.email, func.CPF, func.salario, "+
-                "func.telefone, func.generos_id, func.cargos_id, func.estabelecimentos_id, gen.id, gen.nome, "+
-                "car.id, car.nome, estab.id, estab.nome "+
-                "FROM funcionarios AS func "+
-                "INNER JOIN generos AS gen ON gen.id = func.generos_id "+
-                "INNER JOIN cargos AS car ON car.id = func.cargos_id "+
-                "INNER JOIN estabelecimentos AS estab ON estab.id = func.estabelecimentos_id "+
+                "SELECT func.id, func.nome, func.CPF, func.nascimento, func.email, func.CPF, func.salario, " +
+                "func.telefone, func.generos_id, func.cargos_id, func.estabelecimentos_id, gen.id, gen.nome, " +
+                "car.id, car.nome, estab.id, estab.nome " +
+                "FROM funcionarios AS func " +
+                "INNER JOIN generos AS gen ON gen.id = func.generos_id " +
+                "INNER JOIN cargos AS car ON car.id = func.cargos_id " +
+                "INNER JOIN estabelecimentos AS estab ON estab.id = func.estabelecimentos_id " +
                 "WHERE func.id = @ID", conn);
 
             comm.Parameters.Add("@ID", System.Data.SqlDbType.Int);
@@ -117,7 +112,6 @@ namespace DametaProject
                 conn.Close();
             }
         }
-
 
         private void btIncluir_Click(object sender, EventArgs e)
         {
@@ -234,6 +228,7 @@ namespace DametaProject
                 }
             }
         }
+
         private void AtualizaListaDeFuncionarios()
         {
             this.funcionariosTableAdapter.Fill(this.dameta_dbDataSet.funcionarios);
@@ -348,7 +343,7 @@ namespace DametaProject
             SqlConnection conn;
             SqlCommand comm;
             bool bIsOperationOK = true;
-            
+
             string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
 
             conn = new SqlConnection(connectionString);

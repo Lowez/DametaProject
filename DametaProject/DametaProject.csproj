@@ -88,11 +88,11 @@
     <Compile Include="DigitaSenha.Designer.cs">
       <DependentUpon>DigitaSenha.cs</DependentUpon>
     </Compile>
-    <Compile Include="estabelecimentos.cs">
+    <Compile Include="Estabelecimentos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="estabelecimentos.Designer.cs">
-      <DependentUpon>estabelecimentos.cs</DependentUpon>
+    <Compile Include="Estabelecimentos.Designer.cs">
+      <DependentUpon>Estabelecimentos.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -153,8 +153,8 @@
     <EmbeddedResource Include="DigitaSenha.resx">
       <DependentUpon>DigitaSenha.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="estabelecimentos.resx">
-      <DependentUpon>estabelecimentos.cs</DependentUpon>
+    <EmbeddedResource Include="Estabelecimentos.resx">
+      <DependentUpon>Estabelecimentos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

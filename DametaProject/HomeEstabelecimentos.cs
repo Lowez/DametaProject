@@ -18,15 +18,16 @@ namespace DametaProject
         }
 
         private void HomeEstabelecimentos_Load(object sender, EventArgs e)
-        { 
+        {
+            // TODO: This line of code loads data into the 'dameta_dbDataSet.estabelecimentos' table. You can move, or remove it, as needed.
+            this.estabelecimentosTableAdapter.Fill(this.dameta_dbDataSet.estabelecimentos);
 
         }
 
         private void btInserir_Click(object sender, EventArgs e)
         {
-            estabelecimentos form = new estabelecimentos(true);
+            Estabelecimentos form = new Estabelecimentos(true);
             form.Show();
-
         }
     }
 }
