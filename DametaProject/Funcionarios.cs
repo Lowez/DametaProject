@@ -16,8 +16,14 @@ namespace DametaProject
     {
         public string senha;
     }
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
     public partial class Funcionarios : Form
     {
+
+
         public Funcionarios()
         {
             InitializeComponent();
@@ -44,6 +50,7 @@ namespace DametaProject
 
         private void btConsultar_Click(object sender, EventArgs e)
         {
+<<<<<<< Updated upstream
             SqlConnection conn;
             SqlCommand comm;
             SqlDataReader reader;
@@ -119,6 +126,11 @@ namespace DametaProject
         }
 
 
+=======
+
+        }
+
+>>>>>>> Stashed changes
         private void btIncluir_Click(object sender, EventArgs e)
         {
             {
@@ -253,7 +265,10 @@ namespace DametaProject
             cbEstabelecimento.Text = "";
             dtpDataNascimento.Text = DateTime.Now.ToShortDateString();
         }
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
         private void btAlterar_Click(object sender, EventArgs e)
         {
             SqlConnection conn;
@@ -345,6 +360,7 @@ namespace DametaProject
 
         private void btExcluir_Click(object sender, EventArgs e)
         {
+<<<<<<< Updated upstream
             SqlConnection conn;
             SqlCommand comm;
             bool bIsOperationOK = true;
@@ -404,6 +420,9 @@ namespace DametaProject
 
             AtualizaListaDeFuncionarios();
             btLimpar_Click(sender, e);
+=======
+
+>>>>>>> Stashed changes
         }
     }
 }

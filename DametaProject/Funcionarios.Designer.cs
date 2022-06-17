@@ -31,23 +31,31 @@
             this.components = new System.ComponentModel.Container();
             this.mtxCPF = new System.Windows.Forms.MaskedTextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.btLimpar = new System.Windows.Forms.Button();
-            this.btExcluir = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+<<<<<<< Updated upstream
+=======
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nascimentoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cPFDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.salarioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cargosidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.estabelecimentosidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.funcionariosBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.dameta_dbDataSet = new DametaProject.dameta_dbDataSet();
+            this.funcionariosBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+>>>>>>> Stashed changes
             this.mtxTelefone = new System.Windows.Forms.MaskedTextBox();
             this.txNome = new System.Windows.Forms.TextBox();
             this.nomeLabel = new System.Windows.Forms.Label();
             this.txID = new System.Windows.Forms.TextBox();
-            this.btAlterar = new System.Windows.Forms.Button();
-            this.btIncluir = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.btConsultar = new System.Windows.Forms.Button();
             this.telefoneLabel = new System.Windows.Forms.Label();
             this.txEmail = new System.Windows.Forms.TextBox();
             this.emailLabel = new System.Windows.Forms.Label();
             this.txSalario = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.cbGenero = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.cbCargo = new System.Windows.Forms.ComboBox();
@@ -55,6 +63,7 @@
             this.cbEstabelecimento = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.cbSenha = new System.Windows.Forms.CheckBox();
+<<<<<<< Updated upstream
             this.dtpDataNascimento = new System.Windows.Forms.DateTimePicker();
             this.label8 = new System.Windows.Forms.Label();
             this.dameta_dbDataSet = new DametaProject.dameta_dbDataSet();
@@ -75,11 +84,28 @@
             this.cPFDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.telefoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+=======
+            this.funcionariosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.funcionariosTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.funcionariosTableAdapter();
+            this.dtpDataNascimento = new System.Windows.Forms.DateTimePicker();
+            this.label8 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.btConsultar = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.funcionariosBindingSource2)).BeginInit();
+>>>>>>> Stashed changes
             ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.funcionariosBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.funcionariosBindingSource)).BeginInit();
+<<<<<<< Updated upstream
             ((System.ComponentModel.ISupportInitialize)(this.generosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cargosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.estabelecimentosBindingSource)).BeginInit();
+=======
+>>>>>>> Stashed changes
             this.SuspendLayout();
             // 
             // mtxCPF
@@ -99,6 +125,7 @@
             this.label3.TabIndex = 62;
             this.label3.Text = "CPF:";
             // 
+<<<<<<< Updated upstream
             // btLimpar
             // 
             this.btLimpar.Location = new System.Drawing.Point(696, 25);
@@ -119,6 +146,8 @@
             this.btExcluir.UseVisualStyleBackColor = true;
             this.btExcluir.Click += new System.EventHandler(this.btExcluir_Click);
             // 
+=======
+>>>>>>> Stashed changes
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
@@ -141,6 +170,84 @@
             this.dataGridView1.Size = new System.Drawing.Size(769, 187);
             this.dataGridView1.TabIndex = 56;
             // 
+<<<<<<< Updated upstream
+=======
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn.Width = 40;
+            // 
+            // nomeDataGridViewTextBoxColumn
+            // 
+            this.nomeDataGridViewTextBoxColumn.DataPropertyName = "nome";
+            this.nomeDataGridViewTextBoxColumn.HeaderText = "nome";
+            this.nomeDataGridViewTextBoxColumn.Name = "nomeDataGridViewTextBoxColumn";
+            this.nomeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nascimentoDataGridViewTextBoxColumn
+            // 
+            this.nascimentoDataGridViewTextBoxColumn.DataPropertyName = "nascimento";
+            this.nascimentoDataGridViewTextBoxColumn.HeaderText = "nascimento";
+            this.nascimentoDataGridViewTextBoxColumn.Name = "nascimentoDataGridViewTextBoxColumn";
+            this.nascimentoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nascimentoDataGridViewTextBoxColumn.Width = 70;
+            // 
+            // emailDataGridViewTextBoxColumn
+            // 
+            this.emailDataGridViewTextBoxColumn.DataPropertyName = "email";
+            this.emailDataGridViewTextBoxColumn.HeaderText = "email";
+            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
+            this.emailDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // cPFDataGridViewTextBoxColumn
+            // 
+            this.cPFDataGridViewTextBoxColumn.DataPropertyName = "CPF";
+            this.cPFDataGridViewTextBoxColumn.HeaderText = "CPF";
+            this.cPFDataGridViewTextBoxColumn.Name = "cPFDataGridViewTextBoxColumn";
+            this.cPFDataGridViewTextBoxColumn.ReadOnly = true;
+            this.cPFDataGridViewTextBoxColumn.Width = 70;
+            // 
+            // salarioDataGridViewTextBoxColumn
+            // 
+            this.salarioDataGridViewTextBoxColumn.DataPropertyName = "salario";
+            this.salarioDataGridViewTextBoxColumn.HeaderText = "salario";
+            this.salarioDataGridViewTextBoxColumn.Name = "salarioDataGridViewTextBoxColumn";
+            this.salarioDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // cargosidDataGridViewTextBoxColumn
+            // 
+            this.cargosidDataGridViewTextBoxColumn.DataPropertyName = "cargos_id";
+            this.cargosidDataGridViewTextBoxColumn.HeaderText = "cargos_id";
+            this.cargosidDataGridViewTextBoxColumn.Name = "cargosidDataGridViewTextBoxColumn";
+            this.cargosidDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // estabelecimentosidDataGridViewTextBoxColumn
+            // 
+            this.estabelecimentosidDataGridViewTextBoxColumn.DataPropertyName = "estabelecimentos_id";
+            this.estabelecimentosidDataGridViewTextBoxColumn.HeaderText = "estabelecimentos_id";
+            this.estabelecimentosidDataGridViewTextBoxColumn.Name = "estabelecimentosidDataGridViewTextBoxColumn";
+            this.estabelecimentosidDataGridViewTextBoxColumn.ReadOnly = true;
+            this.estabelecimentosidDataGridViewTextBoxColumn.Width = 120;
+            // 
+            // funcionariosBindingSource2
+            // 
+            this.funcionariosBindingSource2.DataMember = "funcionarios";
+            this.funcionariosBindingSource2.DataSource = this.dameta_dbDataSet;
+            // 
+            // dameta_dbDataSet
+            // 
+            this.dameta_dbDataSet.DataSetName = "dameta_dbDataSet";
+            this.dameta_dbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // funcionariosBindingSource1
+            // 
+            this.funcionariosBindingSource1.DataMember = "funcionarios";
+            this.funcionariosBindingSource1.DataSource = this.dameta_dbDataSet;
+            // 
+>>>>>>> Stashed changes
             // mtxTelefone
             // 
             this.mtxTelefone.ForeColor = System.Drawing.Color.Black;
@@ -173,6 +280,7 @@
             this.txID.Size = new System.Drawing.Size(53, 20);
             this.txID.TabIndex = 51;
             // 
+<<<<<<< Updated upstream
             // btAlterar
             // 
             this.btAlterar.Location = new System.Drawing.Point(696, 125);
@@ -193,6 +301,8 @@
             this.btIncluir.UseVisualStyleBackColor = true;
             this.btIncluir.Click += new System.EventHandler(this.btIncluir_Click);
             // 
+=======
+>>>>>>> Stashed changes
             // label1
             // 
             this.label1.AutoSize = true;
@@ -202,6 +312,7 @@
             this.label1.TabIndex = 50;
             this.label1.Text = "Codigo do Funcionário";
             // 
+<<<<<<< Updated upstream
             // btConsultar
             // 
             this.btConsultar.Location = new System.Drawing.Point(224, 25);
@@ -212,6 +323,8 @@
             this.btConsultar.UseVisualStyleBackColor = true;
             this.btConsultar.Click += new System.EventHandler(this.btConsultar_Click);
             // 
+=======
+>>>>>>> Stashed changes
             // telefoneLabel
             // 
             this.telefoneLabel.AutoSize = true;
@@ -252,15 +365,6 @@
             this.label2.Size = new System.Drawing.Size(42, 13);
             this.label2.TabIndex = 66;
             this.label2.Text = "Salário:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(195, 192);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(41, 13);
-            this.label4.TabIndex = 68;
-            this.label4.Text = "Senha:";
             // 
             // cbGenero
             // 
@@ -326,6 +430,26 @@
             this.label7.Text = "Estabelecimento:";
             // 
             // cbSenha
+<<<<<<< Updated upstream
+=======
+            // 
+            this.cbSenha.AutoSize = true;
+            this.cbSenha.Checked = true;
+            this.cbSenha.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbSenha.Location = new System.Drawing.Point(207, 191);
+            this.cbSenha.Name = "cbSenha";
+            this.cbSenha.Size = new System.Drawing.Size(168, 17);
+            this.cbSenha.TabIndex = 76;
+            this.cbSenha.Text = "Gerar senha automaticamente";
+            this.cbSenha.UseVisualStyleBackColor = true;
+            // 
+            // funcionariosBindingSource
+            // 
+            this.funcionariosBindingSource.DataMember = "funcionarios";
+            this.funcionariosBindingSource.DataSource = this.dameta_dbDataSet;
+            // 
+            // funcionariosTableAdapter
+>>>>>>> Stashed changes
             // 
             this.cbSenha.AutoSize = true;
             this.cbSenha.Checked = true;
@@ -354,6 +478,7 @@
             this.label8.TabIndex = 77;
             this.label8.Text = "Data de Nascimento:";
             // 
+<<<<<<< Updated upstream
             // dameta_dbDataSet
             // 
             this.dameta_dbDataSet.DataSetName = "dameta_dbDataSet";
@@ -454,12 +579,68 @@
             this.telefoneDataGridViewTextBoxColumn.HeaderText = "telefone";
             this.telefoneDataGridViewTextBoxColumn.Name = "telefoneDataGridViewTextBoxColumn";
             this.telefoneDataGridViewTextBoxColumn.ReadOnly = true;
+=======
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(697, 175);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(100, 40);
+            this.button1.TabIndex = 86;
+            this.button1.Text = "Limpar Form";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.btLimpar_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(697, 129);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(100, 40);
+            this.button2.TabIndex = 85;
+            this.button2.Text = "Excluir";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.btExcluir_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(697, 83);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(100, 40);
+            this.button3.TabIndex = 84;
+            this.button3.Text = "Alterar";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.btAlterar_Click);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(697, 37);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(100, 40);
+            this.button4.TabIndex = 83;
+            this.button4.Text = "Incluir";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.btIncluir_Click);
+            // 
+            // btConsultar
+            // 
+            this.btConsultar.Location = new System.Drawing.Point(232, 23);
+            this.btConsultar.Name = "btConsultar";
+            this.btConsultar.Size = new System.Drawing.Size(100, 40);
+            this.btConsultar.TabIndex = 87;
+            this.btConsultar.Text = "Consultar";
+            this.btConsultar.UseVisualStyleBackColor = true;
+            this.btConsultar.Click += new System.EventHandler(this.btConsultar_Click);
+>>>>>>> Stashed changes
             // 
             // Funcionarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(821, 450);
+            this.Controls.Add(this.btConsultar);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button4);
             this.Controls.Add(this.dtpDataNascimento);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.cbSenha);
@@ -469,34 +650,36 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.cbGenero);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.txSalario);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txEmail);
             this.Controls.Add(this.emailLabel);
             this.Controls.Add(this.mtxCPF);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.btLimpar);
-            this.Controls.Add(this.btExcluir);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.mtxTelefone);
             this.Controls.Add(this.txNome);
             this.Controls.Add(this.nomeLabel);
             this.Controls.Add(this.txID);
-            this.Controls.Add(this.btAlterar);
-            this.Controls.Add(this.btIncluir);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.btConsultar);
             this.Controls.Add(this.telefoneLabel);
             this.Name = "Funcionarios";
             this.Text = "Funcionarios";
             this.Load += new System.EventHandler(this.Funcionarios_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+<<<<<<< Updated upstream
+=======
+            ((System.ComponentModel.ISupportInitialize)(this.funcionariosBindingSource2)).EndInit();
+>>>>>>> Stashed changes
             ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.funcionariosBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.funcionariosBindingSource)).EndInit();
+<<<<<<< Updated upstream
             ((System.ComponentModel.ISupportInitialize)(this.generosBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cargosBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.estabelecimentosBindingSource)).EndInit();
+=======
+>>>>>>> Stashed changes
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -506,23 +689,17 @@
 
         private System.Windows.Forms.MaskedTextBox mtxCPF;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btLimpar;
-        private System.Windows.Forms.Button btExcluir;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.MaskedTextBox mtxTelefone;
         private System.Windows.Forms.TextBox txNome;
         private System.Windows.Forms.Label nomeLabel;
         private System.Windows.Forms.TextBox txID;
-        private System.Windows.Forms.Button btAlterar;
-        private System.Windows.Forms.Button btIncluir;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btConsultar;
         private System.Windows.Forms.Label telefoneLabel;
         private System.Windows.Forms.TextBox txEmail;
         private System.Windows.Forms.Label emailLabel;
         private System.Windows.Forms.TextBox txSalario;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cbGenero;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox cbCargo;
@@ -530,8 +707,11 @@
         private System.Windows.Forms.ComboBox cbEstabelecimento;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.CheckBox cbSenha;
+<<<<<<< Updated upstream
         private System.Windows.Forms.DateTimePicker dtpDataNascimento;
         private System.Windows.Forms.Label label8;
+=======
+>>>>>>> Stashed changes
         private dameta_dbDataSet dameta_dbDataSet;
         private System.Windows.Forms.BindingSource funcionariosBindingSource;
         private dameta_dbDataSetTableAdapters.funcionariosTableAdapter funcionariosTableAdapter;
@@ -546,8 +726,18 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cargosidDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn salarioDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn estabelecimentosidDataGridViewTextBoxColumn;
+<<<<<<< Updated upstream
         private System.Windows.Forms.DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn cPFDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn telefoneDataGridViewTextBoxColumn;
+=======
+        private System.Windows.Forms.BindingSource funcionariosBindingSource1;
+        private System.Windows.Forms.BindingSource funcionariosBindingSource2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btConsultar;
+>>>>>>> Stashed changes
     }
 }
