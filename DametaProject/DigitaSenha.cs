@@ -13,10 +13,6 @@ namespace DametaProject
     public partial class DigitaSenha : Form
     {
         public Senha Dado;
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
         public DigitaSenha()
         {
             InitializeComponent();
@@ -37,19 +33,11 @@ namespace DametaProject
                     "Registro Concluído com sucesso",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
-<<<<<<< Updated upstream
-                this.DialogResult = DialogResult.OK;
-                this.Close();
-                Dado.senha = txSenha.Text;
-            }
-            
-=======
                 Dado.senha = txSenha.Text;
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
 
->>>>>>> Stashed changes
         }
     }
 }
