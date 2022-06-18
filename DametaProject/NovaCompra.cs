@@ -34,7 +34,6 @@ namespace DametaProject
         private void btSair_Click(object sender, EventArgs e)
         {
             form_carrinho.Close();
-            this.Close();
             form_welcome.Show();
         }
     }

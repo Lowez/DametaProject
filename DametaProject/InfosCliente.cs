@@ -101,7 +101,7 @@ namespace DametaProject
         private void btConfirmar_Click(object sender, EventArgs e)
         {
             // Fecha os demais forms e habilita o Form de Carrinho
-            form_novacompra.Close();
+            form_novacompra.Hide();
             form_premiumUserCheck.Close();
             form_carrinho.Enabled = true;
             this.Close();
