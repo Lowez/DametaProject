@@ -404,7 +404,6 @@
         private System.Windows.Forms.TextBox txNomeProd;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.RadioButton rbtQtd;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txTipoProd;
