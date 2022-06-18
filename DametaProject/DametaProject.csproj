@@ -47,6 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cedulas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cedulas.Designer.cs">
+      <DependentUpon>Cedulas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Clientes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -58,6 +64,12 @@
     </Compile>
     <Compile Include="CodigoValidacao.Designer.cs">
       <DependentUpon>CodigoValidacao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cartao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cartao.Designer.cs">
+      <DependentUpon>Cartao.cs</DependentUpon>
     </Compile>
     <Compile Include="dameta_dbDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -76,11 +88,11 @@
     <Compile Include="Estabelecimentos.Designer.cs">
       <DependentUpon>Estabelecimentos.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="FormaDePagamento.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="FormaDePagamento.Designer.cs">
+      <DependentUpon>FormaDePagamento.cs</DependentUpon>
     </Compile>
     <Compile Include="Fornecedores.cs">
       <SubType>Form</SubType>
@@ -124,11 +136,19 @@
     <Compile Include="Produtos.Designer.cs">
       <DependentUpon>Produtos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Cedulas.resx">
+      <DependentUpon>Cedulas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Clientes.resx">
       <DependentUpon>Clientes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CodigoValidacao.resx">
       <DependentUpon>CodigoValidacao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cartao.resx">
+      <DependentUpon>Cartao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DigitaSenha.resx">
       <DependentUpon>DigitaSenha.cs</DependentUpon>
@@ -136,8 +156,8 @@
     <EmbeddedResource Include="Estabelecimentos.resx">
       <DependentUpon>Estabelecimentos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="FormaDePagamento.resx">
+      <DependentUpon>FormaDePagamento.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Fornecedores.resx">
       <DependentUpon>Fornecedores.cs</DependentUpon>
@@ -201,7 +221,6 @@
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Report1.rdlc" />
     <EmbeddedResource Include="ResetSenha.resx">
       <DependentUpon>ResetSenha.cs</DependentUpon>
     </EmbeddedResource>
