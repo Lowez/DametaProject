@@ -22,96 +22,27 @@ namespace DametaProject
             this.inserindo = isInserindo;
         }
 
-        private void estabelecimentos_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void AtualizaListaDeEstabelecimentos()
         {
             this.estabelecimentosTableAdapter.Fill(this.dameta_dbDataSet.estabelecimentos);
         }
 
-
-        private void btIncluir_Click(object sender, EventArgs e)
+        private void Estabelecimentos_Load(object sender, EventArgs e)
         {
-            SqlConnection conn;
-            SqlCommand comm;
-            bool bIsOperationOK = true;
-
-            string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
-
-            conn = new SqlConnection(connectionString);
-
-            comm = new SqlCommand(
-                "INSERT INTO estabelecimentos (nome, nome_rua, numero, telefone, CEP, cidades_id) " +
-                "VALUES (@nome,@nome_rua, @numero, @telefone, @CEP, @cidades_id", conn);
-
-            comm.Parameters.Add("@nome", System.Data.SqlDbType.NVarChar);
-            comm.Parameters["@nome"].Value = txNome.Text;
-
-            comm.Parameters.Add("@nome_rua", System.Data.SqlDbType.NVarChar);
-            comm.Parameters["@nome_rua"].Value = txRua.Text;
-
-            comm.Parameters.Add("@numero", System.Data.SqlDbType.Int);
-            comm.Parameters["@numero"].Value = txNome.Text;
-
-            comm.Parameters.Add("@telefone", System.Data.SqlDbType.NVarChar);
-            comm.Parameters["@telefone"].Value = mtxTelefone.Text;
-
-            comm.Parameters.Add("@CEP", System.Data.SqlDbType.NVarChar);
-            comm.Parameters["@CEP"].Value = mtxCEP.Text;
-
-            comm.Parameters.Add("@cidades_id", System.Data.SqlDbType.NVarChar);
-            comm.Parameters["@cidades_id"].Value = cbCidade.SelectedValue;
-
-
-            try
+            if (inserindo)
             {
-                try
-                {
-                    // Abre a conexão com o Banco de Dados
-                    conn.Open();
-                }
-                catch (Exception ex)
-                {
-                    bIsOperationOK = false;
-                    MessageBox.Show(ex.Message,
-                        "Erro ao tentar abrir o Banco de Dados",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                }
-
-                try
-                {
-                    comm.ExecuteNonQuery();
-                }
-                catch (Exception ex)
-                {
-                    bIsOperationOK = false;
-                    MessageBox.Show(ex.Message,
-                        "Erro ao tentar executar o comando SQL.",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                }
+                btAlterar.Enabled = false;
+                btExcluir.Enabled = false;
+                btConsultar.Enabled = false;
+                btIncluir.Enabled = true;
+                btLimpar.Enabled = true;
             }
-            catch { }
-            finally
-            {
-                // Fecha a conexão com o Bando de Dados
-                conn.Close();
-
-                if (bIsOperationOK == true)
-                {
-                    MessageBox.Show("Cliente Cadastrado com sucesso!",
-                        "INSERT",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
-
-                    AtualizaListaDeEstabelecimentos();
-                    btLimpar_Click(sender, e);
-                }
-            }
+            // TODO: This line of code loads data into the 'dameta_dbDataSet.estabelecimentos' table. You can move, or remove it, as needed.
+            this.estabelecimentosTableAdapter.Fill(this.dameta_dbDataSet.estabelecimentos);
+            // TODO: This line of code loads data into the 'dameta_dbDataSet.cidades' table. You can move, or remove it, as needed.
+            this.cidadesTableAdapter.Fill(this.dameta_dbDataSet.cidades);
+            AtualizaListaDeEstabelecimentos();
+            btLimpar_Click(sender, e);
         }
 
         private void btAlterar_Click(object sender, EventArgs e)
@@ -138,7 +69,7 @@ namespace DametaProject
             comm.Parameters["@nome_rua"].Value = txRua.Text;
 
             comm.Parameters.Add("@numero", System.Data.SqlDbType.Int);
-            comm.Parameters["@numero"].Value = txNome.Text;
+            comm.Parameters["@numero"].Value = Convert.ToInt32(txNumero.Text);
 
             comm.Parameters.Add("@telefone", System.Data.SqlDbType.NVarChar);
             comm.Parameters["@telefone"].Value = mtxTelefone.Text;
@@ -184,8 +115,8 @@ namespace DametaProject
 
                 if (bIsOperationOK == true)
                 {
-                    MessageBox.Show("Registro Alterado!",
-                        "UPDATE",
+                    MessageBox.Show("Estabelecimento alterado com sucesso!",
+                        "Registro Alterado!",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
                 }
@@ -246,8 +177,8 @@ namespace DametaProject
 
                 if (bIsOperationOK == true)
                 {
-                    MessageBox.Show("Registro Excluído!",
-                        "DELETE",
+                    MessageBox.Show("Estabelecimento excluído com sucesso!",
+                        "Registro Excluído!",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
                 }
@@ -266,7 +197,6 @@ namespace DametaProject
             txNumero.Clear();
             mtxTelefone.Clear();
             cbCidade.Text = "";
-
         }
 
         private void btConsultar_Click(object sender, EventArgs e)
@@ -281,10 +211,8 @@ namespace DametaProject
             conn = new SqlConnection(connectionString);
 
             comm = new SqlCommand(
-                "SELECT estab.id, estab.nome, estab.CEP, estab.nome_rua, estab.numero, estab.telefone, " +
-                "func.telefone, func.generos_id, func.cargos_id, func.estabelecimentos_id, gen.id, gen.nome, " +
-                "cid.id, cid.nome " +
-                "FROM estabelecimento AS estab " +
+                "SELECT estab.id, estab.nome, estab.CEP, estab.nome_rua, estab.numero, estab.telefone, estab.cidades_id, cid.id, cid.nome AS cidNome " +
+                "FROM estabelecimentos AS estab " +
                 "INNER JOIN cidades AS cid ON cid.id = estab.cidades_id " +
                 "WHERE estab.id = @ID", conn);
 
@@ -315,7 +243,7 @@ namespace DametaProject
                     if (reader.Read())
                     {
                         txNome.Text = reader["nome"].ToString();
-                        cbCidade.Text = reader["nome"].ToString();
+                        cbCidade.Text = reader["cidNome"].ToString();
                         txRua.Text = reader["nome_rua"].ToString();
                         mtxCEP.Text = reader["CEP"].ToString();
                         txNumero.Text = reader["numero"].ToString();
@@ -340,6 +268,5 @@ namespace DametaProject
             }
 
         }
-
     }
 }

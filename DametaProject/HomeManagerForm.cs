@@ -25,12 +25,14 @@ namespace DametaProject
 
         private void btEstabelecimentos_Click(object sender, EventArgs e)
         {
-
+            HomeEstabelecimentos form = new HomeEstabelecimentos();
+            form.Show();
         }
 
         private void btFuncionarios_Click(object sender, EventArgs e)
         {
-
+            Funcionarios form = new Funcionarios();
+            form.Show();
         }
     }
 }

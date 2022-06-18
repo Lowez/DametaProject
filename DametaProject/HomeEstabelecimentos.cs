@@ -29,5 +29,11 @@ namespace DametaProject
             Estabelecimentos form = new Estabelecimentos(true);
             form.Show();
         }
+
+        private void btAlterar_Click(object sender, EventArgs e)
+        {
+            Estabelecimentos form = new Estabelecimentos(false);
+            form.Show();
+        }
     }
 }

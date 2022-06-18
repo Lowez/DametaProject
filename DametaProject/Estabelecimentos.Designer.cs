@@ -358,6 +358,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Estabelecimentos";
             this.Text = "Estabelecimentos";
+            this.Load += new System.EventHandler(this.Estabelecimentos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.cidadesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
