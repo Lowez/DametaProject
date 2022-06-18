@@ -232,7 +232,7 @@
             // 
             // txValorUnit
             // 
-            this.txValorUnit.Location = new System.Drawing.Point(19, 163);
+            this.txValorUnit.Location = new System.Drawing.Point(19, 168);
             this.txValorUnit.Name = "txValorUnit";
             this.txValorUnit.ReadOnly = true;
             this.txValorUnit.Size = new System.Drawing.Size(166, 20);
