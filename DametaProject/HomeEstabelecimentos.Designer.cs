@@ -33,9 +33,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dameta_dbDataSet = new DametaProject.dameta_dbDataSet();
-            this.estabelecimentosBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.estabelecimentosTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.estabelecimentosTableAdapter();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nomeruaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,10 +40,13 @@
             this.telefoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cEPDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cidadesidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.estabelecimentosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dameta_dbDataSet = new DametaProject.dameta_dbDataSet();
+            this.estabelecimentosTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.estabelecimentosTableAdapter();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.estabelecimentosBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // btInserir
@@ -95,20 +95,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(764, 310);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // dameta_dbDataSet
-            // 
-            this.dameta_dbDataSet.DataSetName = "dameta_dbDataSet";
-            this.dameta_dbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // estabelecimentosBindingSource
-            // 
-            this.estabelecimentosBindingSource.DataMember = "estabelecimentos";
-            this.estabelecimentosBindingSource.DataSource = this.dameta_dbDataSet;
-            // 
-            // estabelecimentosTableAdapter
-            // 
-            this.estabelecimentosTableAdapter.ClearBeforeFill = true;
+            this.dataGridView1.DoubleClick += new System.EventHandler(this.btAlterar_Click);
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -153,6 +140,20 @@
             this.cidadesidDataGridViewTextBoxColumn.HeaderText = "cidades_id";
             this.cidadesidDataGridViewTextBoxColumn.Name = "cidadesidDataGridViewTextBoxColumn";
             // 
+            // estabelecimentosBindingSource
+            // 
+            this.estabelecimentosBindingSource.DataMember = "estabelecimentos";
+            this.estabelecimentosBindingSource.DataSource = this.dameta_dbDataSet;
+            // 
+            // dameta_dbDataSet
+            // 
+            this.dameta_dbDataSet.DataSetName = "dameta_dbDataSet";
+            this.dameta_dbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // estabelecimentosTableAdapter
+            // 
+            this.estabelecimentosTableAdapter.ClearBeforeFill = true;
+            // 
             // HomeEstabelecimentos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -166,8 +167,8 @@
             this.Load += new System.EventHandler(this.HomeEstabelecimentos_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.estabelecimentosBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
