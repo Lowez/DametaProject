@@ -506,7 +506,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.BindingSource generosBindingSource;
         private dameta_dbDataSetTableAdapters.generosTableAdapter generosTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nomeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nascimentoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn cPFDataGridViewTextBoxColumn;
