@@ -43,16 +43,13 @@
             this.lblValorTotal = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblDiv = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.txValorTParcial = new System.Windows.Forms.TextBox();
+            this.txValorParcial = new System.Windows.Forms.TextBox();
             this.txValorUnit = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.btRemover = new System.Windows.Forms.Button();
             this.btAdicionar = new System.Windows.Forms.Button();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.rbtQtd = new System.Windows.Forms.RadioButton();
             this.label4 = new System.Windows.Forms.Label();
             this.txTipoProd = new System.Windows.Forms.TextBox();
@@ -124,6 +121,7 @@
             this.btConcluirCompra.TabIndex = 1;
             this.btConcluirCompra.Text = "Concluir";
             this.btConcluirCompra.UseVisualStyleBackColor = false;
+            this.btConcluirCompra.Click += new System.EventHandler(this.btConcluirCompra_Click);
             // 
             // txCodigoProd
             // 
@@ -182,16 +180,13 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.lblDiv);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.txValorTParcial);
+            this.groupBox1.Controls.Add(this.txValorParcial);
             this.groupBox1.Controls.Add(this.txValorUnit);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.btRemover);
             this.groupBox1.Controls.Add(this.btAdicionar);
-            this.groupBox1.Controls.Add(this.radioButton1);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.rbtQtd);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.txTipoProd);
@@ -209,16 +204,14 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Produto à adicionar";
             // 
-            // label5
+            // lblDiv
             // 
-            this.label5.BackColor = System.Drawing.SystemColors.Control;
-            this.label5.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label5.Location = new System.Drawing.Point(6, 197);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(394, 23);
-            this.label5.TabIndex = 22;
-            this.label5.Text = "_________________________________________________________________________________" +
-    "____________________________________________";
+            this.lblDiv.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.lblDiv.Location = new System.Drawing.Point(6, 197);
+            this.lblDiv.Name = "lblDiv";
+            this.lblDiv.Size = new System.Drawing.Size(394, 23);
+            this.lblDiv.TabIndex = 22;
+            this.lblDiv.Text = "_____________________________________________________________________";
             // 
             // label6
             // 
@@ -229,14 +222,13 @@
             this.label6.TabIndex = 21;
             this.label6.Text = "Valor Parcial";
             // 
-            // txValorTParcial
+            // txValorParcial
             // 
-            this.txValorTParcial.Location = new System.Drawing.Point(214, 236);
-            this.txValorTParcial.Name = "txValorTParcial";
-            this.txValorTParcial.ReadOnly = true;
-            this.txValorTParcial.Size = new System.Drawing.Size(166, 20);
-            this.txValorTParcial.TabIndex = 20;
-            this.txValorTParcial.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txValorParcial.Location = new System.Drawing.Point(214, 236);
+            this.txValorParcial.Name = "txValorParcial";
+            this.txValorParcial.ReadOnly = true;
+            this.txValorParcial.Size = new System.Drawing.Size(75, 20);
+            this.txValorParcial.TabIndex = 20;
             // 
             // txValorUnit
             // 
@@ -245,7 +237,6 @@
             this.txValorUnit.ReadOnly = true;
             this.txValorUnit.Size = new System.Drawing.Size(166, 20);
             this.txValorUnit.TabIndex = 19;
-            this.txValorUnit.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label7
             // 
@@ -258,7 +249,7 @@
             // 
             // btRemover
             // 
-            this.btRemover.Location = new System.Drawing.Point(209, 287);
+            this.btRemover.Location = new System.Drawing.Point(214, 287);
             this.btRemover.Name = "btRemover";
             this.btRemover.Size = new System.Drawing.Size(75, 23);
             this.btRemover.TabIndex = 17;
@@ -273,34 +264,6 @@
             this.btAdicionar.TabIndex = 16;
             this.btAdicionar.Text = "Adicionar";
             this.btAdicionar.UseVisualStyleBackColor = true;
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(209, 171);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(14, 13);
-            this.radioButton1.TabIndex = 15;
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(229, 168);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(65, 20);
-            this.textBox2.TabIndex = 14;
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label5.Location = new System.Drawing.Point(226, 152);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(31, 13);
-            this.label5.TabIndex = 13;
-            this.label5.Text = "Peso";
             // 
             // rbtQtd
             // 
@@ -332,16 +295,16 @@
             // 
             // txQtd
             // 
-            this.txQtd.Location = new System.Drawing.Point(120, 236);
+            this.txQtd.Location = new System.Drawing.Point(110, 236);
             this.txQtd.Name = "txQtd";
-            this.txQtd.Size = new System.Drawing.Size(65, 20);
+            this.txQtd.Size = new System.Drawing.Size(75, 20);
             this.txQtd.TabIndex = 9;
-            this.txQtd.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txQtd.TextChanged += new System.EventHandler(this.txQtd_TextChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(117, 220);
+            this.label3.Location = new System.Drawing.Point(107, 220);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 13);
             this.label3.TabIndex = 8;
@@ -427,18 +390,14 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblTotalItens;
         private System.Windows.Forms.TextBox txNomeProd;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.RadioButton rbtQtd;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txTipoProd;
-        private System.Windows.Forms.TextBox txQtd;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btRemover;
         private System.Windows.Forms.Button btAdicionar;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txValorTParcial;
+        private System.Windows.Forms.TextBox txValorParcial;
         private System.Windows.Forms.TextBox txValorUnit;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Código_Produto;
@@ -446,7 +405,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Qtd;
         private System.Windows.Forms.DataGridViewTextBoxColumn ValorUnit;
         private System.Windows.Forms.DataGridViewTextBoxColumn ValorParcial;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btSair;
+        private System.Windows.Forms.Label lblDiv;
+        private System.Windows.Forms.TextBox txQtd;
     }
 }

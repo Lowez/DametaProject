@@ -33,11 +33,11 @@ namespace DametaProject
                     "Registro Concluído com sucesso",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
+                Dado.senha = txSenha.Text;
                 this.DialogResult = DialogResult.OK;
                 this.Close();
-                Dado.senha = txSenha.Text;
             }
-            
+
         }
     }
 }

@@ -17,12 +17,17 @@ namespace DametaProject
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            // TODO: This line of code loads data into the 'dameta_dbDataSet.fornecedores' table. You can move, or remove it, as needed.
-            this.fornecedoresTableAdapter.Fill(this.dameta_dbDataSet.fornecedores);
 
-            this.reportViewer1.RefreshReport();
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // Form1
+            // 
+            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Name = "Form1";
+            this.ResumeLayout(false);
+
         }
     }
 }

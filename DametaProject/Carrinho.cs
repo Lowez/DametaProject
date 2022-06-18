@@ -13,7 +13,8 @@ namespace DametaProject
 {
     public partial class Carrinho : Form
     {
-        public Form form_inicial;
+        Form form_inicial;
+
         public Carrinho(string nome, WelcomeForm form)
         {
             InitializeComponent();
@@ -102,6 +103,23 @@ namespace DametaProject
         {
             this.Close();
             form_inicial.Show();
+        }
+
+        private void txQtd_TextChanged(object sender, EventArgs e)
+        {
+            if (txQtd.Text != "")
+            {
+                double qtd = Convert.ToDouble(txQtd.Text);
+                double preco_unit = Convert.ToDouble(txValorUnit.Text);
+
+                txValorParcial.Text = (qtd * preco_unit).ToString();
+            }
+        }
+
+        private void btConcluirCompra_Click(object sender, EventArgs e)
+        {
+            FormaDePagamento formPagamento = new FormaDePagamento();
+            formPagamento.Show();
         }
     }
 }
