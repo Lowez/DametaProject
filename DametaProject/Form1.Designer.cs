@@ -19,10 +19,5 @@
             }
             base.Dispose(disposing);
         }
-
-        
-        private dameta_dbDataSet dameta_dbDataSet;
-        private System.Windows.Forms.BindingSource fornecedoresBindingSource;
-        private dameta_dbDataSetTableAdapters.fornecedoresTableAdapter fornecedoresTableAdapter;
     }
 }
