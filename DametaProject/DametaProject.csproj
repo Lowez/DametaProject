@@ -65,6 +65,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cartao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cartao.Designer.cs">
+      <DependentUpon>Cartao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cedulas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cedulas.Designer.cs">
+      <DependentUpon>Cedulas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Clientes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,6 +114,12 @@
     </Compile>
     <Compile Include="Estoque.Designer.cs">
       <DependentUpon>Estoque.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormaDePagamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormaDePagamento.Designer.cs">
+      <DependentUpon>FormaDePagamento.cs</DependentUpon>
     </Compile>
     <Compile Include="RelatorioDeFuncionarios.cs">
       <SubType>Form</SubType>
@@ -165,6 +183,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Cartao.resx">
+      <DependentUpon>Cartao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cedulas.resx">
+      <DependentUpon>Cedulas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Clientes.resx">
       <DependentUpon>Clientes.cs</DependentUpon>
     </EmbeddedResource>
@@ -179,6 +203,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Estoque.resx">
       <DependentUpon>Estoque.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormaDePagamento.resx">
+      <DependentUpon>FormaDePagamento.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RelatorioDeFuncionarios.resx">
       <DependentUpon>RelatorioDeFuncionarios.cs</DependentUpon>
