@@ -13,16 +13,14 @@ namespace DametaProject
     public partial class NovaCompra : Form
     {
         Carrinho form_carrinho;
-        WelcomeForm form_welcome;
+        WelcomeForm form_inicial;
 
-        public NovaCompra(string nome, WelcomeForm form)
+        public NovaCompra(WelcomeForm form, Carrinho form2)
         {
             InitializeComponent();
 
-            form_carrinho = new Carrinho(nome, form);
-            form_carrinho.Show();
-
-            form_welcome = form;
+            form_inicial = form;
+            form_carrinho = form2;
         }
 
         private void btNovaCompra_Click(object sender, EventArgs e)
@@ -34,7 +32,7 @@ namespace DametaProject
         private void btSair_Click(object sender, EventArgs e)
         {
             form_carrinho.Close();
-            form_welcome.Show();
+            form_inicial.Show();
         }
     }
 }

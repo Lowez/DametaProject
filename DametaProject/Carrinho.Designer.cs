@@ -118,7 +118,7 @@
             this.btConcluirCompra.Location = new System.Drawing.Point(821, 503);
             this.btConcluirCompra.Name = "btConcluirCompra";
             this.btConcluirCompra.Size = new System.Drawing.Size(193, 38);
-            this.btConcluirCompra.TabIndex = 1;
+            this.btConcluirCompra.TabIndex = 7;
             this.btConcluirCompra.Text = "Concluir";
             this.btConcluirCompra.UseVisualStyleBackColor = false;
             this.btConcluirCompra.Click += new System.EventHandler(this.btConcluirCompra_Click);
@@ -128,7 +128,7 @@
             this.txCodigoProd.Location = new System.Drawing.Point(19, 53);
             this.txCodigoProd.Name = "txCodigoProd";
             this.txCodigoProd.Size = new System.Drawing.Size(166, 20);
-            this.txCodigoProd.TabIndex = 2;
+            this.txCodigoProd.TabIndex = 1;
             // 
             // lblCodigoProd
             // 
@@ -153,7 +153,7 @@
             this.btConsultar.Location = new System.Drawing.Point(214, 50);
             this.btConsultar.Name = "btConsultar";
             this.btConsultar.Size = new System.Drawing.Size(103, 23);
-            this.btConsultar.TabIndex = 6;
+            this.btConsultar.TabIndex = 2;
             this.btConsultar.Text = "Buscar";
             this.btConsultar.UseVisualStyleBackColor = true;
             this.btConsultar.Click += new System.EventHandler(this.btConsultar_Click);
@@ -228,7 +228,7 @@
             this.txValorParcial.Name = "txValorParcial";
             this.txValorParcial.ReadOnly = true;
             this.txValorParcial.Size = new System.Drawing.Size(75, 20);
-            this.txValorParcial.TabIndex = 20;
+            this.txValorParcial.TabIndex = 0;
             // 
             // txValorUnit
             // 
@@ -236,7 +236,7 @@
             this.txValorUnit.Name = "txValorUnit";
             this.txValorUnit.ReadOnly = true;
             this.txValorUnit.Size = new System.Drawing.Size(166, 20);
-            this.txValorUnit.TabIndex = 19;
+            this.txValorUnit.TabIndex = 0;
             // 
             // label7
             // 
@@ -249,21 +249,23 @@
             // 
             // btRemover
             // 
+            this.btRemover.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.btRemover.Location = new System.Drawing.Point(214, 287);
             this.btRemover.Name = "btRemover";
             this.btRemover.Size = new System.Drawing.Size(75, 23);
-            this.btRemover.TabIndex = 17;
+            this.btRemover.TabIndex = 5;
             this.btRemover.Text = "Remover";
-            this.btRemover.UseVisualStyleBackColor = true;
+            this.btRemover.UseVisualStyleBackColor = false;
             // 
             // btAdicionar
             // 
+            this.btAdicionar.BackColor = System.Drawing.Color.YellowGreen;
             this.btAdicionar.Location = new System.Drawing.Point(110, 287);
             this.btAdicionar.Name = "btAdicionar";
             this.btAdicionar.Size = new System.Drawing.Size(75, 23);
-            this.btAdicionar.TabIndex = 16;
+            this.btAdicionar.TabIndex = 4;
             this.btAdicionar.Text = "Adicionar";
-            this.btAdicionar.UseVisualStyleBackColor = true;
+            this.btAdicionar.UseVisualStyleBackColor = false;
             // 
             // rbtQtd
             // 
@@ -291,14 +293,14 @@
             this.txTipoProd.Name = "txTipoProd";
             this.txTipoProd.ReadOnly = true;
             this.txTipoProd.Size = new System.Drawing.Size(166, 20);
-            this.txTipoProd.TabIndex = 10;
+            this.txTipoProd.TabIndex = 0;
             // 
             // txQtd
             // 
             this.txQtd.Location = new System.Drawing.Point(110, 236);
             this.txQtd.Name = "txQtd";
             this.txQtd.Size = new System.Drawing.Size(75, 20);
-            this.txQtd.TabIndex = 9;
+            this.txQtd.TabIndex = 3;
             this.txQtd.TextChanged += new System.EventHandler(this.txQtd_TextChanged);
             // 
             // label3
@@ -316,7 +318,7 @@
             this.txNomeProd.Name = "txNomeProd";
             this.txNomeProd.ReadOnly = true;
             this.txNomeProd.Size = new System.Drawing.Size(166, 20);
-            this.txNomeProd.TabIndex = 7;
+            this.txNomeProd.TabIndex = 0;
             // 
             // label1
             // 
@@ -341,10 +343,10 @@
             // btSair
             // 
             this.btSair.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.btSair.Location = new System.Drawing.Point(12, 12);
+            this.btSair.Location = new System.Drawing.Point(15, 503);
             this.btSair.Name = "btSair";
-            this.btSair.Size = new System.Drawing.Size(111, 38);
-            this.btSair.TabIndex = 12;
+            this.btSair.Size = new System.Drawing.Size(193, 38);
+            this.btSair.TabIndex = 6;
             this.btSair.Text = "Sair";
             this.btSair.UseVisualStyleBackColor = false;
             this.btSair.Click += new System.EventHandler(this.btSair_Click);
@@ -353,6 +355,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1027, 555);
             this.Controls.Add(this.btSair);
             this.Controls.Add(this.lblTotalItens);
@@ -366,6 +369,7 @@
             this.Name = "Carrinho";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Bem vindo(a) [Nome do Usuário]";
+            this.Shown += new System.EventHandler(this.Carrinho_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.dvgCarrinho)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).EndInit();
             this.groupBox1.ResumeLayout(false);

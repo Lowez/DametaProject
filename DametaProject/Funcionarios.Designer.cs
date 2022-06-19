@@ -477,6 +477,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.telefoneLabel);
             this.Name = "Funcionarios";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Funcionarios";
             this.Load += new System.EventHandler(this.Funcionarios_Load);
             ((System.ComponentModel.ISupportInitialize)(this.estabelecimentosBindingSource)).EndInit();

@@ -12,9 +12,29 @@ namespace DametaProject
 {
     public partial class Cedulas : Form
     {
-        public Cedulas()
+        FormaDePagamento form_formaDePagamento;
+
+        public Cedulas(FormaDePagamento form)
         {
             InitializeComponent();
+
+            form_formaDePagamento = form;
+        }
+
+        private void btTerminar_Click(object sender, EventArgs e)
+        {
+            if (txValorPago.Text != "")
+            {
+                this.Close();
+                form_formaDePagamento.Close();
+            } else
+            {
+                MessageBox.Show("Informe o valor pago pelo cliente",
+                    "Erro!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                txValorPago.Focus();
+            }
         }
     }
 }

@@ -72,9 +72,9 @@
             // btDebito
             // 
             this.btDebito.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btDebito.Location = new System.Drawing.Point(329, 160);
+            this.btDebito.Location = new System.Drawing.Point(317, 97);
             this.btDebito.Name = "btDebito";
-            this.btDebito.Size = new System.Drawing.Size(99, 30);
+            this.btDebito.Size = new System.Drawing.Size(130, 65);
             this.btDebito.TabIndex = 4;
             this.btDebito.Text = "Débito";
             this.btDebito.UseVisualStyleBackColor = true;
@@ -84,9 +84,9 @@
             // btCredito
             // 
             this.btCredito.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btCredito.Location = new System.Drawing.Point(329, 189);
+            this.btCredito.Location = new System.Drawing.Point(317, 157);
             this.btCredito.Name = "btCredito";
-            this.btCredito.Size = new System.Drawing.Size(99, 30);
+            this.btCredito.Size = new System.Drawing.Size(130, 65);
             this.btCredito.TabIndex = 5;
             this.btCredito.Text = "Crédito";
             this.btCredito.UseVisualStyleBackColor = true;

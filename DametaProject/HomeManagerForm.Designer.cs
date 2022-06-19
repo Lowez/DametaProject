@@ -71,6 +71,7 @@
             this.btClientes.Size = new System.Drawing.Size(130, 80);
             this.btClientes.TabIndex = 2;
             this.btClientes.UseVisualStyleBackColor = true;
+            this.btClientes.Click += new System.EventHandler(this.btClientes_Click);
             // 
             // btProdutos
             // 
@@ -80,6 +81,7 @@
             this.btProdutos.Size = new System.Drawing.Size(130, 80);
             this.btProdutos.TabIndex = 3;
             this.btProdutos.UseVisualStyleBackColor = true;
+            this.btProdutos.Click += new System.EventHandler(this.btProdutos_Click);
             // 
             // btFornecedores
             // 
@@ -89,6 +91,7 @@
             this.btFornecedores.Size = new System.Drawing.Size(130, 80);
             this.btFornecedores.TabIndex = 4;
             this.btFornecedores.UseVisualStyleBackColor = true;
+            this.btFornecedores.Click += new System.EventHandler(this.btFornecedores_Click);
             // 
             // label1
             // 

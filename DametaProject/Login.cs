@@ -99,9 +99,8 @@ namespace DametaProject
                             }
                             else
                             {
-                                NovaCompra nova_compra = new NovaCompra(reader["nome"].ToString(), form_inicial);
-
-                                nova_compra.Show();
+                                Carrinho formCarrinho = new Carrinho(reader["nome"].ToString(), form_inicial, true);
+                                formCarrinho.Show();
                                 form_inicial.Hide();
                                 this.Close();
                             }
