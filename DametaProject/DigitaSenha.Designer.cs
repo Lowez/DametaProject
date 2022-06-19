@@ -108,6 +108,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txConfirmacaoSenha);
             this.Name = "DigitaSenha";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Criar Senha";
             this.ResumeLayout(false);
             this.PerformLayout();

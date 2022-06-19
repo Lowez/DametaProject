@@ -65,6 +65,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
+=======
+    <Compile Include="Cartao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cartao.Designer.cs">
+      <DependentUpon>Cartao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cedulas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cedulas.Designer.cs">
+      <DependentUpon>Cedulas.cs</DependentUpon>
+    </Compile>
+>>>>>>> ee2f8c261431cbe82d2f3f5d0acd2f48e7f3d718
     <Compile Include="Clientes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,10 +113,35 @@
       <DependentUpon>estabelecimentos.cs</DependentUpon>
     </Compile>
     <Compile Include="Estoque.cs">
+<<<<<<< HEAD
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Estoque.Designer.cs">
       <DependentUpon>Estoque.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelatorioDeFuncionarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RelatorioDeFuncionarios.Designer.cs">
+      <DependentUpon>RelatorioDeFuncionarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelatorioFaturamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RelatorioFaturamento.Designer.cs">
+      <DependentUpon>RelatorioFaturamento.cs</DependentUpon>
+=======
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Estoque.Designer.cs">
+      <DependentUpon>Estoque.cs</DependentUpon>
+>>>>>>> ee2f8c261431cbe82d2f3f5d0acd2f48e7f3d718
+    </Compile>
+    <Compile Include="RelatorioFornecedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RelatorioFornecedores.Designer.cs">
+      <DependentUpon>RelatorioFornecedores.cs</DependentUpon>
     </Compile>
     <Compile Include="RelatorioDeFuncionarios.cs">
       <SubType>Form</SubType>
@@ -165,6 +205,15 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+<<<<<<< HEAD
+=======
+    <EmbeddedResource Include="Cartao.resx">
+      <DependentUpon>Cartao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cedulas.resx">
+      <DependentUpon>Cedulas.cs</DependentUpon>
+    </EmbeddedResource>
+>>>>>>> ee2f8c261431cbe82d2f3f5d0acd2f48e7f3d718
     <EmbeddedResource Include="Clientes.resx">
       <DependentUpon>Clientes.cs</DependentUpon>
     </EmbeddedResource>
@@ -179,6 +228,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Estoque.resx">
       <DependentUpon>Estoque.cs</DependentUpon>
+<<<<<<< HEAD
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelatorioDeFuncionarios.resx">
+      <DependentUpon>RelatorioDeFuncionarios.cs</DependentUpon>
+=======
+>>>>>>> ee2f8c261431cbe82d2f3f5d0acd2f48e7f3d718
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelatorioFaturamento.resx">
+      <DependentUpon>RelatorioFaturamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelatorioFornecedores.resx">
+      <DependentUpon>RelatorioFornecedores.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RelatorioDeFuncionarios.resx">
       <DependentUpon>RelatorioDeFuncionarios.cs</DependentUpon>

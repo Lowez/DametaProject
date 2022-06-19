@@ -266,6 +266,7 @@
             this.Controls.Add(this.btConsultar);
             this.Controls.Add(this.telefoneLabel);
             this.Name = "Fornecedores";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Fornecedores";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fornecedoresBindingSource)).EndInit();

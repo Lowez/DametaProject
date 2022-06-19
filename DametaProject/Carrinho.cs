@@ -13,19 +13,26 @@ namespace DametaProject
 {
     public partial class Carrinho : Form
     {
-        Form form_inicial;
+        WelcomeForm form_inicial;
+        NovaCompra form_novacompra;
 
-        public Carrinho(string nome, WelcomeForm form)
+
+        public Carrinho(string nome, WelcomeForm form, bool is_new = false)
         {
             InitializeComponent();
 
             form_inicial = form;
 
+            if (is_new)
+            {
+                form_novacompra = new NovaCompra(form_inicial, this);
+
+                // Desabilita o carrinho em seu início, para o funcionário selecionar se vai abrir uma nova compra ou sair do sistema
+                this.Enabled = false;
+            }
+
             // Adiciona o nome do  usuário que está logando no título do formulário
             this.Text = "Bem vindo(a) " + nome;
-
-            // Desabilita o carrinho em seu início, para o funcionário selecionar se vai abrir uma nova compra ou sair do sistema
-            this.Enabled = false;
         }
 
         private void btConsultar_Click(object sender, EventArgs e)
@@ -118,7 +125,17 @@ namespace DametaProject
 
         private void btConcluirCompra_Click(object sender, EventArgs e)
         {
+<<<<<<< HEAD
 
+=======
+            FormaDePagamento form_pagamento = new FormaDePagamento();
+            form_pagamento.Show();
+        }
+
+        private void Carrinho_Shown(object sender, EventArgs e)
+        {
+            form_novacompra.Show();
+>>>>>>> ee2f8c261431cbe82d2f3f5d0acd2f48e7f3d718
         }
     }
 }

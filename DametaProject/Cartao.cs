@@ -39,15 +39,13 @@ namespace DametaProject
             this.Text = cartao;
         }
 
-        private void btIniciar_Click(object sender, EventArgs e)
+        private void Cartao_Shown(object sender, EventArgs e)
         {
             iniciaOperacao();
         }
 
         private void iniciaOperacao()
         {
-            btIniciar.Visible = false;
-            btIniciar.Enabled = false;
             btCancelar.Visible = true;
             btCancelar.Enabled = true;
 
@@ -77,7 +75,6 @@ namespace DametaProject
                     btTerminar.Enabled = true;
                     btCancelar.Visible = false;
                     btCancelar.Enabled = false;
-                    btIniciar.Visible = true;
                     timer1.Stop();
                     break;
             }
@@ -97,8 +94,6 @@ namespace DametaProject
 
             btCancelar.Visible = false;
             btCancelar.Enabled = false;
-            btIniciar.Visible = true;
-            btIniciar.Enabled = true;
         }
     }
 }

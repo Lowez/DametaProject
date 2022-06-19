@@ -31,10 +31,10 @@
             this.txSenha = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.btLogar = new System.Windows.Forms.Button();
             this.lblResetSenha = new System.Windows.Forms.LinkLabel();
             this.mtxCPF = new System.Windows.Forms.MaskedTextBox();
             this.lblFraseLogin = new System.Windows.Forms.Label();
+            this.btLogar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txSenha
@@ -64,18 +64,6 @@
             this.label2.Size = new System.Drawing.Size(41, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "Senha:";
-            // 
-            // btLogar
-            // 
-            this.btLogar.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btLogar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btLogar.Location = new System.Drawing.Point(138, 269);
-            this.btLogar.Name = "btLogar";
-            this.btLogar.Size = new System.Drawing.Size(98, 43);
-            this.btLogar.TabIndex = 3;
-            this.btLogar.Text = "Entrar";
-            this.btLogar.UseVisualStyleBackColor = false;
-            this.btLogar.Click += new System.EventHandler(this.btLogar_Click);
             // 
             // lblResetSenha
             // 
@@ -107,15 +95,27 @@
             this.lblFraseLogin.Text = "Por favor, entre com seu Usuário Operador de Caixa";
             this.lblFraseLogin.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // btLogar
+            // 
+            this.btLogar.BackColor = System.Drawing.Color.YellowGreen;
+            this.btLogar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btLogar.Location = new System.Drawing.Point(115, 263);
+            this.btLogar.Name = "btLogar";
+            this.btLogar.Size = new System.Drawing.Size(150, 47);
+            this.btLogar.TabIndex = 3;
+            this.btLogar.Text = "Entrar";
+            this.btLogar.UseVisualStyleBackColor = false;
+            this.btLogar.Click += new System.EventHandler(this.btLogar_Click);
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(377, 377);
+            this.Controls.Add(this.btLogar);
             this.Controls.Add(this.lblFraseLogin);
             this.Controls.Add(this.mtxCPF);
             this.Controls.Add(this.lblResetSenha);
-            this.Controls.Add(this.btLogar);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txSenha);
@@ -132,9 +132,9 @@
         private System.Windows.Forms.TextBox txSenha;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btLogar;
         private System.Windows.Forms.LinkLabel lblResetSenha;
         private System.Windows.Forms.MaskedTextBox mtxCPF;
         private System.Windows.Forms.Label lblFraseLogin;
+        private System.Windows.Forms.Button btLogar;
     }
 }
