@@ -115,12 +115,6 @@
     <Compile Include="Estoque.Designer.cs">
       <DependentUpon>Estoque.cs</DependentUpon>
     </Compile>
-    <Compile Include="RelatorioDeFuncionarios.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="RelatorioDeFuncionarios.Designer.cs">
-      <DependentUpon>RelatorioDeFuncionarios.cs</DependentUpon>
-    </Compile>
     <Compile Include="RelatorioFaturamento.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -138,15 +132,6 @@
     </Compile>
     <Compile Include="RelatorioDeFuncionarios.Designer.cs">
       <DependentUpon>RelatorioDeFuncionarios.cs</DependentUpon>
-    </Compile>
-    <Compile Include="RelatorioFaturamento.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="RelatorioFaturamento.Designer.cs">
-      <DependentUpon>RelatorioFaturamento.cs</DependentUpon>
-    </Compile>
-    <Compile Include="RelatorioFornecedores.Designer.cs">
-      <DependentUpon>RelatorioFornecedores.cs</DependentUpon>
     </Compile>
     <Compile Include="Fornecedores.cs">
       <SubType>Form</SubType>
@@ -221,12 +206,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RelatorioDeFuncionarios.resx">
       <DependentUpon>RelatorioDeFuncionarios.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="RelatorioFaturamento.resx">
-      <DependentUpon>RelatorioFaturamento.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="RelatorioFornecedores.resx">
-      <DependentUpon>RelatorioFornecedores.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Fornecedores.resx">
       <DependentUpon>Fornecedores.cs</DependentUpon>
