@@ -12,6 +12,8 @@ namespace DametaProject
 {
     public partial class HomeEstabelecimentos : Form
     {
+
+        public Estabelecimentos Estabelecimentos;
         public HomeEstabelecimentos()
         {
             InitializeComponent();
@@ -21,7 +23,6 @@ namespace DametaProject
         {
             // TODO: This line of code loads data into the 'dameta_dbDataSet.estabelecimentos' table. You can move, or remove it, as needed.
             this.estabelecimentosTableAdapter.Fill(this.dameta_dbDataSet.estabelecimentos);
-
         }
 
         private void btInserir_Click(object sender, EventArgs e)
@@ -30,9 +31,10 @@ namespace DametaProject
             form.Show();
         }
 
-        private void btAlterar_Click(object sender, EventArgs e)
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            Estabelecimentos form = new Estabelecimentos(false);
+            string nome="2";
+            Estabelecimentos form = new Estabelecimentos(false, nome);
             form.Show();
         }
     }
