@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dvgCarrinho = new System.Windows.Forms.DataGridView();
+            this.dgvCarrinho = new System.Windows.Forms.DataGridView();
             this.Código_Produto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Qtd = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,24 +59,32 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lblTotalItens = new System.Windows.Forms.Label();
             this.btSair = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dvgCarrinho)).BeginInit();
+            this.dtpDataCompra = new System.Windows.Forms.DateTimePicker();
+            this.gpCliente = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txNome = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCarrinho)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.gpCliente.SuspendLayout();
             this.SuspendLayout();
             // 
-            // dvgCarrinho
+            // dgvCarrinho
             // 
-            this.dvgCarrinho.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dvgCarrinho.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvCarrinho.AllowUserToAddRows = false;
+            this.dgvCarrinho.AllowUserToDeleteRows = false;
+            this.dgvCarrinho.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCarrinho.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Código_Produto,
             this.Nome,
             this.Qtd,
             this.ValorUnit,
             this.ValorParcial});
-            this.dvgCarrinho.Location = new System.Drawing.Point(446, 12);
-            this.dvgCarrinho.Name = "dvgCarrinho";
-            this.dvgCarrinho.Size = new System.Drawing.Size(569, 465);
-            this.dvgCarrinho.TabIndex = 0;
+            this.dgvCarrinho.Location = new System.Drawing.Point(446, 12);
+            this.dgvCarrinho.Name = "dgvCarrinho";
+            this.dgvCarrinho.ReadOnly = true;
+            this.dgvCarrinho.Size = new System.Drawing.Size(569, 465);
+            this.dgvCarrinho.TabIndex = 0;
             // 
             // Código_Produto
             // 
@@ -95,17 +103,20 @@
             // 
             this.Qtd.HeaderText = "Qtd";
             this.Qtd.Name = "Qtd";
+            this.Qtd.ReadOnly = true;
             this.Qtd.Width = 50;
             // 
             // ValorUnit
             // 
             this.ValorUnit.HeaderText = "ValorUnit";
             this.ValorUnit.Name = "ValorUnit";
+            this.ValorUnit.ReadOnly = true;
             // 
             // ValorParcial
             // 
             this.ValorParcial.HeaderText = "ValorParcial";
             this.ValorParcial.Name = "ValorParcial";
+            this.ValorParcial.ReadOnly = true;
             // 
             // dameta_dbDataSet
             // 
@@ -129,6 +140,7 @@
             this.txCodigoProd.Name = "txCodigoProd";
             this.txCodigoProd.Size = new System.Drawing.Size(166, 20);
             this.txCodigoProd.TabIndex = 1;
+            this.txCodigoProd.TextChanged += new System.EventHandler(this.txCodigoProd_TextChanged);
             // 
             // lblCodigoProd
             // 
@@ -197,7 +209,7 @@
             this.groupBox1.Controls.Add(this.lblCodigoProd);
             this.groupBox1.Controls.Add(this.btConsultar);
             this.groupBox1.Controls.Add(this.lblNomeProd);
-            this.groupBox1.Location = new System.Drawing.Point(12, 89);
+            this.groupBox1.Location = new System.Drawing.Point(12, 142);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(406, 335);
             this.groupBox1.TabIndex = 9;
@@ -237,6 +249,7 @@
             this.txValorUnit.ReadOnly = true;
             this.txValorUnit.Size = new System.Drawing.Size(166, 20);
             this.txValorUnit.TabIndex = 0;
+            this.txValorUnit.TextChanged += new System.EventHandler(this.txValorUnit_TextChanged);
             // 
             // label7
             // 
@@ -250,22 +263,26 @@
             // btRemover
             // 
             this.btRemover.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btRemover.Enabled = false;
             this.btRemover.Location = new System.Drawing.Point(214, 287);
             this.btRemover.Name = "btRemover";
             this.btRemover.Size = new System.Drawing.Size(75, 23);
             this.btRemover.TabIndex = 5;
             this.btRemover.Text = "Remover";
             this.btRemover.UseVisualStyleBackColor = false;
+            this.btRemover.Click += new System.EventHandler(this.btRemover_Click);
             // 
             // btAdicionar
             // 
             this.btAdicionar.BackColor = System.Drawing.Color.YellowGreen;
+            this.btAdicionar.Enabled = false;
             this.btAdicionar.Location = new System.Drawing.Point(110, 287);
             this.btAdicionar.Name = "btAdicionar";
             this.btAdicionar.Size = new System.Drawing.Size(75, 23);
             this.btAdicionar.TabIndex = 4;
             this.btAdicionar.Text = "Adicionar";
             this.btAdicionar.UseVisualStyleBackColor = false;
+            this.btAdicionar.Click += new System.EventHandler(this.btAdicionar_Click);
             // 
             // rbtQtd
             // 
@@ -299,6 +316,7 @@
             // 
             this.txQtd.Location = new System.Drawing.Point(110, 236);
             this.txQtd.Name = "txQtd";
+            this.txQtd.ReadOnly = true;
             this.txQtd.Size = new System.Drawing.Size(75, 20);
             this.txQtd.TabIndex = 3;
             this.txQtd.TextChanged += new System.EventHandler(this.txQtd_TextChanged);
@@ -351,29 +369,70 @@
             this.btSair.UseVisualStyleBackColor = false;
             this.btSair.Click += new System.EventHandler(this.btSair_Click);
             // 
+            // dtpDataCompra
+            // 
+            this.dtpDataCompra.Enabled = false;
+            this.dtpDataCompra.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDataCompra.Location = new System.Drawing.Point(15, 12);
+            this.dtpDataCompra.Name = "dtpDataCompra";
+            this.dtpDataCompra.Size = new System.Drawing.Size(86, 20);
+            this.dtpDataCompra.TabIndex = 12;
+            // 
+            // gpCliente
+            // 
+            this.gpCliente.Controls.Add(this.label5);
+            this.gpCliente.Controls.Add(this.txNome);
+            this.gpCliente.Location = new System.Drawing.Point(12, 49);
+            this.gpCliente.Name = "gpCliente";
+            this.gpCliente.Size = new System.Drawing.Size(406, 87);
+            this.gpCliente.TabIndex = 13;
+            this.gpCliente.TabStop = false;
+            this.gpCliente.Text = "Cliente";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(16, 27);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(38, 13);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "Nome:";
+            // 
+            // txNome
+            // 
+            this.txNome.Location = new System.Drawing.Point(19, 43);
+            this.txNome.Name = "txNome";
+            this.txNome.ReadOnly = true;
+            this.txNome.Size = new System.Drawing.Size(215, 20);
+            this.txNome.TabIndex = 3;
+            // 
             // Carrinho
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1027, 555);
+            this.Controls.Add(this.gpCliente);
+            this.Controls.Add(this.dtpDataCompra);
             this.Controls.Add(this.btSair);
             this.Controls.Add(this.lblTotalItens);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblValorTotal);
             this.Controls.Add(this.btConcluirCompra);
-            this.Controls.Add(this.dvgCarrinho);
+            this.Controls.Add(this.dgvCarrinho);
             this.Controls.Add(this.groupBox1);
             this.Enabled = false;
             this.Name = "Carrinho";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Bem vindo(a) [Nome do Usuário]";
             this.Shown += new System.EventHandler(this.Carrinho_Shown);
-            ((System.ComponentModel.ISupportInitialize)(this.dvgCarrinho)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCarrinho)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.gpCliente.ResumeLayout(false);
+            this.gpCliente.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -381,7 +440,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dvgCarrinho;
+        private System.Windows.Forms.DataGridView dgvCarrinho;
         private dameta_dbDataSet dameta_dbDataSet;
         private System.Windows.Forms.Button btConcluirCompra;
         private System.Windows.Forms.TextBox txCodigoProd;
@@ -412,5 +471,9 @@
         private System.Windows.Forms.Button btSair;
         private System.Windows.Forms.Label lblDiv;
         private System.Windows.Forms.TextBox txQtd;
+        private System.Windows.Forms.DateTimePicker dtpDataCompra;
+        private System.Windows.Forms.GroupBox gpCliente;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txNome;
     }
 }

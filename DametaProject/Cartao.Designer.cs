@@ -34,6 +34,7 @@
             this.btTerminar = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.btCancelar = new System.Windows.Forms.Button();
+            this.btReiniciar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblCartao
@@ -86,6 +87,19 @@
             this.btCancelar.UseVisualStyleBackColor = false;
             this.btCancelar.Click += new System.EventHandler(this.btCancelar_Click);
             // 
+            // btReiniciar
+            // 
+            this.btReiniciar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btReiniciar.Enabled = false;
+            this.btReiniciar.Location = new System.Drawing.Point(105, 156);
+            this.btReiniciar.Name = "btReiniciar";
+            this.btReiniciar.Size = new System.Drawing.Size(150, 23);
+            this.btReiniciar.TabIndex = 10;
+            this.btReiniciar.Text = "Reiniciar";
+            this.btReiniciar.UseVisualStyleBackColor = false;
+            this.btReiniciar.Visible = false;
+            this.btReiniciar.Click += new System.EventHandler(this.btReiniciar_Click);
+            // 
             // Cartao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -94,6 +108,7 @@
             this.Controls.Add(this.btTerminar);
             this.Controls.Add(this.rtbOperacao);
             this.Controls.Add(this.lblCartao);
+            this.Controls.Add(this.btReiniciar);
             this.Controls.Add(this.btCancelar);
             this.Name = "Cartao";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -111,5 +126,6 @@
         private System.Windows.Forms.Button btTerminar;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button btCancelar;
+        private System.Windows.Forms.Button btReiniciar;
     }
 }

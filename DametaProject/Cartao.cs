@@ -94,6 +94,17 @@ namespace DametaProject
 
             btCancelar.Visible = false;
             btCancelar.Enabled = false;
+            btReiniciar.Visible = true;
+            btReiniciar.Enabled = true;
+        }
+
+        private void btReiniciar_Click(object sender, EventArgs e)
+        {
+            btReiniciar.Visible = false;
+            btReiniciar.Enabled = false;
+            btCancelar.Visible = true;
+            btCancelar.Enabled = true;
+            iniciaOperacao();
         }
     }
 }
