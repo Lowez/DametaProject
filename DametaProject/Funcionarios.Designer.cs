@@ -54,14 +54,6 @@
             this.mtxCPF = new System.Windows.Forms.MaskedTextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.salarioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cargosidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.estabelecimentosidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cPFDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.telefoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.funcionariosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mtxTelefone = new System.Windows.Forms.MaskedTextBox();
             this.txNome = new System.Windows.Forms.TextBox();
@@ -73,6 +65,13 @@
             this.cargosTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.cargosTableAdapter();
             this.estabelecimentosTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.estabelecimentosTableAdapter();
             this.funcionariosTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.funcionariosTableAdapter();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.salarioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cargosidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.estabelecimentosidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cPFDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.telefoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.estabelecimentosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cargosBindingSource)).BeginInit();
@@ -83,7 +82,7 @@
             // 
             // btConsultar
             // 
-            this.btConsultar.Location = new System.Drawing.Point(208, 21);
+            this.btConsultar.Location = new System.Drawing.Point(235, 23);
             this.btConsultar.Name = "btConsultar";
             this.btConsultar.Size = new System.Drawing.Size(100, 40);
             this.btConsultar.TabIndex = 111;
@@ -93,7 +92,7 @@
             // 
             // btLimpar
             // 
-            this.btLimpar.Location = new System.Drawing.Point(682, 39);
+            this.btLimpar.Location = new System.Drawing.Point(666, 37);
             this.btLimpar.Name = "btLimpar";
             this.btLimpar.Size = new System.Drawing.Size(100, 40);
             this.btLimpar.TabIndex = 110;
@@ -103,7 +102,7 @@
             // 
             // btExcluir
             // 
-            this.btExcluir.Location = new System.Drawing.Point(681, 177);
+            this.btExcluir.Location = new System.Drawing.Point(665, 175);
             this.btExcluir.Name = "btExcluir";
             this.btExcluir.Size = new System.Drawing.Size(100, 40);
             this.btExcluir.TabIndex = 109;
@@ -113,7 +112,7 @@
             // 
             // btAlterar
             // 
-            this.btAlterar.Location = new System.Drawing.Point(682, 131);
+            this.btAlterar.Location = new System.Drawing.Point(666, 129);
             this.btAlterar.Name = "btAlterar";
             this.btAlterar.Size = new System.Drawing.Size(100, 40);
             this.btAlterar.TabIndex = 108;
@@ -123,7 +122,7 @@
             // 
             // btIncluir
             // 
-            this.btIncluir.Location = new System.Drawing.Point(682, 85);
+            this.btIncluir.Location = new System.Drawing.Point(666, 83);
             this.btIncluir.Name = "btIncluir";
             this.btIncluir.Size = new System.Drawing.Size(100, 40);
             this.btIncluir.TabIndex = 107;
@@ -134,7 +133,7 @@
             // dtpDataNascimento
             // 
             this.dtpDataNascimento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDataNascimento.Location = new System.Drawing.Point(512, 80);
+            this.dtpDataNascimento.Location = new System.Drawing.Point(539, 82);
             this.dtpDataNascimento.Name = "dtpDataNascimento";
             this.dtpDataNascimento.Size = new System.Drawing.Size(99, 20);
             this.dtpDataNascimento.TabIndex = 106;
@@ -142,7 +141,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(398, 83);
+            this.label8.Location = new System.Drawing.Point(425, 85);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(107, 13);
             this.label8.TabIndex = 105;
@@ -153,7 +152,7 @@
             this.cbSenha.AutoSize = true;
             this.cbSenha.Checked = true;
             this.cbSenha.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbSenha.Location = new System.Drawing.Point(197, 189);
+            this.cbSenha.Location = new System.Drawing.Point(224, 191);
             this.cbSenha.Name = "cbSenha";
             this.cbSenha.Size = new System.Drawing.Size(168, 17);
             this.cbSenha.TabIndex = 104;
@@ -166,7 +165,7 @@
             this.cbEstabelecimento.DataSource = this.estabelecimentosBindingSource;
             this.cbEstabelecimento.DisplayMember = "nome";
             this.cbEstabelecimento.FormattingEnabled = true;
-            this.cbEstabelecimento.Location = new System.Drawing.Point(490, 188);
+            this.cbEstabelecimento.Location = new System.Drawing.Point(517, 190);
             this.cbEstabelecimento.Name = "cbEstabelecimento";
             this.cbEstabelecimento.Size = new System.Drawing.Size(121, 21);
             this.cbEstabelecimento.TabIndex = 103;
@@ -185,7 +184,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(398, 191);
+            this.label7.Location = new System.Drawing.Point(425, 193);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(88, 13);
             this.label7.TabIndex = 102;
@@ -197,7 +196,7 @@
             this.cbCargo.DataSource = this.cargosBindingSource;
             this.cbCargo.DisplayMember = "nome";
             this.cbCargo.FormattingEnabled = true;
-            this.cbCargo.Location = new System.Drawing.Point(490, 149);
+            this.cbCargo.Location = new System.Drawing.Point(517, 151);
             this.cbCargo.Name = "cbCargo";
             this.cbCargo.Size = new System.Drawing.Size(121, 21);
             this.cbCargo.TabIndex = 101;
@@ -211,7 +210,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(441, 152);
+            this.label6.Location = new System.Drawing.Point(468, 154);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(38, 13);
             this.label6.TabIndex = 100;
@@ -223,7 +222,7 @@
             this.cbGenero.DataSource = this.generosBindingSource;
             this.cbGenero.DisplayMember = "nome";
             this.cbGenero.FormattingEnabled = true;
-            this.cbGenero.Location = new System.Drawing.Point(490, 112);
+            this.cbGenero.Location = new System.Drawing.Point(517, 114);
             this.cbGenero.Name = "cbGenero";
             this.cbGenero.Size = new System.Drawing.Size(121, 21);
             this.cbGenero.TabIndex = 99;
@@ -237,7 +236,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(441, 115);
+            this.label5.Location = new System.Drawing.Point(468, 117);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(45, 13);
             this.label5.TabIndex = 98;
@@ -245,7 +244,7 @@
             // 
             // txSalario
             // 
-            this.txSalario.Location = new System.Drawing.Point(64, 187);
+            this.txSalario.Location = new System.Drawing.Point(91, 189);
             this.txSalario.Name = "txSalario";
             this.txSalario.Size = new System.Drawing.Size(100, 20);
             this.txSalario.TabIndex = 96;
@@ -253,7 +252,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(10, 190);
+            this.label2.Location = new System.Drawing.Point(37, 192);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(42, 13);
             this.label2.TabIndex = 95;
@@ -261,7 +260,7 @@
             // 
             // txEmail
             // 
-            this.txEmail.Location = new System.Drawing.Point(64, 155);
+            this.txEmail.Location = new System.Drawing.Point(91, 157);
             this.txEmail.Name = "txEmail";
             this.txEmail.Size = new System.Drawing.Size(301, 20);
             this.txEmail.TabIndex = 94;
@@ -269,7 +268,7 @@
             // emailLabel
             // 
             this.emailLabel.AutoSize = true;
-            this.emailLabel.Location = new System.Drawing.Point(14, 158);
+            this.emailLabel.Location = new System.Drawing.Point(41, 160);
             this.emailLabel.Name = "emailLabel";
             this.emailLabel.Size = new System.Drawing.Size(35, 13);
             this.emailLabel.TabIndex = 93;
@@ -277,7 +276,7 @@
             // 
             // mtxCPF
             // 
-            this.mtxCPF.Location = new System.Drawing.Point(64, 117);
+            this.mtxCPF.Location = new System.Drawing.Point(91, 119);
             this.mtxCPF.Mask = "999.999.999-99";
             this.mtxCPF.Name = "mtxCPF";
             this.mtxCPF.Size = new System.Drawing.Size(118, 20);
@@ -286,7 +285,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(17, 120);
+            this.label3.Location = new System.Drawing.Point(44, 122);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(30, 13);
             this.label3.TabIndex = 91;
@@ -304,15 +303,85 @@
             this.salarioDataGridViewTextBoxColumn,
             this.cargosidDataGridViewTextBoxColumn,
             this.estabelecimentosidDataGridViewTextBoxColumn,
-            this.emailDataGridViewTextBoxColumn,
             this.cPFDataGridViewTextBoxColumn,
             this.telefoneDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.funcionariosBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(13, 234);
+            this.dataGridView1.Location = new System.Drawing.Point(27, 234);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(769, 187);
+            this.dataGridView1.Size = new System.Drawing.Size(755, 187);
             this.dataGridView1.TabIndex = 90;
+            // 
+            // funcionariosBindingSource
+            // 
+            this.funcionariosBindingSource.DataMember = "funcionarios";
+            this.funcionariosBindingSource.DataSource = this.dameta_dbDataSet;
+            // 
+            // mtxTelefone
+            // 
+            this.mtxTelefone.ForeColor = System.Drawing.Color.Black;
+            this.mtxTelefone.Location = new System.Drawing.Point(274, 119);
+            this.mtxTelefone.Mask = "(99)99999-9999";
+            this.mtxTelefone.Name = "mtxTelefone";
+            this.mtxTelefone.Size = new System.Drawing.Size(118, 20);
+            this.mtxTelefone.TabIndex = 89;
+            // 
+            // txNome
+            // 
+            this.txNome.Location = new System.Drawing.Point(91, 82);
+            this.txNome.Name = "txNome";
+            this.txNome.Size = new System.Drawing.Size(301, 20);
+            this.txNome.TabIndex = 87;
+            // 
+            // nomeLabel
+            // 
+            this.nomeLabel.AutoSize = true;
+            this.nomeLabel.Location = new System.Drawing.Point(41, 85);
+            this.nomeLabel.Name = "nomeLabel";
+            this.nomeLabel.Size = new System.Drawing.Size(38, 13);
+            this.nomeLabel.TabIndex = 86;
+            this.nomeLabel.Text = "Nome:";
+            // 
+            // txID
+            // 
+            this.txID.Location = new System.Drawing.Point(158, 34);
+            this.txID.Name = "txID";
+            this.txID.Size = new System.Drawing.Size(53, 20);
+            this.txID.TabIndex = 85;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(41, 37);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(113, 13);
+            this.label1.TabIndex = 84;
+            this.label1.Text = "Codigo do Funcionário";
+            // 
+            // telefoneLabel
+            // 
+            this.telefoneLabel.AutoSize = true;
+            this.telefoneLabel.Location = new System.Drawing.Point(216, 122);
+            this.telefoneLabel.Name = "telefoneLabel";
+            this.telefoneLabel.Size = new System.Drawing.Size(52, 13);
+            this.telefoneLabel.TabIndex = 88;
+            this.telefoneLabel.Text = "Telefone:";
+            // 
+            // generosTableAdapter
+            // 
+            this.generosTableAdapter.ClearBeforeFill = true;
+            // 
+            // cargosTableAdapter
+            // 
+            this.cargosTableAdapter.ClearBeforeFill = true;
+            // 
+            // estabelecimentosTableAdapter
+            // 
+            this.estabelecimentosTableAdapter.ClearBeforeFill = true;
+            // 
+            // funcionariosTableAdapter
+            // 
+            this.funcionariosTableAdapter.ClearBeforeFill = true;
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -350,14 +419,7 @@
             this.estabelecimentosidDataGridViewTextBoxColumn.HeaderText = "estabelecimentos_id";
             this.estabelecimentosidDataGridViewTextBoxColumn.Name = "estabelecimentosidDataGridViewTextBoxColumn";
             this.estabelecimentosidDataGridViewTextBoxColumn.ReadOnly = true;
-            this.estabelecimentosidDataGridViewTextBoxColumn.Width = 110;
-            // 
-            // emailDataGridViewTextBoxColumn
-            // 
-            this.emailDataGridViewTextBoxColumn.DataPropertyName = "email";
-            this.emailDataGridViewTextBoxColumn.HeaderText = "email";
-            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
-            this.emailDataGridViewTextBoxColumn.ReadOnly = true;
+            this.estabelecimentosidDataGridViewTextBoxColumn.Width = 120;
             // 
             // cPFDataGridViewTextBoxColumn
             // 
@@ -372,77 +434,6 @@
             this.telefoneDataGridViewTextBoxColumn.HeaderText = "telefone";
             this.telefoneDataGridViewTextBoxColumn.Name = "telefoneDataGridViewTextBoxColumn";
             this.telefoneDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // funcionariosBindingSource
-            // 
-            this.funcionariosBindingSource.DataMember = "funcionarios";
-            this.funcionariosBindingSource.DataSource = this.dameta_dbDataSet;
-            // 
-            // mtxTelefone
-            // 
-            this.mtxTelefone.ForeColor = System.Drawing.Color.Black;
-            this.mtxTelefone.Location = new System.Drawing.Point(247, 117);
-            this.mtxTelefone.Mask = "(99)99999-9999";
-            this.mtxTelefone.Name = "mtxTelefone";
-            this.mtxTelefone.Size = new System.Drawing.Size(118, 20);
-            this.mtxTelefone.TabIndex = 89;
-            // 
-            // txNome
-            // 
-            this.txNome.Location = new System.Drawing.Point(64, 80);
-            this.txNome.Name = "txNome";
-            this.txNome.Size = new System.Drawing.Size(301, 20);
-            this.txNome.TabIndex = 87;
-            // 
-            // nomeLabel
-            // 
-            this.nomeLabel.AutoSize = true;
-            this.nomeLabel.Location = new System.Drawing.Point(14, 83);
-            this.nomeLabel.Name = "nomeLabel";
-            this.nomeLabel.Size = new System.Drawing.Size(38, 13);
-            this.nomeLabel.TabIndex = 86;
-            this.nomeLabel.Text = "Nome:";
-            // 
-            // txID
-            // 
-            this.txID.Location = new System.Drawing.Point(131, 32);
-            this.txID.Name = "txID";
-            this.txID.Size = new System.Drawing.Size(53, 20);
-            this.txID.TabIndex = 85;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 35);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(113, 13);
-            this.label1.TabIndex = 84;
-            this.label1.Text = "Codigo do Funcionário";
-            // 
-            // telefoneLabel
-            // 
-            this.telefoneLabel.AutoSize = true;
-            this.telefoneLabel.Location = new System.Drawing.Point(189, 120);
-            this.telefoneLabel.Name = "telefoneLabel";
-            this.telefoneLabel.Size = new System.Drawing.Size(52, 13);
-            this.telefoneLabel.TabIndex = 88;
-            this.telefoneLabel.Text = "Telefone:";
-            // 
-            // generosTableAdapter
-            // 
-            this.generosTableAdapter.ClearBeforeFill = true;
-            // 
-            // cargosTableAdapter
-            // 
-            this.cargosTableAdapter.ClearBeforeFill = true;
-            // 
-            // estabelecimentosTableAdapter
-            // 
-            this.estabelecimentosTableAdapter.ClearBeforeFill = true;
-            // 
-            // funcionariosTableAdapter
-            // 
-            this.funcionariosTableAdapter.ClearBeforeFill = true;
             // 
             // Funcionarios
             // 
@@ -534,7 +525,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn salarioDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn cargosidDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn estabelecimentosidDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn cPFDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn telefoneDataGridViewTextBoxColumn;
     }

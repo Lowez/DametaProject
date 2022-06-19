@@ -28,23 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txSenha = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.btLogar = new System.Windows.Forms.Button();
+            this.lblFraseLogin = new System.Windows.Forms.Label();
             this.txConfirmacaoSenha = new System.Windows.Forms.TextBox();
+            this.txSenha = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
-            // 
-            // txSenha
-            // 
-            this.txSenha.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txSenha.Location = new System.Drawing.Point(73, 124);
-            this.txSenha.MaxLength = 50;
-            this.txSenha.Name = "txSenha";
-            this.txSenha.PasswordChar = '*';
-            this.txSenha.Size = new System.Drawing.Size(226, 23);
-            this.txSenha.TabIndex = 19;
             // 
             // label4
             // 
@@ -55,18 +46,6 @@
             this.label4.Size = new System.Drawing.Size(106, 24);
             this.label4.TabIndex = 18;
             this.label4.Text = "Criar senha";
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.Location = new System.Drawing.Point(137, 266);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(98, 43);
-            this.button1.TabIndex = 16;
-            this.button1.Text = "Confirmar";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label2
             // 
@@ -86,6 +65,28 @@
             this.label1.TabIndex = 14;
             this.label1.Text = "Senha:";
             // 
+            // btLogar
+            // 
+            this.btLogar.BackColor = System.Drawing.Color.YellowGreen;
+            this.btLogar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btLogar.Location = new System.Drawing.Point(110, 270);
+            this.btLogar.Name = "btLogar";
+            this.btLogar.Size = new System.Drawing.Size(150, 47);
+            this.btLogar.TabIndex = 20;
+            this.btLogar.Text = "Confirmar";
+            this.btLogar.UseVisualStyleBackColor = false;
+            this.btLogar.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // lblFraseLogin
+            // 
+            this.lblFraseLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.lblFraseLogin.Location = new System.Drawing.Point(12, 68);
+            this.lblFraseLogin.Name = "lblFraseLogin";
+            this.lblFraseLogin.Size = new System.Drawing.Size(353, 16);
+            this.lblFraseLogin.TabIndex = 21;
+            this.lblFraseLogin.Text = "Digite sua senha e confirme para conclusão do cadastro\r\n\r\n\r\n";
+            this.lblFraseLogin.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // txConfirmacaoSenha
             // 
             this.txConfirmacaoSenha.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -94,7 +95,17 @@
             this.txConfirmacaoSenha.Name = "txConfirmacaoSenha";
             this.txConfirmacaoSenha.PasswordChar = '*';
             this.txConfirmacaoSenha.Size = new System.Drawing.Size(226, 23);
-            this.txConfirmacaoSenha.TabIndex = 15;
+            this.txConfirmacaoSenha.TabIndex = 22;
+            // 
+            // txSenha
+            // 
+            this.txSenha.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txSenha.Location = new System.Drawing.Point(73, 124);
+            this.txSenha.MaxLength = 50;
+            this.txSenha.Name = "txSenha";
+            this.txSenha.PasswordChar = '*';
+            this.txSenha.Size = new System.Drawing.Size(226, 23);
+            this.txSenha.TabIndex = 23;
             // 
             // DigitaSenha
             // 
@@ -102,11 +113,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(370, 377);
             this.Controls.Add(this.txSenha);
+            this.Controls.Add(this.txConfirmacaoSenha);
+            this.Controls.Add(this.lblFraseLogin);
+            this.Controls.Add(this.btLogar);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txConfirmacaoSenha);
             this.Name = "DigitaSenha";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Criar Senha";
@@ -116,12 +128,12 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox txSenha;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btLogar;
+        private System.Windows.Forms.Label lblFraseLogin;
         private System.Windows.Forms.TextBox txConfirmacaoSenha;
+        private System.Windows.Forms.TextBox txSenha;
     }
 }
