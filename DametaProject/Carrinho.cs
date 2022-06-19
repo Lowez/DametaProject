@@ -125,7 +125,8 @@ namespace DametaProject
 
         private void btConcluirCompra_Click(object sender, EventArgs e)
         {
-
+            FormaDePagamento form_pagamento = new FormaDePagamento();
+            form_pagamento.Show();
         }
 
         private void Carrinho_Shown(object sender, EventArgs e)
