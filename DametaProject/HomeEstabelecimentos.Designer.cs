@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.btInserir = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -43,26 +42,17 @@
             this.estabelecimentosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dameta_dbDataSet = new DametaProject.dameta_dbDataSet();
             this.estabelecimentosTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.estabelecimentosTableAdapter();
+            this.btIncluir = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.estabelecimentosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).BeginInit();
             this.SuspendLayout();
             // 
-            // btInserir
-            // 
-            this.btInserir.Location = new System.Drawing.Point(166, 8);
-            this.btInserir.Name = "btInserir";
-            this.btInserir.Size = new System.Drawing.Size(75, 23);
-            this.btInserir.TabIndex = 5;
-            this.btInserir.Text = "[Clique aqui] ";
-            this.btInserir.UseVisualStyleBackColor = true;
-            this.btInserir.Click += new System.EventHandler(this.btInserir_Click);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(15, 13);
+            this.label1.Location = new System.Drawing.Point(15, 27);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(145, 13);
             this.label1.TabIndex = 4;
@@ -154,12 +144,22 @@
             // 
             this.estabelecimentosTableAdapter.ClearBeforeFill = true;
             // 
+            // btIncluir
+            // 
+            this.btIncluir.Location = new System.Drawing.Point(166, 13);
+            this.btIncluir.Name = "btIncluir";
+            this.btIncluir.Size = new System.Drawing.Size(100, 40);
+            this.btIncluir.TabIndex = 45;
+            this.btIncluir.Text = "Incluir";
+            this.btIncluir.UseVisualStyleBackColor = true;
+            this.btIncluir.Click += new System.EventHandler(this.btInserir_Click);
+            // 
             // HomeEstabelecimentos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btInserir);
+            this.Controls.Add(this.btIncluir);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
             this.Name = "HomeEstabelecimentos";
@@ -176,8 +176,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btInserir;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dataGridView1;
@@ -191,5 +189,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn telefoneDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn cEPDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn cidadesidDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button btIncluir;
     }
 }
