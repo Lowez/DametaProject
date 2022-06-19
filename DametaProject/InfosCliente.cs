@@ -72,6 +72,9 @@ namespace DametaProject
                         mtxCPF.Text = CPF_cliente;
                         mtxTelefone.Text = reader["telefone"].ToString();
                         txNome.Text = reader["nome"].ToString();
+
+                        Carrinho.cliente_id = Convert.ToInt32(reader["id"]);
+                        Carrinho.cliente_nome = reader["nome"].ToString();
                     }
                     else
                     {
