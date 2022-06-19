@@ -1,0 +1,31 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace DametaProject
+{
+    public partial class RelatoriosFornecedoresEstabelecimentos : Form
+    {
+        public RelatoriosFornecedoresEstabelecimentos()
+        {
+            InitializeComponent();
+            
+        }
+
+        private void RelatoriosFornecedoresEstabelecimentos_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'dameta_dbDataSet1.FornecedoresEstabelecimentos' table. You can move, or remove it, as needed.
+            this.fornecedoresEstabelecimentos.Fill(this.dameta_dbDataSet1.FornecedoresEstabelecimentos);
+            // TODO: This line of code loads data into the 'dameta_dbDataSet.fornecedores' table. You can move, or remove it, as needed.
+            this.fornecedoresTableAdapter.Fill(this.dameta_dbDataSet.fornecedores);
+
+            this.reportViewer2.RefreshReport();
+        }
+    }
+}
