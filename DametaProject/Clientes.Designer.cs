@@ -55,16 +55,19 @@
             this.premium_usuariosTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.premium_usuariosTableAdapter();
             this.mtxCEP = new System.Windows.Forms.MaskedTextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.mtxTelefone = new System.Windows.Forms.MaskedTextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.dtpDataNasc = new System.Windows.Forms.DateTimePicker();
             this.cbUF = new System.Windows.Forms.ComboBox();
+            this.estadosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cidadesBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
             this.cidadesBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.dametadbDataSetBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.label5 = new System.Windows.Forms.Label();
             this.cbCidade = new System.Windows.Forms.ComboBox();
             this.cidadesBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.cidadesBindingSource5 = new System.Windows.Forms.BindingSource(this.components);
+            this.dameta_dbDataSet3 = new DametaProject.dameta_dbDataSet();
             this.label4 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.cbGenero = new System.Windows.Forms.ComboBox();
@@ -73,18 +76,30 @@
             this.label9 = new System.Windows.Forms.Label();
             this.generosTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.generosTableAdapter();
             this.cidadesTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.cidadesTableAdapter();
+            this.estadosTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.EstadosTableAdapter();
+            this.dameta_dbDataSet1 = new DametaProject.dameta_dbDataSet();
+            this.cidades1BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dameta_dbDataSet2 = new DametaProject.dameta_dbDataSet();
+            this.cidadesBindingSource4 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.premiumusuariosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dametadbDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cidadesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.estadosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cidadesBindingSource3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cidadesBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dametadbDataSetBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cidadesBindingSource2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cidadesBindingSource5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.generosBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.generosBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cidades1BindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cidadesBindingSource4)).BeginInit();
             this.SuspendLayout();
             // 
             // txID
@@ -288,13 +303,13 @@
             this.label6.TabIndex = 52;
             this.label6.Text = "CEP:";
             // 
-            // maskedTextBox1
+            // mtxTelefone
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(104, 168);
-            this.maskedTextBox1.Mask = "(00)00000-0000";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(92, 20);
-            this.maskedTextBox1.TabIndex = 55;
+            this.mtxTelefone.Location = new System.Drawing.Point(104, 168);
+            this.mtxTelefone.Mask = "(00)00000-0000";
+            this.mtxTelefone.Name = "mtxTelefone";
+            this.mtxTelefone.Size = new System.Drawing.Size(92, 20);
+            this.mtxTelefone.TabIndex = 55;
             // 
             // label7
             // 
@@ -315,15 +330,19 @@
             // 
             // cbUF
             // 
-            this.cbUF.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.cidadesBindingSource3, "UF", true));
-            this.cbUF.DataSource = this.cidadesBindingSource1;
+            this.cbUF.DataSource = this.estadosBindingSource;
             this.cbUF.DisplayMember = "UF";
             this.cbUF.FormattingEnabled = true;
-            this.cbUF.Location = new System.Drawing.Point(239, 206);
+            this.cbUF.Location = new System.Drawing.Point(238, 206);
             this.cbUF.Name = "cbUF";
             this.cbUF.Size = new System.Drawing.Size(48, 21);
             this.cbUF.TabIndex = 61;
             this.cbUF.ValueMember = "UF";
+            // 
+            // estadosBindingSource
+            // 
+            this.estadosBindingSource.DataMember = "Estados";
+            this.estadosBindingSource.DataSource = this.dameta_dbDataSet;
             // 
             // cidadesBindingSource3
             // 
@@ -352,7 +371,7 @@
             // cbCidade
             // 
             this.cbCidade.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.cidadesBindingSource2, "nome", true));
-            this.cbCidade.DataSource = this.cidadesBindingSource1;
+            this.cbCidade.DataSource = this.cidadesBindingSource5;
             this.cbCidade.DisplayMember = "nome";
             this.cbCidade.FormattingEnabled = true;
             this.cbCidade.Location = new System.Drawing.Point(337, 207);
@@ -365,6 +384,16 @@
             // 
             this.cidadesBindingSource2.DataMember = "cidades";
             this.cidadesBindingSource2.DataSource = this.dameta_dbDataSet;
+            // 
+            // cidadesBindingSource5
+            // 
+            this.cidadesBindingSource5.DataMember = "cidades";
+            this.cidadesBindingSource5.DataSource = this.dameta_dbDataSet3;
+            // 
+            // dameta_dbDataSet3
+            // 
+            this.dameta_dbDataSet3.DataSetName = "dameta_dbDataSet";
+            this.dameta_dbDataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // label4
             // 
@@ -423,6 +452,30 @@
             // 
             this.cidadesTableAdapter.ClearBeforeFill = true;
             // 
+            // estadosTableAdapter
+            // 
+            this.estadosTableAdapter.ClearBeforeFill = true;
+            // 
+            // dameta_dbDataSet1
+            // 
+            this.dameta_dbDataSet1.DataSetName = "dameta_dbDataSet";
+            this.dameta_dbDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // cidades1BindingSource
+            // 
+            this.cidades1BindingSource.DataMember = "cidades1";
+            this.cidades1BindingSource.DataSource = this.dameta_dbDataSet1;
+            // 
+            // dameta_dbDataSet2
+            // 
+            this.dameta_dbDataSet2.DataSetName = "dameta_dbDataSet";
+            this.dameta_dbDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // cidadesBindingSource4
+            // 
+            this.cidadesBindingSource4.DataMember = "cidades";
+            this.cidadesBindingSource4.DataSource = this.dameta_dbDataSet2;
+            // 
             // Clientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -436,7 +489,7 @@
             this.Controls.Add(this.cbCidade);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.dtpDataNasc);
-            this.Controls.Add(this.maskedTextBox1);
+            this.Controls.Add(this.mtxTelefone);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.mtxCEP);
             this.Controls.Add(this.label6);
@@ -461,12 +514,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.dametadbDataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cidadesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.estadosBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cidadesBindingSource3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cidadesBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dametadbDataSetBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cidadesBindingSource2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cidadesBindingSource5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.generosBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.generosBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cidadesBindingSource4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -494,7 +553,7 @@
         private dameta_dbDataSetTableAdapters.premium_usuariosTableAdapter premium_usuariosTableAdapter;
         private System.Windows.Forms.MaskedTextBox mtxCEP;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.MaskedTextBox mtxTelefone;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DateTimePicker dtpDataNasc;
         private System.Windows.Forms.ComboBox cbUF;
@@ -518,5 +577,13 @@
         private System.Windows.Forms.BindingSource cidadesBindingSource3;
         private System.Windows.Forms.BindingSource cidadesBindingSource2;
         private System.Windows.Forms.BindingSource generosBindingSource1;
+        private System.Windows.Forms.BindingSource estadosBindingSource;
+        private dameta_dbDataSetTableAdapters.EstadosTableAdapter estadosTableAdapter;
+        private System.Windows.Forms.BindingSource cidades1BindingSource;
+        private dameta_dbDataSet dameta_dbDataSet1;
+        private dameta_dbDataSet dameta_dbDataSet2;
+        private System.Windows.Forms.BindingSource cidadesBindingSource4;
+        private dameta_dbDataSet dameta_dbDataSet3;
+        private System.Windows.Forms.BindingSource cidadesBindingSource5;
     }
 }

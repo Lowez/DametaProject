@@ -25,6 +25,12 @@ namespace DametaProject
 
         private void Clientes_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'dameta_dbDataSet3.cidades' table. You can move, or remove it, as needed.
+            this.cidadesTableAdapter.Fill(this.dameta_dbDataSet3.cidades);
+            // TODO: This line of code loads data into the 'dameta_dbDataSet2.cidades' table. You can move, or remove it, as needed.
+            this.cidadesTableAdapter.Fill(this.dameta_dbDataSet2.cidades);
+            // TODO: This line of code loads data into the 'dameta_dbDataSet.Estados' table. You can move, or remove it, as needed.
+            this.estadosTableAdapter.Fill(this.dameta_dbDataSet.Estados);
             // TODO: This line of code loads data into the 'dameta_dbDataSet.cidades' table. You can move, or remove it, as needed.
             this.cidadesTableAdapter.Fill(this.dameta_dbDataSet.cidades);
             // TODO: This line of code loads data into the 'dameta_dbDataSet.generos' table. You can move, or remove it, as needed.
@@ -135,13 +141,13 @@ namespace DametaProject
             conn = new SqlConnection(connectionString);
 
             comm = new SqlCommand(
-                "SELECT Cli.id, Cli.nome as nomeCliente, Cli.nascimento, Cli.CPF, Cli.telefone, Cli.CEP, Cli.estados_id, Cli.cidades_id, Cli.generos_id " +
-                "Cid.id, Cid.nome as cidNome, Cid.UF " +
-                "Gen.Nome as nomeGen " +
-                "FROM Clientes AS Cli " +
-                "INNER JOIN Cidades AS Cid " +
+                "SELECT Cli.id, Cli.nome as clienteNome, Cli.nascimento, Cli.CPF, Cli.telefone, Cli.CEP, Cli.cidades_id, Cli.generos_id, Cli.telefone, " +
+                "Cid.id, Cid.nome as cidNome, Cid.UF, " +
+                "Gen.Nome as genNome FROM premium_usuarios AS Cli " +
+                "INNER JOIN Cidades AS Cid ON Cid.id = Cli.cidades_id " +
                 "INNER JOIN Generos AS Gen " +
-                "ON Cli.id = @ID AND Cid.id = Cli.cidades_id AND Gen.id = Cli.generos_id" , conn);
+                "ON Gen.id = Cli.generos_id " +
+                "WHERE Cli.id = 1", conn);
 
             comm.Parameters.Add("@ID", System.Data.SqlDbType.Int);
             comm.Parameters["@ID"].Value = Convert.ToInt32(txID.Text);
@@ -171,8 +177,9 @@ namespace DametaProject
                     {
                         txNome.Text = reader["clienteNome"].ToString();
                         mtxCPF.Text = reader["CPF"].ToString();
-                        cbGenero.Text = reader["nomeGen"].ToString();
-                        cbCidade.Text = reader["nomeCid"].ToString();
+                        mtxTelefone.Text = reader["telefone"].ToString();
+                        cbGenero.Text = reader["genNome"].ToString();
+                        cbCidade.Text = reader["cidNome"].ToString();
                         cbUF.Text = reader["UF"].ToString();
                         dtpDataNasc.Text = reader["nascimento"].ToString();
                         mtxCEP.Text = reader["CEP"].ToString();
@@ -354,6 +361,30 @@ namespace DametaProject
 
         }
 
+        private void fillToolStripButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.cidadesTableAdapter.Fill(this.dameta_dbDataSet.cidades);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
 
+        }
+
+        private void fillToolStripButton1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.cidadesTableAdapter.Fill(this.dameta_dbDataSet.cidades);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+
+        }
     }
 }
