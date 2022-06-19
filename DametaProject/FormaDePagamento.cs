@@ -38,7 +38,7 @@ namespace DametaProject
                 btCredito.Visible = false;
             }
 
-            Cedulas formCedulas = new Cedulas();
+            Cedulas formCedulas = new Cedulas(this);
             formCedulas.Show();
         }
 

@@ -163,6 +163,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
             this.Name = "HomeEstabelecimentos";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HomeEstabelecimentos";
             this.Load += new System.EventHandler(this.HomeEstabelecimentos_Load);
             this.groupBox1.ResumeLayout(false);

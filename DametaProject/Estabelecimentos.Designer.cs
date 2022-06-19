@@ -357,6 +357,7 @@
             this.Controls.Add(this.txID);
             this.Controls.Add(this.label1);
             this.Name = "Estabelecimentos";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Estabelecimentos";
             this.Load += new System.EventHandler(this.Estabelecimentos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.cidadesBindingSource)).EndInit();

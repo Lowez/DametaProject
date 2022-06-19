@@ -34,5 +34,23 @@ namespace DametaProject
             Funcionarios form = new Funcionarios();
             form.Show();
         }
+
+        private void btClientes_Click(object sender, EventArgs e)
+        {
+            Clientes form = new Clientes();
+            form.Show();
+        }
+
+        private void btProdutos_Click(object sender, EventArgs e)
+        {
+            Produtos form = new Produtos();
+            form.Show();
+        }
+
+        private void btFornecedores_Click(object sender, EventArgs e)
+        {
+            Fornecedores form = new Fornecedores();
+            form.Show();
+        }
     }
 }

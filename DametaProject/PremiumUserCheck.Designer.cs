@@ -38,7 +38,7 @@
             // 
             this.cbxPremiumUser.AutoSize = true;
             this.cbxPremiumUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxPremiumUser.Location = new System.Drawing.Point(58, 34);
+            this.cbxPremiumUser.Location = new System.Drawing.Point(76, 34);
             this.cbxPremiumUser.Name = "cbxPremiumUser";
             this.cbxPremiumUser.Size = new System.Drawing.Size(210, 24);
             this.cbxPremiumUser.TabIndex = 1;
@@ -50,7 +50,7 @@
             // 
             this.mtxCPF.Enabled = false;
             this.mtxCPF.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mtxCPF.Location = new System.Drawing.Point(125, 77);
+            this.mtxCPF.Location = new System.Drawing.Point(143, 77);
             this.mtxCPF.Mask = "999,999,999-99";
             this.mtxCPF.Name = "mtxCPF";
             this.mtxCPF.Size = new System.Drawing.Size(120, 26);
@@ -61,7 +61,7 @@
             this.lblCPF.AutoSize = true;
             this.lblCPF.Enabled = false;
             this.lblCPF.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCPF.Location = new System.Drawing.Point(75, 80);
+            this.lblCPF.Location = new System.Drawing.Point(93, 80);
             this.lblCPF.Name = "lblCPF";
             this.lblCPF.Size = new System.Drawing.Size(44, 20);
             this.lblCPF.TabIndex = 3;
@@ -71,7 +71,7 @@
             // 
             this.btContinuar.BackColor = System.Drawing.Color.YellowGreen;
             this.btContinuar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btContinuar.Location = new System.Drawing.Point(109, 122);
+            this.btContinuar.Location = new System.Drawing.Point(127, 122);
             this.btContinuar.Name = "btContinuar";
             this.btContinuar.Size = new System.Drawing.Size(114, 40);
             this.btContinuar.TabIndex = 4;
@@ -83,7 +83,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(340, 187);
+            this.ClientSize = new System.Drawing.Size(362, 179);
             this.Controls.Add(this.btContinuar);
             this.Controls.Add(this.lblCPF);
             this.Controls.Add(this.mtxCPF);

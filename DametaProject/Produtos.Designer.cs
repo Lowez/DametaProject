@@ -360,6 +360,7 @@
             this.Controls.Add(this.txID);
             this.Controls.Add(CodigoProdutoLabel);
             this.Name = "Produtos";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Produtos";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.produtosBindingSource1)).EndInit();
