@@ -436,5 +436,12 @@ namespace DametaProject
                 }
             }
         }
+
+        private void Produtos_Load_1(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'dameta_dbDataSet.produtosDataGrid' table. You can move, or remove it, as needed.
+            this.produtosDataGridTableAdapter.Fill(this.dameta_dbDataSet.produtosDataGrid);
+
+        }
     }
 }

@@ -930,6 +930,59 @@ ORDER BY UF ASC</CommandText>
             </Mappings>
             <Sources />
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="produtosDataGridTableAdapter" GeneratorDataComponentClassName="produtosDataGridTableAdapter" Name="produtosDataGrid" UserDataComponentName="produtosDataGridTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="dameta_dbConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        produtos.cod_produto, produtos.nome, produtos.preco, tipo_produtos.nome AS tipo, estoque.qtd AS estoque, fornecedores.nome AS fornecedor
+FROM            produtos INNER JOIN
+                         tipo_produtos ON produtos.tipo_produtos_id = tipo_produtos.id INNER JOIN
+                         fornecedores ON produtos.fornecedores_id = fornecedores.id INNER JOIN
+                         estoque ON produtos.estoque_id = estoque.id</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="cod_produto" DataSetColumn="cod_produto" />
+              <Mapping SourceColumn="nome" DataSetColumn="nome" />
+              <Mapping SourceColumn="preco" DataSetColumn="preco" />
+              <Mapping SourceColumn="tipo" DataSetColumn="tipo" />
+              <Mapping SourceColumn="estoque" DataSetColumn="estoque" />
+              <Mapping SourceColumn="fornecedor" DataSetColumn="fornecedor" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="clientesDataGridTableAdapter" GeneratorDataComponentClassName="clientesDataGridTableAdapter" Name="clientesDataGrid" UserDataComponentName="clientesDataGridTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="dameta_dbConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        premium_usuarios.id, premium_usuarios.nome, premium_usuarios.nascimento, premium_usuarios.CPF, premium_usuarios.telefone, premium_usuarios.CEP, cidades.nome AS cidades, cidades.UF, 
+                         generos.nome AS generos
+FROM            premium_usuarios INNER JOIN
+                         cidades ON premium_usuarios.cidades_id = cidades.id INNER JOIN
+                         generos ON premium_usuarios.generos_id = generos.id</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="id" DataSetColumn="id" />
+              <Mapping SourceColumn="nome" DataSetColumn="nome" />
+              <Mapping SourceColumn="nascimento" DataSetColumn="nascimento" />
+              <Mapping SourceColumn="CPF" DataSetColumn="CPF" />
+              <Mapping SourceColumn="telefone" DataSetColumn="telefone" />
+              <Mapping SourceColumn="CEP" DataSetColumn="CEP" />
+              <Mapping SourceColumn="cidades" DataSetColumn="cidades" />
+              <Mapping SourceColumn="UF" DataSetColumn="UF" />
+              <Mapping SourceColumn="generos" DataSetColumn="generos" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -1297,7 +1350,7 @@ ORDER BY UF ASC</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="produto" msprop:Generator_UserColumnName="produto" msprop:Generator_ColumnPropNameInTable="produtoColumn" msprop:Generator_ColumnPropNameInRow="produto" msprop:Generator_ColumnVarNameInTable="columnproduto">
+              <xs:element name="produto" msprop:Generator_ColumnPropNameInTable="produtoColumn" msprop:Generator_ColumnPropNameInRow="produto" msprop:Generator_UserColumnName="produto" msprop:Generator_ColumnVarNameInTable="columnproduto">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="100" />
@@ -1307,13 +1360,100 @@ ORDER BY UF ASC</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Estados" msprop:Generator_RowEvHandlerName="EstadosRowChangeEventHandler" msprop:Generator_RowDeletedName="EstadosRowDeleted" msprop:Generator_RowDeletingName="EstadosRowDeleting" msprop:Generator_RowEvArgName="EstadosRowChangeEvent" msprop:Generator_TablePropName="Estados" msprop:Generator_RowChangedName="EstadosRowChanged" msprop:Generator_RowChangingName="EstadosRowChanging" msprop:Generator_TableClassName="EstadosDataTable" msprop:Generator_RowClassName="EstadosRow" msprop:Generator_TableVarName="tableEstados" msprop:Generator_UserTableName="Estados">
+        <xs:element name="Estados" msprop:Generator_RowEvHandlerName="EstadosRowChangeEventHandler" msprop:Generator_RowDeletedName="EstadosRowDeleted" msprop:Generator_RowDeletingName="EstadosRowDeleting" msprop:Generator_RowEvArgName="EstadosRowChangeEvent" msprop:Generator_TablePropName="Estados" msprop:Generator_RowChangedName="EstadosRowChanged" msprop:Generator_UserTableName="Estados" msprop:Generator_RowChangingName="EstadosRowChanging" msprop:Generator_RowClassName="EstadosRow" msprop:Generator_TableClassName="EstadosDataTable" msprop:Generator_TableVarName="tableEstados">
           <xs:complexType>
             <xs:sequence>
+              <xs:element name="UF" msprop:Generator_ColumnPropNameInTable="UFColumn" msprop:Generator_ColumnPropNameInRow="UF" msprop:Generator_UserColumnName="UF" msprop:Generator_ColumnVarNameInTable="columnUF">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="produtosDataGrid" msprop:Generator_RowClassName="produtosDataGridRow" msprop:Generator_RowEvHandlerName="produtosDataGridRowChangeEventHandler" msprop:Generator_RowDeletedName="produtosDataGridRowDeleted" msprop:Generator_RowDeletingName="produtosDataGridRowDeleting" msprop:Generator_RowEvArgName="produtosDataGridRowChangeEvent" msprop:Generator_TablePropName="produtosDataGrid" msprop:Generator_RowChangedName="produtosDataGridRowChanged" msprop:Generator_UserTableName="produtosDataGrid" msprop:Generator_RowChangingName="produtosDataGridRowChanging" msprop:Generator_TableClassName="produtosDataGridDataTable" msprop:Generator_TableVarName="tableprodutosDataGrid">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="cod_produto" msprop:Generator_UserColumnName="cod_produto" msprop:Generator_ColumnPropNameInTable="cod_produtoColumn" msprop:Generator_ColumnPropNameInRow="cod_produto" msprop:Generator_ColumnVarNameInTable="columncod_produto" type="xs:int" />
+              <xs:element name="nome" msprop:Generator_UserColumnName="nome" msprop:Generator_ColumnPropNameInTable="nomeColumn" msprop:Generator_ColumnPropNameInRow="nome" msprop:Generator_ColumnVarNameInTable="columnnome">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="preco" msprop:Generator_UserColumnName="preco" msprop:Generator_ColumnPropNameInTable="precoColumn" msprop:Generator_ColumnPropNameInRow="preco" msprop:Generator_ColumnVarNameInTable="columnpreco" type="xs:decimal" />
+              <xs:element name="tipo" msprop:Generator_UserColumnName="tipo" msprop:Generator_ColumnPropNameInTable="tipoColumn" msprop:Generator_ColumnPropNameInRow="tipo" msprop:Generator_ColumnVarNameInTable="columntipo">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="estoque" msprop:Generator_UserColumnName="estoque" msprop:Generator_ColumnPropNameInTable="estoqueColumn" msprop:Generator_ColumnPropNameInRow="estoque" msprop:Generator_ColumnVarNameInTable="columnestoque" type="xs:int" />
+              <xs:element name="fornecedor" msprop:Generator_UserColumnName="fornecedor" msprop:Generator_ColumnPropNameInTable="fornecedorColumn" msprop:Generator_ColumnPropNameInRow="fornecedor" msprop:Generator_ColumnVarNameInTable="columnfornecedor">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="clientesDataGrid" msprop:Generator_RowEvHandlerName="clientesDataGridRowChangeEventHandler" msprop:Generator_RowDeletedName="clientesDataGridRowDeleted" msprop:Generator_RowDeletingName="clientesDataGridRowDeleting" msprop:Generator_RowEvArgName="clientesDataGridRowChangeEvent" msprop:Generator_TablePropName="clientesDataGrid" msprop:Generator_RowChangedName="clientesDataGridRowChanged" msprop:Generator_RowChangingName="clientesDataGridRowChanging" msprop:Generator_TableClassName="clientesDataGridDataTable" msprop:Generator_RowClassName="clientesDataGridRow" msprop:Generator_TableVarName="tableclientesDataGrid" msprop:Generator_UserTableName="clientesDataGrid">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_UserColumnName="id" type="xs:int" />
+              <xs:element name="nome" msprop:Generator_ColumnPropNameInRow="nome" msprop:Generator_ColumnPropNameInTable="nomeColumn" msprop:Generator_ColumnVarNameInTable="columnnome" msprop:Generator_UserColumnName="nome">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="nascimento" msprop:Generator_ColumnPropNameInRow="nascimento" msprop:Generator_ColumnPropNameInTable="nascimentoColumn" msprop:Generator_ColumnVarNameInTable="columnnascimento" msprop:Generator_UserColumnName="nascimento" type="xs:dateTime" />
+              <xs:element name="CPF" msprop:Generator_ColumnPropNameInRow="CPF" msprop:Generator_ColumnPropNameInTable="CPFColumn" msprop:Generator_ColumnVarNameInTable="columnCPF" msprop:Generator_UserColumnName="CPF">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="14" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="telefone" msprop:Generator_ColumnPropNameInRow="telefone" msprop:Generator_ColumnPropNameInTable="telefoneColumn" msprop:Generator_ColumnVarNameInTable="columntelefone" msprop:Generator_UserColumnName="telefone">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="14" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CEP" msprop:Generator_ColumnPropNameInRow="CEP" msprop:Generator_ColumnPropNameInTable="CEPColumn" msprop:Generator_ColumnVarNameInTable="columnCEP" msprop:Generator_UserColumnName="CEP" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="cidades" msprop:Generator_ColumnPropNameInRow="cidades" msprop:Generator_ColumnPropNameInTable="cidadesColumn" msprop:Generator_ColumnVarNameInTable="columncidades" msprop:Generator_UserColumnName="cidades">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
               <xs:element name="UF" msprop:Generator_ColumnPropNameInRow="UF" msprop:Generator_ColumnPropNameInTable="UFColumn" msprop:Generator_ColumnVarNameInTable="columnUF" msprop:Generator_UserColumnName="UF">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="generos" msprop:Generator_ColumnPropNameInRow="generos" msprop:Generator_ColumnPropNameInTable="generosColumn" msprop:Generator_ColumnVarNameInTable="columngeneros" msprop:Generator_UserColumnName="generos">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
@@ -1378,6 +1518,14 @@ ORDER BY UF ASC</CommandText>
       <xs:selector xpath=".//mstns:tipo_produtos" />
       <xs:field xpath="mstns:id" />
     </xs:unique>
+    <xs:unique name="produtosDataGrid_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:produtosDataGrid" />
+      <xs:field xpath="mstns:cod_produto" />
+    </xs:unique>
+    <xs:unique name="clientesDataGrid_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:clientesDataGrid" />
+      <xs:field xpath="mstns:id" />
+    </xs:unique>
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
@@ -1398,6 +1546,8 @@ ORDER BY UF ASC</CommandText>
       <msdata:Relationship name="FK_ESTOQUE_PRUDOTS" msdata:parent="estoque" msdata:child="produtos" msdata:parentkey="id" msdata:childkey="estoque_id" msprop:Generator_UserParentTable="estoque" msprop:Generator_UserChildTable="produtos" msprop:Generator_RelationVarName="relationFK_ESTOQUE_PRUDOTS" msprop:Generator_ChildPropName="GetprodutosRows" msprop:Generator_UserRelationName="FK_ESTOQUE_PRUDOTS" msprop:Generator_ParentPropName="estoqueRow" />
       <msdata:Relationship name="FK_FORNECEDORES_PRODUTOS" msdata:parent="fornecedores" msdata:child="produtos" msdata:parentkey="id" msdata:childkey="fornecedores_id" msprop:Generator_UserParentTable="fornecedores" msprop:Generator_UserChildTable="produtos" msprop:Generator_RelationVarName="relationFK_FORNECEDORES_PRODUTOS" msprop:Generator_ChildPropName="GetprodutosRows" msprop:Generator_UserRelationName="FK_FORNECEDORES_PRODUTOS" msprop:Generator_ParentPropName="fornecedoresRow" />
       <msdata:Relationship name="FK_TIPOPRODUTOS_PRODUTOS" msdata:parent="tipo_produtos" msdata:child="produtos" msdata:parentkey="id" msdata:childkey="tipo_produtos_id" msprop:Generator_UserParentTable="tipo_produtos" msprop:Generator_UserChildTable="produtos" msprop:Generator_RelationVarName="relationFK_TIPOPRODUTOS_PRODUTOS" msprop:Generator_ChildPropName="GetprodutosRows" msprop:Generator_ParentPropName="tipo_produtosRow" msprop:Generator_UserRelationName="FK_TIPOPRODUTOS_PRODUTOS" />
+      <msdata:Relationship name="FK_CIDADES_ESTABELECIMENTOS1" msdata:parent="clientesDataGrid" msdata:child="estabelecimentos" msdata:parentkey="id" msdata:childkey="cidades_id" msprop:Generator_UserParentTable="clientesDataGrid" msprop:Generator_UserChildTable="estabelecimentos" msprop:Generator_RelationVarName="relationFK_CIDADES_ESTABELECIMENTOS1" msprop:Generator_UserRelationName="FK_CIDADES_ESTABELECIMENTOS1" msprop:Generator_ChildPropName="GetestabelecimentosRows" msprop:Generator_ParentPropName="clientesDataGridRow" />
+      <msdata:Relationship name="FK_CIDADES_USUARIOS1" msdata:parent="clientesDataGrid" msdata:child="premium_usuarios" msdata:parentkey="id" msdata:childkey="cidades_id" msprop:Generator_UserParentTable="clientesDataGrid" msprop:Generator_UserChildTable="premium_usuarios" msprop:Generator_RelationVarName="relationFK_CIDADES_USUARIOS1" msprop:Generator_UserRelationName="FK_CIDADES_USUARIOS1" msprop:Generator_ChildPropName="Getpremium_usuariosRows" msprop:Generator_ParentPropName="clientesDataGridRow" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>
