@@ -16,10 +16,11 @@ namespace DametaProject
     {
         bool inserindo = false;
 
-        public Estabelecimentos(bool isInserindo)
+        public Estabelecimentos(bool isInserindo, string nome_estabelecimento = null)
         {
             InitializeComponent();
             this.inserindo = isInserindo;
+            AtualizaListaDeEstabelecimentos();
         }
 
         private void AtualizaListaDeEstabelecimentos()
@@ -36,6 +37,83 @@ namespace DametaProject
                 btConsultar.Enabled = false;
                 btIncluir.Enabled = true;
                 btLimpar.Enabled = true;
+            }
+            else
+            {
+                btAlterar.Enabled = true;
+                btExcluir.Enabled = true;
+                btConsultar.Enabled = true;
+                btIncluir.Enabled = false;
+                btLimpar.Enabled = true;
+
+
+                SqlConnection conn;
+                SqlCommand comm;
+                SqlDataReader reader;
+
+                string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
+
+                // Inicializa a conexão com o Banco de Dados
+                conn = new SqlConnection(connectionString);
+
+                comm = new SqlCommand(
+                    "SELECT estab.id, estab.nome, estab.CEP, estab.nome_rua, estab.numero, estab.telefone, estab.cidades_id, cid.id, cid.nome AS cidNome " +
+                    "FROM estabelecimentos AS estab " +
+                    "INNER JOIN cidades AS cid ON cid.id = estab.cidades_id " +
+                    "WHERE estab.nome = @nome", conn);
+
+                comm.Parameters.Add("@nome", System.Data.SqlDbType.NVarChar);
+                comm.Parameters["@nome"].Value = Convert.ToString(txID.Text);
+
+                try
+                {
+                    try
+                    {
+                        // Abre a conexão com o Banco de Dados
+                        conn.Open();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message,
+                            "Erro ao tentar abrir o Banco de Dados",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                    }
+
+                    try
+                    {
+                        // Executa o comando SQL
+                        reader = comm.ExecuteReader();
+
+                        // Se encontrou um cliente...
+                        if (reader.Read())
+                        {
+                            txID.Text = reader["id"].ToString();
+                            txNome.Text = reader["nome"].ToString();
+                            cbCidade.Text = reader["cidNome"].ToString();
+                            txRua.Text = reader["nome_rua"].ToString();
+                            mtxCEP.Text = reader["CEP"].ToString();
+                            txNumero.Text = reader["numero"].ToString();
+                            mtxTelefone.Text = reader["telefone"].ToString();
+                        }
+
+                        reader.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message,
+                            "Erro ao tentar executar o comando SQL.",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                    }
+                }
+                catch { }
+                finally
+                {
+                    // Fecha a conexão com o Bando de Dados
+                    conn.Close();
+                }
+
             }
             // TODO: This line of code loads data into the 'dameta_dbDataSet.estabelecimentos' table. You can move, or remove it, as needed.
             this.estabelecimentosTableAdapter.Fill(this.dameta_dbDataSet.estabelecimentos);
