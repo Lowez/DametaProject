@@ -930,6 +930,53 @@ ORDER BY UF ASC</CommandText>
             </Mappings>
             <Sources />
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="dtFuncionariosTableAdapter" GeneratorDataComponentClassName="dtFuncionariosTableAdapter" Name="dtFuncionarios" UserDataComponentName="dtFuncionariosTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="dameta_dbConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        funcionarios.nome, funcionarios.CPF, funcionarios.salario, funcionarios.telefone, cargos.nome AS cargo, estabelecimentos.nome AS estabelecimento
+FROM            funcionarios INNER JOIN
+                         cargos ON funcionarios.cargos_id = cargos.id INNER JOIN
+                         estabelecimentos ON funcionarios.estabelecimentos_id = estabelecimentos.id</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="nome" DataSetColumn="nome" />
+              <Mapping SourceColumn="CPF" DataSetColumn="CPF" />
+              <Mapping SourceColumn="salario" DataSetColumn="salario" />
+              <Mapping SourceColumn="telefone" DataSetColumn="telefone" />
+              <Mapping SourceColumn="cargo" DataSetColumn="cargo" />
+              <Mapping SourceColumn="estabelecimento" DataSetColumn="estabelecimento" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="dtEstabelecimentosTableAdapter" GeneratorDataComponentClassName="dtEstabelecimentosTableAdapter" Name="dtEstabelecimentos" UserDataComponentName="dtEstabelecimentosTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="dameta_dbConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        estabelecimentos.nome, cidades.nome AS cidades, estabelecimentos.nome_rua, estabelecimentos.numero, estabelecimentos.telefone, estabelecimentos.CEP
+FROM            estabelecimentos INNER JOIN
+                         cidades ON estabelecimentos.cidades_id = cidades.id</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="nome" DataSetColumn="nome" />
+              <Mapping SourceColumn="cidades" DataSetColumn="cidades" />
+              <Mapping SourceColumn="nome_rua" DataSetColumn="nome_rua" />
+              <Mapping SourceColumn="numero" DataSetColumn="numero" />
+              <Mapping SourceColumn="telefone" DataSetColumn="telefone" />
+              <Mapping SourceColumn="CEP" DataSetColumn="CEP" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -1297,7 +1344,7 @@ ORDER BY UF ASC</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="produto" msprop:Generator_UserColumnName="produto" msprop:Generator_ColumnPropNameInTable="produtoColumn" msprop:Generator_ColumnPropNameInRow="produto" msprop:Generator_ColumnVarNameInTable="columnproduto">
+              <xs:element name="produto" msprop:Generator_ColumnPropNameInTable="produtoColumn" msprop:Generator_ColumnPropNameInRow="produto" msprop:Generator_UserColumnName="produto" msprop:Generator_ColumnVarNameInTable="columnproduto">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="100" />
@@ -1307,13 +1354,97 @@ ORDER BY UF ASC</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Estados" msprop:Generator_RowEvHandlerName="EstadosRowChangeEventHandler" msprop:Generator_RowDeletedName="EstadosRowDeleted" msprop:Generator_RowDeletingName="EstadosRowDeleting" msprop:Generator_RowEvArgName="EstadosRowChangeEvent" msprop:Generator_TablePropName="Estados" msprop:Generator_RowChangedName="EstadosRowChanged" msprop:Generator_RowChangingName="EstadosRowChanging" msprop:Generator_TableClassName="EstadosDataTable" msprop:Generator_RowClassName="EstadosRow" msprop:Generator_TableVarName="tableEstados" msprop:Generator_UserTableName="Estados">
+        <xs:element name="Estados" msprop:Generator_RowClassName="EstadosRow" msprop:Generator_RowEvHandlerName="EstadosRowChangeEventHandler" msprop:Generator_RowDeletedName="EstadosRowDeleted" msprop:Generator_RowDeletingName="EstadosRowDeleting" msprop:Generator_RowEvArgName="EstadosRowChangeEvent" msprop:Generator_TablePropName="Estados" msprop:Generator_RowChangedName="EstadosRowChanged" msprop:Generator_UserTableName="Estados" msprop:Generator_RowChangingName="EstadosRowChanging" msprop:Generator_TableClassName="EstadosDataTable" msprop:Generator_TableVarName="tableEstados">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="UF" msprop:Generator_ColumnPropNameInRow="UF" msprop:Generator_ColumnPropNameInTable="UFColumn" msprop:Generator_ColumnVarNameInTable="columnUF" msprop:Generator_UserColumnName="UF">
+              <xs:element name="UF" msprop:Generator_UserColumnName="UF" msprop:Generator_ColumnPropNameInTable="UFColumn" msprop:Generator_ColumnPropNameInRow="UF" msprop:Generator_ColumnVarNameInTable="columnUF">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="dtFuncionarios" msprop:Generator_RowEvHandlerName="dtFuncionariosRowChangeEventHandler" msprop:Generator_RowDeletedName="dtFuncionariosRowDeleted" msprop:Generator_RowDeletingName="dtFuncionariosRowDeleting" msprop:Generator_RowEvArgName="dtFuncionariosRowChangeEvent" msprop:Generator_TablePropName="dtFuncionarios" msprop:Generator_RowChangedName="dtFuncionariosRowChanged" msprop:Generator_RowChangingName="dtFuncionariosRowChanging" msprop:Generator_TableClassName="dtFuncionariosDataTable" msprop:Generator_RowClassName="dtFuncionariosRow" msprop:Generator_TableVarName="tabledtFuncionarios" msprop:Generator_UserTableName="dtFuncionarios">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="nome" msprop:Generator_ColumnPropNameInRow="nome" msprop:Generator_ColumnPropNameInTable="nomeColumn" msprop:Generator_ColumnVarNameInTable="columnnome" msprop:Generator_UserColumnName="nome">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CPF" msprop:Generator_ColumnPropNameInRow="CPF" msprop:Generator_ColumnPropNameInTable="CPFColumn" msprop:Generator_ColumnVarNameInTable="columnCPF" msprop:Generator_UserColumnName="CPF">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="14" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="salario" msprop:Generator_ColumnPropNameInRow="salario" msprop:Generator_ColumnPropNameInTable="salarioColumn" msprop:Generator_ColumnVarNameInTable="columnsalario" msprop:Generator_UserColumnName="salario" type="xs:decimal" />
+              <xs:element name="telefone" msprop:Generator_ColumnPropNameInRow="telefone" msprop:Generator_ColumnPropNameInTable="telefoneColumn" msprop:Generator_ColumnVarNameInTable="columntelefone" msprop:Generator_UserColumnName="telefone">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="14" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="cargo" msprop:Generator_ColumnPropNameInRow="cargo" msprop:Generator_ColumnPropNameInTable="cargoColumn" msprop:Generator_ColumnVarNameInTable="columncargo" msprop:Generator_UserColumnName="cargo">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="estabelecimento" msprop:Generator_ColumnPropNameInRow="estabelecimento" msprop:Generator_ColumnPropNameInTable="estabelecimentoColumn" msprop:Generator_ColumnVarNameInTable="columnestabelecimento" msprop:Generator_UserColumnName="estabelecimento">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="dtEstabelecimentos" msprop:Generator_RowEvHandlerName="dtEstabelecimentosRowChangeEventHandler" msprop:Generator_RowDeletedName="dtEstabelecimentosRowDeleted" msprop:Generator_RowDeletingName="dtEstabelecimentosRowDeleting" msprop:Generator_RowEvArgName="dtEstabelecimentosRowChangeEvent" msprop:Generator_TablePropName="dtEstabelecimentos" msprop:Generator_RowChangedName="dtEstabelecimentosRowChanged" msprop:Generator_RowChangingName="dtEstabelecimentosRowChanging" msprop:Generator_TableClassName="dtEstabelecimentosDataTable" msprop:Generator_RowClassName="dtEstabelecimentosRow" msprop:Generator_TableVarName="tabledtEstabelecimentos" msprop:Generator_UserTableName="dtEstabelecimentos">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="nome" msprop:Generator_ColumnPropNameInRow="nome" msprop:Generator_ColumnPropNameInTable="nomeColumn" msprop:Generator_ColumnVarNameInTable="columnnome" msprop:Generator_UserColumnName="nome">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="cidades" msprop:Generator_ColumnPropNameInRow="cidades" msprop:Generator_ColumnPropNameInTable="cidadesColumn" msprop:Generator_ColumnVarNameInTable="columncidades" msprop:Generator_UserColumnName="cidades">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="nome_rua" msprop:Generator_ColumnPropNameInRow="nome_rua" msprop:Generator_ColumnPropNameInTable="nome_ruaColumn" msprop:Generator_ColumnVarNameInTable="columnnome_rua" msprop:Generator_UserColumnName="nome_rua">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="numero" msprop:Generator_ColumnPropNameInRow="numero" msprop:Generator_ColumnPropNameInTable="numeroColumn" msprop:Generator_ColumnVarNameInTable="columnnumero" msprop:Generator_UserColumnName="numero" type="xs:int" />
+              <xs:element name="telefone" msprop:Generator_ColumnPropNameInRow="telefone" msprop:Generator_ColumnPropNameInTable="telefoneColumn" msprop:Generator_ColumnVarNameInTable="columntelefone" msprop:Generator_UserColumnName="telefone">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="14" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CEP" msprop:Generator_ColumnPropNameInRow="CEP" msprop:Generator_ColumnPropNameInTable="CEPColumn" msprop:Generator_ColumnVarNameInTable="columnCEP" msprop:Generator_UserColumnName="CEP">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="9" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
@@ -1381,23 +1512,23 @@ ORDER BY UF ASC</CommandText>
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="FK_ESTABELECIMENTOS_COMPRAS" msdata:parent="estabelecimentos" msdata:child="compras" msdata:parentkey="id" msdata:childkey="estabelecimentos_id" msprop:Generator_UserParentTable="estabelecimentos" msprop:Generator_UserChildTable="compras" msprop:Generator_RelationVarName="relationFK_ESTABELECIMENTOS_COMPRAS" msprop:Generator_ChildPropName="GetcomprasRows" msprop:Generator_ParentPropName="estabelecimentosRow" msprop:Generator_UserRelationName="FK_ESTABELECIMENTOS_COMPRAS" />
-      <msdata:Relationship name="FK_USUARIOS_COMPRAS" msdata:parent="premium_usuarios" msdata:child="compras" msdata:parentkey="id" msdata:childkey="premium_usuarios_id" msprop:Generator_UserParentTable="premium_usuarios" msprop:Generator_UserChildTable="compras" msprop:Generator_RelationVarName="relationFK_USUARIOS_COMPRAS" msprop:Generator_ChildPropName="GetcomprasRows" msprop:Generator_ParentPropName="premium_usuariosRow" msprop:Generator_UserRelationName="FK_USUARIOS_COMPRAS" />
-      <msdata:Relationship name="FK_ESTABELECIMENTOS_ESTABELECIMENTOSFORNECEDOR" msdata:parent="estabelecimentos" msdata:child="estabelecimento_fornecedor" msdata:parentkey="id" msdata:childkey="estabelecimentos_id" msprop:Generator_UserParentTable="estabelecimentos" msprop:Generator_UserChildTable="estabelecimento_fornecedor" msprop:Generator_RelationVarName="relationFK_ESTABELECIMENTOS_ESTABELECIMENTOSFORNECEDOR" msprop:Generator_ChildPropName="Getestabelecimento_fornecedorRows" msprop:Generator_ParentPropName="estabelecimentosRow" msprop:Generator_UserRelationName="FK_ESTABELECIMENTOS_ESTABELECIMENTOSFORNECEDOR" />
-      <msdata:Relationship name="FK_FORNECEDORES_ESTABELECIMENTOSFORNECEDOR" msdata:parent="fornecedores" msdata:child="estabelecimento_fornecedor" msdata:parentkey="id" msdata:childkey="fornecedores_id" msprop:Generator_UserParentTable="fornecedores" msprop:Generator_UserChildTable="estabelecimento_fornecedor" msprop:Generator_RelationVarName="relationFK_FORNECEDORES_ESTABELECIMENTOSFORNECEDOR" msprop:Generator_ChildPropName="Getestabelecimento_fornecedorRows" msprop:Generator_ParentPropName="fornecedoresRow" msprop:Generator_UserRelationName="FK_FORNECEDORES_ESTABELECIMENTOSFORNECEDOR" />
-      <msdata:Relationship name="FK_ESTABELECIMENTOS_ESTABELECIMENTOPRODUTO" msdata:parent="estabelecimentos" msdata:child="estabelecimento_produto" msdata:parentkey="id" msdata:childkey="estabelecimentos_id" msprop:Generator_UserParentTable="estabelecimentos" msprop:Generator_UserChildTable="estabelecimento_produto" msprop:Generator_RelationVarName="relationFK_ESTABELECIMENTOS_ESTABELECIMENTOPRODUTO" msprop:Generator_ChildPropName="Getestabelecimento_produtoRows" msprop:Generator_ParentPropName="estabelecimentosRow" msprop:Generator_UserRelationName="FK_ESTABELECIMENTOS_ESTABELECIMENTOPRODUTO" />
-      <msdata:Relationship name="FK_PRODUTOS_ESTABELECIMENTOPRODUTO" msdata:parent="produtos" msdata:child="estabelecimento_produto" msdata:parentkey="cod_produto" msdata:childkey="produtos_cod_produto" msprop:Generator_UserParentTable="produtos" msprop:Generator_UserChildTable="estabelecimento_produto" msprop:Generator_RelationVarName="relationFK_PRODUTOS_ESTABELECIMENTOPRODUTO" msprop:Generator_ChildPropName="Getestabelecimento_produtoRows" msprop:Generator_ParentPropName="produtosRow" msprop:Generator_UserRelationName="FK_PRODUTOS_ESTABELECIMENTOPRODUTO" />
-      <msdata:Relationship name="FK_CIDADES_ESTABELECIMENTOS" msdata:parent="cidades" msdata:child="estabelecimentos" msdata:parentkey="id" msdata:childkey="cidades_id" msprop:Generator_UserParentTable="cidades" msprop:Generator_UserChildTable="estabelecimentos" msprop:Generator_RelationVarName="relationFK_CIDADES_ESTABELECIMENTOS" msprop:Generator_ChildPropName="GetestabelecimentosRows" msprop:Generator_UserRelationName="FK_CIDADES_ESTABELECIMENTOS" msprop:Generator_ParentPropName="cidadesRow" />
-      <msdata:Relationship name="FK_CARGOS_FUNCIONARIOS" msdata:parent="cargos" msdata:child="funcionarios" msdata:parentkey="id" msdata:childkey="cargos_id" msprop:Generator_UserParentTable="cargos" msprop:Generator_UserChildTable="funcionarios" msprop:Generator_RelationVarName="relationFK_CARGOS_FUNCIONARIOS" msprop:Generator_ChildPropName="GetfuncionariosRows" msprop:Generator_UserRelationName="FK_CARGOS_FUNCIONARIOS" msprop:Generator_ParentPropName="cargosRow" />
-      <msdata:Relationship name="FK_ESTABELECIMENTOS_FUNCIONARIOS" msdata:parent="estabelecimentos" msdata:child="funcionarios" msdata:parentkey="id" msdata:childkey="estabelecimentos_id" msprop:Generator_UserParentTable="estabelecimentos" msprop:Generator_UserChildTable="funcionarios" msprop:Generator_RelationVarName="relationFK_ESTABELECIMENTOS_FUNCIONARIOS" msprop:Generator_ChildPropName="GetfuncionariosRows" msprop:Generator_UserRelationName="FK_ESTABELECIMENTOS_FUNCIONARIOS" msprop:Generator_ParentPropName="estabelecimentosRow" />
-      <msdata:Relationship name="FK_GENEROS_FUNCIONARIOS" msdata:parent="generos" msdata:child="funcionarios" msdata:parentkey="id" msdata:childkey="generos_id" msprop:Generator_UserParentTable="generos" msprop:Generator_UserChildTable="funcionarios" msprop:Generator_RelationVarName="relationFK_GENEROS_FUNCIONARIOS" msprop:Generator_ChildPropName="GetfuncionariosRows" msprop:Generator_ParentPropName="generosRow" msprop:Generator_UserRelationName="FK_GENEROS_FUNCIONARIOS" />
-      <msdata:Relationship name="FK_COMPRAS_ITEMVENDA" msdata:parent="compras" msdata:child="item_venda" msdata:parentkey="id" msdata:childkey="compras_id" msprop:Generator_UserParentTable="compras" msprop:Generator_UserChildTable="item_venda" msprop:Generator_RelationVarName="relationFK_COMPRAS_ITEMVENDA" msprop:Generator_ChildPropName="Getitem_vendaRows" msprop:Generator_UserRelationName="FK_COMPRAS_ITEMVENDA" msprop:Generator_ParentPropName="comprasRow" />
-      <msdata:Relationship name="FK_PRODUTOS_ITEMVENDA" msdata:parent="produtos" msdata:child="item_venda" msdata:parentkey="cod_produto" msdata:childkey="produtos_cod_produto" msprop:Generator_UserParentTable="produtos" msprop:Generator_UserChildTable="item_venda" msprop:Generator_RelationVarName="relationFK_PRODUTOS_ITEMVENDA" msprop:Generator_ChildPropName="Getitem_vendaRows" msprop:Generator_ParentPropName="produtosRow" msprop:Generator_UserRelationName="FK_PRODUTOS_ITEMVENDA" />
-      <msdata:Relationship name="FK_CIDADES_USUARIOS" msdata:parent="cidades" msdata:child="premium_usuarios" msdata:parentkey="id" msdata:childkey="cidades_id" msprop:Generator_UserParentTable="cidades" msprop:Generator_UserChildTable="premium_usuarios" msprop:Generator_RelationVarName="relationFK_CIDADES_USUARIOS" msprop:Generator_ChildPropName="Getpremium_usuariosRows" msprop:Generator_UserRelationName="FK_CIDADES_USUARIOS" msprop:Generator_ParentPropName="cidadesRow" />
-      <msdata:Relationship name="FK_GENEROS_USUARIOS" msdata:parent="generos" msdata:child="premium_usuarios" msdata:parentkey="id" msdata:childkey="generos_id" msprop:Generator_UserParentTable="generos" msprop:Generator_UserChildTable="premium_usuarios" msprop:Generator_RelationVarName="relationFK_GENEROS_USUARIOS" msprop:Generator_ChildPropName="Getpremium_usuariosRows" msprop:Generator_UserRelationName="FK_GENEROS_USUARIOS" msprop:Generator_ParentPropName="generosRow" />
-      <msdata:Relationship name="FK_ESTOQUE_PRUDOTS" msdata:parent="estoque" msdata:child="produtos" msdata:parentkey="id" msdata:childkey="estoque_id" msprop:Generator_UserParentTable="estoque" msprop:Generator_UserChildTable="produtos" msprop:Generator_RelationVarName="relationFK_ESTOQUE_PRUDOTS" msprop:Generator_ChildPropName="GetprodutosRows" msprop:Generator_UserRelationName="FK_ESTOQUE_PRUDOTS" msprop:Generator_ParentPropName="estoqueRow" />
-      <msdata:Relationship name="FK_FORNECEDORES_PRODUTOS" msdata:parent="fornecedores" msdata:child="produtos" msdata:parentkey="id" msdata:childkey="fornecedores_id" msprop:Generator_UserParentTable="fornecedores" msprop:Generator_UserChildTable="produtos" msprop:Generator_RelationVarName="relationFK_FORNECEDORES_PRODUTOS" msprop:Generator_ChildPropName="GetprodutosRows" msprop:Generator_UserRelationName="FK_FORNECEDORES_PRODUTOS" msprop:Generator_ParentPropName="fornecedoresRow" />
-      <msdata:Relationship name="FK_TIPOPRODUTOS_PRODUTOS" msdata:parent="tipo_produtos" msdata:child="produtos" msdata:parentkey="id" msdata:childkey="tipo_produtos_id" msprop:Generator_UserParentTable="tipo_produtos" msprop:Generator_UserChildTable="produtos" msprop:Generator_RelationVarName="relationFK_TIPOPRODUTOS_PRODUTOS" msprop:Generator_ChildPropName="GetprodutosRows" msprop:Generator_ParentPropName="tipo_produtosRow" msprop:Generator_UserRelationName="FK_TIPOPRODUTOS_PRODUTOS" />
+      <msdata:Relationship name="FK_ESTABELECIMENTOS_COMPRAS" msdata:parent="estabelecimentos" msdata:child="compras" msdata:parentkey="id" msdata:childkey="estabelecimentos_id" msprop:Generator_UserParentTable="estabelecimentos" msprop:Generator_UserChildTable="compras" msprop:Generator_RelationVarName="relationFK_ESTABELECIMENTOS_COMPRAS" msprop:Generator_ChildPropName="GetcomprasRows" msprop:Generator_UserRelationName="FK_ESTABELECIMENTOS_COMPRAS" msprop:Generator_ParentPropName="estabelecimentosRow" />
+      <msdata:Relationship name="FK_USUARIOS_COMPRAS" msdata:parent="premium_usuarios" msdata:child="compras" msdata:parentkey="id" msdata:childkey="premium_usuarios_id" msprop:Generator_UserParentTable="premium_usuarios" msprop:Generator_UserChildTable="compras" msprop:Generator_RelationVarName="relationFK_USUARIOS_COMPRAS" msprop:Generator_ChildPropName="GetcomprasRows" msprop:Generator_UserRelationName="FK_USUARIOS_COMPRAS" msprop:Generator_ParentPropName="premium_usuariosRow" />
+      <msdata:Relationship name="FK_ESTABELECIMENTOS_ESTABELECIMENTOSFORNECEDOR" msdata:parent="estabelecimentos" msdata:child="estabelecimento_fornecedor" msdata:parentkey="id" msdata:childkey="estabelecimentos_id" msprop:Generator_UserParentTable="estabelecimentos" msprop:Generator_UserChildTable="estabelecimento_fornecedor" msprop:Generator_RelationVarName="relationFK_ESTABELECIMENTOS_ESTABELECIMENTOSFORNECEDOR" msprop:Generator_ChildPropName="Getestabelecimento_fornecedorRows" msprop:Generator_UserRelationName="FK_ESTABELECIMENTOS_ESTABELECIMENTOSFORNECEDOR" msprop:Generator_ParentPropName="estabelecimentosRow" />
+      <msdata:Relationship name="FK_FORNECEDORES_ESTABELECIMENTOSFORNECEDOR" msdata:parent="fornecedores" msdata:child="estabelecimento_fornecedor" msdata:parentkey="id" msdata:childkey="fornecedores_id" msprop:Generator_UserParentTable="fornecedores" msprop:Generator_UserChildTable="estabelecimento_fornecedor" msprop:Generator_RelationVarName="relationFK_FORNECEDORES_ESTABELECIMENTOSFORNECEDOR" msprop:Generator_ChildPropName="Getestabelecimento_fornecedorRows" msprop:Generator_UserRelationName="FK_FORNECEDORES_ESTABELECIMENTOSFORNECEDOR" msprop:Generator_ParentPropName="fornecedoresRow" />
+      <msdata:Relationship name="FK_ESTABELECIMENTOS_ESTABELECIMENTOPRODUTO" msdata:parent="estabelecimentos" msdata:child="estabelecimento_produto" msdata:parentkey="id" msdata:childkey="estabelecimentos_id" msprop:Generator_UserParentTable="estabelecimentos" msprop:Generator_UserChildTable="estabelecimento_produto" msprop:Generator_RelationVarName="relationFK_ESTABELECIMENTOS_ESTABELECIMENTOPRODUTO" msprop:Generator_ChildPropName="Getestabelecimento_produtoRows" msprop:Generator_UserRelationName="FK_ESTABELECIMENTOS_ESTABELECIMENTOPRODUTO" msprop:Generator_ParentPropName="estabelecimentosRow" />
+      <msdata:Relationship name="FK_PRODUTOS_ESTABELECIMENTOPRODUTO" msdata:parent="produtos" msdata:child="estabelecimento_produto" msdata:parentkey="cod_produto" msdata:childkey="produtos_cod_produto" msprop:Generator_UserParentTable="produtos" msprop:Generator_UserChildTable="estabelecimento_produto" msprop:Generator_RelationVarName="relationFK_PRODUTOS_ESTABELECIMENTOPRODUTO" msprop:Generator_ChildPropName="Getestabelecimento_produtoRows" msprop:Generator_UserRelationName="FK_PRODUTOS_ESTABELECIMENTOPRODUTO" msprop:Generator_ParentPropName="produtosRow" />
+      <msdata:Relationship name="FK_CIDADES_ESTABELECIMENTOS" msdata:parent="cidades" msdata:child="estabelecimentos" msdata:parentkey="id" msdata:childkey="cidades_id" msprop:Generator_UserParentTable="cidades" msprop:Generator_UserChildTable="estabelecimentos" msprop:Generator_RelationVarName="relationFK_CIDADES_ESTABELECIMENTOS" msprop:Generator_ChildPropName="GetestabelecimentosRows" msprop:Generator_ParentPropName="cidadesRow" msprop:Generator_UserRelationName="FK_CIDADES_ESTABELECIMENTOS" />
+      <msdata:Relationship name="FK_CARGOS_FUNCIONARIOS" msdata:parent="cargos" msdata:child="funcionarios" msdata:parentkey="id" msdata:childkey="cargos_id" msprop:Generator_UserParentTable="cargos" msprop:Generator_UserChildTable="funcionarios" msprop:Generator_RelationVarName="relationFK_CARGOS_FUNCIONARIOS" msprop:Generator_ChildPropName="GetfuncionariosRows" msprop:Generator_ParentPropName="cargosRow" msprop:Generator_UserRelationName="FK_CARGOS_FUNCIONARIOS" />
+      <msdata:Relationship name="FK_ESTABELECIMENTOS_FUNCIONARIOS" msdata:parent="estabelecimentos" msdata:child="funcionarios" msdata:parentkey="id" msdata:childkey="estabelecimentos_id" msprop:Generator_UserParentTable="estabelecimentos" msprop:Generator_UserChildTable="funcionarios" msprop:Generator_RelationVarName="relationFK_ESTABELECIMENTOS_FUNCIONARIOS" msprop:Generator_ChildPropName="GetfuncionariosRows" msprop:Generator_ParentPropName="estabelecimentosRow" msprop:Generator_UserRelationName="FK_ESTABELECIMENTOS_FUNCIONARIOS" />
+      <msdata:Relationship name="FK_GENEROS_FUNCIONARIOS" msdata:parent="generos" msdata:child="funcionarios" msdata:parentkey="id" msdata:childkey="generos_id" msprop:Generator_UserParentTable="generos" msprop:Generator_UserChildTable="funcionarios" msprop:Generator_RelationVarName="relationFK_GENEROS_FUNCIONARIOS" msprop:Generator_ChildPropName="GetfuncionariosRows" msprop:Generator_UserRelationName="FK_GENEROS_FUNCIONARIOS" msprop:Generator_ParentPropName="generosRow" />
+      <msdata:Relationship name="FK_COMPRAS_ITEMVENDA" msdata:parent="compras" msdata:child="item_venda" msdata:parentkey="id" msdata:childkey="compras_id" msprop:Generator_UserParentTable="compras" msprop:Generator_UserChildTable="item_venda" msprop:Generator_RelationVarName="relationFK_COMPRAS_ITEMVENDA" msprop:Generator_ChildPropName="Getitem_vendaRows" msprop:Generator_ParentPropName="comprasRow" msprop:Generator_UserRelationName="FK_COMPRAS_ITEMVENDA" />
+      <msdata:Relationship name="FK_PRODUTOS_ITEMVENDA" msdata:parent="produtos" msdata:child="item_venda" msdata:parentkey="cod_produto" msdata:childkey="produtos_cod_produto" msprop:Generator_UserParentTable="produtos" msprop:Generator_UserChildTable="item_venda" msprop:Generator_RelationVarName="relationFK_PRODUTOS_ITEMVENDA" msprop:Generator_ChildPropName="Getitem_vendaRows" msprop:Generator_UserRelationName="FK_PRODUTOS_ITEMVENDA" msprop:Generator_ParentPropName="produtosRow" />
+      <msdata:Relationship name="FK_CIDADES_USUARIOS" msdata:parent="cidades" msdata:child="premium_usuarios" msdata:parentkey="id" msdata:childkey="cidades_id" msprop:Generator_UserParentTable="cidades" msprop:Generator_UserChildTable="premium_usuarios" msprop:Generator_RelationVarName="relationFK_CIDADES_USUARIOS" msprop:Generator_ChildPropName="Getpremium_usuariosRows" msprop:Generator_ParentPropName="cidadesRow" msprop:Generator_UserRelationName="FK_CIDADES_USUARIOS" />
+      <msdata:Relationship name="FK_GENEROS_USUARIOS" msdata:parent="generos" msdata:child="premium_usuarios" msdata:parentkey="id" msdata:childkey="generos_id" msprop:Generator_UserParentTable="generos" msprop:Generator_UserChildTable="premium_usuarios" msprop:Generator_RelationVarName="relationFK_GENEROS_USUARIOS" msprop:Generator_ChildPropName="Getpremium_usuariosRows" msprop:Generator_ParentPropName="generosRow" msprop:Generator_UserRelationName="FK_GENEROS_USUARIOS" />
+      <msdata:Relationship name="FK_ESTOQUE_PRUDOTS" msdata:parent="estoque" msdata:child="produtos" msdata:parentkey="id" msdata:childkey="estoque_id" msprop:Generator_UserParentTable="estoque" msprop:Generator_UserChildTable="produtos" msprop:Generator_RelationVarName="relationFK_ESTOQUE_PRUDOTS" msprop:Generator_ChildPropName="GetprodutosRows" msprop:Generator_ParentPropName="estoqueRow" msprop:Generator_UserRelationName="FK_ESTOQUE_PRUDOTS" />
+      <msdata:Relationship name="FK_FORNECEDORES_PRODUTOS" msdata:parent="fornecedores" msdata:child="produtos" msdata:parentkey="id" msdata:childkey="fornecedores_id" msprop:Generator_UserParentTable="fornecedores" msprop:Generator_UserChildTable="produtos" msprop:Generator_RelationVarName="relationFK_FORNECEDORES_PRODUTOS" msprop:Generator_ChildPropName="GetprodutosRows" msprop:Generator_ParentPropName="fornecedoresRow" msprop:Generator_UserRelationName="FK_FORNECEDORES_PRODUTOS" />
+      <msdata:Relationship name="FK_TIPOPRODUTOS_PRODUTOS" msdata:parent="tipo_produtos" msdata:child="produtos" msdata:parentkey="id" msdata:childkey="tipo_produtos_id" msprop:Generator_UserParentTable="tipo_produtos" msprop:Generator_UserChildTable="produtos" msprop:Generator_RelationVarName="relationFK_TIPOPRODUTOS_PRODUTOS" msprop:Generator_ChildPropName="GetprodutosRows" msprop:Generator_UserRelationName="FK_TIPOPRODUTOS_PRODUTOS" msprop:Generator_ParentPropName="tipo_produtosRow" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

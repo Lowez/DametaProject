@@ -30,6 +30,8 @@ namespace DametaProject
 
         private void Estabelecimentos_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'dameta_dbDataSet.dtEstabelecimentos' table. You can move, or remove it, as needed.
+            this.dtEstabelecimentosTableAdapter.Fill(this.dameta_dbDataSet.dtEstabelecimentos);
             if (inserindo)
             {
                 btAlterar.Enabled = false;

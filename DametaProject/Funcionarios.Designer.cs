@@ -53,6 +53,7 @@
             this.emailLabel = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dtFuncionariosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.funcionariosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mtxTelefone = new System.Windows.Forms.MaskedTextBox();
             this.txNome = new System.Windows.Forms.TextBox();
@@ -65,11 +66,11 @@
             this.estabelecimentosTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.estabelecimentosTableAdapter();
             this.funcionariosTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.funcionariosTableAdapter();
             this.mtxCPF = new System.Windows.Forms.MaskedTextBox();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dtFuncionariosTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.dtFuncionariosTableAdapter();
             this.nomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cargo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.estabelecimento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.salarioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cargosidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.estabelecimentosidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cPFDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.telefoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.estabelecimentosBindingSource)).BeginInit();
@@ -77,6 +78,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cargosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.generosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtFuncionariosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.funcionariosBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -290,19 +292,23 @@
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn,
             this.nomeDataGridViewTextBoxColumn,
+            this.cargo,
+            this.estabelecimento,
             this.salarioDataGridViewTextBoxColumn,
-            this.cargosidDataGridViewTextBoxColumn,
-            this.estabelecimentosidDataGridViewTextBoxColumn,
             this.cPFDataGridViewTextBoxColumn,
             this.telefoneDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.funcionariosBindingSource;
+            this.dataGridView1.DataSource = this.dtFuncionariosBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(44, 234);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(722, 207);
             this.dataGridView1.TabIndex = 90;
+            // 
+            // dtFuncionariosBindingSource
+            // 
+            this.dtFuncionariosBindingSource.DataMember = "dtFuncionarios";
+            this.dtFuncionariosBindingSource.DataSource = this.dameta_dbDataSet;
             // 
             // funcionariosBindingSource
             // 
@@ -384,44 +390,39 @@
             this.mtxCPF.Size = new System.Drawing.Size(120, 20);
             this.mtxCPF.TabIndex = 112;
             // 
-            // idDataGridViewTextBoxColumn
+            // dtFuncionariosTableAdapter
             // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idDataGridViewTextBoxColumn.Width = 40;
+            this.dtFuncionariosTableAdapter.ClearBeforeFill = true;
             // 
             // nomeDataGridViewTextBoxColumn
             // 
             this.nomeDataGridViewTextBoxColumn.DataPropertyName = "nome";
-            this.nomeDataGridViewTextBoxColumn.HeaderText = "nome";
+            this.nomeDataGridViewTextBoxColumn.HeaderText = "Nome";
             this.nomeDataGridViewTextBoxColumn.Name = "nomeDataGridViewTextBoxColumn";
             this.nomeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.nomeDataGridViewTextBoxColumn.Width = 138;
+            // 
+            // cargo
+            // 
+            this.cargo.DataPropertyName = "cargo";
+            this.cargo.HeaderText = "Cargo";
+            this.cargo.Name = "cargo";
+            this.cargo.ReadOnly = true;
+            // 
+            // estabelecimento
+            // 
+            this.estabelecimento.DataPropertyName = "estabelecimento";
+            this.estabelecimento.HeaderText = "Estabelecimento";
+            this.estabelecimento.Name = "estabelecimento";
+            this.estabelecimento.ReadOnly = true;
+            this.estabelecimento.Width = 180;
             // 
             // salarioDataGridViewTextBoxColumn
             // 
             this.salarioDataGridViewTextBoxColumn.DataPropertyName = "salario";
-            this.salarioDataGridViewTextBoxColumn.HeaderText = "salario";
+            this.salarioDataGridViewTextBoxColumn.HeaderText = "Salario";
             this.salarioDataGridViewTextBoxColumn.Name = "salarioDataGridViewTextBoxColumn";
             this.salarioDataGridViewTextBoxColumn.ReadOnly = true;
-            this.salarioDataGridViewTextBoxColumn.Width = 80;
-            // 
-            // cargosidDataGridViewTextBoxColumn
-            // 
-            this.cargosidDataGridViewTextBoxColumn.DataPropertyName = "cargos_id";
-            this.cargosidDataGridViewTextBoxColumn.HeaderText = "cargos_id";
-            this.cargosidDataGridViewTextBoxColumn.Name = "cargosidDataGridViewTextBoxColumn";
-            this.cargosidDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // estabelecimentosidDataGridViewTextBoxColumn
-            // 
-            this.estabelecimentosidDataGridViewTextBoxColumn.DataPropertyName = "estabelecimentos_id";
-            this.estabelecimentosidDataGridViewTextBoxColumn.HeaderText = "estabelecimentos_id";
-            this.estabelecimentosidDataGridViewTextBoxColumn.Name = "estabelecimentosidDataGridViewTextBoxColumn";
-            this.estabelecimentosidDataGridViewTextBoxColumn.ReadOnly = true;
-            this.estabelecimentosidDataGridViewTextBoxColumn.Width = 120;
+            this.salarioDataGridViewTextBoxColumn.Width = 60;
             // 
             // cPFDataGridViewTextBoxColumn
             // 
@@ -429,11 +430,12 @@
             this.cPFDataGridViewTextBoxColumn.HeaderText = "CPF";
             this.cPFDataGridViewTextBoxColumn.Name = "cPFDataGridViewTextBoxColumn";
             this.cPFDataGridViewTextBoxColumn.ReadOnly = true;
+            this.cPFDataGridViewTextBoxColumn.Width = 90;
             // 
             // telefoneDataGridViewTextBoxColumn
             // 
             this.telefoneDataGridViewTextBoxColumn.DataPropertyName = "telefone";
-            this.telefoneDataGridViewTextBoxColumn.HeaderText = "telefone";
+            this.telefoneDataGridViewTextBoxColumn.HeaderText = "Telefone";
             this.telefoneDataGridViewTextBoxColumn.Name = "telefoneDataGridViewTextBoxColumn";
             this.telefoneDataGridViewTextBoxColumn.ReadOnly = true;
             // 
@@ -478,6 +480,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cargosBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.generosBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtFuncionariosBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.funcionariosBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -522,11 +525,12 @@
         private System.Windows.Forms.BindingSource funcionariosBindingSource;
         private dameta_dbDataSetTableAdapters.funcionariosTableAdapter funcionariosTableAdapter;
         private System.Windows.Forms.MaskedTextBox mtxCPF;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource dtFuncionariosBindingSource;
+        private dameta_dbDataSetTableAdapters.dtFuncionariosTableAdapter dtFuncionariosTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn nomeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cargo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn estabelecimento;
         private System.Windows.Forms.DataGridViewTextBoxColumn salarioDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cargosidDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn estabelecimentosidDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn cPFDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn telefoneDataGridViewTextBoxColumn;
     }

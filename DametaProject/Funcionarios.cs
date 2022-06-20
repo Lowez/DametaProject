@@ -26,6 +26,8 @@ namespace DametaProject
 
         private void Funcionarios_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'dameta_dbDataSet.dtFuncionarios' table. You can move, or remove it, as needed.
+            this.dtFuncionariosTableAdapter.Fill(this.dameta_dbDataSet.dtFuncionarios);
             // TODO: This line of code loads data into the 'dameta_dbDataSet.funcionarios' table. You can move, or remove it, as needed.
             this.funcionariosTableAdapter.Fill(this.dameta_dbDataSet.funcionarios);
 
