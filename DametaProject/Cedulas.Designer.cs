@@ -74,6 +74,7 @@
             this.txValorPago.Name = "txValorPago";
             this.txValorPago.Size = new System.Drawing.Size(150, 22);
             this.txValorPago.TabIndex = 1;
+            this.txValorPago.TextChanged += new System.EventHandler(this.txValorPago_TextChanged);
             // 
             // label3
             // 
@@ -97,6 +98,7 @@
             // btTerminar
             // 
             this.btTerminar.BackColor = System.Drawing.Color.YellowGreen;
+            this.btTerminar.Enabled = false;
             this.btTerminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btTerminar.Location = new System.Drawing.Point(107, 191);
             this.btTerminar.Name = "btTerminar";

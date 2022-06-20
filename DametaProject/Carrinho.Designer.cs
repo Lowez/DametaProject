@@ -426,6 +426,7 @@
             this.Name = "Carrinho";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Bem vindo(a) [Nome do Usuário]";
+            this.Load += new System.EventHandler(this.Carrinho_Load);
             this.Shown += new System.EventHandler(this.Carrinho_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCarrinho)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).EndInit();
