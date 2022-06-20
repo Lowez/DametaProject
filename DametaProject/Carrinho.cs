@@ -18,7 +18,7 @@ namespace DametaProject
         public static decimal preco_total = 0;
 
         WelcomeForm form_inicial;
-        NovaCompra form_novacompra;
+        PremiumUserCheck form_premium;
         int qtdDeProdutos;
         decimal precoTotal;
         string nome_funcionario;
@@ -38,10 +38,7 @@ namespace DametaProject
 
         private void callOnLoad()
         {
-            form_novacompra = new NovaCompra(form_inicial, this);
-
-            // Desabilita o carrinho em seu início, para o funcionário selecionar se vai abrir uma nova compra ou sair do sistema
-            this.Enabled = false;
+            form_premium = new PremiumUserCheck(this);
 
             // Adiciona o nome do  usuário que está logando no título do formulário
             this.Text = "Bem vindo(a) " + nome_funcionario;
@@ -142,28 +139,23 @@ namespace DametaProject
 
         private void btConcluirCompra_Click(object sender, EventArgs e)
         {
-            SqlConnection conn;
-            SqlCommand comm1;
-
-            conn = new SqlConnection(Properties.Settings.Default.dameta_dbConnectionString);
-
-            comm1 = new SqlCommand(
-                "INSERT INTO compras (created, preco_total, premium_usuario_id, estabelecimentos_id) " +
-                "VALUES (@data_compra, @preco_total, @premium_usuario_id, @estabelecimentos_id)", conn);
-
-            precoTotal = Convert.ToDecimal(lblValorTotal.Text);
-
-            comm1.Parameters.Add("@data_compra", SqlDbType.Date);
-            comm1.Parameters["@data_compra"].Value = dtpDataCompra.Value;
-
-            comm1.Parameters.Add("@preco_total", SqlDbType.Money);
-            comm1.Parameters["@preco_total"].Value = precoTotal;
-
-            if (cliente_id != 0)
+            if (dgvCarrinho.Rows.Count == 0)
             {
+                MessageBox.Show("Impossível concluir uma compra vazia",
+                    "Erro!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+            else
+            {
+                SqlConnection conn;
+                SqlCommand comm1;
+
+                conn = new SqlConnection(Properties.Settings.Default.dameta_dbConnectionString);
+
                 comm1 = new SqlCommand(
-                "INSERT INTO compras (created, preco_total, premium_usuarios_id, estabelecimentos_id) " +
-                "VALUES (@data_compra, @preco_total, @premium_usuario_id, @estabelecimentos_id)", conn);
+                    "INSERT INTO compras (created, preco_total, premium_usuario_id, estabelecimentos_id) " +
+                    "VALUES (@data_compra, @preco_total, @premium_usuario_id, @estabelecimentos_id)", conn);
 
                 precoTotal = Convert.ToDecimal(lblValorTotal.Text);
 
@@ -173,84 +165,43 @@ namespace DametaProject
                 comm1.Parameters.Add("@preco_total", SqlDbType.Money);
                 comm1.Parameters["@preco_total"].Value = precoTotal;
 
-                comm1.Parameters.Add("@premium_usuario_id", SqlDbType.Int);
-                comm1.Parameters["@premium_usuario_id"].Value = Convert.ToInt32(cliente_id);
-
-                comm1.Parameters.Add("@estabelecimentos_id", SqlDbType.Int);
-                comm1.Parameters["@estabelecimentos_id"].Value = 1;
-            } else
-            {
-                comm1 = new SqlCommand(
-                "INSERT INTO compras (created, preco_total, estabelecimentos_id) " +
-                "VALUES (@data_compra, @preco_total, @estabelecimentos_id)", conn);
-
-                precoTotal = Convert.ToDecimal(lblValorTotal.Text);
-
-                comm1.Parameters.Add("@data_compra", SqlDbType.Date);
-                comm1.Parameters["@data_compra"].Value = dtpDataCompra.Value;
-
-                comm1.Parameters.Add("@preco_total", SqlDbType.Money);
-                comm1.Parameters["@preco_total"].Value = precoTotal;
-
-                comm1.Parameters.Add("@estabelecimentos_id", SqlDbType.Int);
-                comm1.Parameters["@estabelecimentos_id"].Value = estabelecimento_id;
-            }
-
-            try
-            {
-                try
+                if (cliente_id != 0)
                 {
-                    conn.Open();
+                    comm1 = new SqlCommand(
+                    "INSERT INTO compras (created, preco_total, premium_usuarios_id, estabelecimentos_id) " +
+                    "VALUES (@data_compra, @preco_total, @premium_usuario_id, @estabelecimentos_id)", conn);
+
+                    precoTotal = Convert.ToDecimal(lblValorTotal.Text);
+
+                    comm1.Parameters.Add("@data_compra", SqlDbType.Date);
+                    comm1.Parameters["@data_compra"].Value = dtpDataCompra.Value;
+
+                    comm1.Parameters.Add("@preco_total", SqlDbType.Money);
+                    comm1.Parameters["@preco_total"].Value = precoTotal;
+
+                    comm1.Parameters.Add("@premium_usuario_id", SqlDbType.Int);
+                    comm1.Parameters["@premium_usuario_id"].Value = Convert.ToInt32(cliente_id);
+
+                    comm1.Parameters.Add("@estabelecimentos_id", SqlDbType.Int);
+                    comm1.Parameters["@estabelecimentos_id"].Value = 1;
                 }
-                catch (Exception error)
+                else
                 {
-                    bIsOperationOK = false;
+                    comm1 = new SqlCommand(
+                    "INSERT INTO compras (created, preco_total, estabelecimentos_id) " +
+                    "VALUES (@data_compra, @preco_total, @estabelecimentos_id)", conn);
 
-                    MessageBox.Show(error.Message,
-                        "Erro ao tentar conexão com a base de dados",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
+                    precoTotal = Convert.ToDecimal(lblValorTotal.Text);
+
+                    comm1.Parameters.Add("@data_compra", SqlDbType.Date);
+                    comm1.Parameters["@data_compra"].Value = dtpDataCompra.Value;
+
+                    comm1.Parameters.Add("@preco_total", SqlDbType.Money);
+                    comm1.Parameters["@preco_total"].Value = precoTotal;
+
+                    comm1.Parameters.Add("@estabelecimentos_id", SqlDbType.Int);
+                    comm1.Parameters["@estabelecimentos_id"].Value = estabelecimento_id;
                 }
-
-                try
-                {
-                    comm1.ExecuteNonQuery();
-                }
-                catch (Exception error)
-                {
-                    bIsOperationOK = false;
-
-                    MessageBox.Show(error.Message,
-                        "Erro ao tentar execurar o comando SQL.",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                }
-            }
-            catch { }
-            finally
-            {
-                conn.Close();
-            }
-
-            // Comando para inserção dos itens na tabela item_venda
-
-            SqlCommand comm2;
-
-            comm2 = new SqlCommand(
-                "INSERT INTO item_venda (qtd, preco_parcial, produtos_cod_produto, compras_id) " +
-                "VALUES (@qtd, @preco_parcial, @cod_produto, @compras_id)", conn);
-
-            comm2.Parameters.Add("@qtd", SqlDbType.Int);
-            comm2.Parameters.Add("@preco_parcial", SqlDbType.Money);
-            comm2.Parameters.Add("@cod_produto", SqlDbType.Int);
-            comm2.Parameters.Add("@compras_id", SqlDbType.Int);
-
-            for (int i = 0; i < dgvCarrinho.Rows.Count; i++)
-            {
-                comm2.Parameters["@qtd"].Value = Convert.ToInt32(dgvCarrinho.Rows[i].Cells[2].Value);
-                comm2.Parameters["@preco_parcial"].Value = Convert.ToDecimal(dgvCarrinho.Rows[i].Cells[2].Value);
-                comm2.Parameters["@cod_produto"].Value = Convert.ToInt32(dgvCarrinho.Rows[i].Cells[0].Value);
-                comm2.Parameters["@compras_id"].Value = obterCodigoDeVenda(false);
 
                 try
                 {
@@ -270,7 +221,7 @@ namespace DametaProject
 
                     try
                     {
-                        comm2.ExecuteNonQuery();
+                        comm1.ExecuteNonQuery();
                     }
                     catch (Exception error)
                     {
@@ -287,14 +238,71 @@ namespace DametaProject
                 {
                     conn.Close();
                 }
-            }
 
-            if (bIsOperationOK)
-            {
-                preco_total = Convert.ToDecimal(lblValorTotal.Text);
+                // Comando para inserção dos itens na tabela item_venda
 
-                FormaDePagamento form_pagamento = new FormaDePagamento();
-                form_pagamento.Show();
+                SqlCommand comm2;
+
+                comm2 = new SqlCommand(
+                    "INSERT INTO item_venda (qtd, preco_parcial, produtos_cod_produto, compras_id) " +
+                    "VALUES (@qtd, @preco_parcial, @cod_produto, @compras_id)", conn);
+
+                comm2.Parameters.Add("@qtd", SqlDbType.Int);
+                comm2.Parameters.Add("@preco_parcial", SqlDbType.Money);
+                comm2.Parameters.Add("@cod_produto", SqlDbType.Int);
+                comm2.Parameters.Add("@compras_id", SqlDbType.Int);
+
+                for (int i = 0; i < dgvCarrinho.Rows.Count; i++)
+                {
+                    comm2.Parameters["@qtd"].Value = Convert.ToInt32(dgvCarrinho.Rows[i].Cells[2].Value);
+                    comm2.Parameters["@preco_parcial"].Value = Convert.ToDecimal(dgvCarrinho.Rows[i].Cells[2].Value);
+                    comm2.Parameters["@cod_produto"].Value = Convert.ToInt32(dgvCarrinho.Rows[i].Cells[0].Value);
+                    comm2.Parameters["@compras_id"].Value = obterCodigoDeVenda(false);
+
+                    try
+                    {
+                        try
+                        {
+                            conn.Open();
+                        }
+                        catch (Exception error)
+                        {
+                            bIsOperationOK = false;
+
+                            MessageBox.Show(error.Message,
+                                "Erro ao tentar conexão com a base de dados",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+                        }
+
+                        try
+                        {
+                            comm2.ExecuteNonQuery();
+                        }
+                        catch (Exception error)
+                        {
+                            bIsOperationOK = false;
+
+                            MessageBox.Show(error.Message,
+                                "Erro ao tentar execurar o comando SQL.",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+                        }
+                    }
+                    catch { }
+                    finally
+                    {
+                        conn.Close();
+                    }
+                }
+
+                if (bIsOperationOK)
+                {
+                    preco_total = Convert.ToDecimal(lblValorTotal.Text);
+
+                    FormaDePagamento form_pagamento = new FormaDePagamento();
+                    form_pagamento.Show();
+                }
             }
         }
         public int obterCodigoDeVenda(bool bBuscarProximo)
@@ -323,7 +331,7 @@ namespace DametaProject
 
         private void Carrinho_Shown(object sender, EventArgs e)
         {
-            form_novacompra.Show();
+            form_premium.Show();
         }
 
         private void btAdicionar_Click(object sender, EventArgs e)
@@ -347,6 +355,9 @@ namespace DametaProject
             // Incrementa quantidade de itens no carrinho
             qtdDeProdutos++;
             lblTotalItens.Text = qtdDeProdutos.ToString();
+
+            limpaForm();
+            txCodigoProd.Text = "";
         }
 
         private void btRemover_Click(object sender, EventArgs e)
@@ -420,6 +431,24 @@ namespace DametaProject
         {
             limpaForm();
             btRemover.Enabled = true;
+        }
+
+        private void btNovaCompra_Click(object sender, EventArgs e)
+        {
+            limpaForm();
+            txCodigoProd.Text = "";
+
+            dgvCarrinho.Rows.Clear();
+            dgvCarrinho.Refresh();
+
+            qtdDeProdutos = 0;
+            precoTotal = 0;
+
+            lblTotalItens.Text = qtdDeProdutos.ToString();
+            lblValorTotal.Text = precoTotal.ToString();
+
+            PremiumUserCheck premiumUserCheck = new PremiumUserCheck(this);
+            premiumUserCheck.Show();
         }
     }
 }
