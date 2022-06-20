@@ -32,21 +32,23 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nomeruaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numeroDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.telefoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cEPDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cidadesidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.estabelecimentosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dameta_dbDataSet = new DametaProject.dameta_dbDataSet();
             this.estabelecimentosTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.estabelecimentosTableAdapter();
             this.btIncluir = new System.Windows.Forms.Button();
+            this.dtEstabelecimentosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dtEstabelecimentosTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.dtEstabelecimentosTableAdapter();
+            this.nomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cidades = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nomeruaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numeroDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cEPDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.telefoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.estabelecimentosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtEstabelecimentosBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -73,62 +75,18 @@
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn,
             this.nomeDataGridViewTextBoxColumn,
+            this.cidades,
             this.nomeruaDataGridViewTextBoxColumn,
             this.numeroDataGridViewTextBoxColumn,
-            this.telefoneDataGridViewTextBoxColumn,
             this.cEPDataGridViewTextBoxColumn,
-            this.cidadesidDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.estabelecimentosBindingSource;
+            this.telefoneDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.dtEstabelecimentosBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(6, 43);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(764, 310);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // nomeDataGridViewTextBoxColumn
-            // 
-            this.nomeDataGridViewTextBoxColumn.DataPropertyName = "nome";
-            this.nomeDataGridViewTextBoxColumn.HeaderText = "nome";
-            this.nomeDataGridViewTextBoxColumn.Name = "nomeDataGridViewTextBoxColumn";
-            // 
-            // nomeruaDataGridViewTextBoxColumn
-            // 
-            this.nomeruaDataGridViewTextBoxColumn.DataPropertyName = "nome_rua";
-            this.nomeruaDataGridViewTextBoxColumn.HeaderText = "nome_rua";
-            this.nomeruaDataGridViewTextBoxColumn.Name = "nomeruaDataGridViewTextBoxColumn";
-            // 
-            // numeroDataGridViewTextBoxColumn
-            // 
-            this.numeroDataGridViewTextBoxColumn.DataPropertyName = "numero";
-            this.numeroDataGridViewTextBoxColumn.HeaderText = "numero";
-            this.numeroDataGridViewTextBoxColumn.Name = "numeroDataGridViewTextBoxColumn";
-            // 
-            // telefoneDataGridViewTextBoxColumn
-            // 
-            this.telefoneDataGridViewTextBoxColumn.DataPropertyName = "telefone";
-            this.telefoneDataGridViewTextBoxColumn.HeaderText = "telefone";
-            this.telefoneDataGridViewTextBoxColumn.Name = "telefoneDataGridViewTextBoxColumn";
-            // 
-            // cEPDataGridViewTextBoxColumn
-            // 
-            this.cEPDataGridViewTextBoxColumn.DataPropertyName = "CEP";
-            this.cEPDataGridViewTextBoxColumn.HeaderText = "CEP";
-            this.cEPDataGridViewTextBoxColumn.Name = "cEPDataGridViewTextBoxColumn";
-            // 
-            // cidadesidDataGridViewTextBoxColumn
-            // 
-            this.cidadesidDataGridViewTextBoxColumn.DataPropertyName = "cidades_id";
-            this.cidadesidDataGridViewTextBoxColumn.HeaderText = "cidades_id";
-            this.cidadesidDataGridViewTextBoxColumn.Name = "cidadesidDataGridViewTextBoxColumn";
             // 
             // estabelecimentosBindingSource
             // 
@@ -154,6 +112,55 @@
             this.btIncluir.UseVisualStyleBackColor = true;
             this.btIncluir.Click += new System.EventHandler(this.btInserir_Click);
             // 
+            // dtEstabelecimentosBindingSource
+            // 
+            this.dtEstabelecimentosBindingSource.DataMember = "dtEstabelecimentos";
+            this.dtEstabelecimentosBindingSource.DataSource = this.dameta_dbDataSet;
+            // 
+            // dtEstabelecimentosTableAdapter
+            // 
+            this.dtEstabelecimentosTableAdapter.ClearBeforeFill = true;
+            // 
+            // nomeDataGridViewTextBoxColumn
+            // 
+            this.nomeDataGridViewTextBoxColumn.DataPropertyName = "nome";
+            this.nomeDataGridViewTextBoxColumn.HeaderText = "Nome";
+            this.nomeDataGridViewTextBoxColumn.Name = "nomeDataGridViewTextBoxColumn";
+            this.nomeDataGridViewTextBoxColumn.Width = 180;
+            // 
+            // cidades
+            // 
+            this.cidades.DataPropertyName = "cidades";
+            this.cidades.HeaderText = "Cidade";
+            this.cidades.Name = "cidades";
+            this.cidades.Width = 110;
+            // 
+            // nomeruaDataGridViewTextBoxColumn
+            // 
+            this.nomeruaDataGridViewTextBoxColumn.DataPropertyName = "nome_rua";
+            this.nomeruaDataGridViewTextBoxColumn.HeaderText = "Rua";
+            this.nomeruaDataGridViewTextBoxColumn.Name = "nomeruaDataGridViewTextBoxColumn";
+            this.nomeruaDataGridViewTextBoxColumn.Width = 180;
+            // 
+            // numeroDataGridViewTextBoxColumn
+            // 
+            this.numeroDataGridViewTextBoxColumn.DataPropertyName = "numero";
+            this.numeroDataGridViewTextBoxColumn.HeaderText = "Numero";
+            this.numeroDataGridViewTextBoxColumn.Name = "numeroDataGridViewTextBoxColumn";
+            this.numeroDataGridViewTextBoxColumn.Width = 50;
+            // 
+            // cEPDataGridViewTextBoxColumn
+            // 
+            this.cEPDataGridViewTextBoxColumn.DataPropertyName = "CEP";
+            this.cEPDataGridViewTextBoxColumn.HeaderText = "CEP";
+            this.cEPDataGridViewTextBoxColumn.Name = "cEPDataGridViewTextBoxColumn";
+            // 
+            // telefoneDataGridViewTextBoxColumn
+            // 
+            this.telefoneDataGridViewTextBoxColumn.DataPropertyName = "telefone";
+            this.telefoneDataGridViewTextBoxColumn.HeaderText = "Telefone";
+            this.telefoneDataGridViewTextBoxColumn.Name = "telefoneDataGridViewTextBoxColumn";
+            // 
             // HomeEstabelecimentos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -170,6 +177,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.estabelecimentosBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtEstabelecimentosBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -182,13 +190,14 @@
         private dameta_dbDataSet dameta_dbDataSet;
         private System.Windows.Forms.BindingSource estabelecimentosBindingSource;
         private dameta_dbDataSetTableAdapters.estabelecimentosTableAdapter estabelecimentosTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button btIncluir;
+        private System.Windows.Forms.BindingSource dtEstabelecimentosBindingSource;
+        private dameta_dbDataSetTableAdapters.dtEstabelecimentosTableAdapter dtEstabelecimentosTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn nomeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cidades;
         private System.Windows.Forms.DataGridViewTextBoxColumn nomeruaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn numeroDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn telefoneDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn cEPDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cidadesidDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Button btIncluir;
+        private System.Windows.Forms.DataGridViewTextBoxColumn telefoneDataGridViewTextBoxColumn;
     }
 }
