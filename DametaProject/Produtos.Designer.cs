@@ -81,7 +81,7 @@
             // categoriaLabel
             // 
             categoriaLabel.AutoSize = true;
-            categoriaLabel.Location = new System.Drawing.Point(302, 164);
+            categoriaLabel.Location = new System.Drawing.Point(230, 174);
             categoriaLabel.Name = "categoriaLabel";
             categoriaLabel.Size = new System.Drawing.Size(85, 13);
             categoriaLabel.TabIndex = 25;
@@ -90,7 +90,7 @@
             // precoUnitLabel
             // 
             precoUnitLabel.AutoSize = true;
-            precoUnitLabel.Location = new System.Drawing.Point(102, 121);
+            precoUnitLabel.Location = new System.Drawing.Point(30, 131);
             precoUnitLabel.Name = "precoUnitLabel";
             precoUnitLabel.Size = new System.Drawing.Size(60, 13);
             precoUnitLabel.TabIndex = 23;
@@ -99,7 +99,7 @@
             // nomeLabel
             // 
             nomeLabel.AutoSize = true;
-            nomeLabel.Location = new System.Drawing.Point(102, 80);
+            nomeLabel.Location = new System.Drawing.Point(30, 90);
             nomeLabel.Name = "nomeLabel";
             nomeLabel.Size = new System.Drawing.Size(38, 13);
             nomeLabel.TabIndex = 20;
@@ -108,7 +108,7 @@
             // CodigoProdutoLabel
             // 
             CodigoProdutoLabel.AutoSize = true;
-            CodigoProdutoLabel.Location = new System.Drawing.Point(102, 36);
+            CodigoProdutoLabel.Location = new System.Drawing.Point(30, 43);
             CodigoProdutoLabel.Name = "CodigoProdutoLabel";
             CodigoProdutoLabel.Size = new System.Drawing.Size(101, 13);
             CodigoProdutoLabel.TabIndex = 19;
@@ -117,7 +117,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(293, 121);
+            label2.Location = new System.Drawing.Point(230, 131);
             label2.Name = "label2";
             label2.Size = new System.Drawing.Size(85, 13);
             label2.TabIndex = 35;
@@ -126,7 +126,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(102, 164);
+            label1.Location = new System.Drawing.Point(30, 174);
             label1.Name = "label1";
             label1.Size = new System.Drawing.Size(64, 13);
             label1.TabIndex = 37;
@@ -134,7 +134,7 @@
             // 
             // btLimparForm
             // 
-            this.btLimparForm.Location = new System.Drawing.Point(609, 169);
+            this.btLimparForm.Location = new System.Drawing.Point(680, 174);
             this.btLimparForm.Name = "btLimparForm";
             this.btLimparForm.Size = new System.Drawing.Size(100, 40);
             this.btLimparForm.TabIndex = 32;
@@ -143,7 +143,7 @@
             // 
             // btExcluir
             // 
-            this.btExcluir.Location = new System.Drawing.Point(609, 120);
+            this.btExcluir.Location = new System.Drawing.Point(680, 125);
             this.btExcluir.Name = "btExcluir";
             this.btExcluir.Size = new System.Drawing.Size(100, 40);
             this.btExcluir.TabIndex = 31;
@@ -152,7 +152,7 @@
             // 
             // btAlterar
             // 
-            this.btAlterar.Location = new System.Drawing.Point(609, 71);
+            this.btAlterar.Location = new System.Drawing.Point(680, 76);
             this.btAlterar.Name = "btAlterar";
             this.btAlterar.Size = new System.Drawing.Size(100, 40);
             this.btAlterar.TabIndex = 30;
@@ -161,7 +161,7 @@
             // 
             // btConsultar
             // 
-            this.btConsultar.Location = new System.Drawing.Point(296, 22);
+            this.btConsultar.Location = new System.Drawing.Point(233, 29);
             this.btConsultar.Name = "btConsultar";
             this.btConsultar.Size = new System.Drawing.Size(100, 40);
             this.btConsultar.TabIndex = 28;
@@ -171,7 +171,7 @@
             // 
             // btIncluir
             // 
-            this.btIncluir.Location = new System.Drawing.Point(609, 22);
+            this.btIncluir.Location = new System.Drawing.Point(680, 29);
             this.btIncluir.Name = "btIncluir";
             this.btIncluir.Size = new System.Drawing.Size(100, 40);
             this.btIncluir.TabIndex = 29;
@@ -191,9 +191,9 @@
             this.fornecedoresidDataGridViewTextBoxColumn,
             this.estoqueidDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.produtosBindingSource1;
-            this.dataGridView1.Location = new System.Drawing.Point(17, 215);
+            this.dataGridView1.Location = new System.Drawing.Point(17, 231);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(763, 157);
+            this.dataGridView1.Size = new System.Drawing.Size(763, 207);
             this.dataGridView1.TabIndex = 27;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -259,7 +259,7 @@
             this.cbTipo.DataSource = this.tipoprodutosBindingSource;
             this.cbTipo.DisplayMember = "nome";
             this.cbTipo.FormattingEnabled = true;
-            this.cbTipo.Location = new System.Drawing.Point(389, 161);
+            this.cbTipo.Location = new System.Drawing.Point(317, 171);
             this.cbTipo.Name = "cbTipo";
             this.cbTipo.Size = new System.Drawing.Size(112, 21);
             this.cbTipo.TabIndex = 26;
@@ -272,30 +272,30 @@
             // 
             // txPrecoUnit
             // 
-            this.txPrecoUnit.Location = new System.Drawing.Point(163, 118);
+            this.txPrecoUnit.Location = new System.Drawing.Point(100, 128);
             this.txPrecoUnit.Name = "txPrecoUnit";
             this.txPrecoUnit.Size = new System.Drawing.Size(121, 20);
             this.txPrecoUnit.TabIndex = 24;
             // 
             // txNome
             // 
-            this.txNome.Location = new System.Drawing.Point(163, 77);
+            this.txNome.Location = new System.Drawing.Point(100, 87);
             this.txNome.Name = "txNome";
-            this.txNome.Size = new System.Drawing.Size(338, 20);
+            this.txNome.Size = new System.Drawing.Size(329, 20);
             this.txNome.TabIndex = 22;
             // 
             // txID
             // 
-            this.txID.Location = new System.Drawing.Point(199, 33);
+            this.txID.Location = new System.Drawing.Point(127, 40);
             this.txID.Name = "txID";
-            this.txID.Size = new System.Drawing.Size(85, 20);
+            this.txID.Size = new System.Drawing.Size(94, 20);
             this.txID.TabIndex = 21;
             // 
             // txQtdEstoque
             // 
-            this.txQtdEstoque.Location = new System.Drawing.Point(380, 118);
+            this.txQtdEstoque.Location = new System.Drawing.Point(317, 128);
             this.txQtdEstoque.Name = "txQtdEstoque";
-            this.txQtdEstoque.Size = new System.Drawing.Size(121, 20);
+            this.txQtdEstoque.Size = new System.Drawing.Size(112, 20);
             this.txQtdEstoque.TabIndex = 36;
             // 
             // produtosTableAdapter
@@ -308,7 +308,7 @@
             this.cbFornecedor.DataSource = this.fornecedoresBindingSource;
             this.cbFornecedor.DisplayMember = "nome";
             this.cbFornecedor.FormattingEnabled = true;
-            this.cbFornecedor.Location = new System.Drawing.Point(172, 161);
+            this.cbFornecedor.Location = new System.Drawing.Point(100, 171);
             this.cbFornecedor.Name = "cbFornecedor";
             this.cbFornecedor.Size = new System.Drawing.Size(121, 21);
             this.cbFornecedor.TabIndex = 38;
@@ -340,7 +340,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 397);
+            this.ClientSize = new System.Drawing.Size(800, 458);
             this.Controls.Add(this.cbFornecedor);
             this.Controls.Add(label1);
             this.Controls.Add(this.txQtdEstoque);

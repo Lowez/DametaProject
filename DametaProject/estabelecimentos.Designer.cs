@@ -42,13 +42,6 @@
             this.txRua = new System.Windows.Forms.TextBox();
             this.emailLabel = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nomeruaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numeroDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.telefoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cEPDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cidadesidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.estabelecimentosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txNome = new System.Windows.Forms.TextBox();
             this.nomeLabel = new System.Windows.Forms.Label();
@@ -61,6 +54,13 @@
             this.btAlterar = new System.Windows.Forms.Button();
             this.btIncluir = new System.Windows.Forms.Button();
             this.btConsultar = new System.Windows.Forms.Button();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nomeruaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numeroDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.telefoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cEPDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cidadesidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.cidadesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -70,7 +70,7 @@
             // mtxCEP
             // 
             this.mtxCEP.ForeColor = System.Drawing.Color.Black;
-            this.mtxCEP.Location = new System.Drawing.Point(426, 90);
+            this.mtxCEP.Location = new System.Drawing.Point(417, 105);
             this.mtxCEP.Mask = "99999-999";
             this.mtxCEP.Name = "mtxCEP";
             this.mtxCEP.Size = new System.Drawing.Size(118, 20);
@@ -79,7 +79,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(376, 93);
+            this.label3.Location = new System.Drawing.Point(380, 108);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(31, 13);
             this.label3.TabIndex = 129;
@@ -88,7 +88,7 @@
             // mtxTelefone
             // 
             this.mtxTelefone.ForeColor = System.Drawing.Color.Black;
-            this.mtxTelefone.Location = new System.Drawing.Point(115, 170);
+            this.mtxTelefone.Location = new System.Drawing.Point(119, 185);
             this.mtxTelefone.Mask = "(99)99999-9999";
             this.mtxTelefone.Name = "mtxTelefone";
             this.mtxTelefone.Size = new System.Drawing.Size(118, 20);
@@ -97,7 +97,7 @@
             // telefoneLabel
             // 
             this.telefoneLabel.AutoSize = true;
-            this.telefoneLabel.Location = new System.Drawing.Point(49, 173);
+            this.telefoneLabel.Location = new System.Drawing.Point(53, 188);
             this.telefoneLabel.Name = "telefoneLabel";
             this.telefoneLabel.Size = new System.Drawing.Size(52, 13);
             this.telefoneLabel.TabIndex = 127;
@@ -109,7 +109,7 @@
             this.cbCidade.DataSource = this.cidadesBindingSource;
             this.cbCidade.DisplayMember = "nome";
             this.cbCidade.FormattingEnabled = true;
-            this.cbCidade.Location = new System.Drawing.Point(102, 130);
+            this.cbCidade.Location = new System.Drawing.Point(116, 145);
             this.cbCidade.Name = "cbCidade";
             this.cbCidade.Size = new System.Drawing.Size(121, 21);
             this.cbCidade.TabIndex = 126;
@@ -128,7 +128,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(53, 133);
+            this.label5.Location = new System.Drawing.Point(53, 148);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(43, 13);
             this.label5.TabIndex = 125;
@@ -136,7 +136,7 @@
             // 
             // txNumero
             // 
-            this.txNumero.Location = new System.Drawing.Point(316, 170);
+            this.txNumero.Location = new System.Drawing.Point(303, 185);
             this.txNumero.Name = "txNumero";
             this.txNumero.Size = new System.Drawing.Size(100, 20);
             this.txNumero.TabIndex = 124;
@@ -144,7 +144,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(266, 173);
+            this.label2.Location = new System.Drawing.Point(253, 188);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(47, 13);
             this.label2.TabIndex = 123;
@@ -152,15 +152,15 @@
             // 
             // txRua
             // 
-            this.txRua.Location = new System.Drawing.Point(299, 131);
+            this.txRua.Location = new System.Drawing.Point(303, 146);
             this.txRua.Name = "txRua";
-            this.txRua.Size = new System.Drawing.Size(244, 20);
+            this.txRua.Size = new System.Drawing.Size(232, 20);
             this.txRua.TabIndex = 122;
             // 
             // emailLabel
             // 
             this.emailLabel.AutoSize = true;
-            this.emailLabel.Location = new System.Drawing.Point(249, 131);
+            this.emailLabel.Location = new System.Drawing.Point(253, 146);
             this.emailLabel.Name = "emailLabel";
             this.emailLabel.Size = new System.Drawing.Size(30, 13);
             this.emailLabel.TabIndex = 121;
@@ -181,11 +181,106 @@
             this.cEPDataGridViewTextBoxColumn,
             this.cidadesidDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.estabelecimentosBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(37, 224);
+            this.dataGridView1.Location = new System.Drawing.Point(56, 231);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(728, 201);
+            this.dataGridView1.Size = new System.Drawing.Size(681, 207);
             this.dataGridView1.TabIndex = 115;
+            // 
+            // estabelecimentosBindingSource
+            // 
+            this.estabelecimentosBindingSource.DataMember = "estabelecimentos";
+            this.estabelecimentosBindingSource.DataSource = this.dameta_dbDataSet;
+            // 
+            // txNome
+            // 
+            this.txNome.Location = new System.Drawing.Point(116, 105);
+            this.txNome.Name = "txNome";
+            this.txNome.Size = new System.Drawing.Size(244, 20);
+            this.txNome.TabIndex = 114;
+            // 
+            // nomeLabel
+            // 
+            this.nomeLabel.AutoSize = true;
+            this.nomeLabel.Location = new System.Drawing.Point(53, 108);
+            this.nomeLabel.Name = "nomeLabel";
+            this.nomeLabel.Size = new System.Drawing.Size(38, 13);
+            this.nomeLabel.TabIndex = 113;
+            this.nomeLabel.Text = "Nome:";
+            // 
+            // txID
+            // 
+            this.txID.Location = new System.Drawing.Point(197, 40);
+            this.txID.Name = "txID";
+            this.txID.Size = new System.Drawing.Size(53, 20);
+            this.txID.TabIndex = 112;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(53, 43);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(138, 13);
+            this.label1.TabIndex = 111;
+            this.label1.Text = "Codigo do estabelecimento:";
+            // 
+            // cidadesTableAdapter
+            // 
+            this.cidadesTableAdapter.ClearBeforeFill = true;
+            // 
+            // estabelecimentosTableAdapter
+            // 
+            this.estabelecimentosTableAdapter.ClearBeforeFill = true;
+            // 
+            // btLimpar
+            // 
+            this.btLimpar.Location = new System.Drawing.Point(637, 171);
+            this.btLimpar.Name = "btLimpar";
+            this.btLimpar.Size = new System.Drawing.Size(100, 40);
+            this.btLimpar.TabIndex = 134;
+            this.btLimpar.Text = "Limpar Form";
+            this.btLimpar.UseVisualStyleBackColor = true;
+            this.btLimpar.Click += new System.EventHandler(this.btLimpar_Click);
+            // 
+            // btExcluir
+            // 
+            this.btExcluir.Location = new System.Drawing.Point(637, 121);
+            this.btExcluir.Name = "btExcluir";
+            this.btExcluir.Size = new System.Drawing.Size(100, 40);
+            this.btExcluir.TabIndex = 133;
+            this.btExcluir.Text = "Excluir";
+            this.btExcluir.UseVisualStyleBackColor = true;
+            this.btExcluir.Click += new System.EventHandler(this.btExcluir_Click);
+            // 
+            // btAlterar
+            // 
+            this.btAlterar.Location = new System.Drawing.Point(637, 75);
+            this.btAlterar.Name = "btAlterar";
+            this.btAlterar.Size = new System.Drawing.Size(100, 40);
+            this.btAlterar.TabIndex = 132;
+            this.btAlterar.Text = "Alterar";
+            this.btAlterar.UseVisualStyleBackColor = true;
+            this.btAlterar.Click += new System.EventHandler(this.btAlterar_Click);
+            // 
+            // btIncluir
+            // 
+            this.btIncluir.Location = new System.Drawing.Point(637, 29);
+            this.btIncluir.Name = "btIncluir";
+            this.btIncluir.Size = new System.Drawing.Size(100, 40);
+            this.btIncluir.TabIndex = 131;
+            this.btIncluir.Text = "Incluir";
+            this.btIncluir.UseVisualStyleBackColor = true;
+            this.btIncluir.Click += new System.EventHandler(this.btLimpar_Click);
+            // 
+            // btConsultar
+            // 
+            this.btConsultar.Location = new System.Drawing.Point(269, 29);
+            this.btConsultar.Name = "btConsultar";
+            this.btConsultar.Size = new System.Drawing.Size(100, 40);
+            this.btConsultar.TabIndex = 135;
+            this.btConsultar.Text = "Consultar";
+            this.btConsultar.UseVisualStyleBackColor = true;
+            this.btConsultar.Click += new System.EventHandler(this.btConsultar_Click);
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -193,6 +288,7 @@
             this.idDataGridViewTextBoxColumn.HeaderText = "id";
             this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
             this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn.Width = 50;
             // 
             // nomeDataGridViewTextBoxColumn
             // 
@@ -235,101 +331,7 @@
             this.cidadesidDataGridViewTextBoxColumn.HeaderText = "cidades_id";
             this.cidadesidDataGridViewTextBoxColumn.Name = "cidadesidDataGridViewTextBoxColumn";
             this.cidadesidDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // estabelecimentosBindingSource
-            // 
-            this.estabelecimentosBindingSource.DataMember = "estabelecimentos";
-            this.estabelecimentosBindingSource.DataSource = this.dameta_dbDataSet;
-            // 
-            // txNome
-            // 
-            this.txNome.Location = new System.Drawing.Point(97, 90);
-            this.txNome.Name = "txNome";
-            this.txNome.Size = new System.Drawing.Size(244, 20);
-            this.txNome.TabIndex = 114;
-            // 
-            // nomeLabel
-            // 
-            this.nomeLabel.AutoSize = true;
-            this.nomeLabel.Location = new System.Drawing.Point(53, 93);
-            this.nomeLabel.Name = "nomeLabel";
-            this.nomeLabel.Size = new System.Drawing.Size(38, 13);
-            this.nomeLabel.TabIndex = 113;
-            this.nomeLabel.Text = "Nome:";
-            // 
-            // txID
-            // 
-            this.txID.Location = new System.Drawing.Point(194, 43);
-            this.txID.Name = "txID";
-            this.txID.Size = new System.Drawing.Size(53, 20);
-            this.txID.TabIndex = 112;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(53, 45);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(138, 13);
-            this.label1.TabIndex = 111;
-            this.label1.Text = "Codigo do estabelecimento:";
-            // 
-            // cidadesTableAdapter
-            // 
-            this.cidadesTableAdapter.ClearBeforeFill = true;
-            // 
-            // estabelecimentosTableAdapter
-            // 
-            this.estabelecimentosTableAdapter.ClearBeforeFill = true;
-            // 
-            // btLimpar
-            // 
-            this.btLimpar.Location = new System.Drawing.Point(637, 161);
-            this.btLimpar.Name = "btLimpar";
-            this.btLimpar.Size = new System.Drawing.Size(100, 40);
-            this.btLimpar.TabIndex = 134;
-            this.btLimpar.Text = "Limpar Form";
-            this.btLimpar.UseVisualStyleBackColor = true;
-            this.btLimpar.Click += new System.EventHandler(this.btLimpar_Click);
-            // 
-            // btExcluir
-            // 
-            this.btExcluir.Location = new System.Drawing.Point(637, 115);
-            this.btExcluir.Name = "btExcluir";
-            this.btExcluir.Size = new System.Drawing.Size(100, 40);
-            this.btExcluir.TabIndex = 133;
-            this.btExcluir.Text = "Excluir";
-            this.btExcluir.UseVisualStyleBackColor = true;
-            this.btExcluir.Click += new System.EventHandler(this.btExcluir_Click);
-            // 
-            // btAlterar
-            // 
-            this.btAlterar.Location = new System.Drawing.Point(637, 69);
-            this.btAlterar.Name = "btAlterar";
-            this.btAlterar.Size = new System.Drawing.Size(100, 40);
-            this.btAlterar.TabIndex = 132;
-            this.btAlterar.Text = "Alterar";
-            this.btAlterar.UseVisualStyleBackColor = true;
-            this.btAlterar.Click += new System.EventHandler(this.btAlterar_Click);
-            // 
-            // btIncluir
-            // 
-            this.btIncluir.Location = new System.Drawing.Point(637, 23);
-            this.btIncluir.Name = "btIncluir";
-            this.btIncluir.Size = new System.Drawing.Size(100, 40);
-            this.btIncluir.TabIndex = 131;
-            this.btIncluir.Text = "Incluir";
-            this.btIncluir.UseVisualStyleBackColor = true;
-            this.btIncluir.Click += new System.EventHandler(this.btLimpar_Click);
-            // 
-            // btConsultar
-            // 
-            this.btConsultar.Location = new System.Drawing.Point(269, 32);
-            this.btConsultar.Name = "btConsultar";
-            this.btConsultar.Size = new System.Drawing.Size(100, 40);
-            this.btConsultar.TabIndex = 135;
-            this.btConsultar.Text = "Consultar";
-            this.btConsultar.UseVisualStyleBackColor = true;
-            this.btConsultar.Click += new System.EventHandler(this.btConsultar_Click);
+            this.cidadesidDataGridViewTextBoxColumn.Width = 85;
             // 
             // Estabelecimentos
             // 
@@ -391,6 +393,11 @@
         private dameta_dbDataSetTableAdapters.cidadesTableAdapter cidadesTableAdapter;
         private System.Windows.Forms.BindingSource estabelecimentosBindingSource;
         private dameta_dbDataSetTableAdapters.estabelecimentosTableAdapter estabelecimentosTableAdapter;
+        private System.Windows.Forms.Button btLimpar;
+        private System.Windows.Forms.Button btExcluir;
+        private System.Windows.Forms.Button btAlterar;
+        private System.Windows.Forms.Button btIncluir;
+        private System.Windows.Forms.Button btConsultar;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nomeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nomeruaDataGridViewTextBoxColumn;
@@ -398,10 +405,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn telefoneDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn cEPDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn cidadesidDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Button btLimpar;
-        private System.Windows.Forms.Button btExcluir;
-        private System.Windows.Forms.Button btAlterar;
-        private System.Windows.Forms.Button btIncluir;
-        private System.Windows.Forms.Button btConsultar;
     }
 }
