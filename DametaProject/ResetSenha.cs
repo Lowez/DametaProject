@@ -15,6 +15,8 @@ namespace DametaProject
 {
     public partial class ResetSenha : Form
     {
+        public static string codigo_senha;
+
         public ResetSenha()
         {
             InitializeComponent();
@@ -25,8 +27,8 @@ namespace DametaProject
             string codigo = "";
 
             Random r = new Random();
-            var x = r.Next(0, 1000000);
-            codigo = x.ToString("000000");
+            var x = r.Next(10000, 99999);
+            codigo = x.ToString("0 0 0 0 0");
 
             return codigo;
         }
@@ -34,13 +36,15 @@ namespace DametaProject
         private void criaArquivoTxt()
         {
             string path = @"C:\Users\Public\Documents\codigo_ativacao.txt";
+            codigo_senha = gerarCodigo();
 
             if (!File.Exists(path))
             {
                 File.Create(path);
                 using (TextWriter tw = new StreamWriter(path))
                 {
-                    tw.WriteLine(gerarCodigo());
+                    codigo_senha = gerarCodigo();
+                    tw.WriteLine(codigo_senha);
                     tw.Close();
                 }
             }
@@ -48,7 +52,8 @@ namespace DametaProject
             {
                 using (TextWriter tw = new StreamWriter(path))
                 {
-                    tw.WriteLine(gerarCodigo());
+                    codigo_senha = gerarCodigo();
+                    tw.WriteLine(codigo_senha);
                     tw.Close();
                 }
             }
@@ -93,7 +98,7 @@ namespace DametaProject
                     {
                         criaArquivoTxt();
 
-                        CodigoValidacao codigoValidacao = new CodigoValidacao(reader["email"].ToString());
+                        CodigoValidacao codigoValidacao = new CodigoValidacao(reader["email"].ToString(), this);
 
                         codigoValidacao.Show();
                     }
