@@ -429,11 +429,11 @@
             // 
             // mtxCPF
             // 
-            this.mtxCPF.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mtxCPF.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mtxCPF.Location = new System.Drawing.Point(91, 117);
             this.mtxCPF.Mask = "999,999,999-99";
             this.mtxCPF.Name = "mtxCPF";
-            this.mtxCPF.Size = new System.Drawing.Size(120, 23);
+            this.mtxCPF.Size = new System.Drawing.Size(120, 20);
             this.mtxCPF.TabIndex = 112;
             // 
             // Funcionarios
