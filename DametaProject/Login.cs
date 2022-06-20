@@ -34,11 +34,6 @@ namespace DametaProject
             lblFraseLogin.Text = label_frase;
         }
 
-        private void LoginSalesForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void lblResetSenha_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             ResetSenha resetSenha = new ResetSenha();
