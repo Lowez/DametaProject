@@ -336,34 +336,83 @@ namespace DametaProject
 
         private void btAdicionar_Click(object sender, EventArgs e)
         {
-            // Adcionar uma nova linha ao carrinho
-            dgvCarrinho.Rows.Add();
+            bool produto_ja_adicionado = false;
+            int row_do_prod = 0;
 
-            // Adiciona um produto no carrinho
-            dgvCarrinho.Rows[qtdDeProdutos].Cells[0].Value = txCodigoProd.Text;
-            dgvCarrinho.Rows[qtdDeProdutos].Cells[1].Value = txNomeProd.Text;
-            dgvCarrinho.Rows[qtdDeProdutos].Cells[2].Value = txQtd.Text;
-            dgvCarrinho.Rows[qtdDeProdutos].Cells[3].Value = txValorUnit.Text;
+            for (int i = 0; i < qtdDeProdutos; i++)
+            {
+                if (dgvCarrinho.Rows[i].Cells[0].Value.ToString() == txCodigoProd.Text)
+                {
+                    produto_ja_adicionado = true;
+                    row_do_prod = i;
+                    break;
+                }
+            }
 
-            decimal precoParcial = Convert.ToDecimal(txValorUnit.Text) * Convert.ToDecimal(txQtd.Text);
-            dgvCarrinho.Rows[qtdDeProdutos].Cells[4].Value = Convert.ToString(precoParcial);
+            if (produto_ja_adicionado)
+            {
+                int qtd_atual = Convert.ToInt32(dgvCarrinho.Rows[row_do_prod].Cells[2].Value);
+                int qtd_adicionando = Convert.ToInt32(txQtd.Text);
 
-            // Recalcula o Preço Total
-            precoTotal += precoParcial;
-            lblValorTotal.Text = Convert.ToString(precoTotal);
+                int qtd_total = qtd_atual + qtd_adicionando;
 
-            // Incrementa quantidade de itens no carrinho
-            qtdDeProdutos++;
-            lblTotalItens.Text = qtdDeProdutos.ToString();
+                dgvCarrinho.Rows[row_do_prod].Cells[2].Value = qtd_total.ToString();
 
-            limpaForm();
-            txCodigoProd.Text = "";
+                decimal precoParcial = Convert.ToDecimal(dgvCarrinho.Rows[row_do_prod].Cells[4].Value);
+                precoTotal -= precoParcial;
+                precoParcial = Convert.ToDecimal(txValorUnit.Text) * Convert.ToDecimal(txQtd.Text);
+                precoParcial += Convert.ToDecimal(dgvCarrinho.Rows[row_do_prod].Cells[4].Value);
+                dgvCarrinho.Rows[row_do_prod].Cells[4].Value = Convert.ToString(precoParcial);
+
+                // Recalcula o Preço Total
+                precoTotal += precoParcial;
+                lblValorTotal.Text = Convert.ToString(precoTotal);
+
+                produto_ja_adicionado = false;
+                row_do_prod = 0;
+                limpaForm();
+                txCodigoProd.Text = "";
+            } else
+            {
+                // Adcionar uma nova linha ao carrinho
+                dgvCarrinho.Rows.Add();
+
+                // Adiciona um produto no carrinho
+                dgvCarrinho.Rows[qtdDeProdutos].Cells[0].Value = txCodigoProd.Text;
+                dgvCarrinho.Rows[qtdDeProdutos].Cells[1].Value = txNomeProd.Text;
+                dgvCarrinho.Rows[qtdDeProdutos].Cells[2].Value = txQtd.Text;
+                dgvCarrinho.Rows[qtdDeProdutos].Cells[3].Value = txValorUnit.Text;
+
+                decimal precoParcial = Convert.ToDecimal(txValorUnit.Text) * Convert.ToDecimal(txQtd.Text);
+                dgvCarrinho.Rows[qtdDeProdutos].Cells[4].Value = Convert.ToString(precoParcial);
+
+                // Recalcula o Preço Total
+                precoTotal += precoParcial;
+                lblValorTotal.Text = Convert.ToString(precoTotal);
+
+                // Incrementa quantidade de itens no carrinho
+                qtdDeProdutos++;
+                lblTotalItens.Text = qtdDeProdutos.ToString();
+
+                limpaForm();
+                txCodigoProd.Text = "";
+            }
         }
 
         private void btRemover_Click(object sender, EventArgs e)
         {
             string produto_selecionado = txCodigoProd.Text;
             bool encontrou = false;
+
+            if (produto_selecionado == "")
+            {
+                MessageBox.Show("Digite um código válido.",
+                    "Erro!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+
+                return;
+            }
 
             for (int i = 0; i < qtdDeProdutos; i++)
             {
