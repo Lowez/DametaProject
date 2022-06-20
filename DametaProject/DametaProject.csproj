@@ -103,6 +103,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dameta_dbDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="NovaSenha.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NovaSenha.Designer.cs">
+      <DependentUpon>NovaSenha.cs</DependentUpon>
+    </Compile>
     <Compile Include="DigitaSenha.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -200,6 +206,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CodigoValidacao.resx">
       <DependentUpon>CodigoValidacao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NovaSenha.resx">
+      <DependentUpon>NovaSenha.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DigitaSenha.resx">
       <DependentUpon>DigitaSenha.cs</DependentUpon>

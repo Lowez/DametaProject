@@ -28,19 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.mtxCodigo = new System.Windows.Forms.MaskedTextBox();
             this.btValidarCodigo = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // maskedTextBox1
+            // mtxCodigo
             // 
-            this.maskedTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.maskedTextBox1.Location = new System.Drawing.Point(77, 89);
-            this.maskedTextBox1.Mask = "9 9 9 9 9";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(124, 41);
-            this.maskedTextBox1.TabIndex = 0;
+            this.mtxCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mtxCodigo.Location = new System.Drawing.Point(77, 89);
+            this.mtxCodigo.Mask = "9 9 9 9 9";
+            this.mtxCodigo.Name = "mtxCodigo";
+            this.mtxCodigo.Size = new System.Drawing.Size(124, 41);
+            this.mtxCodigo.TabIndex = 0;
             // 
             // btValidarCodigo
             // 
@@ -52,6 +52,7 @@
             this.btValidarCodigo.TabIndex = 12;
             this.btValidarCodigo.Text = "Validar";
             this.btValidarCodigo.UseVisualStyleBackColor = false;
+            this.btValidarCodigo.Click += new System.EventHandler(this.btValidarCodigo_Click);
             // 
             // label1
             // 
@@ -70,7 +71,7 @@
             this.ClientSize = new System.Drawing.Size(288, 207);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btValidarCodigo);
-            this.Controls.Add(this.maskedTextBox1);
+            this.Controls.Add(this.mtxCodigo);
             this.Name = "CodigoValidacao";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CodigoValidacao";
@@ -81,7 +82,7 @@
 
         #endregion
 
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.MaskedTextBox mtxCodigo;
         private System.Windows.Forms.Button btValidarCodigo;
         private System.Windows.Forms.Label label1;
     }
