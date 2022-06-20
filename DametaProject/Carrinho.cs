@@ -14,35 +14,45 @@ namespace DametaProject
     public partial class Carrinho : Form
     {
         public static int cliente_id = 0;
-        public static string cliente_nome = ""; 
+        public static string cliente_nome = "";
+        public static decimal preco_total = 0;
 
         WelcomeForm form_inicial;
         NovaCompra form_novacompra;
         int qtdDeProdutos;
         decimal precoTotal;
+        string nome_funcionario;
+        int estabelecimento_id;
         bool bIsOperationOK = true;
 
-        public Carrinho(string nome, WelcomeForm form, bool is_new = false)
+        public Carrinho(string nome, int id, WelcomeForm form, bool is_new = false)
         {
             InitializeComponent();
 
             form_inicial = form;
             qtdDeProdutos = 0;
             precoTotal = 0;
+            nome_funcionario = nome;
+            estabelecimento_id = id;
+        }
 
-            if (is_new)
-            {
-                form_novacompra = new NovaCompra(form_inicial, this);
+        private void callOnLoad()
+        {
+            form_novacompra = new NovaCompra(form_inicial, this);
 
-                // Desabilita o carrinho em seu início, para o funcionário selecionar se vai abrir uma nova compra ou sair do sistema
-                this.Enabled = false;
-            }
+            // Desabilita o carrinho em seu início, para o funcionário selecionar se vai abrir uma nova compra ou sair do sistema
+            this.Enabled = false;
 
             // Adiciona o nome do  usuário que está logando no título do formulário
-            this.Text = "Bem vindo(a) " + nome;
+            this.Text = "Bem vindo(a) " + nome_funcionario;
 
             // Seta a data do DateTimePicker para a data atual
             dtpDataCompra.Value = DateTime.Now;
+        }
+
+        private void Carrinho_Load(object sender, EventArgs e)
+        {
+            callOnLoad();
         }
 
         private void limpaForm()
@@ -183,10 +193,8 @@ namespace DametaProject
                 comm1.Parameters["@preco_total"].Value = precoTotal;
 
                 comm1.Parameters.Add("@estabelecimentos_id", SqlDbType.Int);
-                comm1.Parameters["@estabelecimentos_id"].Value = 1;
+                comm1.Parameters["@estabelecimentos_id"].Value = estabelecimento_id;
             }
-
-            
 
             try
             {
@@ -283,6 +291,8 @@ namespace DametaProject
 
             if (bIsOperationOK)
             {
+                preco_total = Convert.ToDecimal(lblValorTotal.Text);
+
                 FormaDePagamento form_pagamento = new FormaDePagamento();
                 form_pagamento.Show();
             }

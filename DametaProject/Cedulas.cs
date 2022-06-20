@@ -19,6 +19,8 @@ namespace DametaProject
             InitializeComponent();
 
             form_formaDePagamento = form;
+
+            txValorTotal.Text = Carrinho.preco_total.ToString();
         }
 
         private void btTerminar_Click(object sender, EventArgs e)
@@ -34,6 +36,34 @@ namespace DametaProject
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 txValorPago.Focus();
+            }
+        }
+
+        private void txValorPago_TextChanged(object sender, EventArgs e)
+        {
+            if (txValorPago.Text != "")
+            {
+                decimal valor_pago = Convert.ToDecimal(txValorPago.Text);
+                decimal valor_total = Convert.ToDecimal(txValorTotal.Text);
+
+                if (valor_pago < valor_total)
+                {
+                    MessageBox.Show("O valor pago é menor do que o total da compra!",
+                        "Atenção!",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information
+                        );
+                } else
+                {
+                    decimal troco = valor_pago - valor_total;
+                    txTroco.Text = troco.ToString();
+
+                    btTerminar.Enabled = true;
+                    Carrinho.preco_total = 0;
+                }
+            } else
+            {
+                btTerminar.Enabled = true;
             }
         }
     }

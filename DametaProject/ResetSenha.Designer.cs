@@ -28,18 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txEmail = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btEnviarEmail = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // textBox1
+            // txEmail
             // 
-            this.textBox1.Location = new System.Drawing.Point(57, 76);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(257, 20);
-            this.textBox1.TabIndex = 0;
+            this.txEmail.Location = new System.Drawing.Point(57, 76);
+            this.txEmail.Name = "txEmail";
+            this.txEmail.Size = new System.Drawing.Size(257, 20);
+            this.txEmail.TabIndex = 0;
             // 
             // label1
             // 
@@ -80,7 +80,7 @@
             this.Controls.Add(this.btEnviarEmail);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txEmail);
             this.Name = "ResetSenha";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Esqueceu sua senha?";
@@ -91,7 +91,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txEmail;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btEnviarEmail;
