@@ -30,35 +30,35 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.dameta_dbDataSet = new DametaProject.dameta_dbDataSet();
             this.produtosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dameta_dbDataSet = new DametaProject.dameta_dbDataSet();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.produtosTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.produtosTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.produtosBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).BeginInit();
             this.SuspendLayout();
             // 
-            // reportViewer1
+            // produtosBindingSource
             // 
-            reportDataSource1.Name = "TabelaDePrecos";
-            reportDataSource1.Value = this.produtosBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "DametaProject.Report2.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(2, 0);
-            this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(797, 448);
-            this.reportViewer1.TabIndex = 0;
+            this.produtosBindingSource.DataMember = "produtos";
+            this.produtosBindingSource.DataSource = this.dameta_dbDataSet;
             // 
             // dameta_dbDataSet
             // 
             this.dameta_dbDataSet.DataSetName = "dameta_dbDataSet";
             this.dameta_dbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // produtosBindingSource
+            // reportViewer1
             // 
-            this.produtosBindingSource.DataMember = "produtos";
-            this.produtosBindingSource.DataSource = this.dameta_dbDataSet;
+            reportDataSource1.Name = "TabelaDePrecos";
+            reportDataSource1.Value = this.produtosBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "DametaProject.TabelaDePrecos.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(2, 0);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.ServerReport.BearerToken = null;
+            this.reportViewer1.Size = new System.Drawing.Size(797, 448);
+            this.reportViewer1.TabIndex = 0;
             // 
             // produtosTableAdapter
             // 
@@ -73,8 +73,8 @@
             this.Name = "TabelaDePrecos";
             this.Text = "TabelaDePrecos";
             this.Load += new System.EventHandler(this.TabelaDePrecos_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.produtosBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).EndInit();
             this.ResumeLayout(false);
 
         }

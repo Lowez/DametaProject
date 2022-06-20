@@ -24,6 +24,11 @@ namespace DametaProject
             InitializeComponent();
         }
 
+        private void AtualizaListaDeClientes()
+        {
+            this.funcionariosTableAdapter.Fill(this.dameta_dbDataSet.funcionarios);
+        }
+
         private void Funcionarios_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'dameta_dbDataSet.funcionarios' table. You can move, or remove it, as needed.

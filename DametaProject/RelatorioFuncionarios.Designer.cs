@@ -1,6 +1,6 @@
 ﻿namespace DametaProject
 {
-    partial class RelatorioDeFuncionarios
+    partial class RelatorioFuncionarios
     {
         /// <summary>
         /// Required designer variable.
@@ -30,51 +30,51 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.dameta_dbDataSet = new DametaProject.dameta_dbDataSet();
             this.relatorioDeFuncionariosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dameta_dbDataSet = new DametaProject.dameta_dbDataSet();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.relatorioDeFuncionariosTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.RelatorioDeFuncionariosTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.relatorioDeFuncionariosBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).BeginInit();
             this.SuspendLayout();
-            // 
-            // reportViewer1
-            // 
-            reportDataSource1.Name = "DataSet1";
-            reportDataSource1.Value = this.relatorioDeFuncionariosBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "DametaProject.Report3.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(0, 0);
-            this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(800, 448);
-            this.reportViewer1.TabIndex = 0;
-            // 
-            // dameta_dbDataSet
-            // 
-            this.dameta_dbDataSet.DataSetName = "dameta_dbDataSet";
-            this.dameta_dbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // relatorioDeFuncionariosBindingSource
             // 
             this.relatorioDeFuncionariosBindingSource.DataMember = "RelatorioDeFuncionarios";
             this.relatorioDeFuncionariosBindingSource.DataSource = this.dameta_dbDataSet;
             // 
+            // dameta_dbDataSet
+            // 
+            this.dameta_dbDataSet.DataSetName = "dameta_dbDataSet";
+            this.dameta_dbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // reportViewer1
+            // 
+            reportDataSource1.Name = "DataSet1";
+            reportDataSource1.Value = this.relatorioDeFuncionariosBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "DametaProject.RelatórioFuncionários.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(0, 0);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.ServerReport.BearerToken = null;
+            this.reportViewer1.Size = new System.Drawing.Size(800, 448);
+            this.reportViewer1.TabIndex = 0;
+            // 
             // relatorioDeFuncionariosTableAdapter
             // 
             this.relatorioDeFuncionariosTableAdapter.ClearBeforeFill = true;
             // 
-            // RelatorioDeFuncionarios
+            // RelatorioFuncionarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.reportViewer1);
-            this.Name = "RelatorioDeFuncionarios";
+            this.Name = "RelatorioFuncionarios";
             this.Text = "RelatorioDeFuncionarios";
             this.Load += new System.EventHandler(this.RelatorioDeFuncionarios_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.relatorioDeFuncionariosBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).EndInit();
             this.ResumeLayout(false);
 
         }

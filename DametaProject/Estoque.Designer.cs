@@ -29,10 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.controleDeEstoqueBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dameta_dbDataSet = new DametaProject.dameta_dbDataSet();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.controleDeEstoqueTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.ControleDeEstoqueTableAdapter();
             this.GerarRelatorio = new System.Windows.Forms.Button();
             this.cbNome = new System.Windows.Forms.ComboBox();
@@ -44,10 +43,21 @@
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.label2 = new System.Windows.Forms.Label();
+            this.fornecedoresBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.FornecedoresEstabelecimentosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.RelatorioDeFuncionariosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.controleDeEstoqueBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.controleDeEstoqueBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.controleDeEstoqueBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.estabelecimentosBindingSource)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.fornecedoresBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FornecedoresEstabelecimentosBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RelatorioDeFuncionariosBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.controleDeEstoqueBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.controleDeEstoqueBindingSource2)).BeginInit();
             this.SuspendLayout();
             // 
             // controleDeEstoqueBindingSource
@@ -60,25 +70,13 @@
             this.dameta_dbDataSet.DataSetName = "dameta_dbDataSet";
             this.dameta_dbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // reportViewer1
-            // 
-            reportDataSource3.Name = "DataSet1";
-            reportDataSource3.Value = this.controleDeEstoqueBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource3);
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "DametaProject.Report2.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(-2, 168);
-            this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(929, 387);
-            this.reportViewer1.TabIndex = 0;
-            // 
             // controleDeEstoqueTableAdapter
             // 
             this.controleDeEstoqueTableAdapter.ClearBeforeFill = true;
             // 
             // GerarRelatorio
             // 
-            this.GerarRelatorio.Location = new System.Drawing.Point(419, 107);
+            this.GerarRelatorio.Location = new System.Drawing.Point(359, 107);
             this.GerarRelatorio.Name = "GerarRelatorio";
             this.GerarRelatorio.Size = new System.Drawing.Size(100, 40);
             this.GerarRelatorio.TabIndex = 1;
@@ -121,7 +119,7 @@
             this.groupBox1.Controls.Add(this.radioButton2);
             this.groupBox1.Controls.Add(this.radioButton1);
             this.groupBox1.Location = new System.Drawing.Point(305, 50);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(0, 0, 0, 0);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(0);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(507, 33);
             this.groupBox1.TabIndex = 5;
@@ -168,16 +166,53 @@
             this.label2.TabIndex = 6;
             this.label2.Text = "Selecione o método de estoque desejado para pesquisa";
             // 
+            // fornecedoresBindingSource
+            // 
+            this.fornecedoresBindingSource.DataMember = "fornecedores";
+            this.fornecedoresBindingSource.DataSource = this.dameta_dbDataSet;
+            // 
+            // reportViewer1
+            // 
+            reportDataSource1.Name = "Estoque";
+            reportDataSource1.Value = this.controleDeEstoqueBindingSource2;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "DametaProject.Estoque.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(5, 153);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.ServerReport.BearerToken = null;
+            this.reportViewer1.Size = new System.Drawing.Size(807, 440);
+            this.reportViewer1.TabIndex = 7;
+            // 
+            // FornecedoresEstabelecimentosBindingSource
+            // 
+            this.FornecedoresEstabelecimentosBindingSource.DataMember = "FornecedoresEstabelecimentos";
+            this.FornecedoresEstabelecimentosBindingSource.DataSource = this.dameta_dbDataSet;
+            // 
+            // RelatorioDeFuncionariosBindingSource
+            // 
+            this.RelatorioDeFuncionariosBindingSource.DataMember = "RelatorioDeFuncionarios";
+            this.RelatorioDeFuncionariosBindingSource.DataSource = this.dameta_dbDataSet;
+            // 
+            // controleDeEstoqueBindingSource1
+            // 
+            this.controleDeEstoqueBindingSource1.DataMember = "ControleDeEstoque";
+            this.controleDeEstoqueBindingSource1.DataSource = this.dameta_dbDataSet;
+            // 
+            // controleDeEstoqueBindingSource2
+            // 
+            this.controleDeEstoqueBindingSource2.DataMember = "ControleDeEstoque";
+            this.controleDeEstoqueBindingSource2.DataSource = this.dameta_dbDataSet;
+            // 
             // Estoque
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(927, 555);
+            this.ClientSize = new System.Drawing.Size(822, 597);
+            this.Controls.Add(this.reportViewer1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cbNome);
             this.Controls.Add(this.GerarRelatorio);
-            this.Controls.Add(this.reportViewer1);
             this.Controls.Add(this.groupBox1);
             this.Name = "Estoque";
             this.Text = "Estoque";
@@ -187,14 +222,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.estabelecimentosBindingSource)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.fornecedoresBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FornecedoresEstabelecimentosBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RelatorioDeFuncionariosBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.controleDeEstoqueBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.controleDeEstoqueBindingSource2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
         private System.Windows.Forms.BindingSource controleDeEstoqueBindingSource;
         private dameta_dbDataSet dameta_dbDataSet;
         private dameta_dbDataSetTableAdapters.ControleDeEstoqueTableAdapter controleDeEstoqueTableAdapter;
@@ -208,5 +246,11 @@
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.BindingSource fornecedoresBindingSource;
+        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
+        private System.Windows.Forms.BindingSource FornecedoresEstabelecimentosBindingSource;
+        private System.Windows.Forms.BindingSource controleDeEstoqueBindingSource1;
+        private System.Windows.Forms.BindingSource RelatorioDeFuncionariosBindingSource;
+        private System.Windows.Forms.BindingSource controleDeEstoqueBindingSource2;
     }
 }

@@ -25,10 +25,6 @@ namespace DametaProject
 
         private void Clientes_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'dameta_dbDataSet3.cidades' table. You can move, or remove it, as needed.
-            this.cidadesTableAdapter.Fill(this.dameta_dbDataSet3.cidades);
-            // TODO: This line of code loads data into the 'dameta_dbDataSet2.cidades' table. You can move, or remove it, as needed.
-            this.cidadesTableAdapter.Fill(this.dameta_dbDataSet2.cidades);
             // TODO: This line of code loads data into the 'dameta_dbDataSet.Estados' table. You can move, or remove it, as needed.
             this.estadosTableAdapter.Fill(this.dameta_dbDataSet.Estados);
             // TODO: This line of code loads data into the 'dameta_dbDataSet.cidades' table. You can move, or remove it, as needed.
@@ -37,10 +33,7 @@ namespace DametaProject
             this.generosTableAdapter.Fill(this.dameta_dbDataSet.generos);
             // TODO: esta linha de código carrega dados na tabela 'dameta_dbDataSet.premium_usuarios'. Você pode movê-la ou removê-la conforme necessário.
             this.premium_usuariosTableAdapter.Fill(this.dameta_dbDataSet.premium_usuarios);
-
         }
-
-
 
         private void btIncluir_Click(object sender, EventArgs e)
         {

@@ -18,7 +18,11 @@ namespace DametaProject
         {
             // TODO: This line of code loads data into the 'dameta_dbDataSet.produtos' table. You can move, or remove it, as needed.
             this.produtosTableAdapter.Fill(this.dameta_dbDataSet.produtos);
+        }
 
+        private void AtualizaListaDeClientes()
+        {
+            this.produtosTableAdapter.Fill(this.dameta_dbDataSet.produtos);
         }
 
 
@@ -36,6 +40,8 @@ namespace DametaProject
         public Produtos()
         {
             InitializeComponent();
+            AtualizaListaDeClientes();
+
         }
 
         private void btConsultar_Click(object sender, EventArgs e)

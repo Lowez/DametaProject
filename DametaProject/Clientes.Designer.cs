@@ -33,11 +33,11 @@
             this.btConsultar = new System.Windows.Forms.Button();
             this.clientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nascimentoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cPFDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.telefoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cidades_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cEPDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.premiumusuariosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dametadbDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -125,20 +125,28 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
             this.nomeDataGridViewTextBoxColumn,
             this.nascimentoDataGridViewTextBoxColumn,
             this.cPFDataGridViewTextBoxColumn,
             this.telefoneDataGridViewTextBoxColumn,
-            this.cidades_id,
             this.cEPDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.premiumusuariosBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(55, 243);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(637, 207);
+            this.dataGridView1.Size = new System.Drawing.Size(645, 207);
             this.dataGridView1.TabIndex = 26;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "id";
+            this.Column1.HeaderText = "id";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             // 
             // nomeDataGridViewTextBoxColumn
             // 
@@ -167,12 +175,6 @@
             this.telefoneDataGridViewTextBoxColumn.HeaderText = "telefone";
             this.telefoneDataGridViewTextBoxColumn.Name = "telefoneDataGridViewTextBoxColumn";
             this.telefoneDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // cidades_id
-            // 
-            this.cidades_id.DataPropertyName = "cidades_id";
-            this.cidades_id.HeaderText = "cidades_id";
-            this.cidades_id.Name = "cidades_id";
             // 
             // cEPDataGridViewTextBoxColumn
             // 
@@ -566,12 +568,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.BindingSource generosBindingSource;
         private dameta_dbDataSetTableAdapters.generosTableAdapter generosTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nomeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nascimentoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cPFDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn telefoneDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cidades_id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cEPDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource dametadbDataSetBindingSource1;
         private System.Windows.Forms.BindingSource cidadesBindingSource1;
         private dameta_dbDataSetTableAdapters.cidadesTableAdapter cidadesTableAdapter;
@@ -586,5 +582,11 @@
         private System.Windows.Forms.BindingSource cidadesBindingSource4;
         private dameta_dbDataSet dameta_dbDataSet3;
         private System.Windows.Forms.BindingSource cidadesBindingSource5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nomeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nascimentoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cPFDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn telefoneDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cEPDataGridViewTextBoxColumn;
     }
 }

@@ -20,6 +20,8 @@ namespace DametaProject
 
         private void RelatoriosFornecedoresEstabelecimentos_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'dameta_dbDataSet.FornecedoresEstabelecimentos' table. You can move, or remove it, as needed.
+            this.fornecedoresEstabelecimentos.Fill(this.dameta_dbDataSet.FornecedoresEstabelecimentos);
             // TODO: This line of code loads data into the 'dameta_dbDataSet1.FornecedoresEstabelecimentos' table. You can move, or remove it, as needed.
             this.fornecedoresEstabelecimentos.Fill(this.dameta_dbDataSet1.FornecedoresEstabelecimentos);
             // TODO: This line of code loads data into the 'dameta_dbDataSet.fornecedores' table. You can move, or remove it, as needed.

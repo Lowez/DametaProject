@@ -29,16 +29,26 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            this.fornecedoresBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.dameta_dbDataSet1 = new DametaProject.dameta_dbDataSet();
             this.fornecedoresBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.dameta_dbDataSet1 = new DametaProject.dameta_dbDataSet();
-            this.fornecedoresBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.fornecedoresTableAdapter1 = new DametaProject.dameta_dbDataSetTableAdapters.fornecedoresTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.fornecedoresBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fornecedoresBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fornecedoresBindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // fornecedoresBindingSource1
+            // 
+            this.fornecedoresBindingSource1.DataMember = "fornecedores";
+            this.fornecedoresBindingSource1.DataSource = this.dameta_dbDataSet1;
+            // 
+            // dameta_dbDataSet1
+            // 
+            this.dameta_dbDataSet1.DataSetName = "dameta_dbDataSet";
+            this.dameta_dbDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // fornecedoresBindingSource
             // 
@@ -46,25 +56,15 @@
             // 
             // reportViewer1
             // 
-            reportDataSource1.Name = "DataSet1";
-            reportDataSource1.Value = this.fornecedoresBindingSource1;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "DametaProject.Report1.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(153, 53);
+            reportDataSource2.Name = "DataSet1";
+            reportDataSource2.Value = this.fornecedoresBindingSource1;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "DametaProject.RelatorioFornecedores.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(-2, -1);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(396, 246);
+            this.reportViewer1.Size = new System.Drawing.Size(612, 455);
             this.reportViewer1.TabIndex = 0;
-            // 
-            // dameta_dbDataSet1
-            // 
-            this.dameta_dbDataSet1.DataSetName = "dameta_dbDataSet";
-            this.dameta_dbDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // fornecedoresBindingSource1
-            // 
-            this.fornecedoresBindingSource1.DataMember = "fornecedores";
-            this.fornecedoresBindingSource1.DataSource = this.dameta_dbDataSet1;
             // 
             // fornecedoresTableAdapter1
             // 
@@ -74,14 +74,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(611, 450);
             this.Controls.Add(this.reportViewer1);
             this.Name = "RelatorioFornecedores";
-            this.Text = "Form1";
+            this.Text = "Relatorio Fornecedores";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.fornecedoresBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fornecedoresBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fornecedoresBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }

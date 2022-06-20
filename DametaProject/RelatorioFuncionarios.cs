@@ -10,15 +10,17 @@ using System.Windows.Forms;
 
 namespace DametaProject
 {
-    public partial class RelatorioDeFuncionarios : Form
+    public partial class RelatorioFuncionarios : Form
     {
-        public RelatorioDeFuncionarios()
+        public RelatorioFuncionarios()
         {
             InitializeComponent();
         }
 
         private void RelatorioDeFuncionarios_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'dameta_dbDataSet.RelatorioDeFuncionarios' table. You can move, or remove it, as needed.
+            this.relatorioDeFuncionariosTableAdapter.Fill(this.dameta_dbDataSet.RelatorioDeFuncionarios);
             // TODO: This line of code loads data into the 'dameta_dbDataSet.RelatorioDeFuncionarios' table. You can move, or remove it, as needed.
             this.relatorioDeFuncionariosTableAdapter.Fill(this.dameta_dbDataSet.RelatorioDeFuncionarios);
 

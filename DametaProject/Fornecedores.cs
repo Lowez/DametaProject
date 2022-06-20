@@ -15,10 +15,16 @@ namespace DametaProject
     public partial class Fornecedores : Form
     {
 
-
+      
         public Fornecedores()
         {
             InitializeComponent();
+            AtualizaListaDeClientes();
+        }
+
+        private void AtualizaListaDeClientes()
+        {
+            this.fornecedoresTableAdapter.Fill(this.dameta_dbDataSet.fornecedores);
         }
 
 

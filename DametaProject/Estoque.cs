@@ -21,9 +21,11 @@ namespace DametaProject
 
         private void Estoque_Load(object sender, EventArgs e)
         {
+     
             // TODO: This line of code loads data into the 'dameta_dbDataSet.estabelecimentos' table. You can move, or remove it, as needed.
             this.estabelecimentosTableAdapter.Fill(this.dameta_dbDataSet.estabelecimentos);
 
+            this.reportViewer1.RefreshReport();
             this.reportViewer1.RefreshReport();
         }
 
