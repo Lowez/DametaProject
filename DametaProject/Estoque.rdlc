@@ -578,22 +578,22 @@
                 <PaddingBottom>2pt</PaddingBottom>
               </Style>
             </Textbox>
-            <Textbox Name="p1">
+            <Textbox Name="qtd1">
               <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Parameters!p1.Value</Value>
+                      <Value>=Parameters!qtd.Value</Value>
                       <Style />
                     </TextRun>
                   </TextRuns>
                   <Style />
                 </Paragraph>
               </Paragraphs>
-              <rd:DefaultName>p1</rd:DefaultName>
-              <Top>1.84672cm</Top>
+              <rd:DefaultName>qtd1</rd:DefaultName>
+              <Top>1.79599cm</Top>
               <Left>11.91599cm</Left>
               <Height>0.6cm</Height>
               <Width>8.76088cm</Width>
@@ -672,7 +672,7 @@
       <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
-    <ReportParameter Name="p1">
+    <ReportParameter Name="qtd">
       <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
@@ -690,7 +690,7 @@
         <CellDefinition>
           <ColumnIndex>1</ColumnIndex>
           <RowIndex>0</RowIndex>
-          <ParameterName>p1</ParameterName>
+          <ParameterName>qtd</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>

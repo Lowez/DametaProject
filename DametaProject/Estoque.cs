@@ -13,7 +13,6 @@ namespace DametaProject
 {
     public partial class Estoque : Form
     {
-        String value = "0";
         public Estoque()
         {
             InitializeComponent();
@@ -45,6 +44,8 @@ namespace DametaProject
                 this.reportViewer1.LocalReport.SetParameters(new ReportParameter[] { rp });
             }
 
+   
+
             if (radioButton2.Checked)
             {
 
@@ -54,14 +55,15 @@ namespace DametaProject
             }
 
             else if (radioButton3.Checked)
+
             {
-                this.controleDeEstoqueTableAdapter.Fill(this.dameta_dbDataSet.ControleDeEstoque, value);
-                ReportParameter rp = new ReportParameter("p1", "Exibindo produtos fora de estoque" );
+                this.controleDeEstoqueTableAdapter.Fill(this.dameta_dbDataSet.ControleDeEstoque, "0");
+                ReportParameter rp = new ReportParameter("qtd","Exibindo produtos fora de estoque" );
                 this.reportViewer1.LocalReport.SetParameters(new ReportParameter[] { rp });
             }
             else
             {
-                ReportParameter rp = new ReportParameter("p1", "Exibindo todos os produtos cadastrados no estabelecimento");
+                ReportParameter rp = new ReportParameter("qtd", "Exibindo todos os produtos cadastrados no estabelecimento");
                 this.reportViewer1.LocalReport.SetParameters(new ReportParameter[] { rp });
             }
 
