@@ -68,7 +68,9 @@ namespace DametaProject {
         
         private dtProdutoDataTable tabledtProduto;
         
-        private dtEstabelecimentosSelectorDataTable tabledtEstabelecimentosSelector;
+        private FaturamentoDataTable tableFaturamento;
+        
+        private produtos_mais_vendidosDataTable tableprodutos_mais_vendidos;
         
         private global::System.Data.DataRelation relationFK_ESTABELECIMENTOS_COMPRAS;
         
@@ -202,8 +204,11 @@ namespace DametaProject {
                 if ((ds.Tables["dtProduto"] != null)) {
                     base.Tables.Add(new dtProdutoDataTable(ds.Tables["dtProduto"]));
                 }
-                if ((ds.Tables["dtEstabelecimentosSelector"] != null)) {
-                    base.Tables.Add(new dtEstabelecimentosSelectorDataTable(ds.Tables["dtEstabelecimentosSelector"]));
+                if ((ds.Tables["Faturamento"] != null)) {
+                    base.Tables.Add(new FaturamentoDataTable(ds.Tables["Faturamento"]));
+                }
+                if ((ds.Tables["produtos_mais_vendidos"] != null)) {
+                    base.Tables.Add(new produtos_mais_vendidosDataTable(ds.Tables["produtos_mais_vendidos"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -447,9 +452,19 @@ namespace DametaProject {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public dtEstabelecimentosSelectorDataTable dtEstabelecimentosSelector {
+        public FaturamentoDataTable Faturamento {
             get {
-                return this.tabledtEstabelecimentosSelector;
+                return this.tableFaturamento;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public produtos_mais_vendidosDataTable produtos_mais_vendidos {
+            get {
+                return this.tableprodutos_mais_vendidos;
             }
         }
         
@@ -586,8 +601,11 @@ namespace DametaProject {
                 if ((ds.Tables["dtProduto"] != null)) {
                     base.Tables.Add(new dtProdutoDataTable(ds.Tables["dtProduto"]));
                 }
-                if ((ds.Tables["dtEstabelecimentosSelector"] != null)) {
-                    base.Tables.Add(new dtEstabelecimentosSelectorDataTable(ds.Tables["dtEstabelecimentosSelector"]));
+                if ((ds.Tables["Faturamento"] != null)) {
+                    base.Tables.Add(new FaturamentoDataTable(ds.Tables["Faturamento"]));
+                }
+                if ((ds.Tables["produtos_mais_vendidos"] != null)) {
+                    base.Tables.Add(new produtos_mais_vendidosDataTable(ds.Tables["produtos_mais_vendidos"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -754,10 +772,16 @@ namespace DametaProject {
                     this.tabledtProduto.InitVars();
                 }
             }
-            this.tabledtEstabelecimentosSelector = ((dtEstabelecimentosSelectorDataTable)(base.Tables["dtEstabelecimentosSelector"]));
+            this.tableFaturamento = ((FaturamentoDataTable)(base.Tables["Faturamento"]));
             if ((initTable == true)) {
-                if ((this.tabledtEstabelecimentosSelector != null)) {
-                    this.tabledtEstabelecimentosSelector.InitVars();
+                if ((this.tableFaturamento != null)) {
+                    this.tableFaturamento.InitVars();
+                }
+            }
+            this.tableprodutos_mais_vendidos = ((produtos_mais_vendidosDataTable)(base.Tables["produtos_mais_vendidos"]));
+            if ((initTable == true)) {
+                if ((this.tableprodutos_mais_vendidos != null)) {
+                    this.tableprodutos_mais_vendidos.InitVars();
                 }
             }
             this.relationFK_ESTABELECIMENTOS_COMPRAS = this.Relations["FK_ESTABELECIMENTOS_COMPRAS"];
@@ -833,8 +857,10 @@ namespace DametaProject {
             base.Tables.Add(this.tabledtClientes);
             this.tabledtProduto = new dtProdutoDataTable();
             base.Tables.Add(this.tabledtProduto);
-            this.tabledtEstabelecimentosSelector = new dtEstabelecimentosSelectorDataTable();
-            base.Tables.Add(this.tabledtEstabelecimentosSelector);
+            this.tableFaturamento = new FaturamentoDataTable();
+            base.Tables.Add(this.tableFaturamento);
+            this.tableprodutos_mais_vendidos = new produtos_mais_vendidosDataTable();
+            base.Tables.Add(this.tableprodutos_mais_vendidos);
             this.relationFK_ESTABELECIMENTOS_COMPRAS = new global::System.Data.DataRelation("FK_ESTABELECIMENTOS_COMPRAS", new global::System.Data.DataColumn[] {
                         this.tableestabelecimentos.idColumn}, new global::System.Data.DataColumn[] {
                         this.tablecompras.estabelecimentos_idColumn}, false);
@@ -1047,7 +1073,13 @@ namespace DametaProject {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private bool ShouldSerializedtEstabelecimentosSelector() {
+        private bool ShouldSerializeFaturamento() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private bool ShouldSerializeprodutos_mais_vendidos() {
             return false;
         }
         
@@ -1173,7 +1205,10 @@ namespace DametaProject {
         public delegate void dtProdutoRowChangeEventHandler(object sender, dtProdutoRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public delegate void dtEstabelecimentosSelectorRowChangeEventHandler(object sender, dtEstabelecimentosSelectorRowChangeEvent e);
+        public delegate void FaturamentoRowChangeEventHandler(object sender, FaturamentoRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public delegate void produtos_mais_vendidosRowChangeEventHandler(object sender, produtos_mais_vendidosRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -8169,14 +8204,16 @@ namespace DametaProject {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class dtEstabelecimentosSelectorDataTable : global::System.Data.TypedTableBase<dtEstabelecimentosSelectorRow> {
+        public partial class FaturamentoDataTable : global::System.Data.TypedTableBase<FaturamentoRow> {
             
-            private global::System.Data.DataColumn columnnome;
+            private global::System.Data.DataColumn columnpreco_total;
+            
+            private global::System.Data.DataColumn columncreated;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public dtEstabelecimentosSelectorDataTable() {
-                this.TableName = "dtEstabelecimentosSelector";
+            public FaturamentoDataTable() {
+                this.TableName = "Faturamento";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -8184,7 +8221,7 @@ namespace DametaProject {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal dtEstabelecimentosSelectorDataTable(global::System.Data.DataTable table) {
+            internal FaturamentoDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -8201,16 +8238,24 @@ namespace DametaProject {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected dtEstabelecimentosSelectorDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected FaturamentoDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn nomeColumn {
+            public global::System.Data.DataColumn preco_totalColumn {
                 get {
-                    return this.columnnome;
+                    return this.columnpreco_total;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn createdColumn {
+                get {
+                    return this.columncreated;
                 }
             }
             
@@ -8225,45 +8270,46 @@ namespace DametaProject {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public dtEstabelecimentosSelectorRow this[int index] {
+            public FaturamentoRow this[int index] {
                 get {
-                    return ((dtEstabelecimentosSelectorRow)(this.Rows[index]));
+                    return ((FaturamentoRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event dtEstabelecimentosSelectorRowChangeEventHandler dtEstabelecimentosSelectorRowChanging;
+            public event FaturamentoRowChangeEventHandler FaturamentoRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event dtEstabelecimentosSelectorRowChangeEventHandler dtEstabelecimentosSelectorRowChanged;
+            public event FaturamentoRowChangeEventHandler FaturamentoRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event dtEstabelecimentosSelectorRowChangeEventHandler dtEstabelecimentosSelectorRowDeleting;
+            public event FaturamentoRowChangeEventHandler FaturamentoRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event dtEstabelecimentosSelectorRowChangeEventHandler dtEstabelecimentosSelectorRowDeleted;
+            public event FaturamentoRowChangeEventHandler FaturamentoRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void AdddtEstabelecimentosSelectorRow(dtEstabelecimentosSelectorRow row) {
+            public void AddFaturamentoRow(FaturamentoRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public dtEstabelecimentosSelectorRow AdddtEstabelecimentosSelectorRow(string nome) {
-                dtEstabelecimentosSelectorRow rowdtEstabelecimentosSelectorRow = ((dtEstabelecimentosSelectorRow)(this.NewRow()));
+            public FaturamentoRow AddFaturamentoRow(decimal preco_total, System.DateTime created) {
+                FaturamentoRow rowFaturamentoRow = ((FaturamentoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        nome};
-                rowdtEstabelecimentosSelectorRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowdtEstabelecimentosSelectorRow);
-                return rowdtEstabelecimentosSelectorRow;
+                        preco_total,
+                        created};
+                rowFaturamentoRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowFaturamentoRow);
+                return rowFaturamentoRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                dtEstabelecimentosSelectorDataTable cln = ((dtEstabelecimentosSelectorDataTable)(base.Clone()));
+                FaturamentoDataTable cln = ((FaturamentoDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -8271,48 +8317,51 @@ namespace DametaProject {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new dtEstabelecimentosSelectorDataTable();
+                return new FaturamentoDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             internal void InitVars() {
-                this.columnnome = base.Columns["nome"];
+                this.columnpreco_total = base.Columns["preco_total"];
+                this.columncreated = base.Columns["created"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             private void InitClass() {
-                this.columnnome = new global::System.Data.DataColumn("nome", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnnome);
-                this.columnnome.AllowDBNull = false;
-                this.columnnome.MaxLength = 50;
+                this.columnpreco_total = new global::System.Data.DataColumn("preco_total", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnpreco_total);
+                this.columncreated = new global::System.Data.DataColumn("created", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncreated);
+                this.columnpreco_total.AllowDBNull = false;
+                this.columncreated.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public dtEstabelecimentosSelectorRow NewdtEstabelecimentosSelectorRow() {
-                return ((dtEstabelecimentosSelectorRow)(this.NewRow()));
+            public FaturamentoRow NewFaturamentoRow() {
+                return ((FaturamentoRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new dtEstabelecimentosSelectorRow(builder);
+                return new FaturamentoRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(dtEstabelecimentosSelectorRow);
+                return typeof(FaturamentoRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.dtEstabelecimentosSelectorRowChanged != null)) {
-                    this.dtEstabelecimentosSelectorRowChanged(this, new dtEstabelecimentosSelectorRowChangeEvent(((dtEstabelecimentosSelectorRow)(e.Row)), e.Action));
+                if ((this.FaturamentoRowChanged != null)) {
+                    this.FaturamentoRowChanged(this, new FaturamentoRowChangeEvent(((FaturamentoRow)(e.Row)), e.Action));
                 }
             }
             
@@ -8320,8 +8369,8 @@ namespace DametaProject {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.dtEstabelecimentosSelectorRowChanging != null)) {
-                    this.dtEstabelecimentosSelectorRowChanging(this, new dtEstabelecimentosSelectorRowChangeEvent(((dtEstabelecimentosSelectorRow)(e.Row)), e.Action));
+                if ((this.FaturamentoRowChanging != null)) {
+                    this.FaturamentoRowChanging(this, new FaturamentoRowChangeEvent(((FaturamentoRow)(e.Row)), e.Action));
                 }
             }
             
@@ -8329,8 +8378,8 @@ namespace DametaProject {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.dtEstabelecimentosSelectorRowDeleted != null)) {
-                    this.dtEstabelecimentosSelectorRowDeleted(this, new dtEstabelecimentosSelectorRowChangeEvent(((dtEstabelecimentosSelectorRow)(e.Row)), e.Action));
+                if ((this.FaturamentoRowDeleted != null)) {
+                    this.FaturamentoRowDeleted(this, new FaturamentoRowChangeEvent(((FaturamentoRow)(e.Row)), e.Action));
                 }
             }
             
@@ -8338,14 +8387,14 @@ namespace DametaProject {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.dtEstabelecimentosSelectorRowDeleting != null)) {
-                    this.dtEstabelecimentosSelectorRowDeleting(this, new dtEstabelecimentosSelectorRowChangeEvent(((dtEstabelecimentosSelectorRow)(e.Row)), e.Action));
+                if ((this.FaturamentoRowDeleting != null)) {
+                    this.FaturamentoRowDeleting(this, new FaturamentoRowChangeEvent(((FaturamentoRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void RemovedtEstabelecimentosSelectorRow(dtEstabelecimentosSelectorRow row) {
+            public void RemoveFaturamentoRow(FaturamentoRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -8372,7 +8421,271 @@ namespace DametaProject {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "dtEstabelecimentosSelectorDataTable";
+                attribute2.FixedValue = "FaturamentoDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class produtos_mais_vendidosDataTable : global::System.Data.TypedTableBase<produtos_mais_vendidosRow> {
+            
+            private global::System.Data.DataColumn columnnome;
+            
+            private global::System.Data.DataColumn columntotal_vendido;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public produtos_mais_vendidosDataTable() {
+                this.TableName = "produtos_mais_vendidos";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal produtos_mais_vendidosDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected produtos_mais_vendidosDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn nomeColumn {
+                get {
+                    return this.columnnome;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn total_vendidoColumn {
+                get {
+                    return this.columntotal_vendido;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public produtos_mais_vendidosRow this[int index] {
+                get {
+                    return ((produtos_mais_vendidosRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event produtos_mais_vendidosRowChangeEventHandler produtos_mais_vendidosRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event produtos_mais_vendidosRowChangeEventHandler produtos_mais_vendidosRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event produtos_mais_vendidosRowChangeEventHandler produtos_mais_vendidosRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event produtos_mais_vendidosRowChangeEventHandler produtos_mais_vendidosRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void Addprodutos_mais_vendidosRow(produtos_mais_vendidosRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public produtos_mais_vendidosRow Addprodutos_mais_vendidosRow(string nome, int total_vendido) {
+                produtos_mais_vendidosRow rowprodutos_mais_vendidosRow = ((produtos_mais_vendidosRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        nome,
+                        total_vendido};
+                rowprodutos_mais_vendidosRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowprodutos_mais_vendidosRow);
+                return rowprodutos_mais_vendidosRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                produtos_mais_vendidosDataTable cln = ((produtos_mais_vendidosDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new produtos_mais_vendidosDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal void InitVars() {
+                this.columnnome = base.Columns["nome"];
+                this.columntotal_vendido = base.Columns["total_vendido"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            private void InitClass() {
+                this.columnnome = new global::System.Data.DataColumn("nome", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnome);
+                this.columntotal_vendido = new global::System.Data.DataColumn("total_vendido", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntotal_vendido);
+                this.columnnome.AllowDBNull = false;
+                this.columnnome.MaxLength = 100;
+                this.columntotal_vendido.ReadOnly = true;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public produtos_mais_vendidosRow Newprodutos_mais_vendidosRow() {
+                return ((produtos_mais_vendidosRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new produtos_mais_vendidosRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(produtos_mais_vendidosRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.produtos_mais_vendidosRowChanged != null)) {
+                    this.produtos_mais_vendidosRowChanged(this, new produtos_mais_vendidosRowChangeEvent(((produtos_mais_vendidosRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.produtos_mais_vendidosRowChanging != null)) {
+                    this.produtos_mais_vendidosRowChanging(this, new produtos_mais_vendidosRowChangeEvent(((produtos_mais_vendidosRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.produtos_mais_vendidosRowDeleted != null)) {
+                    this.produtos_mais_vendidosRowDeleted(this, new produtos_mais_vendidosRowChangeEvent(((produtos_mais_vendidosRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.produtos_mais_vendidosRowDeleting != null)) {
+                    this.produtos_mais_vendidosRowDeleting(this, new produtos_mais_vendidosRowChangeEvent(((produtos_mais_vendidosRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void Removeprodutos_mais_vendidosRow(produtos_mais_vendidosRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                dameta_dbDataSet ds = new dameta_dbDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "produtos_mais_vendidosDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -10331,26 +10644,92 @@ namespace DametaProject {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class dtEstabelecimentosSelectorRow : global::System.Data.DataRow {
+        public partial class FaturamentoRow : global::System.Data.DataRow {
             
-            private dtEstabelecimentosSelectorDataTable tabledtEstabelecimentosSelector;
+            private FaturamentoDataTable tableFaturamento;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal dtEstabelecimentosSelectorRow(global::System.Data.DataRowBuilder rb) : 
+            internal FaturamentoRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tabledtEstabelecimentosSelector = ((dtEstabelecimentosSelectorDataTable)(this.Table));
+                this.tableFaturamento = ((FaturamentoDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public decimal preco_total {
+                get {
+                    return ((decimal)(this[this.tableFaturamento.preco_totalColumn]));
+                }
+                set {
+                    this[this.tableFaturamento.preco_totalColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public System.DateTime created {
+                get {
+                    return ((global::System.DateTime)(this[this.tableFaturamento.createdColumn]));
+                }
+                set {
+                    this[this.tableFaturamento.createdColumn] = value;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class produtos_mais_vendidosRow : global::System.Data.DataRow {
+            
+            private produtos_mais_vendidosDataTable tableprodutos_mais_vendidos;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal produtos_mais_vendidosRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableprodutos_mais_vendidos = ((produtos_mais_vendidosDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string nome {
                 get {
-                    return ((string)(this[this.tabledtEstabelecimentosSelector.nomeColumn]));
+                    return ((string)(this[this.tableprodutos_mais_vendidos.nomeColumn]));
                 }
                 set {
-                    this[this.tabledtEstabelecimentosSelector.nomeColumn] = value;
+                    this[this.tableprodutos_mais_vendidos.nomeColumn] = value;
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int total_vendido {
+                get {
+                    try {
+                        return ((int)(this[this.tableprodutos_mais_vendidos.total_vendidoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'total_vendido\' in table \'produtos_mais_vendidos\' is DBNull." +
+                                "", e);
+                    }
+                }
+                set {
+                    this[this.tableprodutos_mais_vendidos.total_vendidoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool Istotal_vendidoNull() {
+                return this.IsNull(this.tableprodutos_mais_vendidos.total_vendidoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void Settotal_vendidoNull() {
+                this[this.tableprodutos_mais_vendidos.total_vendidoColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -11106,22 +11485,56 @@ namespace DametaProject {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public class dtEstabelecimentosSelectorRowChangeEvent : global::System.EventArgs {
+        public class FaturamentoRowChangeEvent : global::System.EventArgs {
             
-            private dtEstabelecimentosSelectorRow eventRow;
+            private FaturamentoRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public dtEstabelecimentosSelectorRowChangeEvent(dtEstabelecimentosSelectorRow row, global::System.Data.DataRowAction action) {
+            public FaturamentoRowChangeEvent(FaturamentoRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public dtEstabelecimentosSelectorRow Row {
+            public FaturamentoRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public class produtos_mais_vendidosRowChangeEvent : global::System.EventArgs {
+            
+            private produtos_mais_vendidosRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public produtos_mais_vendidosRowChangeEvent(produtos_mais_vendidosRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public produtos_mais_vendidosRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -17544,7 +17957,7 @@ FROM            produtos INNER JOIN
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class dtEstabelecimentosSelectorTableAdapter : global::System.ComponentModel.Component {
+    public partial class FaturamentoTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -17558,7 +17971,7 @@ FROM            produtos INNER JOIN
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public dtEstabelecimentosSelectorTableAdapter() {
+        public FaturamentoTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -17655,8 +18068,9 @@ FROM            produtos INNER JOIN
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "dtEstabelecimentosSelector";
-            tableMapping.ColumnMappings.Add("nome", "nome");
+            tableMapping.DataSetTable = "Faturamento";
+            tableMapping.ColumnMappings.Add("preco_total", "preco_total");
+            tableMapping.ColumnMappings.Add("created", "created");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -17673,24 +18087,16 @@ FROM            produtos INNER JOIN
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        nome\r\nFROM            estabelecimentos\r\nWHERE        (nome = @param" +
-                ")";
+            this._commandCollection[0].CommandText = "SELECT        preco_total, created\r\nFROM            compras";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@param", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "nome", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(dameta_dbDataSet.dtEstabelecimentosSelectorDataTable dataTable, string param) {
+        public virtual int Fill(dameta_dbDataSet.FaturamentoDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((param == null)) {
-                throw new global::System.ArgumentNullException("param");
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(param));
-            }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -17702,15 +18108,181 @@ FROM            produtos INNER JOIN
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual dameta_dbDataSet.dtEstabelecimentosSelectorDataTable GetData(string param) {
+        public virtual dameta_dbDataSet.FaturamentoDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((param == null)) {
-                throw new global::System.ArgumentNullException("param");
+            dameta_dbDataSet.FaturamentoDataTable dataTable = new dameta_dbDataSet.FaturamentoDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class produtos_mais_vendidosTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public produtos_mais_vendidosTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
             }
-            else {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(param));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
             }
-            dameta_dbDataSet.dtEstabelecimentosSelectorDataTable dataTable = new dameta_dbDataSet.dtEstabelecimentosSelectorDataTable();
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "produtos_mais_vendidos";
+            tableMapping.ColumnMappings.Add("nome", "nome");
+            tableMapping.ColumnMappings.Add("total_vendido", "total_vendido");
+            this._adapter.TableMappings.Add(tableMapping);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = global::DametaProject.Properties.Settings.Default.dameta_dbConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = @"SELECT        TOP (3) produtos.nome, SUM(item_venda.qtd) AS total_vendido
+FROM            produtos INNER JOIN
+                         item_venda ON produtos.cod_produto = item_venda.produtos_cod_produto
+GROUP BY produtos.nome
+ORDER BY total_vendido DESC";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(dameta_dbDataSet.produtos_mais_vendidosDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual dameta_dbDataSet.produtos_mais_vendidosDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            dameta_dbDataSet.produtos_mais_vendidosDataTable dataTable = new dameta_dbDataSet.produtos_mais_vendidosDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }

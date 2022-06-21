@@ -36,26 +36,6 @@ namespace DametaProject
             this.reportViewer2.RefreshReport();
         }
 
-        private void GerarRelatorio_Click(object sender, EventArgs e)
-        {
-            this.estabelecimentosTableAdapter.Fill(this.dameta_dbDataSet.estabelecimentos, cbNome.Text);
-            this.reportViewer1.RefreshReport();
 
-            if (cbNome.Text == "")
-            {
-                ReportParameter rp = new ReportParameter("estabelecimento", "");
-                this.reportViewer1.LocalReport.SetParameters(new ReportParameter[] { rp });
-            }
-            else
-            {
-                ReportParameter rp = new ReportParameter("estabelecimento", "Pesquisa por: " + cbNome.Text);
-                this.reportViewer1.LocalReport.SetParameters(new ReportParameter[] { rp });
-            }
-
- 
-
-            this.reportViewer1.RefreshReport();
-
-        }
     }
 }
