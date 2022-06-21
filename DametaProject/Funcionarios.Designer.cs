@@ -94,7 +94,7 @@
             // 
             // btLimpar
             // 
-            this.btLimpar.Location = new System.Drawing.Point(666, 171);
+            this.btLimpar.Location = new System.Drawing.Point(739, 171);
             this.btLimpar.Name = "btLimpar";
             this.btLimpar.Size = new System.Drawing.Size(100, 40);
             this.btLimpar.TabIndex = 110;
@@ -104,7 +104,7 @@
             // 
             // btExcluir
             // 
-            this.btExcluir.Location = new System.Drawing.Point(665, 123);
+            this.btExcluir.Location = new System.Drawing.Point(738, 123);
             this.btExcluir.Name = "btExcluir";
             this.btExcluir.Size = new System.Drawing.Size(100, 40);
             this.btExcluir.TabIndex = 109;
@@ -114,7 +114,7 @@
             // 
             // btAlterar
             // 
-            this.btAlterar.Location = new System.Drawing.Point(666, 76);
+            this.btAlterar.Location = new System.Drawing.Point(739, 76);
             this.btAlterar.Name = "btAlterar";
             this.btAlterar.Size = new System.Drawing.Size(100, 40);
             this.btAlterar.TabIndex = 108;
@@ -124,7 +124,7 @@
             // 
             // btIncluir
             // 
-            this.btIncluir.Location = new System.Drawing.Point(666, 29);
+            this.btIncluir.Location = new System.Drawing.Point(739, 29);
             this.btIncluir.Name = "btIncluir";
             this.btIncluir.Size = new System.Drawing.Size(100, 40);
             this.btIncluir.TabIndex = 107;
@@ -137,7 +137,7 @@
             this.dtpDataNascimento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDataNascimento.Location = new System.Drawing.Point(539, 82);
             this.dtpDataNascimento.Name = "dtpDataNascimento";
-            this.dtpDataNascimento.Size = new System.Drawing.Size(99, 20);
+            this.dtpDataNascimento.Size = new System.Drawing.Size(138, 20);
             this.dtpDataNascimento.TabIndex = 106;
             // 
             // label8
@@ -169,7 +169,7 @@
             this.cbEstabelecimento.FormattingEnabled = true;
             this.cbEstabelecimento.Location = new System.Drawing.Point(517, 190);
             this.cbEstabelecimento.Name = "cbEstabelecimento";
-            this.cbEstabelecimento.Size = new System.Drawing.Size(121, 21);
+            this.cbEstabelecimento.Size = new System.Drawing.Size(160, 21);
             this.cbEstabelecimento.TabIndex = 103;
             this.cbEstabelecimento.ValueMember = "id";
             // 
@@ -200,7 +200,7 @@
             this.cbCargo.FormattingEnabled = true;
             this.cbCargo.Location = new System.Drawing.Point(476, 151);
             this.cbCargo.Name = "cbCargo";
-            this.cbCargo.Size = new System.Drawing.Size(162, 21);
+            this.cbCargo.Size = new System.Drawing.Size(201, 21);
             this.cbCargo.TabIndex = 101;
             this.cbCargo.ValueMember = "id";
             // 
@@ -226,7 +226,7 @@
             this.cbGenero.FormattingEnabled = true;
             this.cbGenero.Location = new System.Drawing.Point(476, 114);
             this.cbGenero.Name = "cbGenero";
-            this.cbGenero.Size = new System.Drawing.Size(162, 21);
+            this.cbGenero.Size = new System.Drawing.Size(201, 21);
             this.cbGenero.TabIndex = 99;
             this.cbGenero.ValueMember = "id";
             // 
@@ -302,7 +302,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(44, 234);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(722, 207);
+            this.dataGridView1.Size = new System.Drawing.Size(795, 207);
             this.dataGridView1.TabIndex = 90;
             // 
             // dtFuncionariosBindingSource
@@ -400,6 +400,7 @@
             this.nomeDataGridViewTextBoxColumn.HeaderText = "Nome";
             this.nomeDataGridViewTextBoxColumn.Name = "nomeDataGridViewTextBoxColumn";
             this.nomeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nomeDataGridViewTextBoxColumn.Width = 150;
             // 
             // cargo
             // 
@@ -407,6 +408,7 @@
             this.cargo.HeaderText = "Cargo";
             this.cargo.Name = "cargo";
             this.cargo.ReadOnly = true;
+            this.cargo.Width = 110;
             // 
             // estabelecimento
             // 
@@ -414,7 +416,7 @@
             this.estabelecimento.HeaderText = "Estabelecimento";
             this.estabelecimento.Name = "estabelecimento";
             this.estabelecimento.ReadOnly = true;
-            this.estabelecimento.Width = 180;
+            this.estabelecimento.Width = 220;
             // 
             // salarioDataGridViewTextBoxColumn
             // 
@@ -422,7 +424,7 @@
             this.salarioDataGridViewTextBoxColumn.HeaderText = "Salario";
             this.salarioDataGridViewTextBoxColumn.Name = "salarioDataGridViewTextBoxColumn";
             this.salarioDataGridViewTextBoxColumn.ReadOnly = true;
-            this.salarioDataGridViewTextBoxColumn.Width = 60;
+            this.salarioDataGridViewTextBoxColumn.Width = 80;
             // 
             // cPFDataGridViewTextBoxColumn
             // 
@@ -443,7 +445,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 466);
+            this.ClientSize = new System.Drawing.Size(877, 466);
             this.Controls.Add(this.mtxCPF);
             this.Controls.Add(this.btConsultar);
             this.Controls.Add(this.btLimpar);
