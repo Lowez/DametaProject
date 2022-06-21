@@ -8473,6 +8473,8 @@ namespace DametaProject {
             
             private global::System.Data.DataColumn columntotal_vendido;
             
+            private global::System.Data.DataColumn columnestabelecimento;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public produtos_mais_vendidosDataTable() {
@@ -8524,6 +8526,14 @@ namespace DametaProject {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn estabelecimentoColumn {
+                get {
+                    return this.columnestabelecimento;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -8559,11 +8569,12 @@ namespace DametaProject {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public produtos_mais_vendidosRow Addprodutos_mais_vendidosRow(string nome, int total_vendido) {
+            public produtos_mais_vendidosRow Addprodutos_mais_vendidosRow(string nome, int total_vendido, string estabelecimento) {
                 produtos_mais_vendidosRow rowprodutos_mais_vendidosRow = ((produtos_mais_vendidosRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         nome,
-                        total_vendido};
+                        total_vendido,
+                        estabelecimento};
                 rowprodutos_mais_vendidosRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowprodutos_mais_vendidosRow);
                 return rowprodutos_mais_vendidosRow;
@@ -8588,6 +8599,7 @@ namespace DametaProject {
             internal void InitVars() {
                 this.columnnome = base.Columns["nome"];
                 this.columntotal_vendido = base.Columns["total_vendido"];
+                this.columnestabelecimento = base.Columns["estabelecimento"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8597,9 +8609,13 @@ namespace DametaProject {
                 base.Columns.Add(this.columnnome);
                 this.columntotal_vendido = new global::System.Data.DataColumn("total_vendido", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntotal_vendido);
+                this.columnestabelecimento = new global::System.Data.DataColumn("estabelecimento", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnestabelecimento);
                 this.columnnome.AllowDBNull = false;
                 this.columnnome.MaxLength = 100;
                 this.columntotal_vendido.ReadOnly = true;
+                this.columnestabelecimento.AllowDBNull = false;
+                this.columnestabelecimento.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -10717,6 +10733,17 @@ namespace DametaProject {
                 }
                 set {
                     this[this.tableprodutos_mais_vendidos.total_vendidoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string estabelecimento {
+                get {
+                    return ((string)(this[this.tableprodutos_mais_vendidos.estabelecimentoColumn]));
+                }
+                set {
+                    this[this.tableprodutos_mais_vendidos.estabelecimentoColumn] = value;
                 }
             }
             
@@ -18239,6 +18266,7 @@ FROM            produtos INNER JOIN
             tableMapping.DataSetTable = "produtos_mais_vendidos";
             tableMapping.ColumnMappings.Add("nome", "nome");
             tableMapping.ColumnMappings.Add("total_vendido", "total_vendido");
+            tableMapping.ColumnMappings.Add("estabelecimento", "estabelecimento");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -18255,20 +18283,30 @@ FROM            produtos INNER JOIN
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        TOP (3) produtos.nome, SUM(item_venda.qtd) AS total_vendido
+            this._commandCollection[0].CommandText = @"SELECT        TOP (3) produtos.nome, SUM(item_venda.qtd) AS total_vendido, estabelecimentos.nome AS estabelecimento
 FROM            produtos INNER JOIN
-                         item_venda ON produtos.cod_produto = item_venda.produtos_cod_produto
-GROUP BY produtos.nome
+                         item_venda ON produtos.cod_produto = item_venda.produtos_cod_produto INNER JOIN
+                         compras ON item_venda.compras_id = compras.id INNER JOIN
+                         estabelecimentos ON compras.estabelecimentos_id = estabelecimentos.id
+GROUP BY estabelecimentos.nome, produtos.nome
+HAVING        (estabelecimentos.nome = @param)
 ORDER BY total_vendido DESC";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@param", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "estabelecimento", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(dameta_dbDataSet.produtos_mais_vendidosDataTable dataTable) {
+        public virtual int Fill(dameta_dbDataSet.produtos_mais_vendidosDataTable dataTable, string param) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((param == null)) {
+                throw new global::System.ArgumentNullException("param");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(param));
+            }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -18280,8 +18318,14 @@ ORDER BY total_vendido DESC";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual dameta_dbDataSet.produtos_mais_vendidosDataTable GetData() {
+        public virtual dameta_dbDataSet.produtos_mais_vendidosDataTable GetData(string param) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((param == null)) {
+                throw new global::System.ArgumentNullException("param");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(param));
+            }
             dameta_dbDataSet.produtos_mais_vendidosDataTable dataTable = new dameta_dbDataSet.produtos_mais_vendidosDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;

@@ -284,6 +284,12 @@
     <Compile Include="TabelaDePrecos.Designer.cs">
       <DependentUpon>TabelaDePrecos.cs</DependentUpon>
     </Compile>
+    <Compile Include="TopProdutos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TopProdutos.Designer.cs">
+      <DependentUpon>TopProdutos.cs</DependentUpon>
+    </Compile>
     <Compile Include="WelcomeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -312,6 +318,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TabelaDePrecos.resx">
       <DependentUpon>TabelaDePrecos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TopProdutos.rdlc" />
+    <EmbeddedResource Include="TopProdutos.resx">
+      <DependentUpon>TopProdutos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WelcomeForm.resx">
       <DependentUpon>WelcomeForm.cs</DependentUpon>
