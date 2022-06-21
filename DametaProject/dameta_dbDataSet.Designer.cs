@@ -60,9 +60,9 @@ namespace DametaProject {
         
         private EstadosDataTable tableEstados;
         
-        private produtosDataGridDataTable tableprodutosDataGrid;
+        private dtFuncionariosDataTable tabledtFuncionarios;
         
-        private clientesDataGridDataTable tableclientesDataGrid;
+        private dtEstabelecimentosDataTable tabledtEstabelecimentos;
         
         private global::System.Data.DataRelation relationFK_ESTABELECIMENTOS_COMPRAS;
         
@@ -97,10 +97,6 @@ namespace DametaProject {
         private global::System.Data.DataRelation relationFK_FORNECEDORES_PRODUTOS;
         
         private global::System.Data.DataRelation relationFK_TIPOPRODUTOS_PRODUTOS;
-        
-        private global::System.Data.DataRelation relationFK_CIDADES_ESTABELECIMENTOS1;
-        
-        private global::System.Data.DataRelation relationFK_CIDADES_USUARIOS1;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -184,11 +180,11 @@ namespace DametaProject {
                 if ((ds.Tables["Estados"] != null)) {
                     base.Tables.Add(new EstadosDataTable(ds.Tables["Estados"]));
                 }
-                if ((ds.Tables["produtosDataGrid"] != null)) {
-                    base.Tables.Add(new produtosDataGridDataTable(ds.Tables["produtosDataGrid"]));
+                if ((ds.Tables["dtFuncionarios"] != null)) {
+                    base.Tables.Add(new dtFuncionariosDataTable(ds.Tables["dtFuncionarios"]));
                 }
-                if ((ds.Tables["clientesDataGrid"] != null)) {
-                    base.Tables.Add(new clientesDataGridDataTable(ds.Tables["clientesDataGrid"]));
+                if ((ds.Tables["dtEstabelecimentos"] != null)) {
+                    base.Tables.Add(new dtEstabelecimentosDataTable(ds.Tables["dtEstabelecimentos"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -392,9 +388,9 @@ namespace DametaProject {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public produtosDataGridDataTable produtosDataGrid {
+        public dtFuncionariosDataTable dtFuncionarios {
             get {
-                return this.tableprodutosDataGrid;
+                return this.tabledtFuncionarios;
             }
         }
         
@@ -402,9 +398,9 @@ namespace DametaProject {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public clientesDataGridDataTable clientesDataGrid {
+        public dtEstabelecimentosDataTable dtEstabelecimentos {
             get {
-                return this.tableclientesDataGrid;
+                return this.tabledtEstabelecimentos;
             }
         }
         
@@ -529,11 +525,11 @@ namespace DametaProject {
                 if ((ds.Tables["Estados"] != null)) {
                     base.Tables.Add(new EstadosDataTable(ds.Tables["Estados"]));
                 }
-                if ((ds.Tables["produtosDataGrid"] != null)) {
-                    base.Tables.Add(new produtosDataGridDataTable(ds.Tables["produtosDataGrid"]));
+                if ((ds.Tables["dtFuncionarios"] != null)) {
+                    base.Tables.Add(new dtFuncionariosDataTable(ds.Tables["dtFuncionarios"]));
                 }
-                if ((ds.Tables["clientesDataGrid"] != null)) {
-                    base.Tables.Add(new clientesDataGridDataTable(ds.Tables["clientesDataGrid"]));
+                if ((ds.Tables["dtEstabelecimentos"] != null)) {
+                    base.Tables.Add(new dtEstabelecimentosDataTable(ds.Tables["dtEstabelecimentos"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -676,16 +672,16 @@ namespace DametaProject {
                     this.tableEstados.InitVars();
                 }
             }
-            this.tableprodutosDataGrid = ((produtosDataGridDataTable)(base.Tables["produtosDataGrid"]));
+            this.tabledtFuncionarios = ((dtFuncionariosDataTable)(base.Tables["dtFuncionarios"]));
             if ((initTable == true)) {
-                if ((this.tableprodutosDataGrid != null)) {
-                    this.tableprodutosDataGrid.InitVars();
+                if ((this.tabledtFuncionarios != null)) {
+                    this.tabledtFuncionarios.InitVars();
                 }
             }
-            this.tableclientesDataGrid = ((clientesDataGridDataTable)(base.Tables["clientesDataGrid"]));
+            this.tabledtEstabelecimentos = ((dtEstabelecimentosDataTable)(base.Tables["dtEstabelecimentos"]));
             if ((initTable == true)) {
-                if ((this.tableclientesDataGrid != null)) {
-                    this.tableclientesDataGrid.InitVars();
+                if ((this.tabledtEstabelecimentos != null)) {
+                    this.tabledtEstabelecimentos.InitVars();
                 }
             }
             this.relationFK_ESTABELECIMENTOS_COMPRAS = this.Relations["FK_ESTABELECIMENTOS_COMPRAS"];
@@ -705,8 +701,6 @@ namespace DametaProject {
             this.relationFK_ESTOQUE_PRUDOTS = this.Relations["FK_ESTOQUE_PRUDOTS"];
             this.relationFK_FORNECEDORES_PRODUTOS = this.Relations["FK_FORNECEDORES_PRODUTOS"];
             this.relationFK_TIPOPRODUTOS_PRODUTOS = this.Relations["FK_TIPOPRODUTOS_PRODUTOS"];
-            this.relationFK_CIDADES_ESTABELECIMENTOS1 = this.Relations["FK_CIDADES_ESTABELECIMENTOS1"];
-            this.relationFK_CIDADES_USUARIOS1 = this.Relations["FK_CIDADES_USUARIOS1"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -753,10 +747,10 @@ namespace DametaProject {
             base.Tables.Add(this.tableFornecedoresEstabelecimentos);
             this.tableEstados = new EstadosDataTable();
             base.Tables.Add(this.tableEstados);
-            this.tableprodutosDataGrid = new produtosDataGridDataTable();
-            base.Tables.Add(this.tableprodutosDataGrid);
-            this.tableclientesDataGrid = new clientesDataGridDataTable();
-            base.Tables.Add(this.tableclientesDataGrid);
+            this.tabledtFuncionarios = new dtFuncionariosDataTable();
+            base.Tables.Add(this.tabledtFuncionarios);
+            this.tabledtEstabelecimentos = new dtEstabelecimentosDataTable();
+            base.Tables.Add(this.tabledtEstabelecimentos);
             this.relationFK_ESTABELECIMENTOS_COMPRAS = new global::System.Data.DataRelation("FK_ESTABELECIMENTOS_COMPRAS", new global::System.Data.DataColumn[] {
                         this.tableestabelecimentos.idColumn}, new global::System.Data.DataColumn[] {
                         this.tablecompras.estabelecimentos_idColumn}, false);
@@ -825,14 +819,6 @@ namespace DametaProject {
                         this.tabletipo_produtos.idColumn}, new global::System.Data.DataColumn[] {
                         this.tableprodutos.tipo_produtos_idColumn}, false);
             this.Relations.Add(this.relationFK_TIPOPRODUTOS_PRODUTOS);
-            this.relationFK_CIDADES_ESTABELECIMENTOS1 = new global::System.Data.DataRelation("FK_CIDADES_ESTABELECIMENTOS1", new global::System.Data.DataColumn[] {
-                        this.tableclientesDataGrid.idColumn}, new global::System.Data.DataColumn[] {
-                        this.tableestabelecimentos.cidades_idColumn}, false);
-            this.Relations.Add(this.relationFK_CIDADES_ESTABELECIMENTOS1);
-            this.relationFK_CIDADES_USUARIOS1 = new global::System.Data.DataRelation("FK_CIDADES_USUARIOS1", new global::System.Data.DataColumn[] {
-                        this.tableclientesDataGrid.idColumn}, new global::System.Data.DataColumn[] {
-                        this.tablepremium_usuarios.cidades_idColumn}, false);
-            this.Relations.Add(this.relationFK_CIDADES_USUARIOS1);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -945,13 +931,13 @@ namespace DametaProject {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private bool ShouldSerializeprodutosDataGrid() {
+        private bool ShouldSerializedtFuncionarios() {
             return false;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private bool ShouldSerializeclientesDataGrid() {
+        private bool ShouldSerializedtEstabelecimentos() {
             return false;
         }
         
@@ -1065,10 +1051,10 @@ namespace DametaProject {
         public delegate void EstadosRowChangeEventHandler(object sender, EstadosRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public delegate void produtosDataGridRowChangeEventHandler(object sender, produtosDataGridRowChangeEvent e);
+        public delegate void dtFuncionariosRowChangeEventHandler(object sender, dtFuncionariosRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public delegate void clientesDataGridRowChangeEventHandler(object sender, clientesDataGridRowChangeEvent e);
+        public delegate void dtEstabelecimentosRowChangeEventHandler(object sender, dtEstabelecimentosRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -6684,24 +6670,24 @@ namespace DametaProject {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class produtosDataGridDataTable : global::System.Data.TypedTableBase<produtosDataGridRow> {
-            
-            private global::System.Data.DataColumn columncod_produto;
+        public partial class dtFuncionariosDataTable : global::System.Data.TypedTableBase<dtFuncionariosRow> {
             
             private global::System.Data.DataColumn columnnome;
             
-            private global::System.Data.DataColumn columnpreco;
+            private global::System.Data.DataColumn columnCPF;
             
-            private global::System.Data.DataColumn columntipo;
+            private global::System.Data.DataColumn columnsalario;
             
-            private global::System.Data.DataColumn columnestoque;
+            private global::System.Data.DataColumn columntelefone;
             
-            private global::System.Data.DataColumn columnfornecedor;
+            private global::System.Data.DataColumn columncargo;
+            
+            private global::System.Data.DataColumn columnestabelecimento;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public produtosDataGridDataTable() {
-                this.TableName = "produtosDataGrid";
+            public dtFuncionariosDataTable() {
+                this.TableName = "dtFuncionarios";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -6709,7 +6695,7 @@ namespace DametaProject {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal produtosDataGridDataTable(global::System.Data.DataTable table) {
+            internal dtFuncionariosDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -6726,17 +6712,9 @@ namespace DametaProject {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected produtosDataGridDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected dtFuncionariosDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn cod_produtoColumn {
-                get {
-                    return this.columncod_produto;
-                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6749,33 +6727,41 @@ namespace DametaProject {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn precoColumn {
+            public global::System.Data.DataColumn CPFColumn {
                 get {
-                    return this.columnpreco;
+                    return this.columnCPF;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn tipoColumn {
+            public global::System.Data.DataColumn salarioColumn {
                 get {
-                    return this.columntipo;
+                    return this.columnsalario;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn estoqueColumn {
+            public global::System.Data.DataColumn telefoneColumn {
                 get {
-                    return this.columnestoque;
+                    return this.columntelefone;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn fornecedorColumn {
+            public global::System.Data.DataColumn cargoColumn {
                 get {
-                    return this.columnfornecedor;
+                    return this.columncargo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn estabelecimentoColumn {
+                get {
+                    return this.columnestabelecimento;
                 }
             }
             
@@ -6790,57 +6776,50 @@ namespace DametaProject {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public produtosDataGridRow this[int index] {
+            public dtFuncionariosRow this[int index] {
                 get {
-                    return ((produtosDataGridRow)(this.Rows[index]));
+                    return ((dtFuncionariosRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event produtosDataGridRowChangeEventHandler produtosDataGridRowChanging;
+            public event dtFuncionariosRowChangeEventHandler dtFuncionariosRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event produtosDataGridRowChangeEventHandler produtosDataGridRowChanged;
+            public event dtFuncionariosRowChangeEventHandler dtFuncionariosRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event produtosDataGridRowChangeEventHandler produtosDataGridRowDeleting;
+            public event dtFuncionariosRowChangeEventHandler dtFuncionariosRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event produtosDataGridRowChangeEventHandler produtosDataGridRowDeleted;
+            public event dtFuncionariosRowChangeEventHandler dtFuncionariosRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void AddprodutosDataGridRow(produtosDataGridRow row) {
+            public void AdddtFuncionariosRow(dtFuncionariosRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public produtosDataGridRow AddprodutosDataGridRow(int cod_produto, string nome, decimal preco, string tipo, int estoque, string fornecedor) {
-                produtosDataGridRow rowprodutosDataGridRow = ((produtosDataGridRow)(this.NewRow()));
+            public dtFuncionariosRow AdddtFuncionariosRow(string nome, string CPF, decimal salario, string telefone, string cargo, string estabelecimento) {
+                dtFuncionariosRow rowdtFuncionariosRow = ((dtFuncionariosRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        cod_produto,
                         nome,
-                        preco,
-                        tipo,
-                        estoque,
-                        fornecedor};
-                rowprodutosDataGridRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowprodutosDataGridRow);
-                return rowprodutosDataGridRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public produtosDataGridRow FindBycod_produto(int cod_produto) {
-                return ((produtosDataGridRow)(this.Rows.Find(new object[] {
-                            cod_produto})));
+                        CPF,
+                        salario,
+                        telefone,
+                        cargo,
+                        estabelecimento};
+                rowdtFuncionariosRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowdtFuncionariosRow);
+                return rowdtFuncionariosRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                produtosDataGridDataTable cln = ((produtosDataGridDataTable)(base.Clone()));
+                dtFuncionariosDataTable cln = ((dtFuncionariosDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -6848,73 +6827,72 @@ namespace DametaProject {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new produtosDataGridDataTable();
+                return new dtFuncionariosDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             internal void InitVars() {
-                this.columncod_produto = base.Columns["cod_produto"];
                 this.columnnome = base.Columns["nome"];
-                this.columnpreco = base.Columns["preco"];
-                this.columntipo = base.Columns["tipo"];
-                this.columnestoque = base.Columns["estoque"];
-                this.columnfornecedor = base.Columns["fornecedor"];
+                this.columnCPF = base.Columns["CPF"];
+                this.columnsalario = base.Columns["salario"];
+                this.columntelefone = base.Columns["telefone"];
+                this.columncargo = base.Columns["cargo"];
+                this.columnestabelecimento = base.Columns["estabelecimento"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             private void InitClass() {
-                this.columncod_produto = new global::System.Data.DataColumn("cod_produto", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columncod_produto);
                 this.columnnome = new global::System.Data.DataColumn("nome", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnnome);
-                this.columnpreco = new global::System.Data.DataColumn("preco", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnpreco);
-                this.columntipo = new global::System.Data.DataColumn("tipo", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columntipo);
-                this.columnestoque = new global::System.Data.DataColumn("estoque", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnestoque);
-                this.columnfornecedor = new global::System.Data.DataColumn("fornecedor", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnfornecedor);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columncod_produto}, true));
-                this.columncod_produto.AllowDBNull = false;
-                this.columncod_produto.Unique = true;
+                this.columnCPF = new global::System.Data.DataColumn("CPF", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCPF);
+                this.columnsalario = new global::System.Data.DataColumn("salario", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsalario);
+                this.columntelefone = new global::System.Data.DataColumn("telefone", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntelefone);
+                this.columncargo = new global::System.Data.DataColumn("cargo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncargo);
+                this.columnestabelecimento = new global::System.Data.DataColumn("estabelecimento", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnestabelecimento);
                 this.columnnome.AllowDBNull = false;
-                this.columnnome.MaxLength = 100;
-                this.columnpreco.AllowDBNull = false;
-                this.columntipo.AllowDBNull = false;
-                this.columntipo.MaxLength = 50;
-                this.columnestoque.AllowDBNull = false;
-                this.columnfornecedor.AllowDBNull = false;
-                this.columnfornecedor.MaxLength = 100;
+                this.columnnome.MaxLength = 50;
+                this.columnCPF.AllowDBNull = false;
+                this.columnCPF.MaxLength = 14;
+                this.columnsalario.AllowDBNull = false;
+                this.columntelefone.AllowDBNull = false;
+                this.columntelefone.MaxLength = 14;
+                this.columncargo.AllowDBNull = false;
+                this.columncargo.MaxLength = 50;
+                this.columnestabelecimento.AllowDBNull = false;
+                this.columnestabelecimento.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public produtosDataGridRow NewprodutosDataGridRow() {
-                return ((produtosDataGridRow)(this.NewRow()));
+            public dtFuncionariosRow NewdtFuncionariosRow() {
+                return ((dtFuncionariosRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new produtosDataGridRow(builder);
+                return new dtFuncionariosRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(produtosDataGridRow);
+                return typeof(dtFuncionariosRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.produtosDataGridRowChanged != null)) {
-                    this.produtosDataGridRowChanged(this, new produtosDataGridRowChangeEvent(((produtosDataGridRow)(e.Row)), e.Action));
+                if ((this.dtFuncionariosRowChanged != null)) {
+                    this.dtFuncionariosRowChanged(this, new dtFuncionariosRowChangeEvent(((dtFuncionariosRow)(e.Row)), e.Action));
                 }
             }
             
@@ -6922,8 +6900,8 @@ namespace DametaProject {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.produtosDataGridRowChanging != null)) {
-                    this.produtosDataGridRowChanging(this, new produtosDataGridRowChangeEvent(((produtosDataGridRow)(e.Row)), e.Action));
+                if ((this.dtFuncionariosRowChanging != null)) {
+                    this.dtFuncionariosRowChanging(this, new dtFuncionariosRowChangeEvent(((dtFuncionariosRow)(e.Row)), e.Action));
                 }
             }
             
@@ -6931,8 +6909,8 @@ namespace DametaProject {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.produtosDataGridRowDeleted != null)) {
-                    this.produtosDataGridRowDeleted(this, new produtosDataGridRowChangeEvent(((produtosDataGridRow)(e.Row)), e.Action));
+                if ((this.dtFuncionariosRowDeleted != null)) {
+                    this.dtFuncionariosRowDeleted(this, new dtFuncionariosRowChangeEvent(((dtFuncionariosRow)(e.Row)), e.Action));
                 }
             }
             
@@ -6940,14 +6918,14 @@ namespace DametaProject {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.produtosDataGridRowDeleting != null)) {
-                    this.produtosDataGridRowDeleting(this, new produtosDataGridRowChangeEvent(((produtosDataGridRow)(e.Row)), e.Action));
+                if ((this.dtFuncionariosRowDeleting != null)) {
+                    this.dtFuncionariosRowDeleting(this, new dtFuncionariosRowChangeEvent(((dtFuncionariosRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void RemoveprodutosDataGridRow(produtosDataGridRow row) {
+            public void RemovedtFuncionariosRow(dtFuncionariosRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -6974,7 +6952,7 @@ namespace DametaProject {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "produtosDataGridDataTable";
+                attribute2.FixedValue = "dtFuncionariosDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -7020,30 +6998,24 @@ namespace DametaProject {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class clientesDataGridDataTable : global::System.Data.TypedTableBase<clientesDataGridRow> {
-            
-            private global::System.Data.DataColumn columnid;
+        public partial class dtEstabelecimentosDataTable : global::System.Data.TypedTableBase<dtEstabelecimentosRow> {
             
             private global::System.Data.DataColumn columnnome;
             
-            private global::System.Data.DataColumn columnnascimento;
+            private global::System.Data.DataColumn columncidades;
             
-            private global::System.Data.DataColumn columnCPF;
+            private global::System.Data.DataColumn columnnome_rua;
+            
+            private global::System.Data.DataColumn columnnumero;
             
             private global::System.Data.DataColumn columntelefone;
             
             private global::System.Data.DataColumn columnCEP;
             
-            private global::System.Data.DataColumn columncidades;
-            
-            private global::System.Data.DataColumn columnUF;
-            
-            private global::System.Data.DataColumn columngeneros;
-            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public clientesDataGridDataTable() {
-                this.TableName = "clientesDataGrid";
+            public dtEstabelecimentosDataTable() {
+                this.TableName = "dtEstabelecimentos";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -7051,7 +7023,7 @@ namespace DametaProject {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal clientesDataGridDataTable(global::System.Data.DataTable table) {
+            internal dtEstabelecimentosDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -7068,17 +7040,9 @@ namespace DametaProject {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected clientesDataGridDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected dtEstabelecimentosDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn idColumn {
-                get {
-                    return this.columnid;
-                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7091,17 +7055,25 @@ namespace DametaProject {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn nascimentoColumn {
+            public global::System.Data.DataColumn cidadesColumn {
                 get {
-                    return this.columnnascimento;
+                    return this.columncidades;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn CPFColumn {
+            public global::System.Data.DataColumn nome_ruaColumn {
                 get {
-                    return this.columnCPF;
+                    return this.columnnome_rua;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn numeroColumn {
+                get {
+                    return this.columnnumero;
                 }
             }
             
@@ -7123,30 +7095,6 @@ namespace DametaProject {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn cidadesColumn {
-                get {
-                    return this.columncidades;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn UFColumn {
-                get {
-                    return this.columnUF;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn generosColumn {
-                get {
-                    return this.columngeneros;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -7156,60 +7104,50 @@ namespace DametaProject {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public clientesDataGridRow this[int index] {
+            public dtEstabelecimentosRow this[int index] {
                 get {
-                    return ((clientesDataGridRow)(this.Rows[index]));
+                    return ((dtEstabelecimentosRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event clientesDataGridRowChangeEventHandler clientesDataGridRowChanging;
+            public event dtEstabelecimentosRowChangeEventHandler dtEstabelecimentosRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event clientesDataGridRowChangeEventHandler clientesDataGridRowChanged;
+            public event dtEstabelecimentosRowChangeEventHandler dtEstabelecimentosRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event clientesDataGridRowChangeEventHandler clientesDataGridRowDeleting;
+            public event dtEstabelecimentosRowChangeEventHandler dtEstabelecimentosRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event clientesDataGridRowChangeEventHandler clientesDataGridRowDeleted;
+            public event dtEstabelecimentosRowChangeEventHandler dtEstabelecimentosRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void AddclientesDataGridRow(clientesDataGridRow row) {
+            public void AdddtEstabelecimentosRow(dtEstabelecimentosRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public clientesDataGridRow AddclientesDataGridRow(string nome, System.DateTime nascimento, string CPF, string telefone, string CEP, string cidades, string UF, string generos) {
-                clientesDataGridRow rowclientesDataGridRow = ((clientesDataGridRow)(this.NewRow()));
+            public dtEstabelecimentosRow AdddtEstabelecimentosRow(string nome, string cidades, string nome_rua, int numero, string telefone, string CEP) {
+                dtEstabelecimentosRow rowdtEstabelecimentosRow = ((dtEstabelecimentosRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        null,
                         nome,
-                        nascimento,
-                        CPF,
-                        telefone,
-                        CEP,
                         cidades,
-                        UF,
-                        generos};
-                rowclientesDataGridRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowclientesDataGridRow);
-                return rowclientesDataGridRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public clientesDataGridRow FindByid(int id) {
-                return ((clientesDataGridRow)(this.Rows.Find(new object[] {
-                            id})));
+                        nome_rua,
+                        numero,
+                        telefone,
+                        CEP};
+                rowdtEstabelecimentosRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowdtEstabelecimentosRow);
+                return rowdtEstabelecimentosRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                clientesDataGridDataTable cln = ((clientesDataGridDataTable)(base.Clone()));
+                dtEstabelecimentosDataTable cln = ((dtEstabelecimentosDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -7217,92 +7155,72 @@ namespace DametaProject {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new clientesDataGridDataTable();
+                return new dtEstabelecimentosDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             internal void InitVars() {
-                this.columnid = base.Columns["id"];
                 this.columnnome = base.Columns["nome"];
-                this.columnnascimento = base.Columns["nascimento"];
-                this.columnCPF = base.Columns["CPF"];
+                this.columncidades = base.Columns["cidades"];
+                this.columnnome_rua = base.Columns["nome_rua"];
+                this.columnnumero = base.Columns["numero"];
                 this.columntelefone = base.Columns["telefone"];
                 this.columnCEP = base.Columns["CEP"];
-                this.columncidades = base.Columns["cidades"];
-                this.columnUF = base.Columns["UF"];
-                this.columngeneros = base.Columns["generos"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             private void InitClass() {
-                this.columnid = new global::System.Data.DataColumn("id", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnid);
                 this.columnnome = new global::System.Data.DataColumn("nome", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnnome);
-                this.columnnascimento = new global::System.Data.DataColumn("nascimento", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnnascimento);
-                this.columnCPF = new global::System.Data.DataColumn("CPF", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCPF);
+                this.columncidades = new global::System.Data.DataColumn("cidades", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncidades);
+                this.columnnome_rua = new global::System.Data.DataColumn("nome_rua", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnome_rua);
+                this.columnnumero = new global::System.Data.DataColumn("numero", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnumero);
                 this.columntelefone = new global::System.Data.DataColumn("telefone", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntelefone);
                 this.columnCEP = new global::System.Data.DataColumn("CEP", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCEP);
-                this.columncidades = new global::System.Data.DataColumn("cidades", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columncidades);
-                this.columnUF = new global::System.Data.DataColumn("UF", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnUF);
-                this.columngeneros = new global::System.Data.DataColumn("generos", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columngeneros);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnid}, true));
-                this.columnid.AutoIncrement = true;
-                this.columnid.AutoIncrementSeed = -1;
-                this.columnid.AutoIncrementStep = -1;
-                this.columnid.AllowDBNull = false;
-                this.columnid.ReadOnly = true;
-                this.columnid.Unique = true;
                 this.columnnome.AllowDBNull = false;
                 this.columnnome.MaxLength = 50;
-                this.columnnascimento.AllowDBNull = false;
-                this.columnCPF.AllowDBNull = false;
-                this.columnCPF.MaxLength = 14;
-                this.columntelefone.AllowDBNull = false;
-                this.columntelefone.MaxLength = 14;
-                this.columnCEP.MaxLength = 10;
                 this.columncidades.AllowDBNull = false;
                 this.columncidades.MaxLength = 50;
-                this.columnUF.AllowDBNull = false;
-                this.columnUF.MaxLength = 2;
-                this.columngeneros.AllowDBNull = false;
-                this.columngeneros.MaxLength = 50;
+                this.columnnome_rua.AllowDBNull = false;
+                this.columnnome_rua.MaxLength = 50;
+                this.columnnumero.AllowDBNull = false;
+                this.columntelefone.AllowDBNull = false;
+                this.columntelefone.MaxLength = 14;
+                this.columnCEP.AllowDBNull = false;
+                this.columnCEP.MaxLength = 9;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public clientesDataGridRow NewclientesDataGridRow() {
-                return ((clientesDataGridRow)(this.NewRow()));
+            public dtEstabelecimentosRow NewdtEstabelecimentosRow() {
+                return ((dtEstabelecimentosRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new clientesDataGridRow(builder);
+                return new dtEstabelecimentosRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(clientesDataGridRow);
+                return typeof(dtEstabelecimentosRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.clientesDataGridRowChanged != null)) {
-                    this.clientesDataGridRowChanged(this, new clientesDataGridRowChangeEvent(((clientesDataGridRow)(e.Row)), e.Action));
+                if ((this.dtEstabelecimentosRowChanged != null)) {
+                    this.dtEstabelecimentosRowChanged(this, new dtEstabelecimentosRowChangeEvent(((dtEstabelecimentosRow)(e.Row)), e.Action));
                 }
             }
             
@@ -7310,8 +7228,8 @@ namespace DametaProject {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.clientesDataGridRowChanging != null)) {
-                    this.clientesDataGridRowChanging(this, new clientesDataGridRowChangeEvent(((clientesDataGridRow)(e.Row)), e.Action));
+                if ((this.dtEstabelecimentosRowChanging != null)) {
+                    this.dtEstabelecimentosRowChanging(this, new dtEstabelecimentosRowChangeEvent(((dtEstabelecimentosRow)(e.Row)), e.Action));
                 }
             }
             
@@ -7319,8 +7237,8 @@ namespace DametaProject {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.clientesDataGridRowDeleted != null)) {
-                    this.clientesDataGridRowDeleted(this, new clientesDataGridRowChangeEvent(((clientesDataGridRow)(e.Row)), e.Action));
+                if ((this.dtEstabelecimentosRowDeleted != null)) {
+                    this.dtEstabelecimentosRowDeleted(this, new dtEstabelecimentosRowChangeEvent(((dtEstabelecimentosRow)(e.Row)), e.Action));
                 }
             }
             
@@ -7328,14 +7246,14 @@ namespace DametaProject {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.clientesDataGridRowDeleting != null)) {
-                    this.clientesDataGridRowDeleting(this, new clientesDataGridRowChangeEvent(((clientesDataGridRow)(e.Row)), e.Action));
+                if ((this.dtEstabelecimentosRowDeleting != null)) {
+                    this.dtEstabelecimentosRowDeleting(this, new dtEstabelecimentosRowChangeEvent(((dtEstabelecimentosRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void RemoveclientesDataGridRow(clientesDataGridRow row) {
+            public void RemovedtEstabelecimentosRow(dtEstabelecimentosRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -7362,7 +7280,7 @@ namespace DametaProject {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "clientesDataGridDataTable";
+                attribute2.FixedValue = "dtEstabelecimentosDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -7863,17 +7781,6 @@ namespace DametaProject {
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_CIDADES_ESTABELECIMENTOS"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public clientesDataGridRow clientesDataGridRow {
-                get {
-                    return ((clientesDataGridRow)(this.GetParentRow(this.Table.ParentRelations["FK_CIDADES_ESTABELECIMENTOS1"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_CIDADES_ESTABELECIMENTOS1"]);
                 }
             }
             
@@ -8502,17 +8409,6 @@ namespace DametaProject {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public clientesDataGridRow clientesDataGridRow {
-                get {
-                    return ((clientesDataGridRow)(this.GetParentRow(this.Table.ParentRelations["FK_CIDADES_USUARIOS1"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_CIDADES_USUARIOS1"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsCEPNull() {
                 return this.IsNull(this.tablepremium_usuarios.CEPColumn);
             }
@@ -8925,128 +8821,25 @@ namespace DametaProject {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class produtosDataGridRow : global::System.Data.DataRow {
+        public partial class dtFuncionariosRow : global::System.Data.DataRow {
             
-            private produtosDataGridDataTable tableprodutosDataGrid;
+            private dtFuncionariosDataTable tabledtFuncionarios;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal produtosDataGridRow(global::System.Data.DataRowBuilder rb) : 
+            internal dtFuncionariosRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableprodutosDataGrid = ((produtosDataGridDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int cod_produto {
-                get {
-                    return ((int)(this[this.tableprodutosDataGrid.cod_produtoColumn]));
-                }
-                set {
-                    this[this.tableprodutosDataGrid.cod_produtoColumn] = value;
-                }
+                this.tabledtFuncionarios = ((dtFuncionariosDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string nome {
                 get {
-                    return ((string)(this[this.tableprodutosDataGrid.nomeColumn]));
+                    return ((string)(this[this.tabledtFuncionarios.nomeColumn]));
                 }
                 set {
-                    this[this.tableprodutosDataGrid.nomeColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public decimal preco {
-                get {
-                    return ((decimal)(this[this.tableprodutosDataGrid.precoColumn]));
-                }
-                set {
-                    this[this.tableprodutosDataGrid.precoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string tipo {
-                get {
-                    return ((string)(this[this.tableprodutosDataGrid.tipoColumn]));
-                }
-                set {
-                    this[this.tableprodutosDataGrid.tipoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int estoque {
-                get {
-                    return ((int)(this[this.tableprodutosDataGrid.estoqueColumn]));
-                }
-                set {
-                    this[this.tableprodutosDataGrid.estoqueColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string fornecedor {
-                get {
-                    return ((string)(this[this.tableprodutosDataGrid.fornecedorColumn]));
-                }
-                set {
-                    this[this.tableprodutosDataGrid.fornecedorColumn] = value;
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
-        public partial class clientesDataGridRow : global::System.Data.DataRow {
-            
-            private clientesDataGridDataTable tableclientesDataGrid;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal clientesDataGridRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableclientesDataGrid = ((clientesDataGridDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int id {
-                get {
-                    return ((int)(this[this.tableclientesDataGrid.idColumn]));
-                }
-                set {
-                    this[this.tableclientesDataGrid.idColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string nome {
-                get {
-                    return ((string)(this[this.tableclientesDataGrid.nomeColumn]));
-                }
-                set {
-                    this[this.tableclientesDataGrid.nomeColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public System.DateTime nascimento {
-                get {
-                    return ((global::System.DateTime)(this[this.tableclientesDataGrid.nascimentoColumn]));
-                }
-                set {
-                    this[this.tableclientesDataGrid.nascimentoColumn] = value;
+                    this[this.tabledtFuncionarios.nomeColumn] = value;
                 }
             }
             
@@ -9054,10 +8847,21 @@ namespace DametaProject {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string CPF {
                 get {
-                    return ((string)(this[this.tableclientesDataGrid.CPFColumn]));
+                    return ((string)(this[this.tabledtFuncionarios.CPFColumn]));
                 }
                 set {
-                    this[this.tableclientesDataGrid.CPFColumn] = value;
+                    this[this.tabledtFuncionarios.CPFColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public decimal salario {
+                get {
+                    return ((decimal)(this[this.tabledtFuncionarios.salarioColumn]));
+                }
+                set {
+                    this[this.tabledtFuncionarios.salarioColumn] = value;
                 }
             }
             
@@ -9065,26 +8869,58 @@ namespace DametaProject {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string telefone {
                 get {
-                    return ((string)(this[this.tableclientesDataGrid.telefoneColumn]));
+                    return ((string)(this[this.tabledtFuncionarios.telefoneColumn]));
                 }
                 set {
-                    this[this.tableclientesDataGrid.telefoneColumn] = value;
+                    this[this.tabledtFuncionarios.telefoneColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string CEP {
+            public string cargo {
                 get {
-                    try {
-                        return ((string)(this[this.tableclientesDataGrid.CEPColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'CEP\' in table \'clientesDataGrid\' is DBNull.", e);
-                    }
+                    return ((string)(this[this.tabledtFuncionarios.cargoColumn]));
                 }
                 set {
-                    this[this.tableclientesDataGrid.CEPColumn] = value;
+                    this[this.tabledtFuncionarios.cargoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string estabelecimento {
+                get {
+                    return ((string)(this[this.tabledtFuncionarios.estabelecimentoColumn]));
+                }
+                set {
+                    this[this.tabledtFuncionarios.estabelecimentoColumn] = value;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class dtEstabelecimentosRow : global::System.Data.DataRow {
+            
+            private dtEstabelecimentosDataTable tabledtEstabelecimentos;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal dtEstabelecimentosRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tabledtEstabelecimentos = ((dtEstabelecimentosDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string nome {
+                get {
+                    return ((string)(this[this.tabledtEstabelecimentos.nomeColumn]));
+                }
+                set {
+                    this[this.tabledtEstabelecimentos.nomeColumn] = value;
                 }
             }
             
@@ -9092,66 +8928,54 @@ namespace DametaProject {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string cidades {
                 get {
-                    return ((string)(this[this.tableclientesDataGrid.cidadesColumn]));
+                    return ((string)(this[this.tabledtEstabelecimentos.cidadesColumn]));
                 }
                 set {
-                    this[this.tableclientesDataGrid.cidadesColumn] = value;
+                    this[this.tabledtEstabelecimentos.cidadesColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string UF {
+            public string nome_rua {
                 get {
-                    return ((string)(this[this.tableclientesDataGrid.UFColumn]));
+                    return ((string)(this[this.tabledtEstabelecimentos.nome_ruaColumn]));
                 }
                 set {
-                    this[this.tableclientesDataGrid.UFColumn] = value;
+                    this[this.tabledtEstabelecimentos.nome_ruaColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string generos {
+            public int numero {
                 get {
-                    return ((string)(this[this.tableclientesDataGrid.generosColumn]));
+                    return ((int)(this[this.tabledtEstabelecimentos.numeroColumn]));
                 }
                 set {
-                    this[this.tableclientesDataGrid.generosColumn] = value;
+                    this[this.tabledtEstabelecimentos.numeroColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsCEPNull() {
-                return this.IsNull(this.tableclientesDataGrid.CEPColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetCEPNull() {
-                this[this.tableclientesDataGrid.CEPColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public estabelecimentosRow[] GetestabelecimentosRows() {
-                if ((this.Table.ChildRelations["FK_CIDADES_ESTABELECIMENTOS1"] == null)) {
-                    return new estabelecimentosRow[0];
+            public string telefone {
+                get {
+                    return ((string)(this[this.tabledtEstabelecimentos.telefoneColumn]));
                 }
-                else {
-                    return ((estabelecimentosRow[])(base.GetChildRows(this.Table.ChildRelations["FK_CIDADES_ESTABELECIMENTOS1"])));
+                set {
+                    this[this.tabledtEstabelecimentos.telefoneColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public premium_usuariosRow[] Getpremium_usuariosRows() {
-                if ((this.Table.ChildRelations["FK_CIDADES_USUARIOS1"] == null)) {
-                    return new premium_usuariosRow[0];
+            public string CEP {
+                get {
+                    return ((string)(this[this.tabledtEstabelecimentos.CEPColumn]));
                 }
-                else {
-                    return ((premium_usuariosRow[])(base.GetChildRows(this.Table.ChildRelations["FK_CIDADES_USUARIOS1"])));
+                set {
+                    this[this.tabledtEstabelecimentos.CEPColumn] = value;
                 }
             }
         }
@@ -9772,22 +9596,22 @@ namespace DametaProject {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public class produtosDataGridRowChangeEvent : global::System.EventArgs {
+        public class dtFuncionariosRowChangeEvent : global::System.EventArgs {
             
-            private produtosDataGridRow eventRow;
+            private dtFuncionariosRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public produtosDataGridRowChangeEvent(produtosDataGridRow row, global::System.Data.DataRowAction action) {
+            public dtFuncionariosRowChangeEvent(dtFuncionariosRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public produtosDataGridRow Row {
+            public dtFuncionariosRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -9806,22 +9630,22 @@ namespace DametaProject {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public class clientesDataGridRowChangeEvent : global::System.EventArgs {
+        public class dtEstabelecimentosRowChangeEvent : global::System.EventArgs {
             
-            private clientesDataGridRow eventRow;
+            private dtEstabelecimentosRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public clientesDataGridRowChangeEvent(clientesDataGridRow row, global::System.Data.DataRowAction action) {
+            public dtEstabelecimentosRowChangeEvent(dtEstabelecimentosRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public clientesDataGridRow Row {
+            public dtEstabelecimentosRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -15541,7 +15365,7 @@ FROM            fornecedores INNER JOIN
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class produtosDataGridTableAdapter : global::System.ComponentModel.Component {
+    public partial class dtFuncionariosTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -15555,7 +15379,7 @@ FROM            fornecedores INNER JOIN
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public produtosDataGridTableAdapter() {
+        public dtFuncionariosTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -15652,13 +15476,13 @@ FROM            fornecedores INNER JOIN
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "produtosDataGrid";
-            tableMapping.ColumnMappings.Add("cod_produto", "cod_produto");
+            tableMapping.DataSetTable = "dtFuncionarios";
             tableMapping.ColumnMappings.Add("nome", "nome");
-            tableMapping.ColumnMappings.Add("preco", "preco");
-            tableMapping.ColumnMappings.Add("tipo", "tipo");
-            tableMapping.ColumnMappings.Add("estoque", "estoque");
-            tableMapping.ColumnMappings.Add("fornecedor", "fornecedor");
+            tableMapping.ColumnMappings.Add("CPF", "CPF");
+            tableMapping.ColumnMappings.Add("salario", "salario");
+            tableMapping.ColumnMappings.Add("telefone", "telefone");
+            tableMapping.ColumnMappings.Add("cargo", "cargo");
+            tableMapping.ColumnMappings.Add("estabelecimento", "estabelecimento");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -15675,11 +15499,10 @@ FROM            fornecedores INNER JOIN
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        produtos.cod_produto, produtos.nome, produtos.preco, tipo_produtos.nome AS tipo, estoque.qtd AS estoque, fornecedores.nome AS fornecedor
-FROM            produtos INNER JOIN
-                         tipo_produtos ON produtos.tipo_produtos_id = tipo_produtos.id INNER JOIN
-                         fornecedores ON produtos.fornecedores_id = fornecedores.id INNER JOIN
-                         estoque ON produtos.estoque_id = estoque.id";
+            this._commandCollection[0].CommandText = @"SELECT        funcionarios.nome, funcionarios.CPF, funcionarios.salario, funcionarios.telefone, cargos.nome AS cargo, estabelecimentos.nome AS estabelecimento
+FROM            funcionarios INNER JOIN
+                         cargos ON funcionarios.cargos_id = cargos.id INNER JOIN
+                         estabelecimentos ON funcionarios.estabelecimentos_id = estabelecimentos.id";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -15687,7 +15510,7 @@ FROM            produtos INNER JOIN
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(dameta_dbDataSet.produtosDataGridDataTable dataTable) {
+        public virtual int Fill(dameta_dbDataSet.dtFuncionariosDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -15700,9 +15523,9 @@ FROM            produtos INNER JOIN
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual dameta_dbDataSet.produtosDataGridDataTable GetData() {
+        public virtual dameta_dbDataSet.dtFuncionariosDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            dameta_dbDataSet.produtosDataGridDataTable dataTable = new dameta_dbDataSet.produtosDataGridDataTable();
+            dameta_dbDataSet.dtFuncionariosDataTable dataTable = new dameta_dbDataSet.dtFuncionariosDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -15717,7 +15540,7 @@ FROM            produtos INNER JOIN
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class clientesDataGridTableAdapter : global::System.ComponentModel.Component {
+    public partial class dtEstabelecimentosTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -15731,7 +15554,7 @@ FROM            produtos INNER JOIN
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public clientesDataGridTableAdapter() {
+        public dtEstabelecimentosTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -15828,16 +15651,13 @@ FROM            produtos INNER JOIN
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "clientesDataGrid";
-            tableMapping.ColumnMappings.Add("id", "id");
+            tableMapping.DataSetTable = "dtEstabelecimentos";
             tableMapping.ColumnMappings.Add("nome", "nome");
-            tableMapping.ColumnMappings.Add("nascimento", "nascimento");
-            tableMapping.ColumnMappings.Add("CPF", "CPF");
+            tableMapping.ColumnMappings.Add("cidades", "cidades");
+            tableMapping.ColumnMappings.Add("nome_rua", "nome_rua");
+            tableMapping.ColumnMappings.Add("numero", "numero");
             tableMapping.ColumnMappings.Add("telefone", "telefone");
             tableMapping.ColumnMappings.Add("CEP", "CEP");
-            tableMapping.ColumnMappings.Add("cidades", "cidades");
-            tableMapping.ColumnMappings.Add("UF", "UF");
-            tableMapping.ColumnMappings.Add("generos", "generos");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -15854,11 +15674,9 @@ FROM            produtos INNER JOIN
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        premium_usuarios.id, premium_usuarios.nome, premium_usuarios.nascimento, premium_usuarios.CPF, premium_usuarios.telefone, premium_usuarios.CEP, cidades.nome AS cidades, cidades.UF, 
-                         generos.nome AS generos
-FROM            premium_usuarios INNER JOIN
-                         cidades ON premium_usuarios.cidades_id = cidades.id INNER JOIN
-                         generos ON premium_usuarios.generos_id = generos.id";
+            this._commandCollection[0].CommandText = @"SELECT        estabelecimentos.nome, cidades.nome AS cidades, estabelecimentos.nome_rua, estabelecimentos.numero, estabelecimentos.telefone, estabelecimentos.CEP
+FROM            estabelecimentos INNER JOIN
+                         cidades ON estabelecimentos.cidades_id = cidades.id";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -15866,7 +15684,7 @@ FROM            premium_usuarios INNER JOIN
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(dameta_dbDataSet.clientesDataGridDataTable dataTable) {
+        public virtual int Fill(dameta_dbDataSet.dtEstabelecimentosDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -15879,9 +15697,9 @@ FROM            premium_usuarios INNER JOIN
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual dameta_dbDataSet.clientesDataGridDataTable GetData() {
+        public virtual dameta_dbDataSet.dtEstabelecimentosDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            dameta_dbDataSet.clientesDataGridDataTable dataTable = new dameta_dbDataSet.clientesDataGridDataTable();
+            dameta_dbDataSet.dtEstabelecimentosDataTable dataTable = new dameta_dbDataSet.dtEstabelecimentosDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -16306,6 +16124,15 @@ FROM            premium_usuarios INNER JOIN
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._premium_usuariosTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.premium_usuarios.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._premium_usuariosTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             if ((this._estabelecimentosTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.estabelecimentos.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -16333,24 +16160,6 @@ FROM            premium_usuarios INNER JOIN
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._premium_usuariosTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.premium_usuarios.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._premium_usuariosTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._comprasTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.compras.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._comprasTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._produtosTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.produtos.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -16369,12 +16178,21 @@ FROM            premium_usuarios INNER JOIN
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._funcionariosTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.funcionarios.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._comprasTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.compras.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._funcionariosTableAdapter.Update(updatedRows));
+                    result = (result + this._comprasTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._item_vendaTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.item_venda.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._item_vendaTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -16396,12 +16214,12 @@ FROM            premium_usuarios INNER JOIN
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._item_vendaTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.item_venda.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._funcionariosTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.funcionarios.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._item_vendaTableAdapter.Update(updatedRows));
+                    result = (result + this._funcionariosTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -16439,6 +16257,14 @@ FROM            premium_usuarios INNER JOIN
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._premium_usuariosTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.premium_usuarios.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._premium_usuariosTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             if ((this._estabelecimentosTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.estabelecimentos.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -16463,22 +16289,6 @@ FROM            premium_usuarios INNER JOIN
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._premium_usuariosTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.premium_usuarios.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._premium_usuariosTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._comprasTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.compras.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._comprasTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._produtosTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.produtos.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -16495,11 +16305,19 @@ FROM            premium_usuarios INNER JOIN
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._funcionariosTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.funcionarios.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._comprasTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.compras.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._funcionariosTableAdapter.Update(addedRows));
+                    result = (result + this._comprasTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._item_vendaTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.item_venda.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._item_vendaTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -16519,11 +16337,11 @@ FROM            premium_usuarios INNER JOIN
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._item_vendaTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.item_venda.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._funcionariosTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.funcionarios.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._item_vendaTableAdapter.Update(addedRows));
+                    result = (result + this._funcionariosTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -16537,11 +16355,11 @@ FROM            premium_usuarios INNER JOIN
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private int UpdateDeletedRows(dameta_dbDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
-            if ((this._item_vendaTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.item_venda.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._funcionariosTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.funcionarios.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._item_vendaTableAdapter.Update(deletedRows));
+                    result = (result + this._funcionariosTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -16561,11 +16379,19 @@ FROM            premium_usuarios INNER JOIN
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._funcionariosTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.funcionarios.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._item_vendaTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.item_venda.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._funcionariosTableAdapter.Update(deletedRows));
+                    result = (result + this._item_vendaTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._comprasTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.compras.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._comprasTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -16582,22 +16408,6 @@ FROM            premium_usuarios INNER JOIN
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._produtosTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._comprasTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.compras.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._comprasTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._premium_usuariosTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.premium_usuarios.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._premium_usuariosTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -16622,6 +16432,14 @@ FROM            premium_usuarios INNER JOIN
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._estabelecimentosTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._premium_usuariosTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.premium_usuarios.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._premium_usuariosTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }

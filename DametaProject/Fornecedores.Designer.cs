@@ -63,7 +63,7 @@
             // 
             // btLimpar
             // 
-            this.btLimpar.Location = new System.Drawing.Point(384, 160);
+            this.btLimpar.Location = new System.Drawing.Point(384, 168);
             this.btLimpar.Name = "btLimpar";
             this.btLimpar.Size = new System.Drawing.Size(100, 40);
             this.btLimpar.TabIndex = 47;
@@ -73,7 +73,7 @@
             // 
             // btExcluir
             // 
-            this.btExcluir.Location = new System.Drawing.Point(384, 115);
+            this.btExcluir.Location = new System.Drawing.Point(384, 123);
             this.btExcluir.Name = "btExcluir";
             this.btExcluir.Size = new System.Drawing.Size(100, 40);
             this.btExcluir.TabIndex = 46;
@@ -92,9 +92,9 @@
             this.telefoneDataGridViewTextBoxColumn,
             this.cNPJDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.fornecedoresBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(41, 207);
+            this.dataGridView1.Location = new System.Drawing.Point(41, 228);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(443, 187);
+            this.dataGridView1.Size = new System.Drawing.Size(443, 207);
             this.dataGridView1.TabIndex = 42;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -119,7 +119,7 @@
             // 
             // txNome
             // 
-            this.txNome.Location = new System.Drawing.Point(85, 84);
+            this.txNome.Location = new System.Drawing.Point(93, 92);
             this.txNome.Name = "txNome";
             this.txNome.Size = new System.Drawing.Size(226, 20);
             this.txNome.TabIndex = 35;
@@ -127,7 +127,7 @@
             // nomeLabel
             // 
             this.nomeLabel.AutoSize = true;
-            this.nomeLabel.Location = new System.Drawing.Point(35, 87);
+            this.nomeLabel.Location = new System.Drawing.Point(35, 95);
             this.nomeLabel.Name = "nomeLabel";
             this.nomeLabel.Size = new System.Drawing.Size(38, 13);
             this.nomeLabel.TabIndex = 34;
@@ -135,14 +135,14 @@
             // 
             // txID
             // 
-            this.txID.Location = new System.Drawing.Point(152, 36);
+            this.txID.Location = new System.Drawing.Point(156, 43);
             this.txID.Name = "txID";
             this.txID.Size = new System.Drawing.Size(53, 20);
             this.txID.TabIndex = 33;
             // 
             // btAlterar
             // 
-            this.btAlterar.Location = new System.Drawing.Point(384, 70);
+            this.btAlterar.Location = new System.Drawing.Point(384, 78);
             this.btAlterar.Name = "btAlterar";
             this.btAlterar.Size = new System.Drawing.Size(100, 40);
             this.btAlterar.TabIndex = 45;
@@ -152,7 +152,7 @@
             // 
             // btIncluir
             // 
-            this.btIncluir.Location = new System.Drawing.Point(384, 25);
+            this.btIncluir.Location = new System.Drawing.Point(384, 33);
             this.btIncluir.Name = "btIncluir";
             this.btIncluir.Size = new System.Drawing.Size(100, 40);
             this.btIncluir.TabIndex = 44;
@@ -163,7 +163,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(35, 39);
+            this.label1.Location = new System.Drawing.Point(35, 43);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(115, 13);
             this.label1.TabIndex = 32;
@@ -171,7 +171,7 @@
             // 
             // btConsultar
             // 
-            this.btConsultar.Location = new System.Drawing.Point(211, 26);
+            this.btConsultar.Location = new System.Drawing.Point(215, 33);
             this.btConsultar.Name = "btConsultar";
             this.btConsultar.Size = new System.Drawing.Size(100, 40);
             this.btConsultar.TabIndex = 43;
@@ -182,7 +182,7 @@
             // telefoneLabel
             // 
             this.telefoneLabel.AutoSize = true;
-            this.telefoneLabel.Location = new System.Drawing.Point(35, 121);
+            this.telefoneLabel.Location = new System.Drawing.Point(35, 129);
             this.telefoneLabel.Name = "telefoneLabel";
             this.telefoneLabel.Size = new System.Drawing.Size(52, 13);
             this.telefoneLabel.TabIndex = 36;
@@ -194,7 +194,7 @@
             // 
             // mtxCNPJ
             // 
-            this.mtxCNPJ.Location = new System.Drawing.Point(85, 151);
+            this.mtxCNPJ.Location = new System.Drawing.Point(93, 159);
             this.mtxCNPJ.Mask = "99,999,999/9999-99";
             this.mtxCNPJ.Name = "mtxCNPJ";
             this.mtxCNPJ.Size = new System.Drawing.Size(118, 20);
@@ -203,7 +203,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(38, 154);
+            this.label3.Location = new System.Drawing.Point(38, 162);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(37, 13);
             this.label3.TabIndex = 48;
@@ -212,7 +212,7 @@
             // mtxTelefone
             // 
             this.mtxTelefone.ForeColor = System.Drawing.Color.Black;
-            this.mtxTelefone.Location = new System.Drawing.Point(85, 118);
+            this.mtxTelefone.Location = new System.Drawing.Point(93, 126);
             this.mtxTelefone.Mask = "(99)99999-9999";
             this.mtxTelefone.Name = "mtxTelefone";
             this.mtxTelefone.Size = new System.Drawing.Size(118, 20);
@@ -254,7 +254,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(523, 418);
+            this.ClientSize = new System.Drawing.Size(523, 461);
             this.Controls.Add(this.mtxTelefone);
             this.Controls.Add(this.mtxCNPJ);
             this.Controls.Add(this.label3);

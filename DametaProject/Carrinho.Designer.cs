@@ -63,6 +63,7 @@
             this.gpCliente = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txNome = new System.Windows.Forms.TextBox();
+            this.btNovaCompra = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCarrinho)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -406,12 +407,24 @@
             this.txNome.Size = new System.Drawing.Size(215, 20);
             this.txNome.TabIndex = 3;
             // 
+            // btNovaCompra
+            // 
+            this.btNovaCompra.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btNovaCompra.Location = new System.Drawing.Point(225, 503);
+            this.btNovaCompra.Name = "btNovaCompra";
+            this.btNovaCompra.Size = new System.Drawing.Size(193, 38);
+            this.btNovaCompra.TabIndex = 14;
+            this.btNovaCompra.Text = "Nova Compra";
+            this.btNovaCompra.UseVisualStyleBackColor = false;
+            this.btNovaCompra.Click += new System.EventHandler(this.btNovaCompra_Click);
+            // 
             // Carrinho
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1027, 555);
+            this.Controls.Add(this.btNovaCompra);
             this.Controls.Add(this.gpCliente);
             this.Controls.Add(this.dtpDataCompra);
             this.Controls.Add(this.btSair);
@@ -426,6 +439,7 @@
             this.Name = "Carrinho";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Bem vindo(a) [Nome do Usuário]";
+            this.Load += new System.EventHandler(this.Carrinho_Load);
             this.Shown += new System.EventHandler(this.Carrinho_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCarrinho)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).EndInit();
@@ -475,5 +489,6 @@
         private System.Windows.Forms.GroupBox gpCliente;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txNome;
+        private System.Windows.Forms.Button btNovaCompra;
     }
 }

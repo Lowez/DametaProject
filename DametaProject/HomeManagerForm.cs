@@ -52,5 +52,11 @@ namespace DametaProject
             Fornecedores form = new Fornecedores();
             form.Show();
         }
+
+        private void btSair_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            form_inicial.Show();
+        }
     }
 }

@@ -34,11 +34,6 @@ namespace DametaProject
             lblFraseLogin.Text = label_frase;
         }
 
-        private void LoginSalesForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void lblResetSenha_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             ResetSenha resetSenha = new ResetSenha();
@@ -99,7 +94,7 @@ namespace DametaProject
                             }
                             else
                             {
-                                Carrinho formCarrinho = new Carrinho(reader["nome"].ToString(), form_inicial, true);
+                                Carrinho formCarrinho = new Carrinho(reader["nome"].ToString(), Convert.ToInt32(reader["estabelecimentos_id"]), form_inicial, true);
                                 formCarrinho.Show();
                                 form_inicial.Hide();
                                 this.Close();

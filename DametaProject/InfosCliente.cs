@@ -14,16 +14,14 @@ namespace DametaProject
     public partial class InfosCliente : Form
     {
         string CPF_cliente;
-        NovaCompra form_novacompra;
         PremiumUserCheck form_premiumUserCheck;
         Carrinho form_carrinho;
 
-        public InfosCliente(string cpf, NovaCompra form, PremiumUserCheck form2, Carrinho form3)
+        public InfosCliente(string cpf, PremiumUserCheck form2, Carrinho form3)
         {
             InitializeComponent();
 
             CPF_cliente = cpf;
-            form_novacompra = form;
             form_premiumUserCheck = form2;
             form_carrinho = form3;
         }
@@ -104,7 +102,6 @@ namespace DametaProject
         private void btConfirmar_Click(object sender, EventArgs e)
         {
             // Fecha os demais forms e habilita o Form de Carrinho
-            form_novacompra.Hide();
             form_premiumUserCheck.Close();
             form_carrinho.Enabled = true;
             this.Close();

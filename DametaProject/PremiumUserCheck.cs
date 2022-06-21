@@ -13,14 +13,12 @@ namespace DametaProject
 {
     public partial class PremiumUserCheck : Form
     {
-        NovaCompra form_novacompra;
         Carrinho form_carrinho;
 
-        public PremiumUserCheck(NovaCompra form, Carrinho form2)
+        public PremiumUserCheck(Carrinho form2)
         {
             InitializeComponent();
 
-            form_novacompra = form;
             form_carrinho = form2;
         }
 
@@ -69,7 +67,7 @@ namespace DametaProject
                             {
                                 string CPF_cliente = reader["CPF"].ToString();
 
-                                InfosCliente infosCliente = new InfosCliente(CPF_cliente, form_novacompra, this, form_carrinho);
+                                InfosCliente infosCliente = new InfosCliente(CPF_cliente, this, form_carrinho);
                                 infosCliente.Show();
                             } else
                             {
@@ -105,7 +103,6 @@ namespace DametaProject
             {
                 form_carrinho.Enabled = true;
 
-                form_novacompra.Close();
                 this.Close();
             }
         }
