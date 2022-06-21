@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.fornecedoresEstabelecimentosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dameta_dbDataSet1 = new DametaProject.dameta_dbDataSet();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
@@ -39,11 +39,17 @@
             this.fornecedoresTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.fornecedoresTableAdapter();
             this.fornecedoresBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.fornecedoresEstabelecimentos = new DametaProject.dameta_dbDataSetTableAdapters.FornecedoresEstabelecimentos();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cbNome = new System.Windows.Forms.ComboBox();
+            this.GerarRelatorio = new System.Windows.Forms.Button();
+            this.estabelecimentosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.estabelecimentosTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.estabelecimentosTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.fornecedoresEstabelecimentosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fornecedoresBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fornecedoresBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.estabelecimentosBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // fornecedoresEstabelecimentosBindingSource
@@ -66,14 +72,14 @@
             // 
             // reportViewer2
             // 
-            reportDataSource1.Name = "DataSet1";
-            reportDataSource1.Value = this.fornecedoresEstabelecimentosBindingSource;
-            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource1);
+            reportDataSource3.Name = "DataSet1";
+            reportDataSource3.Value = this.fornecedoresEstabelecimentosBindingSource;
+            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource3);
             this.reportViewer2.LocalReport.ReportEmbeddedResource = "DametaProject.RelatorioFornecedoresEstabelecimentos.rdlc";
-            this.reportViewer2.Location = new System.Drawing.Point(1, -1);
+            this.reportViewer2.Location = new System.Drawing.Point(1, 148);
             this.reportViewer2.Name = "reportViewer2";
             this.reportViewer2.ServerReport.BearerToken = null;
-            this.reportViewer2.Size = new System.Drawing.Size(801, 450);
+            this.reportViewer2.Size = new System.Drawing.Size(801, 301);
             this.reportViewer2.TabIndex = 0;
             // 
             // fornecedoresBindingSource
@@ -99,11 +105,53 @@
             // 
             this.fornecedoresEstabelecimentos.ClearBeforeFill = true;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(22, 21);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(215, 13);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Selecione o estabelecimento para pesquisa:";
+            // 
+            // cbNome
+            // 
+            this.cbNome.DataSource = this.estabelecimentosBindingSource;
+            this.cbNome.DisplayMember = "nome";
+            this.cbNome.FormattingEnabled = true;
+            this.cbNome.Location = new System.Drawing.Point(237, 18);
+            this.cbNome.Name = "cbNome";
+            this.cbNome.Size = new System.Drawing.Size(194, 21);
+            this.cbNome.TabIndex = 5;
+            this.cbNome.ValueMember = "nome";
+            // 
+            // GerarRelatorio
+            // 
+            this.GerarRelatorio.Location = new System.Drawing.Point(354, 99);
+            this.GerarRelatorio.Name = "GerarRelatorio";
+            this.GerarRelatorio.Size = new System.Drawing.Size(100, 40);
+            this.GerarRelatorio.TabIndex = 4;
+            this.GerarRelatorio.Text = "Pesquisar";
+            this.GerarRelatorio.UseVisualStyleBackColor = true;
+            this.GerarRelatorio.Click += new System.EventHandler(this.GerarRelatorio_Click);
+            // 
+            // estabelecimentosBindingSource
+            // 
+            this.estabelecimentosBindingSource.DataMember = "estabelecimentos";
+            this.estabelecimentosBindingSource.DataSource = this.dameta_dbDataSet1;
+            // 
+            // estabelecimentosTableAdapter
+            // 
+            this.estabelecimentosTableAdapter.ClearBeforeFill = true;
+            // 
             // RelatoriosFornecedoresEstabelecimentos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.cbNome);
+            this.Controls.Add(this.GerarRelatorio);
             this.Controls.Add(this.reportViewer2);
             this.Name = "RelatoriosFornecedoresEstabelecimentos";
             this.Text = "Relatorios Fornecedores-Estabelecimentos";
@@ -113,7 +161,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.fornecedoresBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fornecedoresBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.estabelecimentosBindingSource)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -128,5 +178,10 @@
         private dameta_dbDataSet dameta_dbDataSet1;
         private System.Windows.Forms.BindingSource fornecedoresEstabelecimentosBindingSource;
         private dameta_dbDataSetTableAdapters.FornecedoresEstabelecimentos fornecedoresEstabelecimentos;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cbNome;
+        private System.Windows.Forms.Button GerarRelatorio;
+        private System.Windows.Forms.BindingSource estabelecimentosBindingSource;
+        private dameta_dbDataSetTableAdapters.estabelecimentosTableAdapter estabelecimentosTableAdapter;
     }
 }
