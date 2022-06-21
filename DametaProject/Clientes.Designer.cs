@@ -627,7 +627,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.generosBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.generosBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cidades1BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cidadesBindingSource4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtClientesBindingSource)).EndInit();
