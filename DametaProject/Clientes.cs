@@ -25,9 +25,9 @@ namespace DametaProject
 
         private void Clientes_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'dameta_dbDataSet.dtClientes' table. You can move, or remove it, as needed.
+            this.dtClientesTableAdapter.Fill(this.dameta_dbDataSet.dtClientes);
             // TODO: This line of code loads data into the 'dameta_dbDataSet.clientesDataGrid' table. You can move, or remove it, as needed.
-            this.clientesDataGridTableAdapter.Fill(this.dameta_dbDataSet.clientesDataGrid);
-            // TODO: This line of code loads data into the 'dameta_dbDataSet.Estados' table. You can move, or remove it, as needed.
             this.estadosTableAdapter.Fill(this.dameta_dbDataSet.Estados);
             // TODO: This line of code loads data into the 'dameta_dbDataSet.cidades' table. You can move, or remove it, as needed.
             this.cidadesTableAdapter.Fill(this.dameta_dbDataSet.cidades);
@@ -381,5 +381,7 @@ namespace DametaProject
             }
 
         }
+
+
     }
 }

@@ -41,12 +41,6 @@
             this.btConsultar = new System.Windows.Forms.Button();
             this.btIncluir = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.codprodutoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.precoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tipoprodutosidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fornecedoresidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.estoqueidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.produtosBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.dameta_dbDataSet = new DametaProject.dameta_dbDataSet();
             this.produtosBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -63,6 +57,14 @@
             this.estabelecimento_produtoTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.estabelecimento_produtoTableAdapter();
             this.fornecedoresTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.fornecedoresTableAdapter();
             this.tipo_produtosTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.tipo_produtosTableAdapter();
+            this.dtProdutoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dtProdutoTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.dtProdutoTableAdapter();
+            this.cod_produto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.preco = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qtd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fornecedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             categoriaLabel = new System.Windows.Forms.Label();
             precoUnitLabel = new System.Windows.Forms.Label();
             nomeLabel = new System.Windows.Forms.Label();
@@ -76,6 +78,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.tipoprodutosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fornecedoresBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fKPRODUTOSESTABELECIMENTOPRODUTOBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtProdutoBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // categoriaLabel
@@ -134,7 +137,7 @@
             // 
             // btLimparForm
             // 
-            this.btLimparForm.Location = new System.Drawing.Point(680, 174);
+            this.btLimparForm.Location = new System.Drawing.Point(447, 165);
             this.btLimparForm.Name = "btLimparForm";
             this.btLimparForm.Size = new System.Drawing.Size(100, 40);
             this.btLimparForm.TabIndex = 32;
@@ -143,7 +146,7 @@
             // 
             // btExcluir
             // 
-            this.btExcluir.Location = new System.Drawing.Point(680, 125);
+            this.btExcluir.Location = new System.Drawing.Point(447, 116);
             this.btExcluir.Name = "btExcluir";
             this.btExcluir.Size = new System.Drawing.Size(100, 40);
             this.btExcluir.TabIndex = 31;
@@ -152,7 +155,7 @@
             // 
             // btAlterar
             // 
-            this.btAlterar.Location = new System.Drawing.Point(680, 76);
+            this.btAlterar.Location = new System.Drawing.Point(447, 67);
             this.btAlterar.Name = "btAlterar";
             this.btAlterar.Size = new System.Drawing.Size(100, 40);
             this.btAlterar.TabIndex = 30;
@@ -171,7 +174,7 @@
             // 
             // btIncluir
             // 
-            this.btIncluir.Location = new System.Drawing.Point(680, 29);
+            this.btIncluir.Location = new System.Drawing.Point(447, 20);
             this.btIncluir.Name = "btIncluir";
             this.btIncluir.Size = new System.Drawing.Size(100, 40);
             this.btIncluir.TabIndex = 29;
@@ -181,63 +184,22 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.codprodutoDataGridViewTextBoxColumn,
-            this.nomeDataGridViewTextBoxColumn,
-            this.precoDataGridViewTextBoxColumn,
-            this.tipoprodutosidDataGridViewTextBoxColumn,
-            this.fornecedoresidDataGridViewTextBoxColumn,
-            this.estoqueidDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.produtosBindingSource1;
-            this.dataGridView1.Location = new System.Drawing.Point(17, 231);
+            this.cod_produto,
+            this.nome,
+            this.preco,
+            this.tipo,
+            this.qtd,
+            this.fornecedor});
+            this.dataGridView1.DataSource = this.dtProdutoBindingSource;
+            this.dataGridView1.Location = new System.Drawing.Point(33, 239);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(763, 207);
+            this.dataGridView1.Size = new System.Drawing.Size(514, 207);
             this.dataGridView1.TabIndex = 27;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // codprodutoDataGridViewTextBoxColumn
-            // 
-            this.codprodutoDataGridViewTextBoxColumn.DataPropertyName = "cod_produto";
-            this.codprodutoDataGridViewTextBoxColumn.HeaderText = "Codigo do Produto";
-            this.codprodutoDataGridViewTextBoxColumn.Name = "codprodutoDataGridViewTextBoxColumn";
-            this.codprodutoDataGridViewTextBoxColumn.Width = 120;
-            // 
-            // nomeDataGridViewTextBoxColumn
-            // 
-            this.nomeDataGridViewTextBoxColumn.DataPropertyName = "nome";
-            this.nomeDataGridViewTextBoxColumn.HeaderText = "Nome";
-            this.nomeDataGridViewTextBoxColumn.Name = "nomeDataGridViewTextBoxColumn";
-            this.nomeDataGridViewTextBoxColumn.Width = 120;
-            // 
-            // precoDataGridViewTextBoxColumn
-            // 
-            this.precoDataGridViewTextBoxColumn.DataPropertyName = "preco";
-            this.precoDataGridViewTextBoxColumn.HeaderText = "Preço Unit";
-            this.precoDataGridViewTextBoxColumn.Name = "precoDataGridViewTextBoxColumn";
-            this.precoDataGridViewTextBoxColumn.Width = 120;
-            // 
-            // tipoprodutosidDataGridViewTextBoxColumn
-            // 
-            this.tipoprodutosidDataGridViewTextBoxColumn.DataPropertyName = "tipo_produtos_id";
-            this.tipoprodutosidDataGridViewTextBoxColumn.HeaderText = "Tipo do produto";
-            this.tipoprodutosidDataGridViewTextBoxColumn.Name = "tipoprodutosidDataGridViewTextBoxColumn";
-            this.tipoprodutosidDataGridViewTextBoxColumn.Width = 120;
-            // 
-            // fornecedoresidDataGridViewTextBoxColumn
-            // 
-            this.fornecedoresidDataGridViewTextBoxColumn.DataPropertyName = "fornecedores_id";
-            this.fornecedoresidDataGridViewTextBoxColumn.HeaderText = "Fornecedor";
-            this.fornecedoresidDataGridViewTextBoxColumn.Name = "fornecedoresidDataGridViewTextBoxColumn";
-            this.fornecedoresidDataGridViewTextBoxColumn.Width = 120;
-            // 
-            // estoqueidDataGridViewTextBoxColumn
-            // 
-            this.estoqueidDataGridViewTextBoxColumn.DataPropertyName = "estoque_id";
-            this.estoqueidDataGridViewTextBoxColumn.HeaderText = "Qtd em estoque";
-            this.estoqueidDataGridViewTextBoxColumn.Name = "estoqueidDataGridViewTextBoxColumn";
-            this.estoqueidDataGridViewTextBoxColumn.Width = 120;
             // 
             // produtosBindingSource1
             // 
@@ -336,11 +298,59 @@
             // 
             this.tipo_produtosTableAdapter.ClearBeforeFill = true;
             // 
+            // dtProdutoBindingSource
+            // 
+            this.dtProdutoBindingSource.DataMember = "dtProduto";
+            this.dtProdutoBindingSource.DataSource = this.dameta_dbDataSet;
+            // 
+            // dtProdutoTableAdapter
+            // 
+            this.dtProdutoTableAdapter.ClearBeforeFill = true;
+            // 
+            // cod_produto
+            // 
+            this.cod_produto.DataPropertyName = "cod_produto";
+            this.cod_produto.HeaderText = "cod_produto";
+            this.cod_produto.Name = "cod_produto";
+            this.cod_produto.Width = 80;
+            // 
+            // nome
+            // 
+            this.nome.DataPropertyName = "nome";
+            this.nome.HeaderText = "nome";
+            this.nome.Name = "nome";
+            // 
+            // preco
+            // 
+            this.preco.DataPropertyName = "preco";
+            this.preco.HeaderText = "preco";
+            this.preco.Name = "preco";
+            this.preco.Width = 50;
+            // 
+            // tipo
+            // 
+            this.tipo.DataPropertyName = "tipo";
+            this.tipo.HeaderText = "tipo";
+            this.tipo.Name = "tipo";
+            // 
+            // qtd
+            // 
+            this.qtd.DataPropertyName = "qtd";
+            this.qtd.HeaderText = "qtd";
+            this.qtd.Name = "qtd";
+            this.qtd.Width = 40;
+            // 
+            // fornecedor
+            // 
+            this.fornecedor.DataPropertyName = "fornecedor";
+            this.fornecedor.HeaderText = "fornecedor";
+            this.fornecedor.Name = "fornecedor";
+            // 
             // Produtos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 458);
+            this.ClientSize = new System.Drawing.Size(563, 458);
             this.Controls.Add(this.cbFornecedor);
             this.Controls.Add(label1);
             this.Controls.Add(this.txQtdEstoque);
@@ -362,6 +372,7 @@
             this.Name = "Produtos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Produtos";
+            this.Load += new System.EventHandler(this.Produtos_Load_2);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.produtosBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).EndInit();
@@ -369,6 +380,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.tipoprodutosBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fornecedoresBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fKPRODUTOSESTABELECIMENTOPRODUTOBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtProdutoBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -391,12 +403,6 @@
         private dameta_dbDataSet dameta_dbDataSet;
         private System.Windows.Forms.BindingSource produtosBindingSource1;
         private dameta_dbDataSetTableAdapters.produtosTableAdapter produtosTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codprodutoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nomeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn precoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tipoprodutosidDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fornecedoresidDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn estoqueidDataGridViewTextBoxColumn;
         private System.Windows.Forms.ComboBox cbFornecedor;
         private System.Windows.Forms.BindingSource fKPRODUTOSESTABELECIMENTOPRODUTOBindingSource;
         private dameta_dbDataSetTableAdapters.estabelecimento_produtoTableAdapter estabelecimento_produtoTableAdapter;
@@ -404,5 +410,13 @@
         private dameta_dbDataSetTableAdapters.fornecedoresTableAdapter fornecedoresTableAdapter;
         private System.Windows.Forms.BindingSource tipoprodutosBindingSource;
         private dameta_dbDataSetTableAdapters.tipo_produtosTableAdapter tipo_produtosTableAdapter;
+        private System.Windows.Forms.BindingSource dtProdutoBindingSource;
+        private dameta_dbDataSetTableAdapters.dtProdutoTableAdapter dtProdutoTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cod_produto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nome;
+        private System.Windows.Forms.DataGridViewTextBoxColumn preco;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tipo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn qtd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fornecedor;
     }
 }

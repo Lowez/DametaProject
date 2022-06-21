@@ -439,14 +439,14 @@ namespace DametaProject
 
         private void Produtos_Load_1(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'dameta_dbDataSet1.tipo_produtos' table. You can move, or remove it, as needed.
-            this.tipo_produtosTableAdapter.Fill(this.dameta_dbDataSet1.tipo_produtos);
-            // TODO: This line of code loads data into the 'dameta_dbDataSet1.fornecedores' table. You can move, or remove it, as needed.
-            this.fornecedoresTableAdapter.Fill(this.dameta_dbDataSet1.fornecedores);
-            // TODO: This line of code loads data into the 'dameta_dbDataSet.FornecedoresEstabelecimentos' table. You can move, or remove it, as needed.
-            this.fornecedoresEstabelecimentos.Fill(this.dameta_dbDataSet.FornecedoresEstabelecimentos);
-            // TODO: This line of code loads data into the 'dameta_dbDataSet.produtosDataGrid' table. You can move, or remove it, as needed.
-            this.produtosDataGridTableAdapter.Fill(this.dameta_dbDataSet.produtosDataGrid);
+
+
+        }
+
+        private void Produtos_Load_2(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'dameta_dbDataSet.dtProduto' table. You can move, or remove it, as needed.
+            this.dtProdutoTableAdapter.Fill(this.dameta_dbDataSet.dtProduto);
 
         }
     }

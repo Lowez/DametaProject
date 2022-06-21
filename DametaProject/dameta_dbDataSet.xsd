@@ -977,6 +977,58 @@ FROM            estabelecimentos INNER JOIN
             </Mappings>
             <Sources />
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="dtClientesTableAdapter" GeneratorDataComponentClassName="dtClientesTableAdapter" Name="dtClientes" UserDataComponentName="dtClientesTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="dameta_dbConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        premium_usuarios.id, premium_usuarios.nome, premium_usuarios.nascimento, premium_usuarios.CPF, premium_usuarios.telefone, premium_usuarios.CEP, cidades.nome AS Expr1, cidades.UF, generos.nome AS Expr2
+FROM            premium_usuarios INNER JOIN
+                         cidades ON premium_usuarios.cidades_id = cidades.id INNER JOIN
+                         generos ON premium_usuarios.generos_id = generos.id</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="id" DataSetColumn="id" />
+              <Mapping SourceColumn="nome" DataSetColumn="nome" />
+              <Mapping SourceColumn="nascimento" DataSetColumn="nascimento" />
+              <Mapping SourceColumn="CPF" DataSetColumn="CPF" />
+              <Mapping SourceColumn="telefone" DataSetColumn="telefone" />
+              <Mapping SourceColumn="CEP" DataSetColumn="CEP" />
+              <Mapping SourceColumn="Expr1" DataSetColumn="Expr1" />
+              <Mapping SourceColumn="UF" DataSetColumn="UF" />
+              <Mapping SourceColumn="Expr2" DataSetColumn="Expr2" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="dtProdutoTableAdapter" GeneratorDataComponentClassName="dtProdutoTableAdapter" Name="dtProduto" UserDataComponentName="dtProdutoTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="dameta_dbConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        produtos.cod_produto, produtos.nome, produtos.preco, tipo_produtos.nome AS tipo, estoque.qtd, fornecedores.nome AS fornecedor
+FROM            produtos INNER JOIN
+                         tipo_produtos ON produtos.tipo_produtos_id = tipo_produtos.id INNER JOIN
+                         fornecedores ON produtos.fornecedores_id = fornecedores.id INNER JOIN
+                         estoque ON produtos.estoque_id = estoque.id</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="cod_produto" DataSetColumn="cod_produto" />
+              <Mapping SourceColumn="nome" DataSetColumn="nome" />
+              <Mapping SourceColumn="preco" DataSetColumn="preco" />
+              <Mapping SourceColumn="tipo" DataSetColumn="tipo" />
+              <Mapping SourceColumn="qtd" DataSetColumn="qtd" />
+              <Mapping SourceColumn="fornecedor" DataSetColumn="fornecedor" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -1354,10 +1406,10 @@ FROM            estabelecimentos INNER JOIN
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Estados" msprop:Generator_RowClassName="EstadosRow" msprop:Generator_RowEvHandlerName="EstadosRowChangeEventHandler" msprop:Generator_RowDeletedName="EstadosRowDeleted" msprop:Generator_RowDeletingName="EstadosRowDeleting" msprop:Generator_RowEvArgName="EstadosRowChangeEvent" msprop:Generator_TablePropName="Estados" msprop:Generator_RowChangedName="EstadosRowChanged" msprop:Generator_UserTableName="Estados" msprop:Generator_RowChangingName="EstadosRowChanging" msprop:Generator_TableClassName="EstadosDataTable" msprop:Generator_TableVarName="tableEstados">
+        <xs:element name="Estados" msprop:Generator_RowEvHandlerName="EstadosRowChangeEventHandler" msprop:Generator_RowDeletedName="EstadosRowDeleted" msprop:Generator_RowDeletingName="EstadosRowDeleting" msprop:Generator_RowEvArgName="EstadosRowChangeEvent" msprop:Generator_TablePropName="Estados" msprop:Generator_RowChangedName="EstadosRowChanged" msprop:Generator_UserTableName="Estados" msprop:Generator_RowChangingName="EstadosRowChanging" msprop:Generator_RowClassName="EstadosRow" msprop:Generator_TableClassName="EstadosDataTable" msprop:Generator_TableVarName="tableEstados">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="UF" msprop:Generator_UserColumnName="UF" msprop:Generator_ColumnPropNameInTable="UFColumn" msprop:Generator_ColumnPropNameInRow="UF" msprop:Generator_ColumnVarNameInTable="columnUF">
+              <xs:element name="UF" msprop:Generator_ColumnPropNameInTable="UFColumn" msprop:Generator_ColumnPropNameInRow="UF" msprop:Generator_UserColumnName="UF" msprop:Generator_ColumnVarNameInTable="columnUF">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="2" />
@@ -1367,39 +1419,39 @@ FROM            estabelecimentos INNER JOIN
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="dtFuncionarios" msprop:Generator_RowEvHandlerName="dtFuncionariosRowChangeEventHandler" msprop:Generator_RowDeletedName="dtFuncionariosRowDeleted" msprop:Generator_RowDeletingName="dtFuncionariosRowDeleting" msprop:Generator_RowEvArgName="dtFuncionariosRowChangeEvent" msprop:Generator_TablePropName="dtFuncionarios" msprop:Generator_RowChangedName="dtFuncionariosRowChanged" msprop:Generator_RowChangingName="dtFuncionariosRowChanging" msprop:Generator_TableClassName="dtFuncionariosDataTable" msprop:Generator_RowClassName="dtFuncionariosRow" msprop:Generator_TableVarName="tabledtFuncionarios" msprop:Generator_UserTableName="dtFuncionarios">
+        <xs:element name="dtFuncionarios" msprop:Generator_RowEvHandlerName="dtFuncionariosRowChangeEventHandler" msprop:Generator_RowDeletedName="dtFuncionariosRowDeleted" msprop:Generator_RowDeletingName="dtFuncionariosRowDeleting" msprop:Generator_RowEvArgName="dtFuncionariosRowChangeEvent" msprop:Generator_TablePropName="dtFuncionarios" msprop:Generator_RowChangedName="dtFuncionariosRowChanged" msprop:Generator_UserTableName="dtFuncionarios" msprop:Generator_RowChangingName="dtFuncionariosRowChanging" msprop:Generator_RowClassName="dtFuncionariosRow" msprop:Generator_TableClassName="dtFuncionariosDataTable" msprop:Generator_TableVarName="tabledtFuncionarios">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="nome" msprop:Generator_ColumnPropNameInRow="nome" msprop:Generator_ColumnPropNameInTable="nomeColumn" msprop:Generator_ColumnVarNameInTable="columnnome" msprop:Generator_UserColumnName="nome">
+              <xs:element name="nome" msprop:Generator_ColumnPropNameInTable="nomeColumn" msprop:Generator_ColumnPropNameInRow="nome" msprop:Generator_UserColumnName="nome" msprop:Generator_ColumnVarNameInTable="columnnome">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="CPF" msprop:Generator_ColumnPropNameInRow="CPF" msprop:Generator_ColumnPropNameInTable="CPFColumn" msprop:Generator_ColumnVarNameInTable="columnCPF" msprop:Generator_UserColumnName="CPF">
+              <xs:element name="CPF" msprop:Generator_ColumnPropNameInTable="CPFColumn" msprop:Generator_ColumnPropNameInRow="CPF" msprop:Generator_UserColumnName="CPF" msprop:Generator_ColumnVarNameInTable="columnCPF">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="14" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="salario" msprop:Generator_ColumnPropNameInRow="salario" msprop:Generator_ColumnPropNameInTable="salarioColumn" msprop:Generator_ColumnVarNameInTable="columnsalario" msprop:Generator_UserColumnName="salario" type="xs:decimal" />
-              <xs:element name="telefone" msprop:Generator_ColumnPropNameInRow="telefone" msprop:Generator_ColumnPropNameInTable="telefoneColumn" msprop:Generator_ColumnVarNameInTable="columntelefone" msprop:Generator_UserColumnName="telefone">
+              <xs:element name="salario" msprop:Generator_ColumnPropNameInTable="salarioColumn" msprop:Generator_ColumnPropNameInRow="salario" msprop:Generator_UserColumnName="salario" msprop:Generator_ColumnVarNameInTable="columnsalario" type="xs:decimal" />
+              <xs:element name="telefone" msprop:Generator_ColumnPropNameInTable="telefoneColumn" msprop:Generator_ColumnPropNameInRow="telefone" msprop:Generator_UserColumnName="telefone" msprop:Generator_ColumnVarNameInTable="columntelefone">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="14" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="cargo" msprop:Generator_ColumnPropNameInRow="cargo" msprop:Generator_ColumnPropNameInTable="cargoColumn" msprop:Generator_ColumnVarNameInTable="columncargo" msprop:Generator_UserColumnName="cargo">
+              <xs:element name="cargo" msprop:Generator_ColumnPropNameInTable="cargoColumn" msprop:Generator_ColumnPropNameInRow="cargo" msprop:Generator_UserColumnName="cargo" msprop:Generator_ColumnVarNameInTable="columncargo">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="estabelecimento" msprop:Generator_ColumnPropNameInRow="estabelecimento" msprop:Generator_ColumnPropNameInTable="estabelecimentoColumn" msprop:Generator_ColumnVarNameInTable="columnestabelecimento" msprop:Generator_UserColumnName="estabelecimento">
+              <xs:element name="estabelecimento" msprop:Generator_ColumnPropNameInTable="estabelecimentoColumn" msprop:Generator_ColumnPropNameInRow="estabelecimento" msprop:Generator_UserColumnName="estabelecimento" msprop:Generator_ColumnVarNameInTable="columnestabelecimento">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
@@ -1409,42 +1461,129 @@ FROM            estabelecimentos INNER JOIN
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="dtEstabelecimentos" msprop:Generator_RowEvHandlerName="dtEstabelecimentosRowChangeEventHandler" msprop:Generator_RowDeletedName="dtEstabelecimentosRowDeleted" msprop:Generator_RowDeletingName="dtEstabelecimentosRowDeleting" msprop:Generator_RowEvArgName="dtEstabelecimentosRowChangeEvent" msprop:Generator_TablePropName="dtEstabelecimentos" msprop:Generator_RowChangedName="dtEstabelecimentosRowChanged" msprop:Generator_RowChangingName="dtEstabelecimentosRowChanging" msprop:Generator_TableClassName="dtEstabelecimentosDataTable" msprop:Generator_RowClassName="dtEstabelecimentosRow" msprop:Generator_TableVarName="tabledtEstabelecimentos" msprop:Generator_UserTableName="dtEstabelecimentos">
+        <xs:element name="dtEstabelecimentos" msprop:Generator_RowEvHandlerName="dtEstabelecimentosRowChangeEventHandler" msprop:Generator_RowDeletedName="dtEstabelecimentosRowDeleted" msprop:Generator_RowDeletingName="dtEstabelecimentosRowDeleting" msprop:Generator_RowEvArgName="dtEstabelecimentosRowChangeEvent" msprop:Generator_TablePropName="dtEstabelecimentos" msprop:Generator_RowChangedName="dtEstabelecimentosRowChanged" msprop:Generator_UserTableName="dtEstabelecimentos" msprop:Generator_RowChangingName="dtEstabelecimentosRowChanging" msprop:Generator_RowClassName="dtEstabelecimentosRow" msprop:Generator_TableClassName="dtEstabelecimentosDataTable" msprop:Generator_TableVarName="tabledtEstabelecimentos">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="nome" msprop:Generator_ColumnPropNameInRow="nome" msprop:Generator_ColumnPropNameInTable="nomeColumn" msprop:Generator_ColumnVarNameInTable="columnnome" msprop:Generator_UserColumnName="nome">
+              <xs:element name="nome" msprop:Generator_ColumnPropNameInTable="nomeColumn" msprop:Generator_ColumnPropNameInRow="nome" msprop:Generator_UserColumnName="nome" msprop:Generator_ColumnVarNameInTable="columnnome">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="cidades" msprop:Generator_ColumnPropNameInRow="cidades" msprop:Generator_ColumnPropNameInTable="cidadesColumn" msprop:Generator_ColumnVarNameInTable="columncidades" msprop:Generator_UserColumnName="cidades">
+              <xs:element name="cidades" msprop:Generator_ColumnPropNameInTable="cidadesColumn" msprop:Generator_ColumnPropNameInRow="cidades" msprop:Generator_UserColumnName="cidades" msprop:Generator_ColumnVarNameInTable="columncidades">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="nome_rua" msprop:Generator_ColumnPropNameInRow="nome_rua" msprop:Generator_ColumnPropNameInTable="nome_ruaColumn" msprop:Generator_ColumnVarNameInTable="columnnome_rua" msprop:Generator_UserColumnName="nome_rua">
+              <xs:element name="nome_rua" msprop:Generator_ColumnPropNameInTable="nome_ruaColumn" msprop:Generator_ColumnPropNameInRow="nome_rua" msprop:Generator_UserColumnName="nome_rua" msprop:Generator_ColumnVarNameInTable="columnnome_rua">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="numero" msprop:Generator_ColumnPropNameInRow="numero" msprop:Generator_ColumnPropNameInTable="numeroColumn" msprop:Generator_ColumnVarNameInTable="columnnumero" msprop:Generator_UserColumnName="numero" type="xs:int" />
-              <xs:element name="telefone" msprop:Generator_ColumnPropNameInRow="telefone" msprop:Generator_ColumnPropNameInTable="telefoneColumn" msprop:Generator_ColumnVarNameInTable="columntelefone" msprop:Generator_UserColumnName="telefone">
+              <xs:element name="numero" msprop:Generator_ColumnPropNameInTable="numeroColumn" msprop:Generator_ColumnPropNameInRow="numero" msprop:Generator_UserColumnName="numero" msprop:Generator_ColumnVarNameInTable="columnnumero" type="xs:int" />
+              <xs:element name="telefone" msprop:Generator_ColumnPropNameInTable="telefoneColumn" msprop:Generator_ColumnPropNameInRow="telefone" msprop:Generator_UserColumnName="telefone" msprop:Generator_ColumnVarNameInTable="columntelefone">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="14" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="CEP" msprop:Generator_ColumnPropNameInRow="CEP" msprop:Generator_ColumnPropNameInTable="CEPColumn" msprop:Generator_ColumnVarNameInTable="columnCEP" msprop:Generator_UserColumnName="CEP">
+              <xs:element name="CEP" msprop:Generator_ColumnPropNameInTable="CEPColumn" msprop:Generator_ColumnPropNameInRow="CEP" msprop:Generator_UserColumnName="CEP" msprop:Generator_ColumnVarNameInTable="columnCEP">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="9" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="dtClientes" msprop:Generator_RowClassName="dtClientesRow" msprop:Generator_RowEvHandlerName="dtClientesRowChangeEventHandler" msprop:Generator_RowDeletedName="dtClientesRowDeleted" msprop:Generator_RowDeletingName="dtClientesRowDeleting" msprop:Generator_RowEvArgName="dtClientesRowChangeEvent" msprop:Generator_TablePropName="dtClientes" msprop:Generator_RowChangedName="dtClientesRowChanged" msprop:Generator_UserTableName="dtClientes" msprop:Generator_RowChangingName="dtClientesRowChanging" msprop:Generator_TableClassName="dtClientesDataTable" msprop:Generator_TableVarName="tabledtClientes">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_UserColumnName="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnVarNameInTable="columnid" type="xs:int" />
+              <xs:element name="nome" msprop:Generator_UserColumnName="nome" msprop:Generator_ColumnPropNameInTable="nomeColumn" msprop:Generator_ColumnPropNameInRow="nome" msprop:Generator_ColumnVarNameInTable="columnnome">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="nascimento" msprop:Generator_UserColumnName="nascimento" msprop:Generator_ColumnPropNameInTable="nascimentoColumn" msprop:Generator_ColumnPropNameInRow="nascimento" msprop:Generator_ColumnVarNameInTable="columnnascimento" type="xs:dateTime" />
+              <xs:element name="CPF" msprop:Generator_UserColumnName="CPF" msprop:Generator_ColumnPropNameInTable="CPFColumn" msprop:Generator_ColumnPropNameInRow="CPF" msprop:Generator_ColumnVarNameInTable="columnCPF">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="14" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="telefone" msprop:Generator_UserColumnName="telefone" msprop:Generator_ColumnPropNameInTable="telefoneColumn" msprop:Generator_ColumnPropNameInRow="telefone" msprop:Generator_ColumnVarNameInTable="columntelefone">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="14" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CEP" msprop:Generator_UserColumnName="CEP" msprop:Generator_ColumnPropNameInTable="CEPColumn" msprop:Generator_ColumnPropNameInRow="CEP" msprop:Generator_ColumnVarNameInTable="columnCEP" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Expr1" msprop:Generator_UserColumnName="Expr1" msprop:Generator_ColumnPropNameInTable="Expr1Column" msprop:Generator_ColumnPropNameInRow="Expr1" msprop:Generator_ColumnVarNameInTable="columnExpr1">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="UF" msprop:Generator_UserColumnName="UF" msprop:Generator_ColumnPropNameInTable="UFColumn" msprop:Generator_ColumnPropNameInRow="UF" msprop:Generator_ColumnVarNameInTable="columnUF">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Expr2" msprop:Generator_UserColumnName="Expr2" msprop:Generator_ColumnPropNameInTable="Expr2Column" msprop:Generator_ColumnPropNameInRow="Expr2" msprop:Generator_ColumnVarNameInTable="columnExpr2">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="dtProduto" msprop:Generator_RowEvHandlerName="dtProdutoRowChangeEventHandler" msprop:Generator_RowDeletedName="dtProdutoRowDeleted" msprop:Generator_RowDeletingName="dtProdutoRowDeleting" msprop:Generator_RowEvArgName="dtProdutoRowChangeEvent" msprop:Generator_TablePropName="dtProduto" msprop:Generator_RowChangedName="dtProdutoRowChanged" msprop:Generator_RowChangingName="dtProdutoRowChanging" msprop:Generator_TableClassName="dtProdutoDataTable" msprop:Generator_RowClassName="dtProdutoRow" msprop:Generator_TableVarName="tabledtProduto" msprop:Generator_UserTableName="dtProduto">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="cod_produto" msprop:Generator_ColumnPropNameInRow="cod_produto" msprop:Generator_ColumnPropNameInTable="cod_produtoColumn" msprop:Generator_ColumnVarNameInTable="columncod_produto" msprop:Generator_UserColumnName="cod_produto" type="xs:int" />
+              <xs:element name="nome" msprop:Generator_ColumnPropNameInRow="nome" msprop:Generator_ColumnPropNameInTable="nomeColumn" msprop:Generator_ColumnVarNameInTable="columnnome" msprop:Generator_UserColumnName="nome">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="preco" msprop:Generator_ColumnPropNameInRow="preco" msprop:Generator_ColumnPropNameInTable="precoColumn" msprop:Generator_ColumnVarNameInTable="columnpreco" msprop:Generator_UserColumnName="preco" type="xs:decimal" />
+              <xs:element name="tipo" msprop:Generator_ColumnPropNameInRow="tipo" msprop:Generator_ColumnPropNameInTable="tipoColumn" msprop:Generator_ColumnVarNameInTable="columntipo" msprop:Generator_UserColumnName="tipo">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="qtd" msprop:Generator_ColumnPropNameInRow="qtd" msprop:Generator_ColumnPropNameInTable="qtdColumn" msprop:Generator_ColumnVarNameInTable="columnqtd" msprop:Generator_UserColumnName="qtd" type="xs:int" />
+              <xs:element name="fornecedor" msprop:Generator_ColumnPropNameInRow="fornecedor" msprop:Generator_ColumnPropNameInTable="fornecedorColumn" msprop:Generator_ColumnVarNameInTable="columnfornecedor" msprop:Generator_UserColumnName="fornecedor">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
@@ -1509,6 +1648,14 @@ FROM            estabelecimentos INNER JOIN
       <xs:selector xpath=".//mstns:tipo_produtos" />
       <xs:field xpath="mstns:id" />
     </xs:unique>
+    <xs:unique name="dtClientes_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:dtClientes" />
+      <xs:field xpath="mstns:id" />
+    </xs:unique>
+    <xs:unique name="dtProduto_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:dtProduto" />
+      <xs:field xpath="mstns:cod_produto" />
+    </xs:unique>
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
@@ -1529,6 +1676,8 @@ FROM            estabelecimentos INNER JOIN
       <msdata:Relationship name="FK_ESTOQUE_PRUDOTS" msdata:parent="estoque" msdata:child="produtos" msdata:parentkey="id" msdata:childkey="estoque_id" msprop:Generator_UserParentTable="estoque" msprop:Generator_UserChildTable="produtos" msprop:Generator_RelationVarName="relationFK_ESTOQUE_PRUDOTS" msprop:Generator_ChildPropName="GetprodutosRows" msprop:Generator_ParentPropName="estoqueRow" msprop:Generator_UserRelationName="FK_ESTOQUE_PRUDOTS" />
       <msdata:Relationship name="FK_FORNECEDORES_PRODUTOS" msdata:parent="fornecedores" msdata:child="produtos" msdata:parentkey="id" msdata:childkey="fornecedores_id" msprop:Generator_UserParentTable="fornecedores" msprop:Generator_UserChildTable="produtos" msprop:Generator_RelationVarName="relationFK_FORNECEDORES_PRODUTOS" msprop:Generator_ChildPropName="GetprodutosRows" msprop:Generator_ParentPropName="fornecedoresRow" msprop:Generator_UserRelationName="FK_FORNECEDORES_PRODUTOS" />
       <msdata:Relationship name="FK_TIPOPRODUTOS_PRODUTOS" msdata:parent="tipo_produtos" msdata:child="produtos" msdata:parentkey="id" msdata:childkey="tipo_produtos_id" msprop:Generator_UserParentTable="tipo_produtos" msprop:Generator_UserChildTable="produtos" msprop:Generator_RelationVarName="relationFK_TIPOPRODUTOS_PRODUTOS" msprop:Generator_ChildPropName="GetprodutosRows" msprop:Generator_UserRelationName="FK_TIPOPRODUTOS_PRODUTOS" msprop:Generator_ParentPropName="tipo_produtosRow" />
+      <msdata:Relationship name="FK_CIDADES_ESTABELECIMENTOS1" msdata:parent="dtClientes" msdata:child="estabelecimentos" msdata:parentkey="id" msdata:childkey="cidades_id" msprop:Generator_UserParentTable="dtClientes" msprop:Generator_UserChildTable="estabelecimentos" msprop:Generator_RelationVarName="relationFK_CIDADES_ESTABELECIMENTOS1" msprop:Generator_ChildPropName="GetestabelecimentosRows" msprop:Generator_ParentPropName="dtClientesRow" msprop:Generator_UserRelationName="FK_CIDADES_ESTABELECIMENTOS1" />
+      <msdata:Relationship name="FK_CIDADES_USUARIOS1" msdata:parent="dtClientes" msdata:child="premium_usuarios" msdata:parentkey="id" msdata:childkey="cidades_id" msprop:Generator_UserParentTable="dtClientes" msprop:Generator_UserChildTable="premium_usuarios" msprop:Generator_RelationVarName="relationFK_CIDADES_USUARIOS1" msprop:Generator_ChildPropName="Getpremium_usuariosRows" msprop:Generator_ParentPropName="dtClientesRow" msprop:Generator_UserRelationName="FK_CIDADES_USUARIOS1" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>
