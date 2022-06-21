@@ -11,15 +11,16 @@ using System.Windows.Forms;
 
 namespace DametaProject
 {
-    public partial class TopProdutos : Form
+    public partial class Faturamento : Form
     {
-        public TopProdutos()
+        public Faturamento()
         {
             InitializeComponent();
         }
 
-        private void TopProdutos_Load(object sender, EventArgs e)
+        private void Faturamento_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'dameta_dbDataSet.faturamento' table. You can move, or remove it, as needed.
             // TODO: This line of code loads data into the 'dameta_dbDataSet.estabelecimentos' table. You can move, or remove it, as needed.
             this.estabelecimentosTableAdapter.Fill(this.dameta_dbDataSet.estabelecimentos);
 
@@ -28,7 +29,8 @@ namespace DametaProject
 
         private void GerarRelatorio_Click(object sender, EventArgs e)
         {
-            this.produtos_mais_vendidosTableAdapter.Fill(this.dameta_dbDataSet.produtos_mais_vendidos, cbNome.Text);
+
+            this.faturamentoTableAdapter.Fill(this.dameta_dbDataSet.faturamento, dtpDataInicio.Text, dtpDataFim.Text, cbNome.Text);
             this.reportViewer1.RefreshReport();
 
             if (cbNome.Text == "")
@@ -38,9 +40,13 @@ namespace DametaProject
             }
             else
             {
-                ReportParameter rp = new ReportParameter("estabelecimento", "Exibindo os top 3 produtos mais vendidos pelo estabelecimento:\n" + cbNome.Text);
-                this.reportViewer1.LocalReport.SetParameters(new ReportParameter[] { rp });
+                ReportParameter rp = new ReportParameter("estabelecimento", "Pesquisa por: " + cbNome.Text);
+                ReportParameter rp2 = new ReportParameter("dataInicio", "De " + dtpDataInicio.Text);
+                ReportParameter rp3 = new ReportParameter("dataFim", "Até " + dtpDataFim.Text);
+
+                this.reportViewer1.LocalReport.SetParameters(new ReportParameter[] { rp, rp2, rp3 });
             }
+
 
 
             this.reportViewer1.RefreshReport();

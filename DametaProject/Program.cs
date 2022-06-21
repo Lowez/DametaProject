@@ -16,7 +16,7 @@ namespace DametaProject
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new TopProdutos());
+            Application.Run(new Faturamento());
         }
     }
 }

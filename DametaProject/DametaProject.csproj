@@ -97,6 +97,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dameta_dbDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Faturamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Faturamento.Designer.cs">
+      <DependentUpon>Faturamento.cs</DependentUpon>
+    </Compile>
     <Compile Include="NovaSenha.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,12 +138,6 @@
     </Compile>
     <Compile Include="RelatorioFuncionarios.Designer.cs">
       <DependentUpon>RelatorioFuncionarios.cs</DependentUpon>
-    </Compile>
-    <Compile Include="RelatorioFaturamento.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="RelatorioFaturamento.Designer.cs">
-      <DependentUpon>RelatorioFaturamento.cs</DependentUpon>
     </Compile>
     <Compile Include="RelatorioFornecedores.cs">
       <SubType>Form</SubType>
@@ -201,6 +201,10 @@
     <EmbeddedResource Include="CodigoValidacao.resx">
       <DependentUpon>CodigoValidacao.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Faturamento.rdlc" />
+    <EmbeddedResource Include="Faturamento.resx">
+      <DependentUpon>Faturamento.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="NovaSenha.resx">
       <DependentUpon>NovaSenha.cs</DependentUpon>
     </EmbeddedResource>
@@ -219,9 +223,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RelatorioFuncionarios.resx">
       <DependentUpon>RelatorioFuncionarios.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="RelatorioFaturamento.resx">
-      <DependentUpon>RelatorioFaturamento.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RelatorioFornecedores.resx">
       <DependentUpon>RelatorioFornecedores.cs</DependentUpon>
