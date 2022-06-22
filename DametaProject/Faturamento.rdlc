@@ -48,10 +48,10 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>3.28083cm</Width>
+                  <Width>5.87375cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>8.47796cm</Width>
+                  <Width>5.88504cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -67,7 +67,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>faturamento</Value>
+                                  <Value>faturamento diário</Value>
                                   <Style>
                                     <FontSize>11pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
@@ -154,7 +154,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!faturamento.Value</Value>
+                                  <Value>=Convert.ToSingle(Fields!faturamento.Value).ToString("N2")</Value>
                                   <Style>
                                     <FontWeight>Normal</FontWeight>
                                     <Color>#333333</Color>
@@ -189,7 +189,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!data.Value</Value>
+                                  <Value>=Convert.ToString(Fields!data.Value).Remove(10)</Value>
                                   <Style>
                                     <FontWeight>Normal</FontWeight>
                                     <Color>#333333</Color>
@@ -213,6 +213,7 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                   </TablixCells>
@@ -293,7 +294,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Sum(Fields!faturamento.Value, "faturamento")</Value>
+                    <Value>=Convert.ToSingle(Sum(Fields!faturamento.Value, "faturamento")).ToString("N2")</Value>
                     <Style>
                       <FontStyle>Normal</FontStyle>
                       <FontWeight>Normal</FontWeight>

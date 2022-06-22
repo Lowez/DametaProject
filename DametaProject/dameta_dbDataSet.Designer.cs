@@ -18165,7 +18165,7 @@ FROM            compras INNER JOIN
 WHERE        (compras.created BETWEEN @dataInicio AND @dataFim)
 GROUP BY compras.created, estabelecimentos.nome
 HAVING        (estabelecimentos.nome = @param)
-ORDER BY data DESC";
+ORDER BY data ASC";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dataInicio", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "data", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dataFim", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "data", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
