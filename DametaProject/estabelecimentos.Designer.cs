@@ -62,11 +62,16 @@
             this.btIncluir = new System.Windows.Forms.Button();
             this.btConsultar = new System.Windows.Forms.Button();
             this.dtEstabelecimentosTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.dtEstabelecimentosTableAdapter();
+            this.cbUF = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.estadosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.estadosTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.EstadosTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.cidadesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtEstabelecimentosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.estabelecimentosBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.estadosBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // mtxCEP
@@ -108,14 +113,11 @@
             // cbCidade
             // 
             this.cbCidade.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.cidadesBindingSource, "id", true));
-            this.cbCidade.DataSource = this.cidadesBindingSource;
-            this.cbCidade.DisplayMember = "nome";
             this.cbCidade.FormattingEnabled = true;
-            this.cbCidade.Location = new System.Drawing.Point(116, 145);
+            this.cbCidade.Location = new System.Drawing.Point(239, 147);
             this.cbCidade.Name = "cbCidade";
             this.cbCidade.Size = new System.Drawing.Size(121, 21);
             this.cbCidade.TabIndex = 126;
-            this.cbCidade.ValueMember = "id";
             // 
             // cidadesBindingSource
             // 
@@ -130,7 +132,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(53, 148);
+            this.label5.Location = new System.Drawing.Point(180, 151);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(43, 13);
             this.label5.TabIndex = 125;
@@ -138,7 +140,7 @@
             // 
             // txNumero
             // 
-            this.txNumero.Location = new System.Drawing.Point(303, 185);
+            this.txNumero.Location = new System.Drawing.Point(435, 148);
             this.txNumero.Name = "txNumero";
             this.txNumero.Size = new System.Drawing.Size(100, 20);
             this.txNumero.TabIndex = 124;
@@ -146,7 +148,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(253, 188);
+            this.label2.Location = new System.Drawing.Point(385, 151);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(47, 13);
             this.label2.TabIndex = 123;
@@ -154,7 +156,7 @@
             // 
             // txRua
             // 
-            this.txRua.Location = new System.Drawing.Point(303, 146);
+            this.txRua.Location = new System.Drawing.Point(303, 185);
             this.txRua.Name = "txRua";
             this.txRua.Size = new System.Drawing.Size(232, 20);
             this.txRua.TabIndex = 122;
@@ -162,7 +164,7 @@
             // emailLabel
             // 
             this.emailLabel.AutoSize = true;
-            this.emailLabel.Location = new System.Drawing.Point(253, 146);
+            this.emailLabel.Location = new System.Drawing.Point(253, 185);
             this.emailLabel.Name = "emailLabel";
             this.emailLabel.Size = new System.Drawing.Size(30, 13);
             this.emailLabel.TabIndex = 121;
@@ -337,11 +339,43 @@
             // 
             this.dtEstabelecimentosTableAdapter.ClearBeforeFill = true;
             // 
+            // cbUF
+            // 
+            this.cbUF.DataSource = this.estadosBindingSource;
+            this.cbUF.DisplayMember = "UF";
+            this.cbUF.FormattingEnabled = true;
+            this.cbUF.Location = new System.Drawing.Point(116, 147);
+            this.cbUF.Name = "cbUF";
+            this.cbUF.Size = new System.Drawing.Size(48, 21);
+            this.cbUF.TabIndex = 137;
+            this.cbUF.ValueMember = "UF";
+            this.cbUF.SelectedIndexChanged += new System.EventHandler(this.cbUF_SelectedIndexChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(68, 150);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(24, 13);
+            this.label4.TabIndex = 136;
+            this.label4.Text = "UF:";
+            // 
+            // estadosBindingSource
+            // 
+            this.estadosBindingSource.DataMember = "Estados";
+            this.estadosBindingSource.DataSource = this.dameta_dbDataSet;
+            // 
+            // estadosTableAdapter
+            // 
+            this.estadosTableAdapter.ClearBeforeFill = true;
+            // 
             // Estabelecimentos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.cbUF);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.btConsultar);
             this.Controls.Add(this.btLimpar);
             this.Controls.Add(this.btExcluir);
@@ -371,6 +405,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtEstabelecimentosBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.estabelecimentosBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.estadosBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -411,5 +446,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn numeroDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn cEPDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn telefoneDataGridViewTextBoxColumn;
+        private System.Windows.Forms.ComboBox cbUF;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.BindingSource estadosBindingSource;
+        private dameta_dbDataSetTableAdapters.EstadosTableAdapter estadosTableAdapter;
     }
 }

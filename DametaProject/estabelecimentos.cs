@@ -31,6 +31,8 @@ namespace DametaProject
 
         private void Estabelecimentos_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'dameta_dbDataSet.Estados' table. You can move, or remove it, as needed.
+            this.estadosTableAdapter.Fill(this.dameta_dbDataSet.Estados);
             // TODO: This line of code loads data into the 'dameta_dbDataSet.dtEstabelecimentos' table. You can move, or remove it, as needed.
             this.dtEstabelecimentosTableAdapter.Fill(this.dameta_dbDataSet.dtEstabelecimentos);
             btLimpar_Click(sender, e);
@@ -63,7 +65,7 @@ namespace DametaProject
                 conn = new SqlConnection(connectionString);
 
                 comm = new SqlCommand(
-                    "SELECT estab.id, estab.nome, estab.CEP, estab.nome_rua, estab.numero, estab.telefone, estab.cidades_id, cid.id, cid.nome AS cidNome " +
+                    "SELECT estab.id, estab.nome, estab.CEP, estab.nome_rua, estab.numero, estab.telefone, estab.cidades_id, cid.id, cid.nome AS cidNome, cid.UF " +
                     "FROM estabelecimentos AS estab " +
                     "INNER JOIN cidades AS cid ON cid.id = estab.cidades_id " +
                     "WHERE estab.nome = @nome", conn);
@@ -97,10 +99,12 @@ namespace DametaProject
                             txID.Text = reader["id"].ToString();
                             txNome.Text = reader["nome"].ToString();
                             cbCidade.Text = reader["cidNome"].ToString();
+                            cbUF.Text = reader["UF"].ToString();
                             txRua.Text = reader["nome_rua"].ToString();
                             mtxCEP.Text = reader["CEP"].ToString();
                             txNumero.Text = reader["numero"].ToString();
                             mtxTelefone.Text = reader["telefone"].ToString();
+
                         }
 
                         reader.Close();
@@ -126,6 +130,37 @@ namespace DametaProject
             // TODO: This line of code loads data into the 'dameta_dbDataSet.cidades' table. You can move, or remove it, as needed.
             this.cidadesTableAdapter.Fill(this.dameta_dbDataSet.cidades);
             AtualizaListaDeEstabelecimentos();
+        }
+
+        private void filtrarCidades()
+        {
+            cbCidade.Items.Clear();
+            SqlConnection conn;
+            SqlCommand comm;
+            SqlDataReader reader;
+            string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
+            conn = new SqlConnection(connectionString);
+
+            comm = new SqlCommand(
+                "SELECT nome FROM cidades WHERE UF = @UF", conn);
+            conn.Open();
+
+            comm.Parameters.Add("@UF", System.Data.SqlDbType.NVarChar);
+            comm.Parameters["@UF"].Value = Convert.ToString(cbUF.SelectedValue);
+
+
+            reader = comm.ExecuteReader();
+            while (reader.Read())
+            {
+
+                cbCidade.Items.Add(reader["nome"]);
+
+            }
+            cbCidade.Text = Convert.ToString("Acrelândia");
+
+
+            reader.Close();
+            conn.Close();
         }
 
         private void btIncluir_Click(object sender, EventArgs e)
@@ -360,6 +395,7 @@ namespace DametaProject
             txNumero.Clear();
             mtxTelefone.Clear();
             cbCidade.Text = "";
+            cbUF.Text = "";
         }
 
         private void btConsultar_Click(object sender, EventArgs e)
@@ -374,7 +410,7 @@ namespace DametaProject
             conn = new SqlConnection(connectionString);
 
             comm = new SqlCommand(
-                "SELECT estab.id, estab.nome, estab.CEP, estab.nome_rua, estab.numero, estab.telefone, estab.cidades_id, cid.id, cid.nome AS cidNome " +
+                "SELECT estab.id, estab.nome, estab.CEP, estab.nome_rua, estab.numero, estab.telefone, estab.cidades_id, cid.id, cid.nome AS cidNome, cid.UF " +
                 "FROM estabelecimentos AS estab " +
                 "INNER JOIN cidades AS cid ON cid.id = estab.cidades_id " +
                 "WHERE estab.id = @ID", conn);
@@ -406,11 +442,13 @@ namespace DametaProject
                     if (reader.Read())
                     {
                         txNome.Text = reader["nome"].ToString();
+                        cbUF.Text = reader["UF"].ToString();
                         cbCidade.Text = reader["cidNome"].ToString();
                         txRua.Text = reader["nome_rua"].ToString();
                         mtxCEP.Text = reader["CEP"].ToString();
                         txNumero.Text = reader["numero"].ToString();
                         mtxTelefone.Text = reader["telefone"].ToString();
+
                     }
 
                     reader.Close();
@@ -430,6 +468,11 @@ namespace DametaProject
                 conn.Close();
             }
 
+        }
+
+        private void cbUF_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            filtrarCidades();
         }
     }
 }
