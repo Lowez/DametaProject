@@ -72,6 +72,8 @@ namespace DametaProject
             SqlCommand comm2;
             SqlDataReader reader;
             string cidade = "";
+            string cidadeID = "";
+
             int aux = 0;
             bool bIsOperationOK = true;
 
@@ -80,7 +82,7 @@ namespace DametaProject
 
             cbCidade.Items.Clear();
             comm = new SqlCommand(
-                "SELECT id FROM cidades where UF = @UF", conn);
+                "SELECT id, nome FROM cidades where UF = @UF", conn);
 
             comm.Parameters.Add("@UF", System.Data.SqlDbType.NVarChar);
             comm.Parameters["@UF"].Value = Convert.ToString(cbUF.SelectedValue);
@@ -106,13 +108,22 @@ namespace DametaProject
                 // Executa o comando SQL
 
                 reader = comm.ExecuteReader();
-                if (reader.Read())
+                String aux2 = Convert.ToString(cbCidade.Text);
+
+                Console.WriteLine(aux2);
+
+                while (reader.Read())
                 {
                     cbCidade.Items.Add(reader["id"]);
-                    cidade = Convert.ToString(reader["id"]);
+                    cidade = Convert.ToString(reader["nome"]);
+                    cidadeID = Convert.ToString(reader["id"]);
+                    Console.WriteLine(aux2);
+                    Console.WriteLine(cidade);
+                    if (cidade == aux2) break;
                 }
 
-                aux = Convert.ToInt32(cidade);
+                aux = Convert.ToInt32(cidadeID);
+
                 reader.Close();
             }
             catch (Exception ex)
