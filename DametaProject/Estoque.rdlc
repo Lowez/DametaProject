@@ -593,7 +593,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>qtd1</rd:DefaultName>
-              <Top>1.79599cm</Top>
+              <Top>1.58432cm</Top>
               <Left>11.91599cm</Left>
               <Height>0.6cm</Height>
               <Width>8.76088cm</Width>
@@ -674,6 +674,8 @@
     </ReportParameter>
     <ReportParameter Name="qtd">
       <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
   </ReportParameters>

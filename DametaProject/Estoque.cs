@@ -20,7 +20,7 @@ namespace DametaProject
 
         private void Estoque_Load(object sender, EventArgs e)
         {
-     
+
             // TODO: This line of code loads data into the 'dameta_dbDataSet.estabelecimentos' table. You can move, or remove it, as needed.
             this.estabelecimentosTableAdapter.Fill(this.dameta_dbDataSet.estabelecimentos);
 
@@ -29,7 +29,8 @@ namespace DametaProject
 
         private void GerarRelatorio_Click(object sender, EventArgs e)
         {
-            this.controleDeEstoqueTableAdapter.Fill(this.dameta_dbDataSet.ControleDeEstoque, cbNome.Text);
+            int qtd = 0;
+            this.controleDeEstoqueTableAdapter.Fill(this.dameta_dbDataSet.ControleDeEstoque, cbNome.Text, qtd);
             this.reportViewer1.RefreshReport();
 
             if (cbNome.Text == "")
@@ -37,35 +38,33 @@ namespace DametaProject
                 ReportParameter rp = new ReportParameter("estabelecimento", "");
                 this.reportViewer1.LocalReport.SetParameters(new ReportParameter[] { rp });
             }
+
             else
             {
+
                 ReportParameter rp = new ReportParameter("estabelecimento", "Pesquisa por: " + cbNome.Text);
-                this.reportViewer1.LocalReport.SetParameters(new ReportParameter[] { rp });
+
+
+                if (radioButton2.Checked)
+                {
+
+                }
+                else if (radioButton3.Checked)
+                {
+                    ReportParameter rp2 = new ReportParameter("qtd", "Exibindo produtos fora de estoque");
+                    this.reportViewer1.LocalReport.SetParameters(new ReportParameter[] { rp, rp2 });
+                }
+                else
+                {
+                    //    ReportParameter rp = new ReportParameter("qtd", "Exibindo todos os produtos cadastrados no estabelecimento");
+                    //    ReportParameter rp3 = new ReportParameter("dataFim", "Até " + dtpDataFim.Text);
+
+                    //}
+                    this.reportViewer1.LocalReport.SetParameters(new ReportParameter[] { rp });
+                }
+
+                this.reportViewer1.RefreshReport();
             }
-
-            //if (radioButton2.Checked)
-            //{
-
-
-
-
-            //}
-
-            //else if (radioButton3.Checked)
-
-            //{
-            //    this.controleDeEstoqueTableAdapter.Fill(this.dameta_dbDataSet.ControleDeEstoque, "0");
-            //    ReportParameter rp = new ReportParameter("qtd","Exibindo produtos fora de estoque" );
-            //    this.reportViewer1.LocalReport.SetParameters(new ReportParameter[] { rp });
-            //}
-            //else
-            //{
-            //    ReportParameter rp = new ReportParameter("qtd", "Exibindo todos os produtos cadastrados no estabelecimento");
-            //    this.reportViewer1.LocalReport.SetParameters(new ReportParameter[] { rp });
-            //}
-
-            this.reportViewer1.RefreshReport();
-
         }
     }
 }
