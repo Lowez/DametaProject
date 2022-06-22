@@ -59,6 +59,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.cbCidade = new System.Windows.Forms.ComboBox();
             this.cidadesBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.cidadesBindingSource6 = new System.Windows.Forms.BindingSource(this.components);
             this.cidadesBindingSource5 = new System.Windows.Forms.BindingSource(this.components);
             this.dameta_dbDataSet3 = new DametaProject.dameta_dbDataSet();
             this.label4 = new System.Windows.Forms.Label();
@@ -77,15 +78,6 @@
             this.dtClientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dtClientesTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.dtClientesTableAdapter();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nascimentoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cPFDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.telefoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cEPDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.expr1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.uFDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.expr2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nascimento = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -95,6 +87,24 @@
             this.cidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UF = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.genero = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nascimentoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cPFDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.telefoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cEPDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.expr1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uFDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.expr2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nomeDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nascimentoDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cPFDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.telefoneDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cEPDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.expr1DataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uFDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.expr2DataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.premiumusuariosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dametadbDataSetBindingSource)).BeginInit();
@@ -105,6 +115,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cidadesBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dametadbDataSetBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cidadesBindingSource2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cidadesBindingSource6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cidadesBindingSource5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.generosBindingSource1)).BeginInit();
@@ -201,7 +212,7 @@
             // 
             // btLimpar
             // 
-            this.btLimpar.Location = new System.Drawing.Point(641, 187);
+            this.btLimpar.Location = new System.Drawing.Point(580, 187);
             this.btLimpar.Name = "btLimpar";
             this.btLimpar.Size = new System.Drawing.Size(100, 40);
             this.btLimpar.TabIndex = 51;
@@ -211,7 +222,7 @@
             // 
             // btExcluir
             // 
-            this.btExcluir.Location = new System.Drawing.Point(641, 136);
+            this.btExcluir.Location = new System.Drawing.Point(580, 136);
             this.btExcluir.Name = "btExcluir";
             this.btExcluir.Size = new System.Drawing.Size(100, 40);
             this.btExcluir.TabIndex = 50;
@@ -221,7 +232,7 @@
             // 
             // btAlterar
             // 
-            this.btAlterar.Location = new System.Drawing.Point(641, 85);
+            this.btAlterar.Location = new System.Drawing.Point(580, 85);
             this.btAlterar.Name = "btAlterar";
             this.btAlterar.Size = new System.Drawing.Size(100, 40);
             this.btAlterar.TabIndex = 49;
@@ -231,7 +242,7 @@
             // 
             // btIncluir
             // 
-            this.btIncluir.Location = new System.Drawing.Point(641, 29);
+            this.btIncluir.Location = new System.Drawing.Point(580, 29);
             this.btIncluir.Name = "btIncluir";
             this.btIncluir.Size = new System.Drawing.Size(100, 40);
             this.btIncluir.TabIndex = 48;
@@ -295,6 +306,7 @@
             this.cbUF.Size = new System.Drawing.Size(48, 21);
             this.cbUF.TabIndex = 61;
             this.cbUF.ValueMember = "UF";
+            this.cbUF.SelectedIndexChanged += new System.EventHandler(this.cbUF_SelectedIndexChanged);
             // 
             // estadosBindingSource
             // 
@@ -328,19 +340,21 @@
             // cbCidade
             // 
             this.cbCidade.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.cidadesBindingSource2, "nome", true));
-            this.cbCidade.DataSource = this.cidadesBindingSource5;
-            this.cbCidade.DisplayMember = "nome";
             this.cbCidade.FormattingEnabled = true;
             this.cbCidade.Location = new System.Drawing.Point(367, 206);
             this.cbCidade.Name = "cbCidade";
             this.cbCidade.Size = new System.Drawing.Size(92, 21);
             this.cbCidade.TabIndex = 59;
-            this.cbCidade.ValueMember = "id";
             // 
             // cidadesBindingSource2
             // 
             this.cidadesBindingSource2.DataMember = "cidades";
             this.cidadesBindingSource2.DataSource = this.dameta_dbDataSet;
+            // 
+            // cidadesBindingSource6
+            // 
+            this.cidadesBindingSource6.DataMember = "cidades";
+            this.cidadesBindingSource6.DataSource = this.dameta_dbDataSet;
             // 
             // cidadesBindingSource5
             // 
@@ -456,67 +470,21 @@
             this.CEP,
             this.cidade,
             this.UF,
-            this.genero});
+            this.genero,
+            this.idDataGridViewTextBoxColumn1,
+            this.nomeDataGridViewTextBoxColumn1,
+            this.nascimentoDataGridViewTextBoxColumn1,
+            this.cPFDataGridViewTextBoxColumn1,
+            this.telefoneDataGridViewTextBoxColumn1,
+            this.cEPDataGridViewTextBoxColumn1,
+            this.expr1DataGridViewTextBoxColumn1,
+            this.uFDataGridViewTextBoxColumn1,
+            this.expr2DataGridViewTextBoxColumn1});
             this.dataGridView1.DataSource = this.dtClientesBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(53, 243);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(688, 207);
             this.dataGridView1.TabIndex = 26;
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // nomeDataGridViewTextBoxColumn
-            // 
-            this.nomeDataGridViewTextBoxColumn.DataPropertyName = "nome";
-            this.nomeDataGridViewTextBoxColumn.HeaderText = "nome";
-            this.nomeDataGridViewTextBoxColumn.Name = "nomeDataGridViewTextBoxColumn";
-            // 
-            // nascimentoDataGridViewTextBoxColumn
-            // 
-            this.nascimentoDataGridViewTextBoxColumn.DataPropertyName = "nascimento";
-            this.nascimentoDataGridViewTextBoxColumn.HeaderText = "nascimento";
-            this.nascimentoDataGridViewTextBoxColumn.Name = "nascimentoDataGridViewTextBoxColumn";
-            // 
-            // cPFDataGridViewTextBoxColumn
-            // 
-            this.cPFDataGridViewTextBoxColumn.DataPropertyName = "CPF";
-            this.cPFDataGridViewTextBoxColumn.HeaderText = "CPF";
-            this.cPFDataGridViewTextBoxColumn.Name = "cPFDataGridViewTextBoxColumn";
-            // 
-            // telefoneDataGridViewTextBoxColumn
-            // 
-            this.telefoneDataGridViewTextBoxColumn.DataPropertyName = "telefone";
-            this.telefoneDataGridViewTextBoxColumn.HeaderText = "telefone";
-            this.telefoneDataGridViewTextBoxColumn.Name = "telefoneDataGridViewTextBoxColumn";
-            // 
-            // cEPDataGridViewTextBoxColumn
-            // 
-            this.cEPDataGridViewTextBoxColumn.DataPropertyName = "CEP";
-            this.cEPDataGridViewTextBoxColumn.HeaderText = "CEP";
-            this.cEPDataGridViewTextBoxColumn.Name = "cEPDataGridViewTextBoxColumn";
-            // 
-            // expr1DataGridViewTextBoxColumn
-            // 
-            this.expr1DataGridViewTextBoxColumn.DataPropertyName = "Expr1";
-            this.expr1DataGridViewTextBoxColumn.HeaderText = "Expr1";
-            this.expr1DataGridViewTextBoxColumn.Name = "expr1DataGridViewTextBoxColumn";
-            // 
-            // uFDataGridViewTextBoxColumn
-            // 
-            this.uFDataGridViewTextBoxColumn.DataPropertyName = "UF";
-            this.uFDataGridViewTextBoxColumn.HeaderText = "UF";
-            this.uFDataGridViewTextBoxColumn.Name = "uFDataGridViewTextBoxColumn";
-            // 
-            // expr2DataGridViewTextBoxColumn
-            // 
-            this.expr2DataGridViewTextBoxColumn.DataPropertyName = "Expr2";
-            this.expr2DataGridViewTextBoxColumn.HeaderText = "Expr2";
-            this.expr2DataGridViewTextBoxColumn.Name = "expr2DataGridViewTextBoxColumn";
             // 
             // id
             // 
@@ -579,6 +547,116 @@
             this.genero.HeaderText = "genero";
             this.genero.Name = "genero";
             // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nomeDataGridViewTextBoxColumn
+            // 
+            this.nomeDataGridViewTextBoxColumn.DataPropertyName = "nome";
+            this.nomeDataGridViewTextBoxColumn.HeaderText = "nome";
+            this.nomeDataGridViewTextBoxColumn.Name = "nomeDataGridViewTextBoxColumn";
+            // 
+            // nascimentoDataGridViewTextBoxColumn
+            // 
+            this.nascimentoDataGridViewTextBoxColumn.DataPropertyName = "nascimento";
+            this.nascimentoDataGridViewTextBoxColumn.HeaderText = "nascimento";
+            this.nascimentoDataGridViewTextBoxColumn.Name = "nascimentoDataGridViewTextBoxColumn";
+            // 
+            // cPFDataGridViewTextBoxColumn
+            // 
+            this.cPFDataGridViewTextBoxColumn.DataPropertyName = "CPF";
+            this.cPFDataGridViewTextBoxColumn.HeaderText = "CPF";
+            this.cPFDataGridViewTextBoxColumn.Name = "cPFDataGridViewTextBoxColumn";
+            // 
+            // telefoneDataGridViewTextBoxColumn
+            // 
+            this.telefoneDataGridViewTextBoxColumn.DataPropertyName = "telefone";
+            this.telefoneDataGridViewTextBoxColumn.HeaderText = "telefone";
+            this.telefoneDataGridViewTextBoxColumn.Name = "telefoneDataGridViewTextBoxColumn";
+            // 
+            // cEPDataGridViewTextBoxColumn
+            // 
+            this.cEPDataGridViewTextBoxColumn.DataPropertyName = "CEP";
+            this.cEPDataGridViewTextBoxColumn.HeaderText = "CEP";
+            this.cEPDataGridViewTextBoxColumn.Name = "cEPDataGridViewTextBoxColumn";
+            // 
+            // expr1DataGridViewTextBoxColumn
+            // 
+            this.expr1DataGridViewTextBoxColumn.DataPropertyName = "Expr1";
+            this.expr1DataGridViewTextBoxColumn.HeaderText = "Expr1";
+            this.expr1DataGridViewTextBoxColumn.Name = "expr1DataGridViewTextBoxColumn";
+            // 
+            // uFDataGridViewTextBoxColumn
+            // 
+            this.uFDataGridViewTextBoxColumn.DataPropertyName = "UF";
+            this.uFDataGridViewTextBoxColumn.HeaderText = "UF";
+            this.uFDataGridViewTextBoxColumn.Name = "uFDataGridViewTextBoxColumn";
+            // 
+            // expr2DataGridViewTextBoxColumn
+            // 
+            this.expr2DataGridViewTextBoxColumn.DataPropertyName = "Expr2";
+            this.expr2DataGridViewTextBoxColumn.HeaderText = "Expr2";
+            this.expr2DataGridViewTextBoxColumn.Name = "expr2DataGridViewTextBoxColumn";
+            // 
+            // idDataGridViewTextBoxColumn1
+            // 
+            this.idDataGridViewTextBoxColumn1.DataPropertyName = "id";
+            this.idDataGridViewTextBoxColumn1.HeaderText = "id";
+            this.idDataGridViewTextBoxColumn1.Name = "idDataGridViewTextBoxColumn1";
+            this.idDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // nomeDataGridViewTextBoxColumn1
+            // 
+            this.nomeDataGridViewTextBoxColumn1.DataPropertyName = "nome";
+            this.nomeDataGridViewTextBoxColumn1.HeaderText = "nome";
+            this.nomeDataGridViewTextBoxColumn1.Name = "nomeDataGridViewTextBoxColumn1";
+            // 
+            // nascimentoDataGridViewTextBoxColumn1
+            // 
+            this.nascimentoDataGridViewTextBoxColumn1.DataPropertyName = "nascimento";
+            this.nascimentoDataGridViewTextBoxColumn1.HeaderText = "nascimento";
+            this.nascimentoDataGridViewTextBoxColumn1.Name = "nascimentoDataGridViewTextBoxColumn1";
+            // 
+            // cPFDataGridViewTextBoxColumn1
+            // 
+            this.cPFDataGridViewTextBoxColumn1.DataPropertyName = "CPF";
+            this.cPFDataGridViewTextBoxColumn1.HeaderText = "CPF";
+            this.cPFDataGridViewTextBoxColumn1.Name = "cPFDataGridViewTextBoxColumn1";
+            // 
+            // telefoneDataGridViewTextBoxColumn1
+            // 
+            this.telefoneDataGridViewTextBoxColumn1.DataPropertyName = "telefone";
+            this.telefoneDataGridViewTextBoxColumn1.HeaderText = "telefone";
+            this.telefoneDataGridViewTextBoxColumn1.Name = "telefoneDataGridViewTextBoxColumn1";
+            // 
+            // cEPDataGridViewTextBoxColumn1
+            // 
+            this.cEPDataGridViewTextBoxColumn1.DataPropertyName = "CEP";
+            this.cEPDataGridViewTextBoxColumn1.HeaderText = "CEP";
+            this.cEPDataGridViewTextBoxColumn1.Name = "cEPDataGridViewTextBoxColumn1";
+            // 
+            // expr1DataGridViewTextBoxColumn1
+            // 
+            this.expr1DataGridViewTextBoxColumn1.DataPropertyName = "Expr1";
+            this.expr1DataGridViewTextBoxColumn1.HeaderText = "Expr1";
+            this.expr1DataGridViewTextBoxColumn1.Name = "expr1DataGridViewTextBoxColumn1";
+            // 
+            // uFDataGridViewTextBoxColumn1
+            // 
+            this.uFDataGridViewTextBoxColumn1.DataPropertyName = "UF";
+            this.uFDataGridViewTextBoxColumn1.HeaderText = "UF";
+            this.uFDataGridViewTextBoxColumn1.Name = "uFDataGridViewTextBoxColumn1";
+            // 
+            // expr2DataGridViewTextBoxColumn1
+            // 
+            this.expr2DataGridViewTextBoxColumn1.DataPropertyName = "Expr2";
+            this.expr2DataGridViewTextBoxColumn1.HeaderText = "Expr2";
+            this.expr2DataGridViewTextBoxColumn1.Name = "expr2DataGridViewTextBoxColumn1";
+            // 
             // Clientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -622,6 +700,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cidadesBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dametadbDataSetBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cidadesBindingSource2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cidadesBindingSource6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cidadesBindingSource5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.generosBindingSource1)).EndInit();
@@ -695,6 +774,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn expr1DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn uFDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn expr2DataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource cidadesBindingSource6;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn nome;
         private System.Windows.Forms.DataGridViewTextBoxColumn nascimento;
@@ -704,5 +784,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cidade;
         private System.Windows.Forms.DataGridViewTextBoxColumn UF;
         private System.Windows.Forms.DataGridViewTextBoxColumn genero;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nomeDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nascimentoDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cPFDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn telefoneDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cEPDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn expr1DataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn uFDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn expr2DataGridViewTextBoxColumn1;
     }
 }

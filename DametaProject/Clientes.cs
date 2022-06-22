@@ -16,6 +16,7 @@ namespace DametaProject
         public Clientes()
         {
             InitializeComponent();
+
         }
 
         private void AtualizaListaDeClientes()
@@ -35,6 +36,29 @@ namespace DametaProject
             this.generosTableAdapter.Fill(this.dameta_dbDataSet.generos);
             // TODO: esta linha de código carrega dados na tabela 'dameta_dbDataSet.premium_usuarios'. Você pode movê-la ou removê-la conforme necessário.
             this.premium_usuariosTableAdapter.Fill(this.dameta_dbDataSet.premium_usuarios);
+            cbCidade.Items.Clear();
+            SqlConnection conn;
+            SqlCommand comm;
+            SqlDataReader reader;
+            string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
+            conn = new SqlConnection(connectionString);
+
+            comm = new SqlCommand(
+                "SELECT nome FROM cidades WHERE UF = @UF", conn);
+            conn.Open();
+
+            comm.Parameters.Add("@UF", System.Data.SqlDbType.NVarChar);
+            comm.Parameters["@UF"].Value = Convert.ToString(cbUF.SelectedValue);
+
+
+            reader = comm.ExecuteReader();
+            while (reader.Read())
+            {
+                cbCidade.Items.Add(reader["nome"]);
+            }
+
+            reader.Close();
+            conn.Close();
         }
 
         private void btIncluir_Click(object sender, EventArgs e)
@@ -142,7 +166,7 @@ namespace DametaProject
                 "INNER JOIN Cidades AS Cid ON Cid.id = Cli.cidades_id " +
                 "INNER JOIN Generos AS Gen " +
                 "ON Gen.id = Cli.generos_id " +
-                "WHERE Cli.id = 1", conn);
+                "WHERE Cli.id = @ID", conn);
 
             comm.Parameters.Add("@ID", System.Data.SqlDbType.Int);
             comm.Parameters["@ID"].Value = Convert.ToInt32(txID.Text);
@@ -382,6 +406,33 @@ namespace DametaProject
 
         }
 
+        private void cbUF_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cbCidade.Items.Clear();
+            SqlConnection conn;
+            SqlCommand comm;
+            SqlDataReader reader;
+            string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
+            conn = new SqlConnection(connectionString);
 
+            comm = new SqlCommand(
+                "SELECT nome FROM cidades WHERE UF = @UF", conn);
+            conn.Open();
+
+            comm.Parameters.Add("@UF", System.Data.SqlDbType.NVarChar);
+            comm.Parameters["@UF"].Value = Convert.ToString(cbUF.SelectedValue);
+
+
+            reader = comm.ExecuteReader();
+            while (reader.Read())
+            {
+                cbCidade.Items.Add(reader["nome"]);
+            }
+
+            reader.Close();
+            conn.Close();
+
+
+        }
     }
 }
