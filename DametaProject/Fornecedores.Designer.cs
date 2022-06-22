@@ -235,7 +235,7 @@
             this.nomeDataGridViewTextBoxColumn.DataPropertyName = "nome";
             this.nomeDataGridViewTextBoxColumn.HeaderText = "nome";
             this.nomeDataGridViewTextBoxColumn.Name = "nomeDataGridViewTextBoxColumn";
-            this.nomeDataGridViewTextBoxColumn.Width = 120;
+            this.nomeDataGridViewTextBoxColumn.Width = 150;
             // 
             // telefoneDataGridViewTextBoxColumn
             // 
@@ -248,7 +248,7 @@
             this.cNPJDataGridViewTextBoxColumn.DataPropertyName = "CNPJ";
             this.cNPJDataGridViewTextBoxColumn.HeaderText = "CNPJ";
             this.cNPJDataGridViewTextBoxColumn.Name = "cNPJDataGridViewTextBoxColumn";
-            this.cNPJDataGridViewTextBoxColumn.Width = 150;
+            this.cNPJDataGridViewTextBoxColumn.Width = 120;
             // 
             // Fornecedores
             // 
