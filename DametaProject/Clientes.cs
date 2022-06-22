@@ -22,6 +22,8 @@ namespace DametaProject
         private void AtualizaListaDeClientes()
         {
             this.premium_usuariosTableAdapter.Fill(this.dameta_dbDataSet.premium_usuarios);
+            this.dtClientesTableAdapter.Fill(this.dameta_dbDataSet.dtClientes);
+
         }
 
         private void filtrarCidades()
@@ -110,15 +112,12 @@ namespace DametaProject
                 reader = comm.ExecuteReader();
                 String aux2 = Convert.ToString(cbCidade.Text);
 
-                Console.WriteLine(aux2);
 
                 while (reader.Read())
                 {
                     cbCidade.Items.Add(reader["id"]);
                     cidade = Convert.ToString(reader["nome"]);
                     cidadeID = Convert.ToString(reader["id"]);
-                    Console.WriteLine(aux2);
-                    Console.WriteLine(cidade);
                     if (cidade == aux2) break;
                 }
 
@@ -366,9 +365,13 @@ namespace DametaProject
         {
             txID.Clear();
             txNome.Clear();
+            dtpDataNasc.ResetText();
             mtxCPF.Clear();
-            cbCidade.Text = "";
+            mtxTelefone.Text = "";
+            mtxCEP.Text = "";
             cbUF.Text = "";
+            cbGenero.Text = "";
+            cbCidade.Text = "";
             txID.Focus();
         }
 
@@ -383,20 +386,12 @@ namespace DametaProject
             conn = new SqlConnection(connectionString);
 
             comm = new SqlCommand(
-                "DELETE Clientes SET Nome=@Nome, CPF=@CPF, cidades_id=@cidades_id " +
-                "WHERE ID_Cliente = @ID_Cliente", conn);
+                "DELETE FROM  premium_usuarios " +
+                "WHERE id = @ID_Cliente", conn);
 
             comm.Parameters.Add("@ID_Cliente", System.Data.SqlDbType.Int);
             comm.Parameters["@ID_Cliente"].Value = Convert.ToInt32(txID.Text);
 
-            comm.Parameters.Add("@Nome", System.Data.SqlDbType.NVarChar);
-            comm.Parameters["@Nome"].Value = txNome.Text;
-
-            comm.Parameters.Add("@CPF", System.Data.SqlDbType.NVarChar);
-            comm.Parameters["@CPF"].Value = mtxCPF.Text;
-
-            comm.Parameters.Add("@cidades_id", System.Data.SqlDbType.Int);
-            comm.Parameters["@cidades_id"].Value = Convert.ToInt32(cbCidade.SelectedValue.ToString());
 
             try
             {
@@ -433,8 +428,8 @@ namespace DametaProject
 
                 if (bIsOperationOK == true)
                 {
-                    MessageBox.Show("Registro Alterado!",
-                        "UPDATE",
+                    MessageBox.Show("Registro Excluido!",
+                        "DELETE",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
                 }
