@@ -15,12 +15,12 @@ namespace DametaProject
     public partial class Estabelecimentos : Form
     {
         bool inserindo = false;
-        string nome_estabelecimento = "";
+        string nomeEstabelecimento = "";
         public Estabelecimentos(bool isInserindo, string nome_estabelecimento = null)
         {
             InitializeComponent();
             this.inserindo = isInserindo;
-            this.nome_estabelecimento = nome_estabelecimento;
+            this.nomeEstabelecimento = nome_estabelecimento;
             AtualizaListaDeEstabelecimentos();
         }
 
@@ -33,6 +33,7 @@ namespace DametaProject
         {
             // TODO: This line of code loads data into the 'dameta_dbDataSet.dtEstabelecimentos' table. You can move, or remove it, as needed.
             this.dtEstabelecimentosTableAdapter.Fill(this.dameta_dbDataSet.dtEstabelecimentos);
+            btLimpar_Click(sender, e);
             if (inserindo)
             {
                 btAlterar.Enabled = false;
@@ -68,7 +69,7 @@ namespace DametaProject
                     "WHERE estab.nome = @nome", conn);
 
                 comm.Parameters.Add("@nome", System.Data.SqlDbType.NVarChar);
-                comm.Parameters["@nome"].Value = nome_estabelecimento;
+                comm.Parameters["@nome"].Value = nomeEstabelecimento;
 
                 try
                 {
@@ -125,7 +126,6 @@ namespace DametaProject
             // TODO: This line of code loads data into the 'dameta_dbDataSet.cidades' table. You can move, or remove it, as needed.
             this.cidadesTableAdapter.Fill(this.dameta_dbDataSet.cidades);
             AtualizaListaDeEstabelecimentos();
-            btLimpar_Click(sender, e);
         }
 
         private void btIncluir_Click(object sender, EventArgs e)
@@ -146,7 +146,7 @@ namespace DametaProject
             comm.Parameters["@nome"].Value = txNome.Text;
 
             comm.Parameters.Add("@nome_rua", System.Data.SqlDbType.NVarChar);
-            comm.Parameters["@nnome_rua"].Value = txRua.Text;
+            comm.Parameters["@nome_rua"].Value = txRua.Text;
 
             comm.Parameters.Add("@numero", System.Data.SqlDbType.Int);
             comm.Parameters["@numero"].Value = Convert.ToInt32(txNumero.Text);
