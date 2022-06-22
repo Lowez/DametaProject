@@ -24,7 +24,7 @@ namespace DametaProject
             InitializeComponent();
         }
 
-        private void AtualizaListaDeClientes()
+        private void AtualizaListaDeFuncionarios()
         {
             this.funcionariosTableAdapter.Fill(this.dameta_dbDataSet.funcionarios);
         }
@@ -243,11 +243,6 @@ namespace DametaProject
                 }
 
             }
-        }
-
-        private void AtualizaListaDeFuncionarios()
-        {
-            this.funcionariosTableAdapter.Fill(this.dameta_dbDataSet.funcionarios);
         }
 
         private void btLimpar_Click(object sender, EventArgs e)
