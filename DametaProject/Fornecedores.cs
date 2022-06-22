@@ -175,11 +175,9 @@ namespace DametaProject
                           "Registro Cadastrado",
                           MessageBoxButtons.OK,
                           MessageBoxIcon.Information);
-             
-
-                Fornecedores_Load(sender, e);
-                    btLimpar_Click(sender, e);
                 }
+                Fornecedores_Load(sender, e);
+                btLimpar_Click(sender, e);
             }
         }
 
