@@ -103,6 +103,12 @@
     <Compile Include="Faturamento.Designer.cs">
       <DependentUpon>Faturamento.cs</DependentUpon>
     </Compile>
+    <Compile Include="HomeRelatorios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HomeRelatorios.Designer.cs">
+      <DependentUpon>HomeRelatorios.cs</DependentUpon>
+    </Compile>
     <Compile Include="NovaSenha.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -204,6 +210,9 @@
     <EmbeddedResource Include="Faturamento.rdlc" />
     <EmbeddedResource Include="Faturamento.resx">
       <DependentUpon>Faturamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HomeRelatorios.resx">
+      <DependentUpon>HomeRelatorios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NovaSenha.resx">
       <DependentUpon>NovaSenha.cs</DependentUpon>
