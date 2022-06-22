@@ -16762,16 +16762,17 @@ FROM            produtos INNER JOIN
                          estoque ON produtos.estoque_id = estoque.id INNER JOIN
                          estabelecimentos ON estoque.id = estabelecimentos.id INNER JOIN
                          cidades ON estabelecimentos.cidades_id = cidades.id
-WHERE        (estabelecimentos.nome = @param)";
+WHERE        (estabelecimentos.nome = @param) AND (qtd = @qtd)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@param", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "estabelecimento", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@qtd", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "qtd", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(dameta_dbDataSet.ControleDeEstoqueDataTable dataTable, string param) {
+        public virtual int Fill(dameta_dbDataSet.ControleDeEstoqueDataTable dataTable, string param, int qtd) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((param == null)) {
                 throw new global::System.ArgumentNullException("param");
@@ -16779,6 +16780,7 @@ WHERE        (estabelecimentos.nome = @param)";
             else {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((string)(param));
             }
+            this.Adapter.SelectCommand.Parameters[1].Value = ((int)(qtd));
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -16790,7 +16792,7 @@ WHERE        (estabelecimentos.nome = @param)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual dameta_dbDataSet.ControleDeEstoqueDataTable GetData(string param) {
+        public virtual dameta_dbDataSet.ControleDeEstoqueDataTable GetData(string param, int qtd) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((param == null)) {
                 throw new global::System.ArgumentNullException("param");
@@ -16798,6 +16800,7 @@ WHERE        (estabelecimentos.nome = @param)";
             else {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((string)(param));
             }
+            this.Adapter.SelectCommand.Parameters[1].Value = ((int)(qtd));
             dameta_dbDataSet.ControleDeEstoqueDataTable dataTable = new dameta_dbDataSet.ControleDeEstoqueDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -18165,7 +18168,7 @@ FROM            compras INNER JOIN
 WHERE        (compras.created BETWEEN @dataInicio AND @dataFim)
 GROUP BY compras.created, estabelecimentos.nome
 HAVING        (estabelecimentos.nome = @param)
-ORDER BY data DESC";
+ORDER BY data ASC";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dataInicio", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "data", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dataFim", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "data", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));

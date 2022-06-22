@@ -22,20 +22,12 @@ namespace DametaProject
         private void AtualizaListaDeClientes()
         {
             this.premium_usuariosTableAdapter.Fill(this.dameta_dbDataSet.premium_usuarios);
+            this.dtClientesTableAdapter.Fill(this.dameta_dbDataSet.dtClientes);
+
         }
 
-        private void Clientes_Load(object sender, EventArgs e)
+        private void filtrarCidades()
         {
-            // TODO: This line of code loads data into the 'dameta_dbDataSet.dtClientes' table. You can move, or remove it, as needed.
-            this.dtClientesTableAdapter.Fill(this.dameta_dbDataSet.dtClientes);
-            // TODO: This line of code loads data into the 'dameta_dbDataSet.clientesDataGrid' table. You can move, or remove it, as needed.
-            this.estadosTableAdapter.Fill(this.dameta_dbDataSet.Estados);
-            // TODO: This line of code loads data into the 'dameta_dbDataSet.cidades' table. You can move, or remove it, as needed.
-            this.cidadesTableAdapter.Fill(this.dameta_dbDataSet.cidades);
-            // TODO: This line of code loads data into the 'dameta_dbDataSet.generos' table. You can move, or remove it, as needed.
-            this.generosTableAdapter.Fill(this.dameta_dbDataSet.generos);
-            // TODO: esta linha de código carrega dados na tabela 'dameta_dbDataSet.premium_usuarios'. Você pode movê-la ou removê-la conforme necessário.
-            this.premium_usuariosTableAdapter.Fill(this.dameta_dbDataSet.premium_usuarios);
             cbCidade.Items.Clear();
             SqlConnection conn;
             SqlCommand comm;
@@ -54,58 +46,131 @@ namespace DametaProject
             reader = comm.ExecuteReader();
             while (reader.Read())
             {
+
                 cbCidade.Items.Add(reader["nome"]);
+
             }
+            cbCidade.Text = Convert.ToString("Acrelândia");
+
 
             reader.Close();
             conn.Close();
+        }
+
+        private void Clientes_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'dameta_dbDataSet5.Estados' table. You can move, or remove it, as needed.
+            this.estadosTableAdapter.Fill(this.dameta_dbDataSet5.Estados);
+            this.dtClientesTableAdapter.Fill(this.dameta_dbDataSet.dtClientes);
+            this.cidadesTableAdapter.Fill(this.dameta_dbDataSet.cidades);
+            this.generosTableAdapter.Fill(this.dameta_dbDataSet.generos);
+            filtrarCidades();
         }
 
         private void btIncluir_Click(object sender, EventArgs e)
         {
             SqlConnection conn;
             SqlCommand comm;
+            SqlCommand comm2;
+            SqlDataReader reader;
+            string cidade = "";
+            string cidadeID = "";
+
+            int aux = 0;
             bool bIsOperationOK = true;
 
             string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
-
             conn = new SqlConnection(connectionString);
 
+            cbCidade.Items.Clear();
             comm = new SqlCommand(
-                "INSERT INTO Clientes (nome, nascimento, CPF, telefone, CEP, estados_id, cidades_id, generos_id) " +
-                "VALUES (@nome, @nascimento, @CPF, @telefone, @CEP, @estados_id, @cidades_id, @generos_id)", conn);
+                "SELECT id, nome FROM cidades where UF = @UF", conn);
 
-            comm.Parameters.Add("@nome", System.Data.SqlDbType.NVarChar);
-            comm.Parameters["@nome"].Value = txNome.Text;
-
-            comm.Parameters.Add("@nascimento", System.Data.SqlDbType.Date);
-            comm.Parameters["@nascimento"].Value = dtpDataNasc.Value;
-
-            comm.Parameters.Add("@CPF", System.Data.SqlDbType.NVarChar);
-            comm.Parameters["@CPF"].Value = mtxCPF.Text;
-
-            comm.Parameters.Add("@telefone", System.Data.SqlDbType.NVarChar);
-            comm.Parameters["@telefone"].Value = txNome.Text;
-
-            comm.Parameters.Add("@CEP", System.Data.SqlDbType.NVarChar);
-            comm.Parameters["@CEP"].Value = mtxCEP.Text;
-
-            comm.Parameters.Add("@estado_id", System.Data.SqlDbType.Int);
-            comm.Parameters["@estado_id"].Value = Convert.ToInt32(cbCidade.SelectedValue);
-
-            comm.Parameters.Add("@cidade_id", System.Data.SqlDbType.Int);
-            comm.Parameters["@cidade_id"].Value = Convert.ToInt32(cbCidade.SelectedValue);
-
-            comm.Parameters.Add("@genero_id", System.Data.SqlDbType.Int);
-            comm.Parameters["@genero_id"].Value = Convert.ToInt32(cbGenero.SelectedValue);
-
+            comm.Parameters.Add("@UF", System.Data.SqlDbType.NVarChar);
+            comm.Parameters["@UF"].Value = Convert.ToString(cbUF.SelectedValue);
 
             try
             {
+                // Abre a conexão com o Banco de Dados
+                conn.Open();
+
+            }
+
+            catch (Exception ex)
+            {
+                bIsOperationOK = false;
+                MessageBox.Show(ex.Message,
+                    "Erro ao tentar abrir o Banco de Dados",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+
+            try
+            {
+                // Executa o comando SQL
+
+                reader = comm.ExecuteReader();
+                String aux2 = Convert.ToString(cbCidade.Text);
+
+
+                while (reader.Read())
+                {
+                    cbCidade.Items.Add(reader["id"]);
+                    cidade = Convert.ToString(reader["nome"]);
+                    cidadeID = Convert.ToString(reader["id"]);
+                    if (cidade == aux2) break;
+                }
+
+                aux = Convert.ToInt32(cidadeID);
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+
+                bIsOperationOK = false;
+                MessageBox.Show(ex.Message,
+                    "Erro ao tentar executar o comando SQL.",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+
+            }conn.Close();
+            filtrarCidades();
+
+            comm2 = new SqlCommand(
+                "INSERT INTO premium_usuarios (nome, nascimento, CPF, telefone, CEP, cidades_id, generos_id) " +
+                "VALUES (@nome, @nascimento, @CPF, @telefone, @CEP, " + aux + ", @generos_id)", conn);
+
+            comm2.Parameters.Add("@nome", System.Data.SqlDbType.NVarChar);
+            comm2.Parameters["@nome"].Value = txNome.Text;
+
+            comm2.Parameters.Add("@nascimento", System.Data.SqlDbType.Date);
+            comm2.Parameters["@nascimento"].Value = dtpDataNasc.Value;
+
+            comm2.Parameters.Add("@CPF", System.Data.SqlDbType.NVarChar);
+            comm2.Parameters["@CPF"].Value = mtxCPF.Text;
+
+            comm2.Parameters.Add("@telefone", System.Data.SqlDbType.NVarChar);
+            comm2.Parameters["@telefone"].Value = mtxTelefone.Text;
+
+
+            comm2.Parameters.Add("@CEP", System.Data.SqlDbType.NVarChar);
+            comm2.Parameters["@CEP"].Value = mtxCEP.Text;
+
+
+            comm2.Parameters.Add("@cidade_id", System.Data.SqlDbType.Int);
+            comm2.Parameters["@cidade_id"].Value = Convert.ToInt32(cbCidade.SelectedValue);
+
+
+            comm2.Parameters.Add("@generos_id", System.Data.SqlDbType.Int);
+            comm2.Parameters["@generos_id"].Value = Convert.ToInt32(cbGenero.SelectedValue);
+
+
                 try
                 {
                     // Abre a conexão com o Banco de Dados
                     conn.Open();
+
                 }
                 catch (Exception ex)
                 {
@@ -118,34 +183,31 @@ namespace DametaProject
 
                 try
                 {
-                    comm.ExecuteNonQuery();
+                    comm2.ExecuteNonQuery();
                 }
                 catch (Exception ex)
                 {
+
                     bIsOperationOK = false;
                     MessageBox.Show(ex.Message,
                         "Erro ao tentar executar o comando SQL.",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
-                }
-            }
-            catch { }
-            finally
+
+                }conn.Close();
+
+
+            if (bIsOperationOK == true)
             {
-                // Fecha a conexão com o Bando de Dados
-                conn.Close();
+                MessageBox.Show("Cliente Cadastrado com sucesso!",
+                    "INSERT",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
 
-                if (bIsOperationOK == true)
-                {
-                    MessageBox.Show("Cliente Cadastrado com sucesso!",
-                        "INSERT",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
-
-                    AtualizaListaDeClientes();
-                    btLimpar_Click(sender, e);
-                }
+                AtualizaListaDeClientes();
+                btLimpar_Click(sender, e);
             }
+            
         }
 
         private void btConsultar_Click(object sender, EventArgs e)
@@ -192,14 +254,16 @@ namespace DametaProject
                     reader = comm.ExecuteReader();
 
                     // Se encontrou um cliente...
+
                     if (reader.Read())
                     {
+                        cbCidade.Text = reader["cidNome"].ToString();
                         txNome.Text = reader["clienteNome"].ToString();
                         mtxCPF.Text = reader["CPF"].ToString();
                         mtxTelefone.Text = reader["telefone"].ToString();
                         cbGenero.Text = reader["genNome"].ToString();
-                        cbCidade.Text = reader["cidNome"].ToString();
                         cbUF.Text = reader["UF"].ToString();
+                        cbCidade.Text = reader["cidNome"].ToString();
                         dtpDataNasc.Text = reader["nascimento"].ToString();
                         mtxCEP.Text = reader["CEP"].ToString();
                     }
@@ -301,9 +365,13 @@ namespace DametaProject
         {
             txID.Clear();
             txNome.Clear();
+            dtpDataNasc.ResetText();
             mtxCPF.Clear();
-            cbCidade.Text = "";
+            mtxTelefone.Text = "";
+            mtxCEP.Text = "";
             cbUF.Text = "";
+            cbGenero.Text = "";
+            cbCidade.Text = "";
             txID.Focus();
         }
 
@@ -318,20 +386,12 @@ namespace DametaProject
             conn = new SqlConnection(connectionString);
 
             comm = new SqlCommand(
-                "UPDATE Clientes SET Nome=@Nome, CPF=@CPF, cidades_id=@cidades_id " +
-                "WHERE ID_Cliente = @ID_Cliente", conn);
+                "DELETE FROM  premium_usuarios " +
+                "WHERE id = @ID_Cliente", conn);
 
             comm.Parameters.Add("@ID_Cliente", System.Data.SqlDbType.Int);
             comm.Parameters["@ID_Cliente"].Value = Convert.ToInt32(txID.Text);
 
-            comm.Parameters.Add("@Nome", System.Data.SqlDbType.NVarChar);
-            comm.Parameters["@Nome"].Value = txNome.Text;
-
-            comm.Parameters.Add("@CPF", System.Data.SqlDbType.NVarChar);
-            comm.Parameters["@CPF"].Value = mtxCPF.Text;
-
-            comm.Parameters.Add("@cidades_id", System.Data.SqlDbType.Int);
-            comm.Parameters["@cidades_id"].Value = Convert.ToInt32(cbCidade.SelectedValue.ToString());
 
             try
             {
@@ -368,8 +428,8 @@ namespace DametaProject
 
                 if (bIsOperationOK == true)
                 {
-                    MessageBox.Show("Registro Alterado!",
-                        "UPDATE",
+                    MessageBox.Show("Registro Excluido!",
+                        "DELETE",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
                 }
@@ -408,31 +468,7 @@ namespace DametaProject
 
         private void cbUF_SelectedIndexChanged(object sender, EventArgs e)
         {
-            cbCidade.Items.Clear();
-            SqlConnection conn;
-            SqlCommand comm;
-            SqlDataReader reader;
-            string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
-            conn = new SqlConnection(connectionString);
-
-            comm = new SqlCommand(
-                "SELECT nome FROM cidades WHERE UF = @UF", conn);
-            conn.Open();
-
-            comm.Parameters.Add("@UF", System.Data.SqlDbType.NVarChar);
-            comm.Parameters["@UF"].Value = Convert.ToString(cbUF.SelectedValue);
-
-
-            reader = comm.ExecuteReader();
-            while (reader.Read())
-            {
-                cbCidade.Items.Add(reader["nome"]);
-            }
-
-            reader.Close();
-            conn.Close();
-
-
+            filtrarCidades();
         }
     }
 }
