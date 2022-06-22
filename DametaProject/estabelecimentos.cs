@@ -15,11 +15,12 @@ namespace DametaProject
     public partial class Estabelecimentos : Form
     {
         bool inserindo = false;
-
+        string nomeEstabelecimento = "";
         public Estabelecimentos(bool isInserindo, string nome_estabelecimento = null)
         {
             InitializeComponent();
             this.inserindo = isInserindo;
+            this.nomeEstabelecimento = nome_estabelecimento;
             AtualizaListaDeEstabelecimentos();
         }
 
@@ -32,6 +33,7 @@ namespace DametaProject
         {
             // TODO: This line of code loads data into the 'dameta_dbDataSet.dtEstabelecimentos' table. You can move, or remove it, as needed.
             this.dtEstabelecimentosTableAdapter.Fill(this.dameta_dbDataSet.dtEstabelecimentos);
+            btLimpar_Click(sender, e);
             if (inserindo)
             {
                 btAlterar.Enabled = false;
@@ -39,6 +41,8 @@ namespace DametaProject
                 btConsultar.Enabled = false;
                 btIncluir.Enabled = true;
                 btLimpar.Enabled = true;
+                txID.Enabled = false;
+                label1.Enabled = false;
             }
             else
             {
@@ -65,7 +69,7 @@ namespace DametaProject
                     "WHERE estab.nome = @nome", conn);
 
                 comm.Parameters.Add("@nome", System.Data.SqlDbType.NVarChar);
-                comm.Parameters["@nome"].Value = Convert.ToString(txID.Text);
+                comm.Parameters["@nome"].Value = nomeEstabelecimento;
 
                 try
                 {
@@ -122,7 +126,86 @@ namespace DametaProject
             // TODO: This line of code loads data into the 'dameta_dbDataSet.cidades' table. You can move, or remove it, as needed.
             this.cidadesTableAdapter.Fill(this.dameta_dbDataSet.cidades);
             AtualizaListaDeEstabelecimentos();
-            btLimpar_Click(sender, e);
+        }
+
+        private void btIncluir_Click(object sender, EventArgs e)
+        {
+            SqlConnection conn;
+            SqlCommand comm;
+            bool bIsOperationOK = true;
+
+            string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
+
+            conn = new SqlConnection(connectionString);
+
+            comm = new SqlCommand(
+                "INSERT INTO estabelecimento (nome, nome_rua, numero, telefone, CEP, cidades_id) " +
+                "VALUES (@nome,@nome_rua, @numero, @telefone, @CEP, @cidades_id)", conn);
+
+            comm.Parameters.Add("@nome", System.Data.SqlDbType.NVarChar);
+            comm.Parameters["@nome"].Value = txNome.Text;
+
+            comm.Parameters.Add("@nome_rua", System.Data.SqlDbType.NVarChar);
+            comm.Parameters["@nome_rua"].Value = txRua.Text;
+
+            comm.Parameters.Add("@numero", System.Data.SqlDbType.Int);
+            comm.Parameters["@numero"].Value = Convert.ToInt32(txNumero.Text);
+
+            comm.Parameters.Add("@telefone", System.Data.SqlDbType.NVarChar);
+            comm.Parameters["@telefone"].Value = mtxTelefone.Text;
+
+            comm.Parameters.Add("@CEP", System.Data.SqlDbType.NVarChar);
+            comm.Parameters["@CEP"].Value = mtxCEP.Text;
+
+            comm.Parameters.Add("@cidades_id", System.Data.SqlDbType.Int);
+            comm.Parameters["@cidades_id"].Value = cbCidade.SelectedValue;
+
+            try
+            {
+                try
+                {
+                    // Abre a conexão com o Banco de Dados
+                    conn.Open();
+                }
+                catch (Exception ex)
+                {
+                    bIsOperationOK = false;
+                    MessageBox.Show(ex.Message,
+                        "Erro ao tentar abrir o Banco de Dados",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
+
+                try
+                {
+                    comm.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    bIsOperationOK = false;
+                    MessageBox.Show(ex.Message,
+                        "Erro ao tentar executar o comando SQL.",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
+            }
+            catch { }
+            finally
+            {
+                // Fecha a conexão com o Bando de Dados
+                conn.Close();
+
+                if (bIsOperationOK == true)
+                {
+                    MessageBox.Show("Estabelecimento cadastrado com sucesso!",
+                        "Registro Cadastrado!",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                }
+
+                AtualizaListaDeEstabelecimentos();
+                btLimpar_Click(sender, e);
+            }
         }
 
         private void btAlterar_Click(object sender, EventArgs e)

@@ -40,6 +40,8 @@ namespace DametaProject
             txID.Clear();
             txNome.Clear();
             txID.Focus();
+            mtxCNPJ.Clear();
+            mtxTelefone.Clear();
         }
 
         private void btConsultar_Click(object sender, EventArgs e)
@@ -169,14 +171,13 @@ namespace DametaProject
 
                 if (bIsOperationOK == true)
                 {
-                    MessageBox.Show("Cliente Cadastrado com sucesso!",
-                        "INSERT",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
-
-                    Fornecedores_Load(sender, e);
-                    btLimpar_Click(sender, e);
+                    MessageBox.Show("Fornecedor cadastrado com sucesso!",
+                          "Registro Cadastrado",
+                          MessageBoxButtons.OK,
+                          MessageBoxIcon.Information);
                 }
+                Fornecedores_Load(sender, e);
+                btLimpar_Click(sender, e);
             }
         }
 
@@ -242,8 +243,8 @@ namespace DametaProject
 
                 if (bIsOperationOK == true)
                 {
-                    MessageBox.Show("Registro Alterado!",
-                        "UPDATE",
+                    MessageBox.Show("Fornecedor alterado com sucesso!",
+                        "Registro Alterado!",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
                 }
@@ -314,8 +315,8 @@ namespace DametaProject
                 if (bIsOperationOK == true)
                 {
                     // Chama Função que atualiza os dados no DataGridView
-                    MessageBox.Show("Registro Excluído!",
-                        "Banco de Dados",
+                    MessageBox.Show("Fornecedor excluído com sucesso!",
+                        "Registro Excluído!",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     // Chama o mesmo método usado no botão Limpar
