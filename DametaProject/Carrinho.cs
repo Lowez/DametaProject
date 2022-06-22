@@ -459,6 +459,23 @@ namespace DametaProject
 
         private void txQtd_TextChanged(object sender, EventArgs e)
         {
+            string sQtd = txQtd.Text;
+            
+            for (int i = 0; i < sQtd.Length; i++)
+            {
+                if (!(sQtd[i] >= '0' && sQtd[i] <= '9'))
+                {
+                    MessageBox.Show("Caracter não suportado.",
+                        "Erro!",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+
+                    btAdicionar.Enabled = false;
+
+                    return;
+                }
+            }
+
             if (txQtd.Text != "")
             {
                 decimal qtd = Convert.ToDecimal(txQtd.Text);
