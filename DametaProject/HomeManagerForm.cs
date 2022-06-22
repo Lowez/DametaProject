@@ -58,5 +58,11 @@ namespace DametaProject
             this.Close();
             form_inicial.Show();
         }
+
+        private void btRelatorios_Click(object sender, EventArgs e)
+        {
+            HomeRelatorios form = new HomeRelatorios();
+            form.Show();
+        }
     }
 }
