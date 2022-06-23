@@ -41,7 +41,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txRua = new System.Windows.Forms.TextBox();
             this.emailLabel = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgtdtEstabelecimentos = new System.Windows.Forms.DataGridView();
             this.nomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cidades = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nomeruaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,12 +63,12 @@
             this.btConsultar = new System.Windows.Forms.Button();
             this.dtEstabelecimentosTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.dtEstabelecimentosTableAdapter();
             this.cbUF = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.estadosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.label4 = new System.Windows.Forms.Label();
             this.estadosTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.EstadosTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.cidadesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgtdtEstabelecimentos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtEstabelecimentosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.estabelecimentosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.estadosBindingSource)).BeginInit();
@@ -170,25 +170,26 @@
             this.emailLabel.TabIndex = 121;
             this.emailLabel.Text = "Rua:";
             // 
-            // dataGridView1
+            // dgtdtEstabelecimentos
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgtdtEstabelecimentos.AllowUserToAddRows = false;
+            this.dgtdtEstabelecimentos.AllowUserToDeleteRows = false;
+            this.dgtdtEstabelecimentos.AutoGenerateColumns = false;
+            this.dgtdtEstabelecimentos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgtdtEstabelecimentos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nomeDataGridViewTextBoxColumn,
             this.cidades,
             this.nomeruaDataGridViewTextBoxColumn,
             this.numeroDataGridViewTextBoxColumn,
             this.cEPDataGridViewTextBoxColumn,
             this.telefoneDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.dtEstabelecimentosBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(56, 231);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(681, 207);
-            this.dataGridView1.TabIndex = 115;
+            this.dgtdtEstabelecimentos.DataSource = this.dtEstabelecimentosBindingSource;
+            this.dgtdtEstabelecimentos.Location = new System.Drawing.Point(56, 231);
+            this.dgtdtEstabelecimentos.Name = "dgtdtEstabelecimentos";
+            this.dgtdtEstabelecimentos.ReadOnly = true;
+            this.dgtdtEstabelecimentos.Size = new System.Drawing.Size(681, 207);
+            this.dgtdtEstabelecimentos.TabIndex = 115;
+            this.dgtdtEstabelecimentos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgtdtEstabelecimentos_CellContentClick);
             // 
             // nomeDataGridViewTextBoxColumn
             // 
@@ -351,6 +352,11 @@
             this.cbUF.ValueMember = "UF";
             this.cbUF.SelectedIndexChanged += new System.EventHandler(this.cbUF_SelectedIndexChanged);
             // 
+            // estadosBindingSource
+            // 
+            this.estadosBindingSource.DataMember = "Estados";
+            this.estadosBindingSource.DataSource = this.dameta_dbDataSet;
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -359,11 +365,6 @@
             this.label4.Size = new System.Drawing.Size(24, 13);
             this.label4.TabIndex = 136;
             this.label4.Text = "UF:";
-            // 
-            // estadosBindingSource
-            // 
-            this.estadosBindingSource.DataMember = "Estados";
-            this.estadosBindingSource.DataSource = this.dameta_dbDataSet;
             // 
             // estadosTableAdapter
             // 
@@ -391,7 +392,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txRua);
             this.Controls.Add(this.emailLabel);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgtdtEstabelecimentos);
             this.Controls.Add(this.txNome);
             this.Controls.Add(this.nomeLabel);
             this.Controls.Add(this.txID);
@@ -402,7 +403,7 @@
             this.Load += new System.EventHandler(this.Estabelecimentos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.cidadesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgtdtEstabelecimentos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtEstabelecimentosBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.estabelecimentosBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.estadosBindingSource)).EndInit();
@@ -423,7 +424,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txRua;
         private System.Windows.Forms.Label emailLabel;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgtdtEstabelecimentos;
         private System.Windows.Forms.TextBox txNome;
         private System.Windows.Forms.Label nomeLabel;
         private System.Windows.Forms.TextBox txID;
