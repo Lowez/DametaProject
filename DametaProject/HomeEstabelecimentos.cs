@@ -33,11 +33,17 @@ namespace DametaProject
             form.Show();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgtdtEstabelecimentos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            string nome="2";
-            Estabelecimentos form = new Estabelecimentos(false, nome);
+            string nomeEstabelecimento = dgtdtEstabelecimentos.Rows[e.RowIndex].Cells[0].Value.ToString();
+            Estabelecimentos form = new Estabelecimentos(false, nomeEstabelecimento);
             form.Show();
+        }
+
+        private void btAtualizar_Click(object sender, EventArgs e)
+        {
+
+            this.dtEstabelecimentosTableAdapter.Fill(this.dameta_dbDataSet.dtEstabelecimentos);
         }
     }
 }
