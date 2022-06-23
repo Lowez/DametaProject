@@ -19,10 +19,10 @@ namespace DametaProject
         public Fornecedores()
         {
             InitializeComponent();
-            AtualizaListaDeClientes();
+            AtualizaListaDeFornecedores();
         }
 
-        private void AtualizaListaDeClientes()
+        private void AtualizaListaDeFornecedores()
         {
             this.fornecedoresTableAdapter.Fill(this.dameta_dbDataSet.fornecedores);
         }
@@ -83,7 +83,7 @@ namespace DametaProject
                     // Executa o comando SQL
                     reader = comm.ExecuteReader();
 
-                    // Se encontrou um cliente...
+                    // Se encontrou um fornecedor...
                     if (reader.Read())
                     {
 
@@ -345,14 +345,14 @@ namespace DametaProject
 
             // Cria um comando SQL para seleção de dados na tabela
             comm = new SqlCommand(
-                "SELECT cod_produto, nome, preco, tipo_produtos_id, fornecedores_id, estoque_id " +
-                "FROM produtos " +
-                "WHERE cod_produto=@ID_Produto ", conn);
+                "SELECT id, nome, telefone, CNPJ " +
+                "FROM fornecedores " +
+                "WHERE id=@id ", conn);
 
 
             // Recupera o registro do banco de dados a partir da chave primária 'Codigo'
-            comm.Parameters.Add("@ID_Produto", System.Data.SqlDbType.Int);
-            comm.Parameters["@ID_Produto"].Value = ID;
+            comm.Parameters.Add("@id", System.Data.SqlDbType.Int);
+            comm.Parameters["@id"].Value = ID;
             txID.Text = Convert.ToString(ID);
 
             try
