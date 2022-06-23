@@ -172,21 +172,22 @@
             // 
             // btAtualizar
             // 
-            this.btAtualizar.Location = new System.Drawing.Point(479, 13);
+            this.btAtualizar.Location = new System.Drawing.Point(484, 13);
             this.btAtualizar.Name = "btAtualizar";
             this.btAtualizar.Size = new System.Drawing.Size(100, 40);
             this.btAtualizar.TabIndex = 47;
             this.btAtualizar.Text = "Atualizar";
             this.btAtualizar.UseVisualStyleBackColor = true;
+            this.btAtualizar.Click += new System.EventHandler(this.btAtualizar_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(307, 27);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(166, 13);
+            this.label2.Size = new System.Drawing.Size(171, 13);
             this.label2.TabIndex = 46;
-            this.label2.Text = "Atualizar lista de estabelecimento:";
+            this.label2.Text = "Atualizar lista de estabelecimentos:";
             // 
             // HomeEstabelecimentos
             // 

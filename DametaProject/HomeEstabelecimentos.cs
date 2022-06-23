@@ -40,5 +40,10 @@ namespace DametaProject
             form.Show();
         }
 
+        private void btAtualizar_Click(object sender, EventArgs e)
+        {
+
+            this.dtEstabelecimentosTableAdapter.Fill(this.dameta_dbDataSet.dtEstabelecimentos);
+        }
     }
 }
