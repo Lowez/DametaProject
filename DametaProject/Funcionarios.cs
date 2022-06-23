@@ -26,7 +26,7 @@ namespace DametaProject
 
         private void AtualizaListaDeFuncionarios()
         {
-            this.funcionariosTableAdapter.Fill(this.dameta_dbDataSet.funcionarios);
+            this.dtFuncionariosTableAdapter.Fill(this.dameta_dbDataSet.dtFuncionarios);
         }
 
         private void Funcionarios_Load(object sender, EventArgs e)
@@ -412,5 +412,88 @@ namespace DametaProject
             btLimpar_Click(sender, e);
         }
 
+        private void buscarPeloNome(string nome)
+        {
+            SqlConnection conn;
+            SqlCommand comm;
+            SqlDataReader reader;
+
+            string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
+
+            // Inicializa a conexão com o Banco de Dados
+            conn = new SqlConnection(connectionString);
+
+            comm = new SqlCommand(
+                "SELECT func.id, func.nome AS funcNome, func.CPF, func.nascimento, func.email, func.CPF, func.salario, " +
+                "func.telefone, func.generos_id, func.cargos_id, func.estabelecimentos_id, gen.id, gen.nome AS genNome, " +
+                "car.id, car.nome AS carNome, estab.id, estab.nome AS estabNome " +
+                "FROM funcionarios AS func " +
+                "INNER JOIN generos AS gen ON gen.id = func.generos_id " +
+                "INNER JOIN cargos AS car ON car.id = func.cargos_id " +
+                "INNER JOIN estabelecimentos AS estab ON estab.id = func.estabelecimentos_id " +
+                "WHERE func.nome = @nome", conn);
+
+            comm.Parameters.Add("@nome", System.Data.SqlDbType.NVarChar);
+            comm.Parameters["@nome"].Value = nome;
+
+            try
+            {
+                try
+                {
+                    // Abre a conexão com o Banco de Dados
+                    conn.Open();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message,
+                        "Erro ao tentar abrir o Banco de Dados",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
+
+                try
+                {
+                    // Executa o comando SQL
+                    reader = comm.ExecuteReader();
+
+                    // Se encontrou um cliente...
+                    if (reader.Read())
+                    {
+                        txID.Text = reader["id"].ToString();
+                        txNome.Text = reader["funcNome"].ToString();
+                        cbGenero.Text = reader["genNome"].ToString();
+                        cbCargo.Text = reader["carNome"].ToString();
+                        cbEstabelecimento.Text = reader["estabNome"].ToString();
+                        mtxCPF.Text = reader["CPF"].ToString();
+                        mtxTelefone.Text = reader["telefone"].ToString();
+                        txEmail.Text = reader["email"].ToString();
+                        txSalario.Text = reader["Salario"].ToString();
+                        dtpDataNascimento.Text = reader["nascimento"].ToString();
+
+                    }
+
+                    reader.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message,
+                        "Erro ao tentar executar o comando SQL.",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
+            }
+            catch { }
+            finally
+            {
+                // Fecha a conexão com o Bando de Dados
+                conn.Close();
+            }
+        }
+
+        private void dgtdtFuncionarios_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            string nome = dgtdtFuncionarios.Rows[e.RowIndex].Cells[0].Value.ToString();
+            buscarPeloNome(nome);
+        }
     }
 }

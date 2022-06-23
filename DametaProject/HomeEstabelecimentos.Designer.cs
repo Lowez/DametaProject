@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgtdtEstabelecimentos = new System.Windows.Forms.DataGridView();
             this.nomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cidades = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nomeruaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,8 +44,10 @@
             this.estabelecimentosTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.estabelecimentosTableAdapter();
             this.btIncluir = new System.Windows.Forms.Button();
             this.dtEstabelecimentosTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.dtEstabelecimentosTableAdapter();
+            this.btAtualizar = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgtdtEstabelecimentos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtEstabelecimentosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.estabelecimentosBindingSource)).BeginInit();
@@ -62,7 +64,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dataGridView1);
+            this.groupBox1.Controls.Add(this.dgtdtEstabelecimentos);
             this.groupBox1.Location = new System.Drawing.Point(12, 83);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(776, 359);
@@ -70,24 +72,24 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Estabelecimentos";
             // 
-            // dataGridView1
+            // dgtdtEstabelecimentos
             // 
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgtdtEstabelecimentos.AutoGenerateColumns = false;
+            this.dgtdtEstabelecimentos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgtdtEstabelecimentos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nomeDataGridViewTextBoxColumn,
             this.cidades,
             this.nomeruaDataGridViewTextBoxColumn,
             this.numeroDataGridViewTextBoxColumn,
             this.cEPDataGridViewTextBoxColumn,
             this.telefoneDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.dtEstabelecimentosBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 43);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(764, 310);
-            this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dgtdtEstabelecimentos.DataSource = this.dtEstabelecimentosBindingSource;
+            this.dgtdtEstabelecimentos.Location = new System.Drawing.Point(6, 43);
+            this.dgtdtEstabelecimentos.Name = "dgtdtEstabelecimentos";
+            this.dgtdtEstabelecimentos.ReadOnly = true;
+            this.dgtdtEstabelecimentos.Size = new System.Drawing.Size(764, 310);
+            this.dgtdtEstabelecimentos.TabIndex = 0;
+            this.dgtdtEstabelecimentos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgtdtEstabelecimentos_CellDoubleClick);
             // 
             // nomeDataGridViewTextBoxColumn
             // 
@@ -168,11 +170,31 @@
             // 
             this.dtEstabelecimentosTableAdapter.ClearBeforeFill = true;
             // 
+            // btAtualizar
+            // 
+            this.btAtualizar.Location = new System.Drawing.Point(479, 13);
+            this.btAtualizar.Name = "btAtualizar";
+            this.btAtualizar.Size = new System.Drawing.Size(100, 40);
+            this.btAtualizar.TabIndex = 47;
+            this.btAtualizar.Text = "Atualizar";
+            this.btAtualizar.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(307, 27);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(166, 13);
+            this.label2.TabIndex = 46;
+            this.label2.Text = "Atualizar lista de estabelecimento:";
+            // 
             // HomeEstabelecimentos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btAtualizar);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.btIncluir);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
@@ -181,7 +203,7 @@
             this.Text = "HomeEstabelecimentos";
             this.Load += new System.EventHandler(this.HomeEstabelecimentos_Load);
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgtdtEstabelecimentos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtEstabelecimentosBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.estabelecimentosBindingSource)).EndInit();
@@ -193,7 +215,7 @@
         #endregion
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgtdtEstabelecimentos;
         private dameta_dbDataSet dameta_dbDataSet;
         private System.Windows.Forms.BindingSource estabelecimentosBindingSource;
         private dameta_dbDataSetTableAdapters.estabelecimentosTableAdapter estabelecimentosTableAdapter;
@@ -206,5 +228,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn numeroDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn cEPDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn telefoneDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button btAtualizar;
+        private System.Windows.Forms.Label label2;
     }
 }
