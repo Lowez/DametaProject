@@ -359,11 +359,70 @@ namespace DametaProject
         {
             SqlConnection conn;
             SqlCommand comm;
+            SqlDataReader reader;
             bool bIsOperationOK = true;
+            int estoque_id = 0;
 
             string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
 
             conn = new SqlConnection(connectionString);
+
+            SqlCommand commEstoque_id = new SqlCommand(
+                "SELECT estoque_id FROM produtos " +
+                "WHERE id = @id", conn
+                );
+
+            commEstoque_id.Parameters.Add("@id", System.Data.SqlDbType.Int);
+            commEstoque_id.Parameters["@id"].Value = Convert.ToInt32(txID.Text);
+
+            try
+            {
+                // Tenta abrir a conexão com o Banco de Dados
+                try
+                {
+                    conn.Open();
+                }
+                catch (SqlException error)
+                {
+                    MessageBox.Show(error.Message,
+                        "Houve um problema ao tentar abrir a conexão com a base de dados",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
+
+                try
+                {
+                    reader = commEstoque_id.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        estoque_id = Convert.ToInt32(reader["estoque_id"]);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Produto não encontrado",
+                        "Erro!",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    }
+
+                    reader.Close();
+                }
+                catch (Exception error)
+                {
+                    MessageBox.Show(error.Message,
+                        "Erro ao tentar executar comando",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
+            }
+            catch { }
+            finally
+            {
+                conn.Close();
+            }
+
+            //COLOCAR INNER JOIN NO UPDATE
 
             comm = new SqlCommand(
 
@@ -383,10 +442,10 @@ namespace DametaProject
             comm.Parameters["@tipo_produtos_id"].Value = Convert.ToInt32(cbTipo.SelectedValue.ToString());
 
             comm.Parameters.Add("@fornecedores_id", System.Data.SqlDbType.Int);
-            comm.Parameters["@fornecedores_id"].Value = Convert.ToInt32(cbTipo.SelectedValue.ToString());
+            comm.Parameters["@fornecedores_id"].Value = Convert.ToInt32(cbFornecedor.SelectedValue.ToString());
 
             comm.Parameters.Add("@estoque_id", System.Data.SqlDbType.Int);
-            comm.Parameters["@estoque_id"].Value = Convert.ToInt32(cbTipo.SelectedValue.ToString());
+            comm.Parameters["@estoque_id"].Value = estoque_id;
 
             try
             {
