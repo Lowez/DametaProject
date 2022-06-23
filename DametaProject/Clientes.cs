@@ -357,7 +357,6 @@ namespace DametaProject
                 "cidades_id = " + aux + ", generos_id = @generos_id " +
                 "WHERE id = @id", conn);
 
-
             comm2.Parameters.Add("@id", System.Data.SqlDbType.Int);
             comm2.Parameters["@id"].Value = txID.Text;
 
