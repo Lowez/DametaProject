@@ -230,6 +230,7 @@
     <EmbeddedResource Include="FormaDePagamento.resx">
       <DependentUpon>FormaDePagamento.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="RelatorioFuncionarios.rdlc" />
     <EmbeddedResource Include="RelatorioFuncionarios.resx">
       <DependentUpon>RelatorioFuncionarios.cs</DependentUpon>
     </EmbeddedResource>
@@ -319,8 +320,6 @@
       <DependentUpon>RelatorioFornecedoresEstabelecimentos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RelatorioFornecedores.rdlc" />
-    <EmbeddedResource Include="RelatórioFuncionários.rdlc" />
-    <EmbeddedResource Include="RelatorioFornecedoresEstabelecimentos.rdlc" />
     <EmbeddedResource Include="Report1.rdlc" />
     <EmbeddedResource Include="TabelaDePrecos.rdlc" />
     <EmbeddedResource Include="ResetSenha.resx">

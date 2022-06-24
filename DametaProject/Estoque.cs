@@ -29,8 +29,7 @@ namespace DametaProject
 
         private void GerarRelatorio_Click(object sender, EventArgs e)
         {
-            int qtd = 0;
-            this.controleDeEstoqueTableAdapter.Fill(this.dameta_dbDataSet.ControleDeEstoque, cbNome.Text, qtd);
+            this.controleDeEstoqueTableAdapter.Fill(this.dameta_dbDataSet.ControleDeEstoque, cbNome.Text);
             this.reportViewer1.RefreshReport();
 
             if (cbNome.Text == "")
@@ -41,28 +40,8 @@ namespace DametaProject
 
             else
             {
-
-                ReportParameter rp = new ReportParameter("estabelecimento", "Pesquisa por: " + cbNome.Text);
-
-
-                if (radioButton2.Checked)
-                {
-
-                }
-                else if (radioButton3.Checked)
-                {
-                    ReportParameter rp2 = new ReportParameter("qtd", "Exibindo produtos fora de estoque");
-                    this.reportViewer1.LocalReport.SetParameters(new ReportParameter[] { rp, rp2 });
-                }
-                else
-                {
-                    //    ReportParameter rp = new ReportParameter("qtd", "Exibindo todos os produtos cadastrados no estabelecimento");
-                    //    ReportParameter rp3 = new ReportParameter("dataFim", "Até " + dtpDataFim.Text);
-
-                    //}
-                    this.reportViewer1.LocalReport.SetParameters(new ReportParameter[] { rp });
-                }
-
+                ReportParameter rp = new ReportParameter("estabelecimento", "Pesquisa no estabelecimento: " + cbNome.Text);
+                this.reportViewer1.LocalReport.SetParameters(new ReportParameter[] { rp });
                 this.reportViewer1.RefreshReport();
             }
         }

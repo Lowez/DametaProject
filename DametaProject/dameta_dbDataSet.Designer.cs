@@ -6008,6 +6008,8 @@ namespace DametaProject {
             
             private global::System.Data.DataColumn columnestabelecimento;
             
+            private global::System.Data.DataColumn columncargo;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public RelatorioDeFuncionariosDataTable() {
@@ -6075,6 +6077,14 @@ namespace DametaProject {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn cargoColumn {
+                get {
+                    return this.columncargo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -6110,13 +6120,14 @@ namespace DametaProject {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public RelatorioDeFuncionariosRow AddRelatorioDeFuncionariosRow(string nome, string CPF, decimal salario, string estabelecimento) {
+            public RelatorioDeFuncionariosRow AddRelatorioDeFuncionariosRow(string nome, string CPF, decimal salario, string estabelecimento, string cargo) {
                 RelatorioDeFuncionariosRow rowRelatorioDeFuncionariosRow = ((RelatorioDeFuncionariosRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         nome,
                         CPF,
                         salario,
-                        estabelecimento};
+                        estabelecimento,
+                        cargo};
                 rowRelatorioDeFuncionariosRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowRelatorioDeFuncionariosRow);
                 return rowRelatorioDeFuncionariosRow;
@@ -6143,6 +6154,7 @@ namespace DametaProject {
                 this.columnCPF = base.Columns["CPF"];
                 this.columnsalario = base.Columns["salario"];
                 this.columnestabelecimento = base.Columns["estabelecimento"];
+                this.columncargo = base.Columns["cargo"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6156,6 +6168,8 @@ namespace DametaProject {
                 base.Columns.Add(this.columnsalario);
                 this.columnestabelecimento = new global::System.Data.DataColumn("estabelecimento", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnestabelecimento);
+                this.columncargo = new global::System.Data.DataColumn("cargo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncargo);
                 this.columnnome.AllowDBNull = false;
                 this.columnnome.MaxLength = 50;
                 this.columnCPF.AllowDBNull = false;
@@ -6163,6 +6177,8 @@ namespace DametaProject {
                 this.columnsalario.AllowDBNull = false;
                 this.columnestabelecimento.AllowDBNull = false;
                 this.columnestabelecimento.MaxLength = 50;
+                this.columncargo.AllowDBNull = false;
+                this.columncargo.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -10199,6 +10215,17 @@ namespace DametaProject {
                 }
                 set {
                     this[this.tableRelatorioDeFuncionarios.estabelecimentoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string cargo {
+                get {
+                    return ((string)(this[this.tableRelatorioDeFuncionarios.cargoColumn]));
+                }
+                set {
+                    this[this.tableRelatorioDeFuncionarios.cargoColumn] = value;
                 }
             }
         }
@@ -16762,17 +16789,16 @@ FROM            produtos INNER JOIN
                          estoque ON produtos.estoque_id = estoque.id INNER JOIN
                          estabelecimentos ON estoque.id = estabelecimentos.id INNER JOIN
                          cidades ON estabelecimentos.cidades_id = cidades.id
-WHERE        (estabelecimentos.nome = @param) AND (qtd = @qtd)";
+WHERE        (estabelecimentos.nome = @param)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@param", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "estabelecimento", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@qtd", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "qtd", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(dameta_dbDataSet.ControleDeEstoqueDataTable dataTable, string param, int qtd) {
+        public virtual int Fill(dameta_dbDataSet.ControleDeEstoqueDataTable dataTable, string param) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((param == null)) {
                 throw new global::System.ArgumentNullException("param");
@@ -16780,7 +16806,6 @@ WHERE        (estabelecimentos.nome = @param) AND (qtd = @qtd)";
             else {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((string)(param));
             }
-            this.Adapter.SelectCommand.Parameters[1].Value = ((int)(qtd));
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -16792,7 +16817,7 @@ WHERE        (estabelecimentos.nome = @param) AND (qtd = @qtd)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual dameta_dbDataSet.ControleDeEstoqueDataTable GetData(string param, int qtd) {
+        public virtual dameta_dbDataSet.ControleDeEstoqueDataTable GetData(string param) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((param == null)) {
                 throw new global::System.ArgumentNullException("param");
@@ -16800,7 +16825,6 @@ WHERE        (estabelecimentos.nome = @param) AND (qtd = @qtd)";
             else {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((string)(param));
             }
-            this.Adapter.SelectCommand.Parameters[1].Value = ((int)(qtd));
             dameta_dbDataSet.ControleDeEstoqueDataTable dataTable = new dameta_dbDataSet.ControleDeEstoqueDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -16932,6 +16956,7 @@ WHERE        (estabelecimentos.nome = @param) AND (qtd = @qtd)";
             tableMapping.ColumnMappings.Add("CPF", "CPF");
             tableMapping.ColumnMappings.Add("salario", "salario");
             tableMapping.ColumnMappings.Add("estabelecimento", "estabelecimento");
+            tableMapping.ColumnMappings.Add("cargo", "cargo");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -16948,19 +16973,27 @@ WHERE        (estabelecimentos.nome = @param) AND (qtd = @qtd)";
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        funcionarios.nome, funcionarios.CPF, funcionarios.salario, estabele" +
-                "cimentos.nome AS estabelecimento\r\nFROM            funcionarios INNER JOIN\r\n     " +
-                "                    estabelecimentos ON funcionarios.estabelecimentos_id = estab" +
-                "elecimentos.id";
+            this._commandCollection[0].CommandText = @"SELECT        funcionarios.nome, funcionarios.CPF, funcionarios.salario, estabelecimentos.nome AS estabelecimento, cargos.nome AS cargo
+FROM            funcionarios INNER JOIN
+                         estabelecimentos ON funcionarios.estabelecimentos_id = estabelecimentos.id INNER JOIN
+                         cargos ON funcionarios.cargos_id = cargos.id
+WHERE        (estabelecimentos.nome = @param)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@param", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "estabelecimento", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(dameta_dbDataSet.RelatorioDeFuncionariosDataTable dataTable) {
+        public virtual int Fill(dameta_dbDataSet.RelatorioDeFuncionariosDataTable dataTable, string param) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((param == null)) {
+                throw new global::System.ArgumentNullException("param");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(param));
+            }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -16972,8 +17005,14 @@ WHERE        (estabelecimentos.nome = @param) AND (qtd = @qtd)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual dameta_dbDataSet.RelatorioDeFuncionariosDataTable GetData() {
+        public virtual dameta_dbDataSet.RelatorioDeFuncionariosDataTable GetData(string param) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((param == null)) {
+                throw new global::System.ArgumentNullException("param");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(param));
+            }
             dameta_dbDataSet.RelatorioDeFuncionariosDataTable dataTable = new dameta_dbDataSet.RelatorioDeFuncionariosDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -17123,16 +17162,24 @@ WHERE        (estabelecimentos.nome = @param) AND (qtd = @qtd)";
             this._commandCollection[0].CommandText = @"SELECT        fornecedores.nome AS fornecedor, produtos.nome AS produto, estabelecimentos.nome AS estabelecimento
 FROM            fornecedores INNER JOIN
                          produtos ON fornecedores.id = produtos.fornecedores_id INNER JOIN
-                         estabelecimentos ON fornecedores.id = estabelecimentos.id";
+                         estabelecimentos ON fornecedores.id = estabelecimentos.id
+WHERE        (estabelecimentos.nome = @param)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@param", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "estabelecimento", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(dameta_dbDataSet.FornecedoresEstabelecimentosDataTable dataTable) {
+        public virtual int Fill(dameta_dbDataSet.FornecedoresEstabelecimentosDataTable dataTable, string param) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((param == null)) {
+                throw new global::System.ArgumentNullException("param");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(param));
+            }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -17144,8 +17191,14 @@ FROM            fornecedores INNER JOIN
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual dameta_dbDataSet.FornecedoresEstabelecimentosDataTable GetData() {
+        public virtual dameta_dbDataSet.FornecedoresEstabelecimentosDataTable GetData(string param) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((param == null)) {
+                throw new global::System.ArgumentNullException("param");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(param));
+            }
             dameta_dbDataSet.FornecedoresEstabelecimentosDataTable dataTable = new dameta_dbDataSet.FornecedoresEstabelecimentosDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
