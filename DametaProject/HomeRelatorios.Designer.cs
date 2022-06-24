@@ -216,6 +216,7 @@
             this.Controls.Add(this.btFornecedores);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btControleEstoque);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "HomeRelatorios";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HomeRelatorios";

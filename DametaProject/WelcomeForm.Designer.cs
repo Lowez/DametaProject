@@ -117,6 +117,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btAcessoAdmin);
             this.Controls.Add(this.btAcessoCaixa);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "WelcomeForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Bem-Vindo(a)";

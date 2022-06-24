@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CodigoValidacao));
             this.mtxCodigo = new System.Windows.Forms.MaskedTextBox();
             this.btValidarCodigo = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -72,6 +73,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btValidarCodigo);
             this.Controls.Add(this.mtxCodigo);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CodigoValidacao";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CodigoValidacao";

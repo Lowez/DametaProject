@@ -193,6 +193,7 @@
             this.Controls.Add(this.btClientes);
             this.Controls.Add(this.btFuncionarios);
             this.Controls.Add(this.btEstabelecimentos);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "HomeManagerForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Bem vindo(a) [Nome do Usuário]";
