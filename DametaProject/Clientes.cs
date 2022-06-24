@@ -102,6 +102,18 @@ namespace DametaProject
                     {
                         return "Código do Cliente";
                     }
+                    else
+                    {
+                        bool existe = ConsultarExistencia(Convert.ToInt32(txID.Text));
+                        if (!existe)
+                        {
+                            MessageBox.Show("Cliente não existe no banco de dados!",
+                          "Registro não existe",
+                          MessageBoxButtons.OK,
+                          MessageBoxIcon.Information);
+                            return "nao existe";
+                        }
+                    }
                 }
 
                 if (txNome.Text == "")
@@ -442,28 +454,28 @@ namespace DametaProject
 
         private void btAlterar_Click(object sender, EventArgs e)
         {
-            bool existe = ConsultarExistencia(Convert.ToInt32(txID.Text));
-            if (existe)
-            {
-                SqlConnection conn;
-                SqlCommand comm;
-                SqlCommand comm2;
-                SqlDataReader reader;
-                string cidade;
-                string cidadeID = "";
-                int aux = 0;
-                bool bIsOperationOK = true;
 
-                if (!(camposVazios("alterar") == "preenchido"))
+            SqlConnection conn;
+            SqlCommand comm;
+            SqlCommand comm2;
+            SqlDataReader reader;
+            string cidade;
+            string cidadeID = "";
+            int aux = 0;
+            bool bIsOperationOK = true;
+
+            string campoVazio = (camposVazios("alterar"));
+            if (campoVazio != "nao existe")
+            {
+                if (campoVazio != "preenchido")
                 {
-                    MessageBox.Show("Você deve preencher: " + camposVazios("alterar"),
+                    MessageBox.Show("Você deve preencher: " + campoVazio,
                         "Informações incompletas!",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
-
+                    bIsOperationOK = false;
                     return;
                 }
-
                 string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
                 conn = new SqlConnection(connectionString);
 
@@ -592,13 +604,6 @@ namespace DametaProject
                     btLimpar_Click(sender, e);
                 }
             }
-            else
-            {
-                MessageBox.Show("Cliente não pode ser alterado porque não existe no banco de dados!",
-                           "Registro não existe",
-                           MessageBoxButtons.OK,
-                           MessageBoxIcon.Information);
-            }
         }
 
         private void btLimpar_Click(object sender, EventArgs e)
@@ -617,23 +622,23 @@ namespace DametaProject
 
         private void btExcluir_Click_1(object sender, EventArgs e)
         {
+
+            SqlConnection conn;
+            SqlCommand comm;
+            bool bIsOperationOK = true;
+
+            if (!(camposVazios("only_id") == "preenchido"))
+            {
+                MessageBox.Show("Você deve preencher: " + camposVazios("only_id"),
+                    "Informações incompletas!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+
+                return;
+            }
             bool existe = ConsultarExistencia(Convert.ToInt32(txID.Text));
             if (existe)
             {
-                SqlConnection conn;
-                SqlCommand comm;
-                bool bIsOperationOK = true;
-
-                if (!(camposVazios("only_id") == "preenchido"))
-                {
-                    MessageBox.Show("Você deve preencher: " + camposVazios("only_id"),
-                        "Informações incompletas!",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
-
-                    return;
-                }
-
                 string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
 
                 conn = new SqlConnection(connectionString);
