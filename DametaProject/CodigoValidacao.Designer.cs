@@ -76,7 +76,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CodigoValidacao";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "CodigoValidacao";
+            this.Text = "Codigo de Validacao";
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -107,7 +107,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormaDePagamento";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormaDePagamento";
+            this.Text = "Forma De Pagamento";
             this.ResumeLayout(false);
             this.PerformLayout();
 

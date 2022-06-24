@@ -71,7 +71,7 @@
             this.ClientSize = new System.Drawing.Size(651, 494);
             this.Controls.Add(this.reportViewer1);
             this.Name = "TabelaDePrecos";
-            this.Text = "TabelaDePrecos";
+            this.Text = "Tabela geral de preços";
             this.Load += new System.EventHandler(this.TabelaDePrecos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.produtosBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).EndInit();

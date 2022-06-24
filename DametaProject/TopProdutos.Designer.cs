@@ -30,21 +30,31 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            this.produtosmaisvendidosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dameta_dbDataSet = new DametaProject.dameta_dbDataSet();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.label1 = new System.Windows.Forms.Label();
             this.cbNome = new System.Windows.Forms.ComboBox();
             this.estabelecimentosBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dameta_dbDataSet = new DametaProject.dameta_dbDataSet();
             this.GerarRelatorio = new System.Windows.Forms.Button();
             this.estabelecimentosTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.estabelecimentosTableAdapter();
             this.produtos_mais_vendidosBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.produtosmaisvendidosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.produtos_mais_vendidosTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.produtos_mais_vendidosTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.estabelecimentosBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.produtos_mais_vendidosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.produtosmaisvendidosBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.estabelecimentosBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.produtos_mais_vendidosBindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // produtosmaisvendidosBindingSource
+            // 
+            this.produtosmaisvendidosBindingSource.DataMember = "produtos_mais_vendidos";
+            this.produtosmaisvendidosBindingSource.DataSource = this.dameta_dbDataSet;
+            // 
+            // dameta_dbDataSet
+            // 
+            this.dameta_dbDataSet.DataSetName = "dameta_dbDataSet";
+            this.dameta_dbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // reportViewer1
             // 
@@ -83,11 +93,6 @@
             this.estabelecimentosBindingSource.DataMember = "estabelecimentos";
             this.estabelecimentosBindingSource.DataSource = this.dameta_dbDataSet;
             // 
-            // dameta_dbDataSet
-            // 
-            this.dameta_dbDataSet.DataSetName = "dameta_dbDataSet";
-            this.dameta_dbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // GerarRelatorio
             // 
             this.GerarRelatorio.Location = new System.Drawing.Point(196, 95);
@@ -107,11 +112,6 @@
             this.produtos_mais_vendidosBindingSource.DataMember = "produtos_mais_vendidos";
             this.produtos_mais_vendidosBindingSource.DataSource = this.dameta_dbDataSet;
             // 
-            // produtosmaisvendidosBindingSource
-            // 
-            this.produtosmaisvendidosBindingSource.DataMember = "produtos_mais_vendidos";
-            this.produtosmaisvendidosBindingSource.DataSource = this.dameta_dbDataSet;
-            // 
             // produtos_mais_vendidosTableAdapter
             // 
             this.produtos_mais_vendidosTableAdapter.ClearBeforeFill = true;
@@ -126,12 +126,12 @@
             this.Controls.Add(this.GerarRelatorio);
             this.Controls.Add(this.reportViewer1);
             this.Name = "TopProdutos";
-            this.Text = "TopProdutos";
+            this.Text = "Top Produtos";
             this.Load += new System.EventHandler(this.TopProdutos_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.estabelecimentosBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.produtos_mais_vendidosBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.produtosmaisvendidosBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.estabelecimentosBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.produtos_mais_vendidosBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

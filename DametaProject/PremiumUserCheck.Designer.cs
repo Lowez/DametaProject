@@ -92,7 +92,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "PremiumUserCheck";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "PremiumUserCheck";
+            this.Text = "Confirmação de usuário premium";
             this.ResumeLayout(false);
             this.PerformLayout();
 

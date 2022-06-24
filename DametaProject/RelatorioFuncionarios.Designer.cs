@@ -29,31 +29,41 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource4 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            this.relatorioDeFuncionariosBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.dameta_dbDataSet = new DametaProject.dameta_dbDataSet();
             this.label1 = new System.Windows.Forms.Label();
             this.cbNome = new System.Windows.Forms.ComboBox();
+            this.dtEstabelecimentosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.GerarRelatorio = new System.Windows.Forms.Button();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.dameta_dbDataSet = new DametaProject.dameta_dbDataSet();
             this.estabelecimentosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.estabelecimentosTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.estabelecimentosTableAdapter();
             this.produtosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.RelatorioDeFuncionariosBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.relatorioDeFuncionariosBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.relatorioDeFuncionariosTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.RelatorioDeFuncionariosTableAdapter();
             this.dametadbDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.estabelecimentosBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.dtEstabelecimentosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dtEstabelecimentosTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.dtEstabelecimentosTableAdapter();
+            ((System.ComponentModel.ISupportInitialize)(this.relatorioDeFuncionariosBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtEstabelecimentosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.estabelecimentosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.produtosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RelatorioDeFuncionariosBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.relatorioDeFuncionariosBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dametadbDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.estabelecimentosBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtEstabelecimentosBindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // relatorioDeFuncionariosBindingSource1
+            // 
+            this.relatorioDeFuncionariosBindingSource1.DataMember = "RelatorioDeFuncionarios";
+            this.relatorioDeFuncionariosBindingSource1.DataSource = this.dameta_dbDataSet;
+            // 
+            // dameta_dbDataSet
+            // 
+            this.dameta_dbDataSet.DataSetName = "dameta_dbDataSet";
+            this.dameta_dbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // label1
             // 
@@ -75,6 +85,11 @@
             this.cbNome.TabIndex = 5;
             this.cbNome.ValueMember = "nome";
             // 
+            // dtEstabelecimentosBindingSource
+            // 
+            this.dtEstabelecimentosBindingSource.DataMember = "dtEstabelecimentos";
+            this.dtEstabelecimentosBindingSource.DataSource = this.dameta_dbDataSet;
+            // 
             // GerarRelatorio
             // 
             this.GerarRelatorio.Location = new System.Drawing.Point(472, 21);
@@ -87,20 +102,15 @@
             // 
             // reportViewer1
             // 
-            reportDataSource4.Name = "DataSet1";
-            reportDataSource4.Value = this.relatorioDeFuncionariosBindingSource1;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource4);
+            reportDataSource1.Name = "DataSet1";
+            reportDataSource1.Value = this.relatorioDeFuncionariosBindingSource1;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "DametaProject.RelatorioFuncionarios.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(5, 67);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
             this.reportViewer1.Size = new System.Drawing.Size(636, 481);
             this.reportViewer1.TabIndex = 7;
-            // 
-            // dameta_dbDataSet
-            // 
-            this.dameta_dbDataSet.DataSetName = "dameta_dbDataSet";
-            this.dameta_dbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // estabelecimentosBindingSource
             // 
@@ -121,11 +131,6 @@
             this.RelatorioDeFuncionariosBindingSource.DataMember = "RelatorioDeFuncionarios";
             this.RelatorioDeFuncionariosBindingSource.DataSource = this.dameta_dbDataSet;
             // 
-            // relatorioDeFuncionariosBindingSource1
-            // 
-            this.relatorioDeFuncionariosBindingSource1.DataMember = "RelatorioDeFuncionarios";
-            this.relatorioDeFuncionariosBindingSource1.DataSource = this.dameta_dbDataSet;
-            // 
             // relatorioDeFuncionariosTableAdapter
             // 
             this.relatorioDeFuncionariosTableAdapter.ClearBeforeFill = true;
@@ -139,11 +144,6 @@
             // 
             this.estabelecimentosBindingSource1.DataMember = "estabelecimentos";
             this.estabelecimentosBindingSource1.DataSource = this.dameta_dbDataSet;
-            // 
-            // dtEstabelecimentosBindingSource
-            // 
-            this.dtEstabelecimentosBindingSource.DataMember = "dtEstabelecimentos";
-            this.dtEstabelecimentosBindingSource.DataSource = this.dameta_dbDataSet;
             // 
             // dtEstabelecimentosTableAdapter
             // 
@@ -159,16 +159,16 @@
             this.Controls.Add(this.cbNome);
             this.Controls.Add(this.GerarRelatorio);
             this.Name = "RelatorioFuncionarios";
-            this.Text = "RelatorioDeFuncionarios";
+            this.Text = "Relatorio De Funcionarios";
             this.Load += new System.EventHandler(this.RelatorioDeFuncionarios_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.relatorioDeFuncionariosBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtEstabelecimentosBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.estabelecimentosBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.produtosBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RelatorioDeFuncionariosBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.relatorioDeFuncionariosBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dametadbDataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.estabelecimentosBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtEstabelecimentosBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -153,7 +153,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "InfosCliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "InfosCliente";
+            this.Text = "Infos Usuário Premium ";
             this.Load += new System.EventHandler(this.InfosCliente_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

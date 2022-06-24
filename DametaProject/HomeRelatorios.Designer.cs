@@ -219,7 +219,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "HomeRelatorios";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "HomeRelatorios";
+            this.Text = "Home Relatorios";
             this.Load += new System.EventHandler(this.HomeRelatorios_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
