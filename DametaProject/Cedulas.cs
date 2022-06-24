@@ -25,6 +25,11 @@ namespace DametaProject
         {
             if (txValorPago.Text != "")
             {
+                MessageBox.Show("Compra concluída.",
+                    "Sucesso!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             } else

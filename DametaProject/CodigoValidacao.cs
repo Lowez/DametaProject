@@ -14,13 +14,11 @@ namespace DametaProject
     {
         string codigo_senha;
         string email_func;
-        ResetSenha form_resetsenha;
 
-        public CodigoValidacao(string email, ResetSenha form)
+        public CodigoValidacao(string email)
         {
             InitializeComponent();
 
-            form_resetsenha = form;
             email_func = email;
         }
 
@@ -28,11 +26,15 @@ namespace DametaProject
         {
             if (mtxCodigo.Text == ResetSenha.codigo_senha)
             {
-                NovaSenha form = new NovaSenha(email_func);
-                form.Show();
-
-                form_resetsenha.Close();
-                this.Close();
+                using (NovaSenha form = new NovaSenha(email_func))
+                {
+                    var result = form.ShowDialog();
+                    if (result == DialogResult.OK)
+                    {
+                        this.DialogResult = DialogResult.OK;
+                        this.Close();
+                    }
+                }
             } else
             {
                 MessageBox.Show("O código está incorreto",

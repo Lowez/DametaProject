@@ -80,6 +80,11 @@ namespace DametaProject
 
         private void btTerminar_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("Compra concluída.",
+                    "Sucesso!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+
             this.DialogResult = DialogResult.OK;
             this.Close();
         }

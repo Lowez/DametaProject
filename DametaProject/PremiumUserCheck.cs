@@ -15,6 +15,7 @@ namespace DametaProject
     {
         Carrinho form_carrinho;
         public string nome_cliente = "";
+        public int id_cliente = 0;
 
         public PremiumUserCheck()
         {
@@ -72,6 +73,7 @@ namespace DametaProject
                                     if (result == DialogResult.OK)
                                     {
                                         this.nome_cliente = infosCliente.nome_cliente;
+                                        this.id_cliente = infosCliente.id_cliente;
                                         this.DialogResult = DialogResult.OK;
                                         this.Close();
                                     }
