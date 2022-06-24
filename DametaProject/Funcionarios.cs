@@ -44,6 +44,18 @@ namespace DametaProject
                     {
                         return "Código do Funcionário";
                     }
+                    else
+                    {
+                        bool existe = ConsultarExistencia(Convert.ToInt32(txID.Text));
+                        if (!existe)
+                        {
+                            MessageBox.Show("Funcionario não existe no banco de dados!",
+                          "Registro não existe",
+                          MessageBoxButtons.OK,
+                          MessageBoxIcon.Information);
+                            return "nao existe";
+                        }
+                    }
                 }
 
                 if (txNome.Text == "")
@@ -426,20 +438,20 @@ namespace DametaProject
 
         private void btAlterar_Click(object sender, EventArgs e)
         {
-            bool existe = ConsultarExistencia(Convert.ToInt32(txID.Text));
-            if (existe)
-            {
-                SqlConnection conn;
-                SqlCommand comm;
-                bool bIsOperationOK = true;
+            SqlConnection conn;
+            SqlCommand comm;
+            bool bIsOperationOK = true;
 
-                if (!(camposVazios("alterar") == "preenchido"))
+            string campoVazio = (camposVazios("alterar"));
+            if (campoVazio != "nao existe")
+            {
+                if (campoVazio != "preenchido")
                 {
-                    MessageBox.Show("Você deve preencher: " + camposVazios("alterar"),
+                    MessageBox.Show("Você deve preencher: " + campoVazio,
                         "Informações incompletas!",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
-
+                    bIsOperationOK = false;
                     return;
                 }
 
@@ -525,33 +537,26 @@ namespace DametaProject
                 AtualizaListaDeFuncionarios();
                 btLimpar_Click(sender, e);
             }
-            else
-            {
-                MessageBox.Show("Funcionário não pode ser alterado porque não existe no banco de dados!",
-                           "Registro não existe",
-                           MessageBoxButtons.OK,
-                           MessageBoxIcon.Information);
-            }
         }
 
         private void btExcluir_Click(object sender, EventArgs e)
         {
+            SqlConnection conn;
+            SqlCommand comm;
+            bool bIsOperationOK = true;
+
+            if (!(camposVazios("only_id") == "preenchido"))
+            {
+                MessageBox.Show("Você deve preencher: " + camposVazios("only_id"),
+                    "Informações incompletas!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+
+                return;
+            }
             bool existe = ConsultarExistencia(Convert.ToInt32(txID.Text));
             if (existe)
             {
-                SqlConnection conn;
-                SqlCommand comm;
-                bool bIsOperationOK = true;
-
-                if (!(camposVazios("only_id") == "preenchido"))
-                {
-                    MessageBox.Show("Você deve preencher: " + camposVazios("only_id"),
-                        "Informações incompletas!",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
-
-                    return;
-                }
 
                 string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
 
