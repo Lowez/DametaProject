@@ -101,19 +101,21 @@ namespace DametaProject
                 {
                     return "Código de Produto";
                 }
-                else
+                if (operacao == "alterar")
                 {
-                    bool existe = ConsultarExistencia(Convert.ToInt32(txID.Text));
-                    if (!existe)
+                    if (txID.Text == "")
                     {
-                        MessageBox.Show("Produto não existe no banco de dados!",
-                      "Registro não existe",
-                      MessageBoxButtons.OK,
-                      MessageBoxIcon.Information);
-                        return "nao existe";
+                        bool existe = ConsultarExistencia(Convert.ToInt32(txID.Text));
+                        if (!existe)
+                        {
+                            MessageBox.Show("Funcionario não existe no banco de dados!",
+                          "Registro não existe",
+                          MessageBoxButtons.OK,
+                          MessageBoxIcon.Information);
+                            return "nao existe";
+                        }
                     }
                 }
-
                 if (txNome.Text == "")
                 {
                     return "Nome do Produto";
@@ -382,10 +384,10 @@ namespace DametaProject
 
                     if (bIsOperationOK == true)
                     {
-                        MessageBox.Show("Produto Alterado!",
-                            "UPDATE",
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Information);
+                        MessageBox.Show("Produto alterado com sucesso!",
+                           "Registro Alterado!",
+                           MessageBoxButtons.OK,
+                           MessageBoxIcon.Information);
                     }
                 }
 
@@ -406,7 +408,6 @@ namespace DametaProject
                     "Informações incompletas!",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
-
                 return;
             }
 
@@ -517,11 +518,10 @@ namespace DametaProject
 
                 if (bIsOperationOK == true)
                 {
-                    MessageBox.Show("Produto Cadastrado com sucesso!",
-                        "INSERT",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
-
+                    MessageBox.Show("Produto cadastro com sucesso!",
+                           "Registro Alterado!",
+                           MessageBoxButtons.OK,
+                           MessageBoxIcon.Information);
                     Produtos_Load_2(sender, e);
                     btLimparForm_Click(sender, e);
 
@@ -541,7 +541,6 @@ namespace DametaProject
                     "Informações incompletas!",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
-
                 return;
             }
             bool existe = ConsultarExistencia(Convert.ToInt32(txID.Text));
@@ -603,9 +602,10 @@ namespace DametaProject
                     if (bIsOperationOK == true)
                     {
                         // Chama Função que atualiza os dados no DataGridView
-                        MessageBox.Show("Registro Excluído!",
-                            "Banco de Dados",
-                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Produto excluído com sucesso!",
+                           "Registro Alterado!",
+                           MessageBoxButtons.OK,
+                           MessageBoxIcon.Information);
 
                         // Chama o mesmo método usado no botão Limpar
                         btLimparForm_Click(sender, e);
@@ -733,8 +733,12 @@ namespace DametaProject
 
                 // Cria um comando SQL para seleção de dados na tabela
                 comm = new SqlCommand(
-                    "SELECT cod_produto, nome, preco, tipo_produtos_id, fornecedores_id, estoque_id " +
-                    "FROM produtos " +
+                    "SELECT prod.cod_produto, prod.nome AS nome, prod.preco, prod.tipo_produtos_id , prod.fornecedores_id, " +
+                    "prod.estoque_id, estoq.id, estoq.qtd AS qtd, tipprod.id, tipprod.nome AS tipnome, forn.id ,forn.nome AS fornnome " +
+                    "FROM produtos AS prod " +
+                    "INNER JOIN estoque AS estoq ON estoq.id = prod.estoque_id " +
+                    "INNER JOIN fornecedores AS forn ON forn.id = prod.fornecedores_id " +
+                    "INNER JOIN tipo_produtos AS tipprod ON tipprod.id = prod.tipo_produtos_id " +
                     "WHERE cod_produto=@ID_Produto ", conn);
 
 
@@ -767,11 +771,11 @@ namespace DametaProject
                         {
                             string preco = reader["preco"].ToString();
                             preco = preco.Remove(preco.Length - 2);
-                            txNome.Text = reader["produtoNome"].ToString();
+                            txNome.Text = reader["nome"].ToString();
                             txPrecoUnit.Text = preco;
                             txQtdEstoque.Text = reader["qtd"].ToString();
-                            cbFornecedor.Text = reader["fornecedoresNome"].ToString();
-                            cbTipo.Text = reader["tipoNome"].ToString();
+                            cbFornecedor.Text = reader["fornnome"].ToString();
+                            cbTipo.Text = reader["tipnome"].ToString();
 
                         }
 
