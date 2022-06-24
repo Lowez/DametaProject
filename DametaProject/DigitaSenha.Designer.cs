@@ -105,7 +105,7 @@
             this.txSenha.Name = "txSenha";
             this.txSenha.PasswordChar = '*';
             this.txSenha.Size = new System.Drawing.Size(226, 23);
-            this.txSenha.TabIndex = 23;
+            this.txSenha.TabIndex = 0;
             // 
             // DigitaSenha
             // 
