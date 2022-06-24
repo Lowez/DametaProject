@@ -52,7 +52,7 @@
             this.txEmail = new System.Windows.Forms.TextBox();
             this.emailLabel = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgtdtFuncionarios = new System.Windows.Forms.DataGridView();
             this.nomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cargo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.estabelecimento = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -77,7 +77,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cargosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.generosBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgtdtFuncionarios)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtFuncionariosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.funcionariosBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -285,25 +285,26 @@
             this.label3.TabIndex = 91;
             this.label3.Text = "CPF:";
             // 
-            // dataGridView1
+            // dgtdtFuncionarios
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgtdtFuncionarios.AllowUserToAddRows = false;
+            this.dgtdtFuncionarios.AllowUserToDeleteRows = false;
+            this.dgtdtFuncionarios.AutoGenerateColumns = false;
+            this.dgtdtFuncionarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgtdtFuncionarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nomeDataGridViewTextBoxColumn,
             this.cargo,
             this.estabelecimento,
             this.salarioDataGridViewTextBoxColumn,
             this.cPFDataGridViewTextBoxColumn,
             this.telefoneDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.dtFuncionariosBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(44, 234);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(795, 207);
-            this.dataGridView1.TabIndex = 90;
+            this.dgtdtFuncionarios.DataSource = this.dtFuncionariosBindingSource;
+            this.dgtdtFuncionarios.Location = new System.Drawing.Point(44, 234);
+            this.dgtdtFuncionarios.Name = "dgtdtFuncionarios";
+            this.dgtdtFuncionarios.ReadOnly = true;
+            this.dgtdtFuncionarios.Size = new System.Drawing.Size(795, 207);
+            this.dgtdtFuncionarios.TabIndex = 90;
+            this.dgtdtFuncionarios.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgtdtFuncionarios_CellDoubleClick_1);
             // 
             // nomeDataGridViewTextBoxColumn
             // 
@@ -466,7 +467,7 @@
             this.Controls.Add(this.txEmail);
             this.Controls.Add(this.emailLabel);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgtdtFuncionarios);
             this.Controls.Add(this.mtxTelefone);
             this.Controls.Add(this.txNome);
             this.Controls.Add(this.nomeLabel);
@@ -481,7 +482,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cargosBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.generosBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgtdtFuncionarios)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtFuncionariosBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.funcionariosBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -510,7 +511,7 @@
         private System.Windows.Forms.TextBox txEmail;
         private System.Windows.Forms.Label emailLabel;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgtdtFuncionarios;
         private System.Windows.Forms.MaskedTextBox mtxTelefone;
         private System.Windows.Forms.TextBox txNome;
         private System.Windows.Forms.Label nomeLabel;

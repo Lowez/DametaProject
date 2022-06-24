@@ -41,11 +41,13 @@
             this.btConsultar = new System.Windows.Forms.Button();
             this.btIncluir = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.produtosBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.dtProdutoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dameta_dbDataSet = new DametaProject.dameta_dbDataSet();
+            this.produtosBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.produtosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cbTipo = new System.Windows.Forms.ComboBox();
             this.tipoprodutosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tipoprodutosBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.txPrecoUnit = new System.Windows.Forms.TextBox();
             this.txNome = new System.Windows.Forms.TextBox();
             this.txID = new System.Windows.Forms.TextBox();
@@ -53,12 +55,17 @@
             this.produtosTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.produtosTableAdapter();
             this.cbFornecedor = new System.Windows.Forms.ComboBox();
             this.fornecedoresBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.fornecedoresBindingSource6 = new System.Windows.Forms.BindingSource(this.components);
             this.fKPRODUTOSESTABELECIMENTOPRODUTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.estabelecimento_produtoTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.estabelecimento_produtoTableAdapter();
             this.fornecedoresTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.fornecedoresTableAdapter();
             this.tipo_produtosTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.tipo_produtosTableAdapter();
-            this.dtProdutoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dtProdutoTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.dtProdutoTableAdapter();
+            this.fornecedoresBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.fornecedoresBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.fornecedoresBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
+            this.fornecedoresBindingSource4 = new System.Windows.Forms.BindingSource(this.components);
+            this.fornecedoresBindingSource5 = new System.Windows.Forms.BindingSource(this.components);
             this.cod_produto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.preco = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -72,13 +79,20 @@
             label2 = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.produtosBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtProdutoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.produtosBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.produtosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tipoprodutosBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tipoprodutosBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fornecedoresBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fornecedoresBindingSource6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fKPRODUTOSESTABELECIMENTOPRODUTOBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtProdutoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fornecedoresBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fornecedoresBindingSource2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fornecedoresBindingSource3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fornecedoresBindingSource4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fornecedoresBindingSource5)).BeginInit();
             this.SuspendLayout();
             // 
             // categoriaLabel
@@ -143,6 +157,7 @@
             this.btLimparForm.TabIndex = 32;
             this.btLimparForm.Text = "Limpar Form";
             this.btLimparForm.UseVisualStyleBackColor = true;
+            this.btLimparForm.Click += new System.EventHandler(this.btLimparForm_Click);
             // 
             // btExcluir
             // 
@@ -161,6 +176,7 @@
             this.btAlterar.TabIndex = 30;
             this.btAlterar.Text = "Alterar";
             this.btAlterar.UseVisualStyleBackColor = true;
+            this.btAlterar.Click += new System.EventHandler(this.btAlterar_Click);
             // 
             // btConsultar
             // 
@@ -180,7 +196,6 @@
             this.btIncluir.TabIndex = 29;
             this.btIncluir.Text = "Incluir";
             this.btIncluir.UseVisualStyleBackColor = true;
-            this.btIncluir.Click += new System.EventHandler(this.btIncluir_Click_1);
             // 
             // dataGridView1
             // 
@@ -201,15 +216,20 @@
             this.dataGridView1.TabIndex = 27;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // produtosBindingSource1
+            // dtProdutoBindingSource
             // 
-            this.produtosBindingSource1.DataMember = "produtos";
-            this.produtosBindingSource1.DataSource = this.dameta_dbDataSet;
+            this.dtProdutoBindingSource.DataMember = "dtProduto";
+            this.dtProdutoBindingSource.DataSource = this.dameta_dbDataSet;
             // 
             // dameta_dbDataSet
             // 
             this.dameta_dbDataSet.DataSetName = "dameta_dbDataSet";
             this.dameta_dbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // produtosBindingSource1
+            // 
+            this.produtosBindingSource1.DataMember = "produtos";
+            this.produtosBindingSource1.DataSource = this.dameta_dbDataSet;
             // 
             // produtosBindingSource
             // 
@@ -218,7 +238,7 @@
             // cbTipo
             // 
             this.cbTipo.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.tipoprodutosBindingSource, "nome", true));
-            this.cbTipo.DataSource = this.tipoprodutosBindingSource;
+            this.cbTipo.DataSource = this.tipoprodutosBindingSource1;
             this.cbTipo.DisplayMember = "nome";
             this.cbTipo.FormattingEnabled = true;
             this.cbTipo.Location = new System.Drawing.Point(317, 171);
@@ -231,6 +251,11 @@
             // 
             this.tipoprodutosBindingSource.DataMember = "tipo_produtos";
             this.tipoprodutosBindingSource.DataSource = this.dameta_dbDataSet;
+            // 
+            // tipoprodutosBindingSource1
+            // 
+            this.tipoprodutosBindingSource1.DataMember = "tipo_produtos";
+            this.tipoprodutosBindingSource1.DataSource = this.dameta_dbDataSet;
             // 
             // txPrecoUnit
             // 
@@ -267,7 +292,7 @@
             // cbFornecedor
             // 
             this.cbFornecedor.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.fornecedoresBindingSource, "nome", true));
-            this.cbFornecedor.DataSource = this.fornecedoresBindingSource;
+            this.cbFornecedor.DataSource = this.fornecedoresBindingSource6;
             this.cbFornecedor.DisplayMember = "nome";
             this.cbFornecedor.FormattingEnabled = true;
             this.cbFornecedor.Location = new System.Drawing.Point(100, 171);
@@ -280,6 +305,11 @@
             // 
             this.fornecedoresBindingSource.DataMember = "fornecedores";
             this.fornecedoresBindingSource.DataSource = this.dameta_dbDataSet;
+            // 
+            // fornecedoresBindingSource6
+            // 
+            this.fornecedoresBindingSource6.DataMember = "fornecedores";
+            this.fornecedoresBindingSource6.DataSource = this.dameta_dbDataSet;
             // 
             // fKPRODUTOSESTABELECIMENTOPRODUTOBindingSource
             // 
@@ -298,52 +328,72 @@
             // 
             this.tipo_produtosTableAdapter.ClearBeforeFill = true;
             // 
-            // dtProdutoBindingSource
-            // 
-            this.dtProdutoBindingSource.DataMember = "dtProduto";
-            this.dtProdutoBindingSource.DataSource = this.dameta_dbDataSet;
-            // 
             // dtProdutoTableAdapter
             // 
             this.dtProdutoTableAdapter.ClearBeforeFill = true;
             // 
+            // fornecedoresBindingSource1
+            // 
+            this.fornecedoresBindingSource1.DataMember = "fornecedores";
+            this.fornecedoresBindingSource1.DataSource = this.dameta_dbDataSet;
+            // 
+            // fornecedoresBindingSource2
+            // 
+            this.fornecedoresBindingSource2.DataMember = "fornecedores";
+            this.fornecedoresBindingSource2.DataSource = this.dameta_dbDataSet;
+            // 
+            // fornecedoresBindingSource3
+            // 
+            this.fornecedoresBindingSource3.DataMember = "fornecedores";
+            this.fornecedoresBindingSource3.DataSource = this.dameta_dbDataSet;
+            // 
+            // fornecedoresBindingSource4
+            // 
+            this.fornecedoresBindingSource4.DataMember = "fornecedores";
+            this.fornecedoresBindingSource4.DataSource = this.dameta_dbDataSet;
+            // 
+            // fornecedoresBindingSource5
+            // 
+            this.fornecedoresBindingSource5.DataMember = "fornecedores";
+            this.fornecedoresBindingSource5.DataSource = this.dameta_dbDataSet;
+            // 
             // cod_produto
             // 
             this.cod_produto.DataPropertyName = "cod_produto";
-            this.cod_produto.HeaderText = "cod_produto";
+            this.cod_produto.HeaderText = "Cód.Produto";
             this.cod_produto.Name = "cod_produto";
             this.cod_produto.Width = 80;
             // 
             // nome
             // 
             this.nome.DataPropertyName = "nome";
-            this.nome.HeaderText = "nome";
+            this.nome.HeaderText = "Nome";
             this.nome.Name = "nome";
             // 
             // preco
             // 
             this.preco.DataPropertyName = "preco";
-            this.preco.HeaderText = "preco";
+            this.preco.HeaderText = "Preco";
             this.preco.Name = "preco";
             this.preco.Width = 50;
             // 
             // tipo
             // 
             this.tipo.DataPropertyName = "tipo";
-            this.tipo.HeaderText = "tipo";
+            this.tipo.HeaderText = "Tipo";
             this.tipo.Name = "tipo";
             // 
             // qtd
             // 
             this.qtd.DataPropertyName = "qtd";
-            this.qtd.HeaderText = "qtd";
+            this.qtd.HeaderText = "Qtd";
             this.qtd.Name = "qtd";
             this.qtd.Width = 40;
             // 
             // fornecedor
             // 
             this.fornecedor.DataPropertyName = "fornecedor";
-            this.fornecedor.HeaderText = "fornecedor";
+            this.fornecedor.HeaderText = "Fornecedor";
             this.fornecedor.Name = "fornecedor";
             // 
             // Produtos
@@ -374,13 +424,20 @@
             this.Text = "Produtos";
             this.Load += new System.EventHandler(this.Produtos_Load_2);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.produtosBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtProdutoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.produtosBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.produtosBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tipoprodutosBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tipoprodutosBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fornecedoresBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fornecedoresBindingSource6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fKPRODUTOSESTABELECIMENTOPRODUTOBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtProdutoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fornecedoresBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fornecedoresBindingSource2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fornecedoresBindingSource3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fornecedoresBindingSource4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fornecedoresBindingSource5)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -412,6 +469,13 @@
         private dameta_dbDataSetTableAdapters.tipo_produtosTableAdapter tipo_produtosTableAdapter;
         private System.Windows.Forms.BindingSource dtProdutoBindingSource;
         private dameta_dbDataSetTableAdapters.dtProdutoTableAdapter dtProdutoTableAdapter;
+        private System.Windows.Forms.BindingSource tipoprodutosBindingSource1;
+        private System.Windows.Forms.BindingSource fornecedoresBindingSource1;
+        private System.Windows.Forms.BindingSource fornecedoresBindingSource2;
+        private System.Windows.Forms.BindingSource fornecedoresBindingSource3;
+        private System.Windows.Forms.BindingSource fornecedoresBindingSource4;
+        private System.Windows.Forms.BindingSource fornecedoresBindingSource5;
+        private System.Windows.Forms.BindingSource fornecedoresBindingSource6;
         private System.Windows.Forms.DataGridViewTextBoxColumn cod_produto;
         private System.Windows.Forms.DataGridViewTextBoxColumn nome;
         private System.Windows.Forms.DataGridViewTextBoxColumn preco;

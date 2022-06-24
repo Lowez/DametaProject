@@ -14,33 +14,9 @@ namespace DametaProject
     public partial class Produtos : Form
     {
 
-        private void Produtos_Load(object sender, EventArgs e)
-        {
-            // TODO: This line of code loads data into the 'dameta_dbDataSet.produtos' table. You can move, or remove it, as needed.
-            this.produtosTableAdapter.Fill(this.dameta_dbDataSet.produtos);
-        }
-
-        private void AtualizaListaDeClientes()
-        {
-            this.produtosTableAdapter.Fill(this.dameta_dbDataSet.produtos);
-        }
-
-
-        private void btLimpar_Click(object sender, EventArgs e)
-        {
-            txID.Clear();
-            txNome.Clear();
-            txPrecoUnit.Clear();
-            cbTipo.Text = "";
-            cbFornecedor.Text = "";
-            txQtdEstoque.Clear();
-            txID.Focus();
-        }
-
         public Produtos()
         {
             InitializeComponent();
-            AtualizaListaDeClientes();
 
         }
 
@@ -186,17 +162,19 @@ namespace DametaProject
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     // Chama o mesmo método usado no botão Limpar
-                    btLimpar_Click(sender, e);
+                    btLimparForm_Click(sender, e);
+
                 }
             }
 
-            Produtos_Load(sender, e);
-            btLimpar_Click(sender, e);
+            Produtos_Load_2(sender, e);
+            btLimparForm_Click(sender, e);
+
         }
 
-        
 
-        private void btIncluir_Click_1(object sender, EventArgs e)
+
+        private void btIncluir_Click(object sender, EventArgs e)
         {
 
             SqlConnection conn;
@@ -208,7 +186,7 @@ namespace DametaProject
             conn = new SqlConnection(connectionString);
 
             comm = new SqlCommand(
-                "INSERT INTO produtos (cod_produto, nome, preco, tipo_produtos_id, fornecedores_id, estoque_id) " +
+                "INSERT INTO produtos (.cod_produto, nome, preco, tipo_produtos_id, fornecedores_id, estoque_id) " +
                 "VALUES (@id, @nome, @preco, @tipo_produtos_id, @fornecedores_id, @estoque_id)", conn);
 
             comm.Parameters.Add("@id", System.Data.SqlDbType.Int);
@@ -267,96 +245,17 @@ namespace DametaProject
 
                 if (bIsOperationOK == true)
                 {
-                    MessageBox.Show("Cliente Cadastrado com sucesso!",
+                    MessageBox.Show("Produto Cadastrado com sucesso!",
                         "INSERT",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
 
-                    Produtos_Load(sender, e);
-                    btLimpar_Click(sender, e);
+                    Produtos_Load_2(sender, e);
+                    btLimparForm_Click(sender, e);
+
                 }
             }
         }
-
-        private void btAlterar_Click(object sender, EventArgs e)
-        {
-            SqlConnection conn;
-            SqlCommand comm;
-            bool bIsOperationOK = true;
-
-            string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
-
-            conn = new SqlConnection(connectionString);
-
-            comm = new SqlCommand(
-
-                "UPDATE produtos SET cod_produto = @id, nome=@nome, preco=@preco, tipo_produtos_id=@tipo_produtos_id, fornecedores_id=@fornecedores_id, estoque_id=@estoque_id " +
-                "WHERE cod_produto = @id", conn);
-
-            comm.Parameters.Add("@id", System.Data.SqlDbType.Int);
-            comm.Parameters["@id"].Value = Convert.ToInt32(txID.Text);
-
-            comm.Parameters.Add("@nome", System.Data.SqlDbType.NVarChar);
-            comm.Parameters["@nome"].Value = txNome.Text;
-
-            comm.Parameters.Add("@preco", System.Data.SqlDbType.Money);
-            comm.Parameters["@preco"].Value = Convert.ToDecimal(txPrecoUnit.Text);
-
-            comm.Parameters.Add("@tipo_produtos_id", System.Data.SqlDbType.Int);
-            comm.Parameters["@tipo_produtos_id"].Value = Convert.ToInt32(cbTipo.SelectedValue.ToString());
-
-            comm.Parameters.Add("@fornecedores_id", System.Data.SqlDbType.Int);
-            comm.Parameters["@fornecedores_id"].Value = Convert.ToInt32(cbTipo.SelectedValue.ToString());
-
-            comm.Parameters.Add("@estoque_id", System.Data.SqlDbType.Int);
-            comm.Parameters["@estoque_id"].Value = Convert.ToInt32(cbTipo.SelectedValue.ToString());
-
-            try
-            {
-                try
-                {
-                    conn.Open();
-                }
-                catch (Exception error)
-                {
-                    bIsOperationOK = false;
-                    MessageBox.Show(error.Message,
-                        "Erro ao abrir conexão com o Banco de Dados",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                }
-
-                try
-                {
-                    comm.ExecuteNonQuery();
-                }
-                catch (Exception error)
-                {
-                    bIsOperationOK = false;
-                    MessageBox.Show(error.Message,
-                        "Erro ao tentar executar o comando SQL",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                }
-            }
-            catch { }
-            finally
-            {
-                conn.Close();
-
-                if (bIsOperationOK == true)
-                {
-                    MessageBox.Show("Registro Alterado!",
-                        "UPDATE",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
-                }
-            }
-
-            Produtos_Load(sender, e);
-            btLimpar_Click(sender, e);
-        }
-
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -437,17 +336,161 @@ namespace DametaProject
             }
         }
 
-        private void Produtos_Load_1(object sender, EventArgs e)
-        {
-
-
-        }
-
         private void Produtos_Load_2(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'dameta_dbDataSet.dtProduto' table. You can move, or remove it, as needed.
             this.dtProdutoTableAdapter.Fill(this.dameta_dbDataSet.dtProduto);
+            this.fornecedoresTableAdapter.Fill(this.dameta_dbDataSet.fornecedores);
+            this.tipo_produtosTableAdapter.Fill(this.dameta_dbDataSet.tipo_produtos);
+        }
 
+        private void btLimparForm_Click(object sender, EventArgs e)
+        {
+            txID.Clear();
+            txNome.Clear();
+            txPrecoUnit.Clear();
+            cbTipo.Text = "";
+            cbFornecedor.Text = "";
+            txQtdEstoque.Clear();
+            txID.Focus();
+        }
+
+        private void btAlterar_Click(object sender, EventArgs e)
+        {
+            SqlConnection conn;
+            SqlCommand comm;
+            SqlDataReader reader;
+            bool bIsOperationOK = true;
+            int estoque_id = 0;
+
+            string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
+
+            conn = new SqlConnection(connectionString);
+
+            SqlCommand commEstoque_id = new SqlCommand(
+                "SELECT estoque_id FROM produtos " +
+                "WHERE id = @id", conn
+                );
+
+            commEstoque_id.Parameters.Add("@id", System.Data.SqlDbType.Int);
+            commEstoque_id.Parameters["@id"].Value = Convert.ToInt32(txID.Text);
+
+            try
+            {
+                // Tenta abrir a conexão com o Banco de Dados
+                try
+                {
+                    conn.Open();
+                }
+                catch (SqlException error)
+                {
+                    MessageBox.Show(error.Message,
+                        "Houve um problema ao tentar abrir a conexão com a base de dados",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
+
+                try
+                {
+                    reader = commEstoque_id.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        estoque_id = Convert.ToInt32(reader["estoque_id"]);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Produto não encontrado",
+                        "Erro!",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    }
+
+                    reader.Close();
+                }
+                catch (Exception error)
+                {
+                    MessageBox.Show(error.Message,
+                        "Erro ao tentar executar comando",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
+            }
+            catch { }
+            finally
+            {
+                conn.Close();
+            }
+
+            //COLOCAR INNER JOIN NO UPDATE
+
+            comm = new SqlCommand(
+
+               "UPDATE produtos SET cod_produto = @id, nome=@nome, preco=@preco, tipo_produtos_id=@tipo_produtos_id, fornecedores_id=@fornecedores_id, estoque_id=@estoque_id " +
+               "WHERE cod_produto = @id", conn);
+
+            comm.Parameters.Add("@id", System.Data.SqlDbType.Int);
+            comm.Parameters["@id"].Value = Convert.ToInt32(txID.Text);
+
+            comm.Parameters.Add("@nome", System.Data.SqlDbType.NVarChar);
+            comm.Parameters["@nome"].Value = txNome.Text;
+
+            comm.Parameters.Add("@preco", System.Data.SqlDbType.Money);
+            comm.Parameters["@preco"].Value = Convert.ToDecimal(txPrecoUnit.Text);
+
+            comm.Parameters.Add("@tipo_produtos_id", System.Data.SqlDbType.Int);
+            comm.Parameters["@tipo_produtos_id"].Value = Convert.ToInt32(cbTipo.SelectedValue.ToString());
+
+            comm.Parameters.Add("@fornecedores_id", System.Data.SqlDbType.Int);
+            comm.Parameters["@fornecedores_id"].Value = Convert.ToInt32(cbFornecedor.SelectedValue.ToString());
+
+            comm.Parameters.Add("@estoque_id", System.Data.SqlDbType.Int);
+            comm.Parameters["@estoque_id"].Value = estoque_id;
+
+            try
+            {
+                try
+                {
+                    conn.Open();
+                }
+                catch (Exception error)
+                {
+                    bIsOperationOK = false;
+                    MessageBox.Show(error.Message,
+                        "Erro ao abrir conexão com o Banco de Dados",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
+
+                try
+                {
+                    comm.ExecuteNonQuery();
+                }
+                catch (Exception error)
+                {
+                    bIsOperationOK = false;
+                    MessageBox.Show(error.Message,
+                        "Erro ao tentar executar o comando SQL",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
+            }
+            catch { }
+            finally
+            {
+                conn.Close();
+
+                if (bIsOperationOK == true)
+                {
+                    MessageBox.Show("Registro Alterado!",
+                        "UPDATE",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                }
+            }
+
+            Produtos_Load_2(sender, e);
+            btLimparForm_Click(sender, e);
         }
     }
 }

@@ -73,9 +73,8 @@ namespace DametaProject
             SqlCommand comm;
             SqlCommand comm2;
             SqlDataReader reader;
-            string cidade = "";
+            string cidade;
             string cidadeID = "";
-
             int aux = 0;
             bool bIsOperationOK = true;
 
@@ -84,7 +83,7 @@ namespace DametaProject
 
             cbCidade.Items.Clear();
             comm = new SqlCommand(
-                "SELECT id, nome FROM cidades where UF = @UF", conn);
+                "SELECT id, nome FROM cidades WHERE UF = @UF", conn);
 
             comm.Parameters.Add("@UF", System.Data.SqlDbType.NVarChar);
             comm.Parameters["@UF"].Value = Convert.ToString(cbUF.SelectedValue);
@@ -153,14 +152,11 @@ namespace DametaProject
             comm2.Parameters.Add("@telefone", System.Data.SqlDbType.NVarChar);
             comm2.Parameters["@telefone"].Value = mtxTelefone.Text;
 
-
             comm2.Parameters.Add("@CEP", System.Data.SqlDbType.NVarChar);
             comm2.Parameters["@CEP"].Value = mtxCEP.Text;
 
-
             comm2.Parameters.Add("@cidade_id", System.Data.SqlDbType.Int);
             comm2.Parameters["@cidade_id"].Value = Convert.ToInt32(cbCidade.SelectedValue);
-
 
             comm2.Parameters.Add("@generos_id", System.Data.SqlDbType.Int);
             comm2.Parameters["@generos_id"].Value = Convert.ToInt32(cbGenero.SelectedValue);
@@ -290,76 +286,143 @@ namespace DametaProject
         {
             SqlConnection conn;
             SqlCommand comm;
+            SqlCommand comm2;
+            SqlDataReader reader;
+            string cidade;
+            string cidadeID = "";
+            int aux = 0;
             bool bIsOperationOK = true;
 
             string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
-
             conn = new SqlConnection(connectionString);
 
+            cbCidade.Items.Clear();
             comm = new SqlCommand(
-                "UPDATE premium_usuarios SET nome=@nome, CPF=@CPF, cidades_id=@cidades_id " +
-                "WHERE ID_Cliente = @ID_Cliente", conn);
+                "SELECT id, nome FROM cidades WHERE UF = @UF", conn);
 
-            comm.Parameters.Add("@ID_Cliente", System.Data.SqlDbType.Int);
-            comm.Parameters["@ID_Cliente"].Value = Convert.ToInt32(txID.Text);
-
-            comm.Parameters.Add("@Nome", System.Data.SqlDbType.NVarChar);
-            comm.Parameters["@Nome"].Value = txNome.Text;
-
-            comm.Parameters.Add("@CPF", System.Data.SqlDbType.NVarChar);
-            comm.Parameters["@CPF"].Value = mtxCPF.Text;
-
-            comm.Parameters.Add("@cidades_id", System.Data.SqlDbType.Int);
-            comm.Parameters["@cidades_id"].Value = Convert.ToInt32(cbCidade.SelectedValue.ToString());
+            comm.Parameters.Add("@UF", System.Data.SqlDbType.NVarChar);
+            comm.Parameters["@UF"].Value = Convert.ToString(cbUF.SelectedValue);
 
             try
             {
-                try
-                {
-                    conn.Open();
-                }
-                catch (Exception error)
-                {
-                    bIsOperationOK = false;
-                    MessageBox.Show(error.Message,
-                        "Erro ao abrir conexão com o Banco de Dados",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                }
+                // Abre a conexão com o Banco de Dados
+                conn.Open();
 
-                try
-                {
-                    comm.ExecuteNonQuery();
-                }
-                catch (Exception error)
-                {
-                    bIsOperationOK = false;
-                    MessageBox.Show(error.Message,
-                        "Erro ao tentar executar o comando SQL",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                }
             }
-            catch { }
-            finally
+
+            catch (Exception ex)
             {
-                conn.Close();
-
-                if (bIsOperationOK == true)
-                {
-                    MessageBox.Show("Registro Alterado!",
-                        "UPDATE",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
-                }
+                bIsOperationOK = false;
+                MessageBox.Show(ex.Message,
+                    "Erro ao tentar abrir o Banco de Dados",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
             }
 
-            AtualizaListaDeClientes();
-            btLimpar_Click(sender, e);
+            try
+            {
+                // Executa o comando SQL
+
+                reader = comm.ExecuteReader();
+                String aux2 = Convert.ToString(cbCidade.Text);
+
+
+                while (reader.Read())
+                {
+                    cbCidade.Items.Add(reader["id"]);
+                    cidade = Convert.ToString(reader["nome"]);
+                    cidadeID = Convert.ToString(reader["id"]);
+                    if (cidade == aux2) break;
+                }
+
+                aux = Convert.ToInt32(cidadeID);
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+
+                bIsOperationOK = false;
+                MessageBox.Show(ex.Message,
+                    "Erro ao tentar executar o comando SQL.",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+
+            }
+            conn.Close();
+            filtrarCidades();
+
+            comm2 = new SqlCommand(
+                "UPDATE premium_usuarios SET nome=@nome, nascimento = @nascimento, CPF=@CPF, telefone = @telefone, CEP = @CEP, " +
+                "cidades_id = " + aux + ", generos_id = @generos_id " +
+                "WHERE id = @id", conn);
+
+            comm2.Parameters.Add("@id", System.Data.SqlDbType.Int);
+            comm2.Parameters["@id"].Value = txID.Text;
+
+            comm2.Parameters.Add("@nome", System.Data.SqlDbType.NVarChar);
+            comm2.Parameters["@nome"].Value = txNome.Text;
+
+            comm2.Parameters.Add("@nascimento", System.Data.SqlDbType.Date);
+            comm2.Parameters["@nascimento"].Value = dtpDataNasc.Value;
+
+            comm2.Parameters.Add("@CPF", System.Data.SqlDbType.NVarChar);
+            comm2.Parameters["@CPF"].Value = mtxCPF.Text;
+
+            comm2.Parameters.Add("@telefone", System.Data.SqlDbType.NVarChar);
+            comm2.Parameters["@telefone"].Value = mtxTelefone.Text;
+
+            comm2.Parameters.Add("@CEP", System.Data.SqlDbType.NVarChar);
+            comm2.Parameters["@CEP"].Value = mtxCEP.Text;
+
+            comm2.Parameters.Add("@generos_id", System.Data.SqlDbType.Int);
+            comm2.Parameters["@generos_id"].Value = Convert.ToInt32(cbGenero.SelectedValue);
+
+            try
+            {
+                // Abre a conexão com o Banco de Dados
+                conn.Open();
+
+            }
+            catch (Exception ex)
+            {
+                bIsOperationOK = false;
+                MessageBox.Show(ex.Message,
+                    "Erro ao tentar abrir o Banco de Dados",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+
+            try
+            {
+                comm2.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+
+                bIsOperationOK = false;
+                MessageBox.Show(ex.Message,
+                    "Erro ao tentar executar o comando SQL.",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+
+            }
+            conn.Close();
+
+
+            if (bIsOperationOK == true)
+            {
+                MessageBox.Show("Cliente alterado com sucesso!",
+                    "UPDATE",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+
+                AtualizaListaDeClientes();
+                btLimpar_Click(sender, e);
+            }
+
 
         }
-
-  
 
         private void btLimpar_Click(object sender, EventArgs e)
         {
