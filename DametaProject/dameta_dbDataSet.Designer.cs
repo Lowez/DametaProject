@@ -5704,12 +5704,6 @@ namespace DametaProject {
             
             private global::System.Data.DataColumn columnqtd;
             
-            private global::System.Data.DataColumn columnestabelecimento;
-            
-            private global::System.Data.DataColumn columncidade;
-            
-            private global::System.Data.DataColumn columnUF;
-            
             private global::System.Data.DataColumn columnproduto;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5750,30 +5744,6 @@ namespace DametaProject {
             public global::System.Data.DataColumn qtdColumn {
                 get {
                     return this.columnqtd;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn estabelecimentoColumn {
-                get {
-                    return this.columnestabelecimento;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn cidadeColumn {
-                get {
-                    return this.columncidade;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn UFColumn {
-                get {
-                    return this.columnUF;
                 }
             }
             
@@ -5822,13 +5792,10 @@ namespace DametaProject {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public ControleDeEstoqueRow AddControleDeEstoqueRow(int qtd, string estabelecimento, string cidade, string UF, string produto) {
+            public ControleDeEstoqueRow AddControleDeEstoqueRow(int qtd, string produto) {
                 ControleDeEstoqueRow rowControleDeEstoqueRow = ((ControleDeEstoqueRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         qtd,
-                        estabelecimento,
-                        cidade,
-                        UF,
                         produto};
                 rowControleDeEstoqueRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowControleDeEstoqueRow);
@@ -5853,9 +5820,6 @@ namespace DametaProject {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             internal void InitVars() {
                 this.columnqtd = base.Columns["qtd"];
-                this.columnestabelecimento = base.Columns["estabelecimento"];
-                this.columncidade = base.Columns["cidade"];
-                this.columnUF = base.Columns["UF"];
                 this.columnproduto = base.Columns["produto"];
             }
             
@@ -5864,21 +5828,9 @@ namespace DametaProject {
             private void InitClass() {
                 this.columnqtd = new global::System.Data.DataColumn("qtd", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnqtd);
-                this.columnestabelecimento = new global::System.Data.DataColumn("estabelecimento", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnestabelecimento);
-                this.columncidade = new global::System.Data.DataColumn("cidade", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columncidade);
-                this.columnUF = new global::System.Data.DataColumn("UF", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnUF);
                 this.columnproduto = new global::System.Data.DataColumn("produto", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnproduto);
                 this.columnqtd.AllowDBNull = false;
-                this.columnestabelecimento.AllowDBNull = false;
-                this.columnestabelecimento.MaxLength = 50;
-                this.columncidade.AllowDBNull = false;
-                this.columncidade.MaxLength = 50;
-                this.columnUF.AllowDBNull = false;
-                this.columnUF.MaxLength = 2;
                 this.columnproduto.AllowDBNull = false;
                 this.columnproduto.MaxLength = 100;
             }
@@ -10177,39 +10129,6 @@ namespace DametaProject {
                 }
                 set {
                     this[this.tableControleDeEstoque.qtdColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string estabelecimento {
-                get {
-                    return ((string)(this[this.tableControleDeEstoque.estabelecimentoColumn]));
-                }
-                set {
-                    this[this.tableControleDeEstoque.estabelecimentoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string cidade {
-                get {
-                    return ((string)(this[this.tableControleDeEstoque.cidadeColumn]));
-                }
-                set {
-                    this[this.tableControleDeEstoque.cidadeColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string UF {
-                get {
-                    return ((string)(this[this.tableControleDeEstoque.UFColumn]));
-                }
-                set {
-                    this[this.tableControleDeEstoque.UFColumn] = value;
                 }
             }
             
@@ -16862,9 +16781,6 @@ SELECT cod_produto, nome, preco, tipo_produtos_id, fornecedores_id, estoque_id F
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "ControleDeEstoque";
             tableMapping.ColumnMappings.Add("qtd", "qtd");
-            tableMapping.ColumnMappings.Add("estabelecimento", "estabelecimento");
-            tableMapping.ColumnMappings.Add("cidade", "cidade");
-            tableMapping.ColumnMappings.Add("UF", "UF");
             tableMapping.ColumnMappings.Add("produto", "produto");
             this._adapter.TableMappings.Add(tableMapping);
         }
@@ -16882,28 +16798,17 @@ SELECT cod_produto, nome, preco, tipo_produtos_id, fornecedores_id, estoque_id F
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        produtos.nome AS produto, estoque.qtd, estabelecimentos.nome AS estabelecimento, cidades.nome AS cidade, cidades.UF
-FROM            produtos INNER JOIN
-                         estoque ON produtos.estoque_id = estoque.id INNER JOIN
-                         estabelecimentos ON estoque.id = estabelecimentos.id INNER JOIN
-                         cidades ON estabelecimentos.cidades_id = cidades.id
-WHERE        (estabelecimentos.nome = @param)";
+            this._commandCollection[0].CommandText = "SELECT        produtos.nome AS produto, estoque.qtd\r\nFROM            produtos INN" +
+                "ER JOIN\r\n                         estoque ON produtos.estoque_id = estoque.id";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@param", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "estabelecimento", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(dameta_dbDataSet.ControleDeEstoqueDataTable dataTable, string param) {
+        public virtual int Fill(dameta_dbDataSet.ControleDeEstoqueDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((param == null)) {
-                throw new global::System.ArgumentNullException("param");
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(param));
-            }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -16915,14 +16820,8 @@ WHERE        (estabelecimentos.nome = @param)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual dameta_dbDataSet.ControleDeEstoqueDataTable GetData(string param) {
+        public virtual dameta_dbDataSet.ControleDeEstoqueDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((param == null)) {
-                throw new global::System.ArgumentNullException("param");
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(param));
-            }
             dameta_dbDataSet.ControleDeEstoqueDataTable dataTable = new dameta_dbDataSet.ControleDeEstoqueDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;

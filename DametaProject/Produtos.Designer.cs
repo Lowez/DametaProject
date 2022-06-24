@@ -73,12 +73,6 @@
             this.tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.qtd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fornecedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codprodutoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.precoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tipoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qtdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fornecedorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             categoriaLabel = new System.Windows.Forms.Label();
             precoUnitLabel = new System.Windows.Forms.Label();
             nomeLabel = new System.Windows.Forms.Label();
@@ -217,13 +211,7 @@
             this.preco,
             this.tipo,
             this.qtd,
-            this.fornecedor,
-            this.codprodutoDataGridViewTextBoxColumn,
-            this.nomeDataGridViewTextBoxColumn,
-            this.precoDataGridViewTextBoxColumn,
-            this.tipoDataGridViewTextBoxColumn,
-            this.qtdDataGridViewTextBoxColumn,
-            this.fornecedorDataGridViewTextBoxColumn});
+            this.fornecedor});
             this.dataGridView1.DataSource = this.dtProdutoBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(33, 239);
             this.dataGridView1.Name = "dataGridView1";
@@ -231,93 +219,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(514, 207);
             this.dataGridView1.TabIndex = 27;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // cod_produto
-            // 
-            this.cod_produto.DataPropertyName = "cod_produto";
-            this.cod_produto.HeaderText = "Cód.Produto";
-            this.cod_produto.Name = "cod_produto";
-            this.cod_produto.ReadOnly = true;
-            this.cod_produto.Width = 80;
-            // 
-            // nome
-            // 
-            this.nome.DataPropertyName = "nome";
-            this.nome.HeaderText = "Nome";
-            this.nome.Name = "nome";
-            this.nome.ReadOnly = true;
-            // 
-            // preco
-            // 
-            this.preco.DataPropertyName = "preco";
-            this.preco.HeaderText = "Preco";
-            this.preco.Name = "preco";
-            this.preco.ReadOnly = true;
-            this.preco.Width = 50;
-            // 
-            // tipo
-            // 
-            this.tipo.DataPropertyName = "tipo";
-            this.tipo.HeaderText = "Tipo";
-            this.tipo.Name = "tipo";
-            this.tipo.ReadOnly = true;
-            // 
-            // qtd
-            // 
-            this.qtd.DataPropertyName = "qtd";
-            this.qtd.HeaderText = "Qtd";
-            this.qtd.Name = "qtd";
-            this.qtd.ReadOnly = true;
-            this.qtd.Width = 40;
-            // 
-            // fornecedor
-            // 
-            this.fornecedor.DataPropertyName = "fornecedor";
-            this.fornecedor.HeaderText = "Fornecedor";
-            this.fornecedor.Name = "fornecedor";
-            this.fornecedor.ReadOnly = true;
-            // 
-            // codprodutoDataGridViewTextBoxColumn
-            // 
-            this.codprodutoDataGridViewTextBoxColumn.DataPropertyName = "cod_produto";
-            this.codprodutoDataGridViewTextBoxColumn.HeaderText = "cod_produto";
-            this.codprodutoDataGridViewTextBoxColumn.Name = "codprodutoDataGridViewTextBoxColumn";
-            this.codprodutoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // nomeDataGridViewTextBoxColumn
-            // 
-            this.nomeDataGridViewTextBoxColumn.DataPropertyName = "nome";
-            this.nomeDataGridViewTextBoxColumn.HeaderText = "nome";
-            this.nomeDataGridViewTextBoxColumn.Name = "nomeDataGridViewTextBoxColumn";
-            this.nomeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // precoDataGridViewTextBoxColumn
-            // 
-            this.precoDataGridViewTextBoxColumn.DataPropertyName = "preco";
-            this.precoDataGridViewTextBoxColumn.HeaderText = "preco";
-            this.precoDataGridViewTextBoxColumn.Name = "precoDataGridViewTextBoxColumn";
-            this.precoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // tipoDataGridViewTextBoxColumn
-            // 
-            this.tipoDataGridViewTextBoxColumn.DataPropertyName = "tipo";
-            this.tipoDataGridViewTextBoxColumn.HeaderText = "tipo";
-            this.tipoDataGridViewTextBoxColumn.Name = "tipoDataGridViewTextBoxColumn";
-            this.tipoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // qtdDataGridViewTextBoxColumn
-            // 
-            this.qtdDataGridViewTextBoxColumn.DataPropertyName = "qtd";
-            this.qtdDataGridViewTextBoxColumn.HeaderText = "qtd";
-            this.qtdDataGridViewTextBoxColumn.Name = "qtdDataGridViewTextBoxColumn";
-            this.qtdDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // fornecedorDataGridViewTextBoxColumn
-            // 
-            this.fornecedorDataGridViewTextBoxColumn.DataPropertyName = "fornecedor";
-            this.fornecedorDataGridViewTextBoxColumn.HeaderText = "fornecedor";
-            this.fornecedorDataGridViewTextBoxColumn.Name = "fornecedorDataGridViewTextBoxColumn";
-            this.fornecedorDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // dtProdutoBindingSource
             // 
@@ -465,6 +366,7 @@
             this.cod_produto.DataPropertyName = "cod_produto";
             this.cod_produto.HeaderText = "Cód.Produto";
             this.cod_produto.Name = "cod_produto";
+            this.cod_produto.ReadOnly = true;
             this.cod_produto.Width = 80;
             // 
             // nome
@@ -472,6 +374,7 @@
             this.nome.DataPropertyName = "nome";
             this.nome.HeaderText = "Nome";
             this.nome.Name = "nome";
+            this.nome.ReadOnly = true;
             this.nome.Width = 130;
             // 
             // preco
@@ -479,6 +382,7 @@
             this.preco.DataPropertyName = "preco";
             this.preco.HeaderText = "Preco";
             this.preco.Name = "preco";
+            this.preco.ReadOnly = true;
             this.preco.Width = 50;
             // 
             // tipo
@@ -486,6 +390,7 @@
             this.tipo.DataPropertyName = "tipo";
             this.tipo.HeaderText = "Tipo";
             this.tipo.Name = "tipo";
+            this.tipo.ReadOnly = true;
             this.tipo.Width = 70;
             // 
             // qtd
@@ -493,6 +398,7 @@
             this.qtd.DataPropertyName = "qtd";
             this.qtd.HeaderText = "Qtd";
             this.qtd.Name = "qtd";
+            this.qtd.ReadOnly = true;
             this.qtd.Width = 40;
             // 
             // fornecedor
@@ -500,42 +406,7 @@
             this.fornecedor.DataPropertyName = "fornecedor";
             this.fornecedor.HeaderText = "Fornecedor";
             this.fornecedor.Name = "fornecedor";
-            // 
-            // codprodutoDataGridViewTextBoxColumn
-            // 
-            this.codprodutoDataGridViewTextBoxColumn.DataPropertyName = "cod_produto";
-            this.codprodutoDataGridViewTextBoxColumn.HeaderText = "cod_produto";
-            this.codprodutoDataGridViewTextBoxColumn.Name = "codprodutoDataGridViewTextBoxColumn";
-            // 
-            // nomeDataGridViewTextBoxColumn
-            // 
-            this.nomeDataGridViewTextBoxColumn.DataPropertyName = "nome";
-            this.nomeDataGridViewTextBoxColumn.HeaderText = "nome";
-            this.nomeDataGridViewTextBoxColumn.Name = "nomeDataGridViewTextBoxColumn";
-            // 
-            // precoDataGridViewTextBoxColumn
-            // 
-            this.precoDataGridViewTextBoxColumn.DataPropertyName = "preco";
-            this.precoDataGridViewTextBoxColumn.HeaderText = "preco";
-            this.precoDataGridViewTextBoxColumn.Name = "precoDataGridViewTextBoxColumn";
-            // 
-            // tipoDataGridViewTextBoxColumn
-            // 
-            this.tipoDataGridViewTextBoxColumn.DataPropertyName = "tipo";
-            this.tipoDataGridViewTextBoxColumn.HeaderText = "tipo";
-            this.tipoDataGridViewTextBoxColumn.Name = "tipoDataGridViewTextBoxColumn";
-            // 
-            // qtdDataGridViewTextBoxColumn
-            // 
-            this.qtdDataGridViewTextBoxColumn.DataPropertyName = "qtd";
-            this.qtdDataGridViewTextBoxColumn.HeaderText = "qtd";
-            this.qtdDataGridViewTextBoxColumn.Name = "qtdDataGridViewTextBoxColumn";
-            // 
-            // fornecedorDataGridViewTextBoxColumn
-            // 
-            this.fornecedorDataGridViewTextBoxColumn.DataPropertyName = "fornecedor";
-            this.fornecedorDataGridViewTextBoxColumn.HeaderText = "fornecedor";
-            this.fornecedorDataGridViewTextBoxColumn.Name = "fornecedorDataGridViewTextBoxColumn";
+            this.fornecedor.ReadOnly = true;
             // 
             // Produtos
             // 
@@ -624,11 +495,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn tipo;
         private System.Windows.Forms.DataGridViewTextBoxColumn qtd;
         private System.Windows.Forms.DataGridViewTextBoxColumn fornecedor;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codprodutoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nomeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn precoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tipoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn qtdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fornecedorDataGridViewTextBoxColumn;
     }
 }
