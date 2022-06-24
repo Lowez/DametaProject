@@ -199,6 +199,77 @@ namespace DametaProject
             conn.Close();
         }
 
+        private void cbUF_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            filtrarCidades();
+        }
+
+        private int procurarCidade()
+        {
+            SqlConnection conn;
+            SqlCommand comm;
+            SqlDataReader reader;
+
+            string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
+
+            // Inicializa a conexão com o Banco de Dados
+            conn = new SqlConnection(connectionString);
+
+            comm = new SqlCommand(
+                "SELECT cid.id, cid.nome " +
+                "FROM cidades AS cid " +
+                "WHERE cid.nome = @nome", conn);
+
+            comm.Parameters.Add("@nome", System.Data.SqlDbType.NVarChar);
+            comm.Parameters["@nome"].Value = cbCidade.Text.ToString();
+
+            int auxID = 0;
+            try
+            {
+
+                try
+                {
+                    // Abre a conexão com o Banco de Dados
+                    conn.Open();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message,
+                        "Erro ao tentar abrir o Banco de Dados",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
+
+                try
+                {
+                    // Executa o comando SQL
+                    reader = comm.ExecuteReader();
+
+                    // Se encontrou um cliente...
+                    if (reader.Read())
+                    {
+                        auxID = Convert.ToInt32(reader["id"]);
+                    }
+
+                    reader.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message,
+                        "Erro ao tentar executar o comando SQL.",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
+            }
+            catch { }
+            finally
+            {
+                // Fecha a conexão com o Bando de Dados
+                conn.Close();
+            }
+            return auxID;
+        }
+
         private void Clientes_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'dameta_dbDataSet5.Estados' table. You can move, or remove it, as needed.
@@ -213,12 +284,9 @@ namespace DametaProject
         {
             SqlConnection conn;
             SqlCommand comm;
-            SqlCommand comm2;
-            SqlDataReader reader;
-            string cidade;
-            string cidadeID = "";
-            int aux = 0;
             bool bIsOperationOK = true;
+            string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
+            conn = new SqlConnection(connectionString);
 
             if (!(camposVazios() == "preenchido"))
             {
@@ -230,89 +298,31 @@ namespace DametaProject
                 return;
             }
 
-            string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
-            conn = new SqlConnection(connectionString);
 
-            cbCidade.Items.Clear();
             comm = new SqlCommand(
-                "SELECT id, nome FROM cidades WHERE UF = @UF", conn);
-
-            comm.Parameters.Add("@UF", System.Data.SqlDbType.NVarChar);
-            comm.Parameters["@UF"].Value = Convert.ToString(cbUF.SelectedValue);
-
-            try
-            {
-                // Abre a conexão com o Banco de Dados
-                conn.Open();
-
-            }
-
-            catch (Exception ex)
-            {
-                bIsOperationOK = false;
-                MessageBox.Show(ex.Message,
-                    "Erro ao tentar abrir o Banco de Dados",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-            }
-
-            try
-            {
-                // Executa o comando SQL
-
-                reader = comm.ExecuteReader();
-                String aux2 = Convert.ToString(cbCidade.Text);
-
-
-                while (reader.Read())
-                {
-                    cbCidade.Items.Add(reader["id"]);
-                    cidade = Convert.ToString(reader["nome"]);
-                    cidadeID = Convert.ToString(reader["id"]);
-                    if (cidade == aux2) break;
-                }
-
-                aux = Convert.ToInt32(cidadeID);
-
-                reader.Close();
-            }
-            catch (Exception ex)
-            {
-
-                bIsOperationOK = false;
-                MessageBox.Show(ex.Message,
-                    "Erro ao tentar executar o comando SQL.",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-
-            }
-            conn.Close();
-            filtrarCidades();
-
-            comm2 = new SqlCommand(
                 "INSERT INTO premium_usuarios (nome, nascimento, CPF, telefone, CEP, cidades_id, generos_id) " +
-                "VALUES (@nome, @nascimento, @CPF, @telefone, @CEP, " + aux + ", @generos_id)", conn);
+                "VALUES (@nome, @nascimento, @CPF, @telefone, @CEP, @cidades_id, @generos_id)", conn);
 
-            comm2.Parameters.Add("@nome", System.Data.SqlDbType.NVarChar);
-            comm2.Parameters["@nome"].Value = txNome.Text;
+            comm.Parameters.Add("@nome", System.Data.SqlDbType.NVarChar);
+            comm.Parameters["@nome"].Value = txNome.Text;
 
-            comm2.Parameters.Add("@nascimento", System.Data.SqlDbType.Date);
-            comm2.Parameters["@nascimento"].Value = dtpDataNasc.Value;
+            comm.Parameters.Add("@nascimento", System.Data.SqlDbType.Date);
+            comm.Parameters["@nascimento"].Value = dtpDataNasc.Value;
 
-            comm2.Parameters.Add("@CPF", System.Data.SqlDbType.NVarChar);
-            comm2.Parameters["@CPF"].Value = mtxCPF.Text;
+            comm.Parameters.Add("@CPF", System.Data.SqlDbType.NVarChar);
+            comm.Parameters["@CPF"].Value = mtxCPF.Text;
 
-            comm2.Parameters.Add("@telefone", System.Data.SqlDbType.NVarChar);
-            comm2.Parameters["@telefone"].Value = mtxTelefone.Text;
+            comm.Parameters.Add("@telefone", System.Data.SqlDbType.NVarChar);
+            comm.Parameters["@telefone"].Value = mtxTelefone.Text;
 
-            comm2.Parameters.Add("@CEP", System.Data.SqlDbType.NVarChar);
-            comm2.Parameters["@CEP"].Value = mtxCEP.Text;
+            comm.Parameters.Add("@CEP", System.Data.SqlDbType.NVarChar);
+            comm.Parameters["@CEP"].Value = mtxCEP.Text;
 
-            comm2.Parameters.Add("@cidade_id", System.Data.SqlDbType.Int);
-            comm2.Parameters["@cidade_id"].Value = Convert.ToInt32(cbCidade.SelectedValue);
+            comm.Parameters.Add("@cidades_id", System.Data.SqlDbType.Int);
+            comm.Parameters["@cidades_id"].Value = procurarCidade();
 
-            comm2.Parameters.Add("@generos_id", System.Data.SqlDbType.Int);
-            comm2.Parameters["@generos_id"].Value = Convert.ToInt32(cbGenero.SelectedValue);
+            comm.Parameters.Add("@generos_id", System.Data.SqlDbType.Int);
+            comm.Parameters["@generos_id"].Value = Convert.ToInt32(cbGenero.SelectedValue);
 
 
             try
@@ -332,7 +342,7 @@ namespace DametaProject
 
             try
             {
-                comm2.ExecuteNonQuery();
+                comm.ExecuteNonQuery();
             }
             catch (Exception ex)
             {
@@ -458,12 +468,9 @@ namespace DametaProject
 
             SqlConnection conn;
             SqlCommand comm;
-            SqlCommand comm2;
-            SqlDataReader reader;
-            string cidade;
-            string cidadeID = "";
-            int aux = 0;
             bool bIsOperationOK = true;
+            string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
+            conn = new SqlConnection(connectionString);
 
             string campoVazio = (camposVazios("alterar"));
             if (campoVazio != "nao existe")
@@ -477,90 +484,35 @@ namespace DametaProject
                     bIsOperationOK = false;
                     return;
                 }
-                string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
-                conn = new SqlConnection(connectionString);
-
-                cbCidade.Items.Clear();
+               
                 comm = new SqlCommand(
-                    "SELECT id, nome FROM cidades WHERE UF = @UF", conn);
-
-                comm.Parameters.Add("@UF", System.Data.SqlDbType.NVarChar);
-                comm.Parameters["@UF"].Value = Convert.ToString(cbUF.SelectedValue);
-
-                try
-                {
-                    // Abre a conexão com o Banco de Dados
-                    conn.Open();
-
-                }
-
-                catch (Exception ex)
-                {
-                    bIsOperationOK = false;
-                    MessageBox.Show(ex.Message,
-                        "Erro ao tentar abrir o Banco de Dados",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                }
-
-                try
-                {
-                    // Executa o comando SQL
-
-                    reader = comm.ExecuteReader();
-                    String aux2 = Convert.ToString(cbCidade.Text);
-
-
-                    while (reader.Read())
-                    {
-                        cbCidade.Items.Add(reader["id"]);
-                        cidade = Convert.ToString(reader["nome"]);
-                        cidadeID = Convert.ToString(reader["id"]);
-                        if (cidade == aux2) break;
-                    }
-
-                    aux = Convert.ToInt32(cidadeID);
-
-                    reader.Close();
-                }
-                catch (Exception ex)
-                {
-
-                    bIsOperationOK = false;
-                    MessageBox.Show(ex.Message,
-                        "Erro ao tentar executar o comando SQL.",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-
-                }
-                conn.Close();
-                filtrarCidades();
-
-                comm2 = new SqlCommand(
                     "UPDATE premium_usuarios SET nome=@nome, nascimento = @nascimento, CPF=@CPF, telefone = @telefone, CEP = @CEP, " +
-                    "cidades_id = " + aux + ", generos_id = @generos_id " +
+                    "cidades_id = @cidades_id, generos_id = @generos_id " +
                     "WHERE id = @id", conn);
 
-                comm2.Parameters.Add("@id", System.Data.SqlDbType.Int);
-                comm2.Parameters["@id"].Value = txID.Text;
+                comm.Parameters.Add("@id", System.Data.SqlDbType.Int);
+                comm.Parameters["@id"].Value = txID.Text;
 
-                comm2.Parameters.Add("@nome", System.Data.SqlDbType.NVarChar);
-                comm2.Parameters["@nome"].Value = txNome.Text;
+                comm.Parameters.Add("@nome", System.Data.SqlDbType.NVarChar);
+                comm.Parameters["@nome"].Value = txNome.Text;
 
-                comm2.Parameters.Add("@nascimento", System.Data.SqlDbType.Date);
-                comm2.Parameters["@nascimento"].Value = dtpDataNasc.Value;
+                comm.Parameters.Add("@nascimento", System.Data.SqlDbType.Date);
+                comm.Parameters["@nascimento"].Value = dtpDataNasc.Value;
 
-                comm2.Parameters.Add("@CPF", System.Data.SqlDbType.NVarChar);
-                comm2.Parameters["@CPF"].Value = mtxCPF.Text;
+                comm.Parameters.Add("@CPF", System.Data.SqlDbType.NVarChar);
+                comm.Parameters["@CPF"].Value = mtxCPF.Text;
 
-                comm2.Parameters.Add("@telefone", System.Data.SqlDbType.NVarChar);
-                comm2.Parameters["@telefone"].Value = mtxTelefone.Text;
+                comm.Parameters.Add("@telefone", System.Data.SqlDbType.NVarChar);
+                comm.Parameters["@telefone"].Value = mtxTelefone.Text;
 
-                comm2.Parameters.Add("@CEP", System.Data.SqlDbType.NVarChar);
-                comm2.Parameters["@CEP"].Value = mtxCEP.Text;
+                comm.Parameters.Add("@CEP", System.Data.SqlDbType.NVarChar);
+                comm.Parameters["@CEP"].Value = mtxCEP.Text;
 
-                comm2.Parameters.Add("@generos_id", System.Data.SqlDbType.Int);
-                comm2.Parameters["@generos_id"].Value = Convert.ToInt32(cbGenero.SelectedValue);
+                comm.Parameters.Add("@cidades_id", System.Data.SqlDbType.Int);
+                comm.Parameters["@cidades_id"].Value = procurarCidade();
+
+                comm.Parameters.Add("@generos_id", System.Data.SqlDbType.Int);
+                comm.Parameters["@generos_id"].Value = Convert.ToInt32(cbGenero.SelectedValue);
 
                 try
                 {
@@ -579,7 +531,7 @@ namespace DametaProject
 
                 try
                 {
-                    comm2.ExecuteNonQuery();
+                    comm.ExecuteNonQuery();
                 }
                 catch (Exception ex)
                 {
@@ -730,11 +682,6 @@ namespace DametaProject
                 System.Windows.Forms.MessageBox.Show(ex.Message);
             }
 
-        }
-
-        private void cbUF_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            filtrarCidades();
         }
     }
 }
