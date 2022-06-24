@@ -20,14 +20,28 @@ namespace DametaProject
 
         private void btDebito_Click(object sender, EventArgs e)
         {
-            Cartao formDebito = new Cartao("Débito", this);
-            formDebito.Show();
+            using (Cartao formDebito = new Cartao("Débito"))
+            {
+                var result = formDebito.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+            }
         }
 
         private void btCredito_Click(object sender, EventArgs e)
         {
-            Cartao formCredito = new Cartao("Crédito", this);
-            formCredito.Show();
+            using (Cartao formCredito = new Cartao("Crédito"))
+            {
+                var result = formCredito.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+            }
         }
 
         private void btDinheiro_Click(object sender, EventArgs e)
@@ -38,8 +52,15 @@ namespace DametaProject
                 btCredito.Visible = false;
             }
 
-            Cedulas formCedulas = new Cedulas(this);
-            formCedulas.Show();
+            using (Cedulas formCedulas = new Cedulas())
+            {
+                var result = formCedulas.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+            }            
         }
 
         private void btCartao_Click(object sender, EventArgs e)

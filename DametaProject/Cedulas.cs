@@ -14,11 +14,9 @@ namespace DametaProject
     {
         FormaDePagamento form_formaDePagamento;
 
-        public Cedulas(FormaDePagamento form)
+        public Cedulas()
         {
             InitializeComponent();
-
-            form_formaDePagamento = form;
 
             txValorTotal.Text = Carrinho.preco_total.ToString();
         }
@@ -27,8 +25,8 @@ namespace DametaProject
         {
             if (txValorPago.Text != "")
             {
+                this.DialogResult = DialogResult.OK;
                 this.Close();
-                form_formaDePagamento.Close();
             } else
             {
                 MessageBox.Show("Informe o valor pago pelo cliente",

@@ -14,12 +14,11 @@ namespace DametaProject
     public partial class PremiumUserCheck : Form
     {
         Carrinho form_carrinho;
+        public string nome_cliente = "";
 
-        public PremiumUserCheck(Carrinho form2)
+        public PremiumUserCheck()
         {
             InitializeComponent();
-
-            form_carrinho = form2;
         }
 
         private void btContinuar_Click(object sender, EventArgs e)
@@ -67,8 +66,19 @@ namespace DametaProject
                             {
                                 string CPF_cliente = reader["CPF"].ToString();
 
-                                InfosCliente infosCliente = new InfosCliente(CPF_cliente, this, form_carrinho);
-                                infosCliente.Show();
+                                using (InfosCliente infosCliente = new InfosCliente(CPF_cliente, this, form_carrinho))
+                                {
+                                    var result = infosCliente.ShowDialog();
+                                    if (result == DialogResult.OK)
+                                    {
+                                        this.nome_cliente = infosCliente.nome_cliente;
+                                        this.DialogResult = DialogResult.OK;
+                                        this.Close();
+                                    }
+                                }
+
+                                //InfosCliente infosCliente = new InfosCliente(CPF_cliente, this, form_carrinho);
+                                //infosCliente.Show();
                             } else
                             {
                                 MessageBox.Show("Usuário não encontrado",
@@ -101,8 +111,7 @@ namespace DametaProject
                 }
             } else
             {
-                form_carrinho.Enabled = true;
-
+                this.DialogResult = DialogResult.OK;
                 this.Close();
             }
         }

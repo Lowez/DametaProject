@@ -13,6 +13,8 @@ namespace DametaProject
     public partial class HomeManagerForm : Form
     {
         public Form form_inicial;
+
+        bool botao_sair = false;
         public HomeManagerForm(string nome, WelcomeForm form)
         {
             InitializeComponent();
@@ -55,6 +57,7 @@ namespace DametaProject
 
         private void btSair_Click(object sender, EventArgs e)
         {
+            botao_sair = true;
             this.Close();
             form_inicial.Show();
         }
@@ -67,7 +70,10 @@ namespace DametaProject
 
         private void HomeManagerForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Application.Exit();
+            if (!botao_sair)
+            {
+                Application.Exit();
+            }
         }
     }
 }

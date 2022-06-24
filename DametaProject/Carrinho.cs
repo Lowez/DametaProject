@@ -14,16 +14,15 @@ namespace DametaProject
     public partial class Carrinho : Form
     {
         public static int cliente_id = 0;
-        public static string cliente_nome = "";
         public static decimal preco_total = 0;
 
         WelcomeForm form_inicial;
-        PremiumUserCheck form_premium;
         int qtdDeProdutos;
         decimal precoTotal;
         string nome_funcionario;
         int estabelecimento_id;
         bool bIsOperationOK = true;
+        bool botao_sair = false;
 
         public Carrinho(string nome, int id, WelcomeForm form, bool is_new = false)
         {
@@ -34,12 +33,12 @@ namespace DametaProject
             precoTotal = 0;
             nome_funcionario = nome;
             estabelecimento_id = id;
+
+            txCodigoProd.ReadOnly = true;
         }
 
         private void callOnLoad()
         {
-            form_premium = new PremiumUserCheck(this);
-
             // Adiciona o nome do  usuário que está logando no título do formulário
             this.Text = "Bem vindo(a) " + nome_funcionario;
 
@@ -133,6 +132,7 @@ namespace DametaProject
 
         private void btSair_Click(object sender, EventArgs e)
         {
+            botao_sair = true;
             this.Close();
             form_inicial.Show();
         }
@@ -300,8 +300,20 @@ namespace DametaProject
                 {
                     preco_total = Convert.ToDecimal(lblValorTotal.Text);
 
-                    FormaDePagamento form_pagamento = new FormaDePagamento();
-                    form_pagamento.Show();
+                    using (FormaDePagamento form_pagamento = new FormaDePagamento())
+                    {
+                        var result = form_pagamento.ShowDialog();
+                        if (result == DialogResult.OK)
+                        {
+                            txCodigoProd.ReadOnly = true;
+                            txNome.Text = "";
+                            dgvCarrinho.Rows.Clear();
+                            dgvCarrinho.Refresh();
+                            lblTotalItens.Text = "0";
+                            lblValorTotal.Text = "0,00";
+                            limpaForm();
+                        }
+                    }
                 }
             }
         }
@@ -331,7 +343,15 @@ namespace DametaProject
 
         private void Carrinho_Shown(object sender, EventArgs e)
         {
-            form_premium.Show();
+            using (var form_premium = new PremiumUserCheck())
+            {
+                var result = form_premium.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    txNome.Text = form_premium.nome_cliente;
+                    txCodigoProd.ReadOnly = false;
+                }
+            }
         }
 
         private void btAdicionar_Click(object sender, EventArgs e)
@@ -516,6 +536,9 @@ namespace DametaProject
         {
             limpaForm();
             txCodigoProd.Text = "";
+            txNome.Text = "";
+
+            txCodigoProd.ReadOnly = true;
 
             dgvCarrinho.Rows.Clear();
             dgvCarrinho.Refresh();
@@ -526,13 +549,23 @@ namespace DametaProject
             lblTotalItens.Text = qtdDeProdutos.ToString();
             lblValorTotal.Text = precoTotal.ToString();
 
-            PremiumUserCheck premiumUserCheck = new PremiumUserCheck(this);
-            premiumUserCheck.Show();
+            using (var form_premium = new PremiumUserCheck())
+            {
+                var result = form_premium.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    txNome.Text = form_premium.nome_cliente;
+                    txCodigoProd.ReadOnly = false;
+                }
+            }
         }
 
         private void Carrinho_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Application.Exit();
+            if (!botao_sair)
+            {
+                Application.Exit();
+            }
         }
     }
 }
