@@ -29,7 +29,7 @@ namespace DametaProject
 
         private void btInserir_Click(object sender, EventArgs e)
         {
-            Estabelecimentos form = new Estabelecimentos("");
+            Estabelecimentos form = new Estabelecimentos();
             form.Show();
         }
 

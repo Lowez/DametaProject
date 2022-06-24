@@ -15,7 +15,7 @@ namespace DametaProject
     public partial class Estabelecimentos : Form
     {
         string nomeEstabelecimento = "";
-        public Estabelecimentos(string nome_estabelecimento = null)
+        public Estabelecimentos(string nome_estabelecimento = "")
         {
             InitializeComponent();
             this.nomeEstabelecimento = nome_estabelecimento;
