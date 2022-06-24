@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RelatorioFuncionarios));
             this.relatorioDeFuncionariosBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.dameta_dbDataSet = new DametaProject.dameta_dbDataSet();
             this.label1 = new System.Windows.Forms.Label();
@@ -158,6 +159,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cbNome);
             this.Controls.Add(this.GerarRelatorio);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "RelatorioFuncionarios";
             this.Text = "Relatorio De Funcionarios";
             this.Load += new System.EventHandler(this.RelatorioDeFuncionarios_Load);

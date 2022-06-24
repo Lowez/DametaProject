@@ -30,26 +30,37 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RelatoriosFornecedoresEstabelecimentos));
+            this.fornecedoresEstabelecimentosBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.dameta_dbDataSet = new DametaProject.dameta_dbDataSet();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.reportViewer2 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.label1 = new System.Windows.Forms.Label();
             this.cbNome = new System.Windows.Forms.ComboBox();
+            this.estabelecimentosBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.GerarRelatorio = new System.Windows.Forms.Button();
-            this.dameta_dbDataSet = new DametaProject.dameta_dbDataSet();
             this.estabelecimentosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.estabelecimentosTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.estabelecimentosTableAdapter();
             this.fornecedoresEstabelecimentosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.fornecedoresEstabelecimentos = new DametaProject.dameta_dbDataSetTableAdapters.FornecedoresEstabelecimentos();
-            this.estabelecimentosBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.fornecedoresEstabelecimentosBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.fornecedoresEstabelecimentosBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.fornecedoresEstabelecimentosBindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.estabelecimentosBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.estabelecimentosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fornecedoresEstabelecimentosBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.estabelecimentosBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fornecedoresEstabelecimentosBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fornecedoresEstabelecimentosBindingSource2)).BeginInit();
             this.SuspendLayout();
+            // 
+            // fornecedoresEstabelecimentosBindingSource2
+            // 
+            this.fornecedoresEstabelecimentosBindingSource2.DataMember = "FornecedoresEstabelecimentos";
+            this.fornecedoresEstabelecimentosBindingSource2.DataSource = this.dameta_dbDataSet;
+            // 
+            // dameta_dbDataSet
+            // 
+            this.dameta_dbDataSet.DataSetName = "dameta_dbDataSet";
+            this.dameta_dbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // reportViewer1
             // 
@@ -91,6 +102,11 @@
             this.cbNome.TabIndex = 5;
             this.cbNome.ValueMember = "nome";
             // 
+            // estabelecimentosBindingSource1
+            // 
+            this.estabelecimentosBindingSource1.DataMember = "estabelecimentos";
+            this.estabelecimentosBindingSource1.DataSource = this.dameta_dbDataSet;
+            // 
             // GerarRelatorio
             // 
             this.GerarRelatorio.Location = new System.Drawing.Point(428, 14);
@@ -100,11 +116,6 @@
             this.GerarRelatorio.Text = "Pesquisar";
             this.GerarRelatorio.UseVisualStyleBackColor = true;
             this.GerarRelatorio.Click += new System.EventHandler(this.GerarRelatorio_Click);
-            // 
-            // dameta_dbDataSet
-            // 
-            this.dameta_dbDataSet.DataSetName = "dameta_dbDataSet";
-            this.dameta_dbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // estabelecimentosBindingSource
             // 
@@ -124,20 +135,10 @@
             // 
             this.fornecedoresEstabelecimentos.ClearBeforeFill = true;
             // 
-            // estabelecimentosBindingSource1
-            // 
-            this.estabelecimentosBindingSource1.DataMember = "estabelecimentos";
-            this.estabelecimentosBindingSource1.DataSource = this.dameta_dbDataSet;
-            // 
             // fornecedoresEstabelecimentosBindingSource1
             // 
             this.fornecedoresEstabelecimentosBindingSource1.DataMember = "FornecedoresEstabelecimentos";
             this.fornecedoresEstabelecimentosBindingSource1.DataSource = this.dameta_dbDataSet;
-            // 
-            // fornecedoresEstabelecimentosBindingSource2
-            // 
-            this.fornecedoresEstabelecimentosBindingSource2.DataMember = "FornecedoresEstabelecimentos";
-            this.fornecedoresEstabelecimentosBindingSource2.DataSource = this.dameta_dbDataSet;
             // 
             // RelatoriosFornecedoresEstabelecimentos
             // 
@@ -148,15 +149,16 @@
             this.Controls.Add(this.cbNome);
             this.Controls.Add(this.GerarRelatorio);
             this.Controls.Add(this.reportViewer2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "RelatoriosFornecedoresEstabelecimentos";
             this.Text = "Relatorios Fornecedores-Estabelecimentos";
             this.Load += new System.EventHandler(this.RelatoriosFornecedoresEstabelecimentos_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.fornecedoresEstabelecimentosBindingSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.estabelecimentosBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.estabelecimentosBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fornecedoresEstabelecimentosBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.estabelecimentosBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fornecedoresEstabelecimentosBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fornecedoresEstabelecimentosBindingSource2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

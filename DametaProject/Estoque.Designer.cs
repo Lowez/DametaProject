@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Estoque));
             this.controleDeEstoqueBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.dameta_dbDataSet = new DametaProject.dameta_dbDataSet();
             this.controleDeEstoqueBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -153,6 +154,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cbNome);
             this.Controls.Add(this.GerarRelatorio);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Estoque";
             this.Text = "Estoque";
             this.Load += new System.EventHandler(this.Estoque_Load);
