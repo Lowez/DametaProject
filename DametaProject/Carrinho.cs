@@ -371,6 +371,7 @@ namespace DametaProject
                 produto_ja_adicionado = false;
                 row_do_prod = 0;
                 limpaForm();
+                btAdicionar.Enabled = false;
                 txCodigoProd.Text = "";
             } else
             {
@@ -395,6 +396,7 @@ namespace DametaProject
                 lblTotalItens.Text = qtdDeProdutos.ToString();
 
                 limpaForm();
+                btAdicionar.Enabled = false;
                 txCodigoProd.Text = "";
             }
         }
@@ -436,6 +438,9 @@ namespace DametaProject
                     lblTotalItens.Text = qtdDeProdutos.ToString();
 
                     encontrou = true;
+                    btRemover.Enabled = false;
+                    txCodigoProd.Text = "";
+                    limpaForm();
                     break;
                 }
             }
@@ -495,8 +500,16 @@ namespace DametaProject
 
         private void txCodigoProd_TextChanged(object sender, EventArgs e)
         {
+            if (txCodigoProd.Text == "")
+            {
+                txQtd.ReadOnly = true;
+                btRemover.Enabled = false;
+            } else
+            {
+                btRemover.Enabled = true;
+            }
+
             limpaForm();
-            btRemover.Enabled = true;
         }
 
         private void btNovaCompra_Click(object sender, EventArgs e)
@@ -515,6 +528,11 @@ namespace DametaProject
 
             PremiumUserCheck premiumUserCheck = new PremiumUserCheck(this);
             premiumUserCheck.Show();
+        }
+
+        private void Carrinho_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

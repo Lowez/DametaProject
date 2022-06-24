@@ -197,6 +197,7 @@
             this.Name = "HomeManagerForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Bem vindo(a) [Nome do Usuário]";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.HomeManagerForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

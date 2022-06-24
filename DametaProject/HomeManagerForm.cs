@@ -64,5 +64,10 @@ namespace DametaProject
             HomeRelatorios form = new HomeRelatorios();
             form.Show();
         }
+
+        private void HomeManagerForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
