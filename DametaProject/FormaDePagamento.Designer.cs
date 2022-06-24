@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormaDePagamento));
             this.btCartao = new System.Windows.Forms.Button();
             this.btDinheiro = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -103,6 +104,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btDinheiro);
             this.Controls.Add(this.btCartao);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormaDePagamento";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormaDePagamento";

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PremiumUserCheck));
             this.cbxPremiumUser = new System.Windows.Forms.CheckBox();
             this.mtxCPF = new System.Windows.Forms.MaskedTextBox();
             this.lblCPF = new System.Windows.Forms.Label();
@@ -88,6 +89,7 @@
             this.Controls.Add(this.lblCPF);
             this.Controls.Add(this.mtxCPF);
             this.Controls.Add(this.cbxPremiumUser);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "PremiumUserCheck";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PremiumUserCheck";

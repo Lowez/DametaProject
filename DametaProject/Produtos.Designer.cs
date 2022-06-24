@@ -35,6 +35,7 @@
             System.Windows.Forms.Label CodigoProdutoLabel;
             System.Windows.Forms.Label label2;
             System.Windows.Forms.Label label1;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Produtos));
             this.btLimparForm = new System.Windows.Forms.Button();
             this.btExcluir = new System.Windows.Forms.Button();
             this.btAlterar = new System.Windows.Forms.Button();
@@ -469,6 +470,7 @@
             this.Controls.Add(this.txNome);
             this.Controls.Add(this.txID);
             this.Controls.Add(CodigoProdutoLabel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Produtos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Produtos";

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Cartao));
             this.lblCartao = new System.Windows.Forms.Label();
             this.rtbOperacao = new System.Windows.Forms.RichTextBox();
             this.btTerminar = new System.Windows.Forms.Button();
@@ -110,6 +111,7 @@
             this.Controls.Add(this.lblCartao);
             this.Controls.Add(this.btReiniciar);
             this.Controls.Add(this.btCancelar);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Cartao";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Credito";
