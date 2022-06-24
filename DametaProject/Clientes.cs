@@ -167,7 +167,7 @@ namespace DametaProject
 
         }
 
-        private void filtrarCidades()
+        private void filtrarCidades(bool flag = true)
         {
             cbCidade.Items.Clear();
             SqlConnection conn;
@@ -187,12 +187,13 @@ namespace DametaProject
             reader = comm.ExecuteReader();
             while (reader.Read())
             {
-
                 cbCidade.Items.Add(reader["nome"]);
-
+                if (flag)
+                {
+                    cbCidade.Text = reader["nome"].ToString();
+                }
+                flag = false;
             }
-            cbCidade.Text = Convert.ToString("Acrelândia");
-
 
             reader.Close();
             conn.Close();
