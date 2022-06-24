@@ -118,6 +118,72 @@ namespace DametaProject
             btLimpar_Click(sender, e);
         }
 
+        private bool ConsultarExistencia(int id)
+        {
+            SqlConnection conn;
+            SqlCommand comm;
+            SqlDataReader reader;
+            bool existe = false;
+            int ID = id;
+
+            string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
+
+            // Inicializa a conexão com o Banco de Dados
+            conn = new SqlConnection(connectionString);
+
+            comm = new SqlCommand(
+                "SELECT func.id " +
+                "FROM funcionarios AS func " +
+                "WHERE func.id = @ID", conn);
+
+            comm.Parameters.Add("@ID", System.Data.SqlDbType.Int);
+            comm.Parameters["@ID"].Value = Convert.ToInt32(ID);
+
+            try
+            {
+                try
+                {
+                    // Abre a conexão com o Banco de Dados
+                    conn.Open();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message,
+                        "Erro ao tentar abrir o Banco de Dados",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
+
+                try
+                {
+                    // Executa o comando SQL
+                    reader = comm.ExecuteReader();
+
+                    // Se encontrou um cliente...
+                    if (reader.Read())
+                    {
+                        existe = true;
+                    }
+                    reader.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message,
+                        "Erro ao tentar executar o comando SQL.",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
+            }
+            catch { }
+            finally
+            {
+                // Fecha a conexão com o Bando de Dados
+                conn.Close();
+            }
+            return existe;
+        }
+
+
         private void btConsultar_Click(object sender, EventArgs e)
         {
             SqlConnection conn;
@@ -184,6 +250,13 @@ namespace DametaProject
                         txEmail.Text = reader["email"].ToString();
                         txSalario.Text = reader["Salario"].ToString();
                         dtpDataNascimento.Text = reader["nascimento"].ToString();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Funcionário não existe no banco de dados!",
+                           "Registro não existe",
+                           MessageBoxButtons.OK,
+                           MessageBoxIcon.Information);
                     }
 
                     reader.Close();
@@ -353,174 +426,196 @@ namespace DametaProject
 
         private void btAlterar_Click(object sender, EventArgs e)
         {
-            SqlConnection conn;
-            SqlCommand comm;
-            bool bIsOperationOK = true;
-
-            if (!(camposVazios("alterar") == "preenchido"))
+            bool existe = ConsultarExistencia(Convert.ToInt32(txID.Text));
+            if (existe)
             {
-                MessageBox.Show("Você deve preencher: " + camposVazios("alterar"),
-                    "Informações incompletas!",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+                SqlConnection conn;
+                SqlCommand comm;
+                bool bIsOperationOK = true;
 
-                return;
-            }
-
-            string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
-
-            conn = new SqlConnection(connectionString);
-
-            comm = new SqlCommand(
-                "UPDATE funcionarios SET nome=@nome, nascimento=@nascimento, email = @email, CPF=@CPF, salario=@salario, telefone = @telefone, generos_id = @generos_id, cargos_id = @cargos_id, estabelecimentos_id=@estabelecimentos_id  " +
-                "WHERE id = @id", conn);
-
-            comm.Parameters.Add("@id", System.Data.SqlDbType.Int);
-            comm.Parameters["@id"].Value = Convert.ToInt32(txID.Text);
-
-            comm.Parameters.Add("@nome", System.Data.SqlDbType.NVarChar);
-            comm.Parameters["@nome"].Value = txNome.Text;
-
-            comm.Parameters.Add("@nascimento", System.Data.SqlDbType.Date);
-            comm.Parameters["@nascimento"].Value = dtpDataNascimento.Value;
-
-            comm.Parameters.Add("@email", System.Data.SqlDbType.NVarChar);
-            comm.Parameters["@email"].Value = txEmail.Text;
-
-            comm.Parameters.Add("@CPF", System.Data.SqlDbType.NVarChar);
-            comm.Parameters["@CPF"].Value = mtxCPF.Text;
-
-            comm.Parameters.Add("@salario", System.Data.SqlDbType.Money);
-            comm.Parameters["@salario"].Value = Convert.ToDouble(txSalario.Text);
-
-            comm.Parameters.Add("@telefone", System.Data.SqlDbType.NVarChar);
-            comm.Parameters["@telefone"].Value = mtxTelefone.Text;
-
-            comm.Parameters.Add("@generos_id", System.Data.SqlDbType.Int);
-            comm.Parameters["@generos_id"].Value = cbGenero.SelectedValue;
-
-            comm.Parameters.Add("@cargos_id", System.Data.SqlDbType.Int);
-            comm.Parameters["@cargos_id"].Value = cbCargo.SelectedValue;
-
-            comm.Parameters.Add("@estabelecimentos_id", System.Data.SqlDbType.Int);
-            comm.Parameters["@estabelecimentos_id"].Value = cbEstabelecimento.SelectedValue;
-
-            try
-            {
-                try
+                if (!(camposVazios("alterar") == "preenchido"))
                 {
-                    conn.Open();
-                }
-                catch (Exception error)
-                {
-                    bIsOperationOK = false;
-                    MessageBox.Show(error.Message,
-                        "Erro ao abrir conexão com o Banco de Dados",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                }
-
-                try
-                {
-                    comm.ExecuteNonQuery();
-                }
-                catch (Exception error)
-                {
-                    bIsOperationOK = false;
-                    MessageBox.Show(error.Message,
-                        "Erro ao tentar executar o comando SQL",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                }
-            }
-            catch { }
-            finally
-            {
-                conn.Close();
-
-                if (bIsOperationOK == true)
-                {
-                    MessageBox.Show("Funcionário alterado com sucesso!",
-                        "Registro Alterado!",
+                    MessageBox.Show("Você deve preencher: " + camposVazios("alterar"),
+                        "Informações incompletas!",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
+
+                    return;
                 }
+
+                string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
+
+                conn = new SqlConnection(connectionString);
+
+                comm = new SqlCommand(
+                    "UPDATE funcionarios SET nome=@nome, nascimento=@nascimento, email = @email, CPF=@CPF, salario=@salario, telefone = @telefone, generos_id = @generos_id, cargos_id = @cargos_id, estabelecimentos_id=@estabelecimentos_id  " +
+                    "WHERE id = @id", conn);
+
+                comm.Parameters.Add("@id", System.Data.SqlDbType.Int);
+                comm.Parameters["@id"].Value = Convert.ToInt32(txID.Text);
+
+                comm.Parameters.Add("@nome", System.Data.SqlDbType.NVarChar);
+                comm.Parameters["@nome"].Value = txNome.Text;
+
+                comm.Parameters.Add("@nascimento", System.Data.SqlDbType.Date);
+                comm.Parameters["@nascimento"].Value = dtpDataNascimento.Value;
+
+                comm.Parameters.Add("@email", System.Data.SqlDbType.NVarChar);
+                comm.Parameters["@email"].Value = txEmail.Text;
+
+                comm.Parameters.Add("@CPF", System.Data.SqlDbType.NVarChar);
+                comm.Parameters["@CPF"].Value = mtxCPF.Text;
+
+                comm.Parameters.Add("@salario", System.Data.SqlDbType.Money);
+                comm.Parameters["@salario"].Value = Convert.ToDouble(txSalario.Text);
+
+                comm.Parameters.Add("@telefone", System.Data.SqlDbType.NVarChar);
+                comm.Parameters["@telefone"].Value = mtxTelefone.Text;
+
+                comm.Parameters.Add("@generos_id", System.Data.SqlDbType.Int);
+                comm.Parameters["@generos_id"].Value = cbGenero.SelectedValue;
+
+                comm.Parameters.Add("@cargos_id", System.Data.SqlDbType.Int);
+                comm.Parameters["@cargos_id"].Value = cbCargo.SelectedValue;
+
+                comm.Parameters.Add("@estabelecimentos_id", System.Data.SqlDbType.Int);
+                comm.Parameters["@estabelecimentos_id"].Value = cbEstabelecimento.SelectedValue;
+
+                try
+                {
+                    try
+                    {
+                        conn.Open();
+                    }
+                    catch (Exception error)
+                    {
+                        bIsOperationOK = false;
+                        MessageBox.Show(error.Message,
+                            "Erro ao abrir conexão com o Banco de Dados",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                    }
+
+                    try
+                    {
+                        comm.ExecuteNonQuery();
+                    }
+                    catch (Exception error)
+                    {
+                        bIsOperationOK = false;
+                        MessageBox.Show(error.Message,
+                            "Erro ao tentar executar o comando SQL",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                    }
+                }
+                catch { }
+                finally
+                {
+                    conn.Close();
+
+                    if (bIsOperationOK == true)
+                    {
+                        MessageBox.Show("Funcionário alterado com sucesso!",
+                            "Registro Alterado!",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
+                    }
+                }
+                AtualizaListaDeFuncionarios();
+                btLimpar_Click(sender, e);
             }
-            AtualizaListaDeFuncionarios();
-            btLimpar_Click(sender, e);
+            else
+            {
+                MessageBox.Show("Funcionário não pode ser alterado porque não existe no banco de dados!",
+                           "Registro não existe",
+                           MessageBoxButtons.OK,
+                           MessageBoxIcon.Information);
+            }
         }
 
         private void btExcluir_Click(object sender, EventArgs e)
         {
-            SqlConnection conn;
-            SqlCommand comm;
-            bool bIsOperationOK = true;
-
-            if (!(camposVazios("only_id") == "preenchido"))
+            bool existe = ConsultarExistencia(Convert.ToInt32(txID.Text));
+            if (existe)
             {
-                MessageBox.Show("Você deve preencher: " + camposVazios("only_id"),
-                    "Informações incompletas!",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+                SqlConnection conn;
+                SqlCommand comm;
+                bool bIsOperationOK = true;
 
-                return;
-            }
-
-            string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
-
-            conn = new SqlConnection(connectionString);
-
-            comm = new SqlCommand(
-                "DELETE FROM funcionarios " +
-                "WHERE id = @id", conn);
-
-            comm.Parameters.Add("@id", System.Data.SqlDbType.Int);
-            comm.Parameters["@id"].Value = Convert.ToInt32(txID.Text);
-
-            try
-            {
-                try
+                if (!(camposVazios("only_id") == "preenchido"))
                 {
-                    conn.Open();
-                }
-                catch (Exception error)
-                {
-                    bIsOperationOK = false;
-                    MessageBox.Show(error.Message,
-                        "Erro ao abrir conexão com o Banco de Dados",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                }
-
-                try
-                {
-                    comm.ExecuteNonQuery();
-                }
-                catch (Exception error)
-                {
-                    bIsOperationOK = false;
-                    MessageBox.Show(error.Message,
-                        "Erro ao tentar executar o comando SQL",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                }
-            }
-            catch { }
-            finally
-            {
-                conn.Close();
-
-                if (bIsOperationOK == true)
-                {
-                    MessageBox.Show("Funcionário excluído com sucesso!",
-                        "Registro Excluído!",
+                    MessageBox.Show("Você deve preencher: " + camposVazios("only_id"),
+                        "Informações incompletas!",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
-                }
-            }
 
-            AtualizaListaDeFuncionarios();
-            btLimpar_Click(sender, e);
+                    return;
+                }
+
+                string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
+
+                conn = new SqlConnection(connectionString);
+
+                comm = new SqlCommand(
+                    "DELETE FROM funcionarios " +
+                    "WHERE id = @id", conn);
+
+                comm.Parameters.Add("@id", System.Data.SqlDbType.Int);
+                comm.Parameters["@id"].Value = Convert.ToInt32(txID.Text);
+
+                try
+                {
+                    try
+                    {
+                        conn.Open();
+                    }
+                    catch (Exception error)
+                    {
+                        bIsOperationOK = false;
+                        MessageBox.Show(error.Message,
+                            "Erro ao abrir conexão com o Banco de Dados",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                    }
+
+                    try
+                    {
+                        comm.ExecuteNonQuery();
+                    }
+                    catch (Exception error)
+                    {
+                        bIsOperationOK = false;
+                        MessageBox.Show(error.Message,
+                            "Erro ao tentar executar o comando SQL",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                    }
+                }
+                catch { }
+                finally
+                {
+                    conn.Close();
+
+                    if (bIsOperationOK == true)
+                    {
+                        MessageBox.Show("Funcionário excluído com sucesso!",
+                            "Registro Excluído!",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
+                    }
+                }
+
+                AtualizaListaDeFuncionarios();
+                btLimpar_Click(sender, e);
+            }
+            else
+            {
+                MessageBox.Show("Funcionário não pode ser excluído porque não existe no banco de dados!",
+                           "Registro não existe",
+                           MessageBoxButtons.OK,
+                           MessageBoxIcon.Information);
+            }
         }
 
         private void buscarPeloNome(string nome)
