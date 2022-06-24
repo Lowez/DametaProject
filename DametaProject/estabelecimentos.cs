@@ -755,7 +755,7 @@ namespace DametaProject
 
         private void dgtdtEstabelecimentos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            nomeEstabelecimento = dgtdtEstabelecimentos.Rows[e.RowIndex].Cells[0].Value.ToString();
+            nomeEstabelecimento = dgtdtEstabelecimentos.Rows[e.RowIndex].Cells[1].Value.ToString();
             buscarPelaCidade(nomeEstabelecimento);
         }
     }

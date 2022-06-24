@@ -110,6 +110,10 @@ namespace DametaProject {
         
         private global::System.Data.DataRelation relationFK_CIDADES_USUARIOS1;
         
+        private global::System.Data.DataRelation relationFK_CIDADES_ESTABELECIMENTOS2;
+        
+        private global::System.Data.DataRelation relationFK_CIDADES_USUARIOS2;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -803,6 +807,8 @@ namespace DametaProject {
             this.relationFK_TIPOPRODUTOS_PRODUTOS = this.Relations["FK_TIPOPRODUTOS_PRODUTOS"];
             this.relationFK_CIDADES_ESTABELECIMENTOS1 = this.Relations["FK_CIDADES_ESTABELECIMENTOS1"];
             this.relationFK_CIDADES_USUARIOS1 = this.Relations["FK_CIDADES_USUARIOS1"];
+            this.relationFK_CIDADES_ESTABELECIMENTOS2 = this.Relations["FK_CIDADES_ESTABELECIMENTOS2"];
+            this.relationFK_CIDADES_USUARIOS2 = this.Relations["FK_CIDADES_USUARIOS2"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -937,6 +943,14 @@ namespace DametaProject {
                         this.tabledtClientes.idColumn}, new global::System.Data.DataColumn[] {
                         this.tablepremium_usuarios.cidades_idColumn}, false);
             this.Relations.Add(this.relationFK_CIDADES_USUARIOS1);
+            this.relationFK_CIDADES_ESTABELECIMENTOS2 = new global::System.Data.DataRelation("FK_CIDADES_ESTABELECIMENTOS2", new global::System.Data.DataColumn[] {
+                        this.tabledtEstabelecimentos.idColumn}, new global::System.Data.DataColumn[] {
+                        this.tableestabelecimentos.cidades_idColumn}, false);
+            this.Relations.Add(this.relationFK_CIDADES_ESTABELECIMENTOS2);
+            this.relationFK_CIDADES_USUARIOS2 = new global::System.Data.DataRelation("FK_CIDADES_USUARIOS2", new global::System.Data.DataColumn[] {
+                        this.tabledtEstabelecimentos.idColumn}, new global::System.Data.DataColumn[] {
+                        this.tablepremium_usuarios.cidades_idColumn}, false);
+            this.Relations.Add(this.relationFK_CIDADES_USUARIOS2);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7182,6 +7196,8 @@ namespace DametaProject {
             
             private global::System.Data.DataColumn columnCEP;
             
+            private global::System.Data.DataColumn columnid;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public dtEstabelecimentosDataTable() {
@@ -7265,6 +7281,14 @@ namespace DametaProject {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn idColumn {
+                get {
+                    return this.columnid;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -7308,10 +7332,18 @@ namespace DametaProject {
                         nome_rua,
                         numero,
                         telefone,
-                        CEP};
+                        CEP,
+                        null};
                 rowdtEstabelecimentosRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowdtEstabelecimentosRow);
                 return rowdtEstabelecimentosRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public dtEstabelecimentosRow FindByid(int id) {
+                return ((dtEstabelecimentosRow)(this.Rows.Find(new object[] {
+                            id})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7337,6 +7369,7 @@ namespace DametaProject {
                 this.columnnumero = base.Columns["numero"];
                 this.columntelefone = base.Columns["telefone"];
                 this.columnCEP = base.Columns["CEP"];
+                this.columnid = base.Columns["id"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7354,6 +7387,10 @@ namespace DametaProject {
                 base.Columns.Add(this.columntelefone);
                 this.columnCEP = new global::System.Data.DataColumn("CEP", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCEP);
+                this.columnid = new global::System.Data.DataColumn("id", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnid);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnid}, true));
                 this.columnnome.AllowDBNull = false;
                 this.columnnome.MaxLength = 50;
                 this.columncidades.AllowDBNull = false;
@@ -7365,6 +7402,12 @@ namespace DametaProject {
                 this.columntelefone.MaxLength = 14;
                 this.columnCEP.AllowDBNull = false;
                 this.columnCEP.MaxLength = 9;
+                this.columnid.AutoIncrement = true;
+                this.columnid.AutoIncrementSeed = -1;
+                this.columnid.AutoIncrementStep = -1;
+                this.columnid.AllowDBNull = false;
+                this.columnid.ReadOnly = true;
+                this.columnid.Unique = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9250,6 +9293,17 @@ namespace DametaProject {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public dtEstabelecimentosRow dtEstabelecimentosRow {
+                get {
+                    return ((dtEstabelecimentosRow)(this.GetParentRow(this.Table.ParentRelations["FK_CIDADES_ESTABELECIMENTOS2"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_CIDADES_ESTABELECIMENTOS2"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public comprasRow[] GetcomprasRows() {
                 if ((this.Table.ChildRelations["FK_ESTABELECIMENTOS_COMPRAS"] == null)) {
                     return new comprasRow[0];
@@ -9884,6 +9938,17 @@ namespace DametaProject {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public dtEstabelecimentosRow dtEstabelecimentosRow {
+                get {
+                    return ((dtEstabelecimentosRow)(this.GetParentRow(this.Table.ParentRelations["FK_CIDADES_USUARIOS2"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_CIDADES_USUARIOS2"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsCEPNull() {
                 return this.IsNull(this.tablepremium_usuarios.CEPColumn);
             }
@@ -10462,6 +10527,39 @@ namespace DametaProject {
                 }
                 set {
                     this[this.tabledtEstabelecimentos.CEPColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int id {
+                get {
+                    return ((int)(this[this.tabledtEstabelecimentos.idColumn]));
+                }
+                set {
+                    this[this.tabledtEstabelecimentos.idColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public estabelecimentosRow[] GetestabelecimentosRows() {
+                if ((this.Table.ChildRelations["FK_CIDADES_ESTABELECIMENTOS2"] == null)) {
+                    return new estabelecimentosRow[0];
+                }
+                else {
+                    return ((estabelecimentosRow[])(base.GetChildRows(this.Table.ChildRelations["FK_CIDADES_ESTABELECIMENTOS2"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public premium_usuariosRow[] Getpremium_usuariosRows() {
+                if ((this.Table.ChildRelations["FK_CIDADES_USUARIOS2"] == null)) {
+                    return new premium_usuariosRow[0];
+                }
+                else {
+                    return ((premium_usuariosRow[])(base.GetChildRows(this.Table.ChildRelations["FK_CIDADES_USUARIOS2"])));
                 }
             }
         }
@@ -17674,6 +17772,7 @@ FROM            funcionarios INNER JOIN
             tableMapping.ColumnMappings.Add("numero", "numero");
             tableMapping.ColumnMappings.Add("telefone", "telefone");
             tableMapping.ColumnMappings.Add("CEP", "CEP");
+            tableMapping.ColumnMappings.Add("id", "id");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -17690,7 +17789,7 @@ FROM            funcionarios INNER JOIN
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        estabelecimentos.nome, cidades.nome AS cidades, estabelecimentos.nome_rua, estabelecimentos.numero, estabelecimentos.telefone, estabelecimentos.CEP
+            this._commandCollection[0].CommandText = @"SELECT      estabelecimentos.id,  estabelecimentos.nome, cidades.nome AS cidades, estabelecimentos.nome_rua, estabelecimentos.numero, estabelecimentos.telefone, estabelecimentos.CEP
 FROM            estabelecimentos INNER JOIN
                          cidades ON estabelecimentos.cidades_id = cidades.id";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
@@ -18960,12 +19059,12 @@ ORDER BY total_vendido DESC";
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._item_vendaTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.item_venda.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._funcionariosTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.funcionarios.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._item_vendaTableAdapter.Update(updatedRows));
+                    result = (result + this._funcionariosTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -18987,12 +19086,12 @@ ORDER BY total_vendido DESC";
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._funcionariosTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.funcionarios.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._item_vendaTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.item_venda.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._funcionariosTableAdapter.Update(updatedRows));
+                    result = (result + this._item_vendaTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -19086,11 +19185,11 @@ ORDER BY total_vendido DESC";
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._item_vendaTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.item_venda.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._funcionariosTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.funcionarios.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._item_vendaTableAdapter.Update(addedRows));
+                    result = (result + this._funcionariosTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -19110,11 +19209,11 @@ ORDER BY total_vendido DESC";
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._funcionariosTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.funcionarios.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._item_vendaTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.item_venda.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._funcionariosTableAdapter.Update(addedRows));
+                    result = (result + this._item_vendaTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -19128,11 +19227,11 @@ ORDER BY total_vendido DESC";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private int UpdateDeletedRows(dameta_dbDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
-            if ((this._funcionariosTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.funcionarios.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._item_vendaTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.item_venda.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._funcionariosTableAdapter.Update(deletedRows));
+                    result = (result + this._item_vendaTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -19152,11 +19251,11 @@ ORDER BY total_vendido DESC";
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._item_vendaTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.item_venda.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._funcionariosTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.funcionarios.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._item_vendaTableAdapter.Update(deletedRows));
+                    result = (result + this._funcionariosTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
