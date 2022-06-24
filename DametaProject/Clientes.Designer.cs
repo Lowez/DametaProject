@@ -306,7 +306,7 @@
             this.cbUF.FormattingEnabled = true;
             this.cbUF.Location = new System.Drawing.Point(318, 212);
             this.cbUF.Name = "cbUF";
-            this.cbUF.Size = new System.Drawing.Size(48, 21);
+            this.cbUF.Size = new System.Drawing.Size(56, 21);
             this.cbUF.TabIndex = 61;
             this.cbUF.ValueMember = "UF";
             this.cbUF.SelectedIndexChanged += new System.EventHandler(this.cbUF_SelectedIndexChanged);
@@ -359,7 +359,7 @@
             // 
             this.cbCidade.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.cidadesBindingSource2, "nome", true));
             this.cbCidade.FormattingEnabled = true;
-            this.cbCidade.Location = new System.Drawing.Point(170, 250);
+            this.cbCidade.Location = new System.Drawing.Point(178, 250);
             this.cbCidade.Name = "cbCidade";
             this.cbCidade.Size = new System.Drawing.Size(196, 21);
             this.cbCidade.TabIndex = 59;
@@ -567,7 +567,7 @@
             // id
             // 
             this.id.DataPropertyName = "id";
-            this.id.HeaderText = "id";
+            this.id.HeaderText = "ID";
             this.id.Name = "id";
             this.id.ReadOnly = true;
             this.id.Width = 30;
@@ -575,13 +575,13 @@
             // nome
             // 
             this.nome.DataPropertyName = "nome";
-            this.nome.HeaderText = "nome";
+            this.nome.HeaderText = "Nome";
             this.nome.Name = "nome";
             // 
             // nascimento
             // 
             this.nascimento.DataPropertyName = "nascimento";
-            this.nascimento.HeaderText = "nascimento";
+            this.nascimento.HeaderText = "Nascimento";
             this.nascimento.Name = "nascimento";
             this.nascimento.Width = 70;
             // 
@@ -595,7 +595,7 @@
             // telefone
             // 
             this.telefone.DataPropertyName = "telefone";
-            this.telefone.HeaderText = "telefone";
+            this.telefone.HeaderText = "Telefone";
             this.telefone.Name = "telefone";
             this.telefone.Width = 90;
             // 
@@ -609,7 +609,7 @@
             // cidade
             // 
             this.cidade.DataPropertyName = "Expr1";
-            this.cidade.HeaderText = "cidade";
+            this.cidade.HeaderText = "Cidade";
             this.cidade.Name = "cidade";
             // 
             // UF
@@ -622,7 +622,7 @@
             // genero
             // 
             this.genero.DataPropertyName = "Expr2";
-            this.genero.HeaderText = "genero";
+            this.genero.HeaderText = "Gênero";
             this.genero.Name = "genero";
             this.genero.Width = 60;
             // 
