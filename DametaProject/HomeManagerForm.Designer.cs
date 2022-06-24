@@ -39,7 +39,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btRelatorios = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.btSair = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -144,14 +144,15 @@
             this.label5.TabIndex = 9;
             this.label5.Text = "Fornecedores";
             // 
-            // button1
+            // btRelatorios
             // 
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(621, 296);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(130, 80);
-            this.button1.TabIndex = 10;
-            this.button1.UseVisualStyleBackColor = true;
+            this.btRelatorios.Image = ((System.Drawing.Image)(resources.GetObject("btRelatorios.Image")));
+            this.btRelatorios.Location = new System.Drawing.Point(621, 296);
+            this.btRelatorios.Name = "btRelatorios";
+            this.btRelatorios.Size = new System.Drawing.Size(130, 80);
+            this.btRelatorios.TabIndex = 10;
+            this.btRelatorios.UseVisualStyleBackColor = true;
+            this.btRelatorios.Click += new System.EventHandler(this.btRelatorios_Click);
             // 
             // label6
             // 
@@ -181,7 +182,7 @@
             this.ClientSize = new System.Drawing.Size(800, 481);
             this.Controls.Add(this.btSair);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btRelatorios);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -212,7 +213,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btRelatorios;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btSair;
     }

@@ -49,7 +49,7 @@
       <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.1016.290\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -102,6 +102,12 @@
     </Compile>
     <Compile Include="Faturamento.Designer.cs">
       <DependentUpon>Faturamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HomeRelatorios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HomeRelatorios.Designer.cs">
+      <DependentUpon>HomeRelatorios.cs</DependentUpon>
     </Compile>
     <Compile Include="NovaSenha.cs">
       <SubType>Form</SubType>
@@ -204,6 +210,9 @@
     <EmbeddedResource Include="Faturamento.rdlc" />
     <EmbeddedResource Include="Faturamento.resx">
       <DependentUpon>Faturamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HomeRelatorios.resx">
+      <DependentUpon>HomeRelatorios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NovaSenha.resx">
       <DependentUpon>NovaSenha.cs</DependentUpon>
