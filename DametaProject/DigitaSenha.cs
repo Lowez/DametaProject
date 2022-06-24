@@ -37,7 +37,6 @@ namespace DametaProject
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
-
         }
     }
 }
