@@ -23,6 +23,64 @@ namespace DametaProject
             this.nomeEstabelecimento = nome_estabelecimento;
             AtualizaListaDeEstabelecimentos();
         }
+        public string camposVazios(string operacao = null)
+        {
+
+            if (operacao == "only_id")
+            {
+                if (txID.Text == "")
+                {
+                    return "Código do Estabelecimento";
+                }
+            }
+            else
+            {
+                if (operacao == "alterar")
+                {
+                    if (txID.Text == "")
+                    {
+                        return "Código do Estabelecimento";
+                    }
+                }
+
+                if (txNome.Text == "")
+                {
+                    return "Nome do Estabelecimento";
+                }
+
+                if (mtxCEP.Text == "     -")
+                {
+                    return "CEP";
+                }
+
+                if (cbUF.Text == "")
+                {
+                    return "UF";
+                }
+
+                if (cbCidade.Text == "")
+                {
+                    return "Cidade";
+                }
+
+                if (txNumero.Text == "")
+                {
+                    return "Número";
+                }
+
+                if (mtxTelefone.Text == "(  )     -")
+                {
+                    return "Telefone";
+                }
+
+                if (txRua.Text == "")
+                {
+                    return "Rua";
+                }
+            }
+
+            return "preenchido";
+        }
 
         private void AtualizaListaDeEstabelecimentos()
         {
@@ -176,6 +234,16 @@ namespace DametaProject
             SqlCommand comm;
             bool bIsOperationOK = true;
 
+            if (!(camposVazios() == "preenchido"))
+            {
+                MessageBox.Show("Você deve preencher: " + camposVazios(),
+                    "Informações incompletas!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+
+                return;
+            }
+
             string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
 
             conn = new SqlConnection(connectionString);
@@ -254,6 +322,16 @@ namespace DametaProject
             SqlConnection conn;
             SqlCommand comm;
             bool bIsOperationOK = true;
+
+            if (!(camposVazios("alterar") == "preenchido"))
+            {
+                MessageBox.Show("Você deve preencher: " + camposVazios("alterar"),
+                    "Informações incompletas!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+
+                return;
+            }
 
             string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
 
@@ -335,6 +413,16 @@ namespace DametaProject
             SqlCommand comm;
             bool bIsOperationOK = true;
 
+            if (!(camposVazios("only_id") == "preenchido"))
+            {
+                MessageBox.Show("Você deve preencher: " + camposVazios("only_id"),
+                    "Informações incompletas!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+
+                return;
+            }
+
             string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
 
             conn = new SqlConnection(connectionString);
@@ -409,6 +497,16 @@ namespace DametaProject
             SqlConnection conn;
             SqlCommand comm;
             SqlDataReader reader;
+
+            if (!(camposVazios("only_id") == "preenchido"))
+            {
+                MessageBox.Show("Você deve preencher: " + camposVazios("only_id"),
+                    "Informações incompletas!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+
+                return;
+            }
 
             string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
 
