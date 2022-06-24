@@ -441,6 +441,7 @@
             this.Name = "Carrinho";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Bem vindo(a) [Nome do Usuário]";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Carrinho_FormClosing);
             this.Load += new System.EventHandler(this.Carrinho_Load);
             this.Shown += new System.EventHandler(this.Carrinho_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCarrinho)).EndInit();
