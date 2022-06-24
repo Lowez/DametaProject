@@ -683,5 +683,11 @@ namespace DametaProject
             }
 
         }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txID.Text = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
+            btConsultar_Click(sender, e);
+        }
     }
 }
