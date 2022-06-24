@@ -47,6 +47,7 @@
             this.dtEstabelecimentosTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.dtEstabelecimentosTableAdapter();
             this.btAtualizar = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgtdtEstabelecimentos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtEstabelecimentosBindingSource)).BeginInit();
@@ -65,6 +66,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.dgtdtEstabelecimentos);
             this.groupBox1.Location = new System.Drawing.Point(12, 83);
             this.groupBox1.Name = "groupBox1";
@@ -190,6 +192,16 @@
             this.label2.TabIndex = 46;
             this.label2.Text = "Atualizar lista de estabelecimentos:";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 16);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(449, 13);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Dê um duplo clique sobre o estabelecimento que deseja alterar/excluir para ser re" +
+    "direcionado.";
+            // 
             // HomeEstabelecimentos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -206,6 +218,7 @@
             this.Text = "Home Estabelecimentos";
             this.Load += new System.EventHandler(this.HomeEstabelecimentos_Load);
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgtdtEstabelecimentos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtEstabelecimentosBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dameta_dbDataSet)).EndInit();
@@ -233,5 +246,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn telefoneDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button btAtualizar;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }
