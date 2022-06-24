@@ -22,6 +22,45 @@ namespace DametaProject
             AtualizaListaDeFornecedores();
         }
 
+        public string camposVazios(string operacao = null)
+        {
+
+            if (operacao == "only_id")
+            {
+                if (txID.Text == "")
+                {
+                    return "Código do Fornecedor";
+                }
+            }
+            else
+            {
+                if (operacao == "alterar")
+                {
+                    if (txID.Text == "")
+                    {
+                        return "Código do Fornecedor";
+                    }
+                }
+
+                if (txNome.Text == "")
+                {
+                    return "Nome do Fornecedor";
+                }
+
+                if (mtxTelefone.Text == "(  )     -")
+                {
+                    return "Telefone";
+                }
+
+                if (mtxCNPJ.Text == "   .   .   /    -")
+                {
+                    return "CNPJ";
+                }
+            }
+
+            return "preenchido";
+        }
+
         private void AtualizaListaDeFornecedores()
         {
             this.fornecedoresTableAdapter.Fill(this.dameta_dbDataSet.fornecedores);
@@ -49,6 +88,16 @@ namespace DametaProject
             SqlConnection conn;
             SqlCommand comm;
             SqlDataReader reader;
+
+            if (!(camposVazios("only_id") == "preenchido"))
+            {
+                MessageBox.Show("Você deve preencher: " + camposVazios("only_id"),
+                    "Informações incompletas!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+
+                return;
+            }
 
             string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
 
@@ -116,6 +165,16 @@ namespace DametaProject
             SqlConnection conn;
             SqlCommand comm;
             bool bIsOperationOK = true;
+
+            if (!(camposVazios() == "preenchido"))
+            {
+                MessageBox.Show("Você deve preencher: " + camposVazios(),
+                    "Informações incompletas!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+
+                return;
+            }
 
             string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
 
@@ -186,6 +245,16 @@ namespace DametaProject
             SqlConnection conn;
             SqlCommand comm;
             bool bIsOperationOK = true;
+
+            if (!(camposVazios("alterar") == "preenchido"))
+            {
+                MessageBox.Show("Você deve preencher: " + camposVazios("alterar"),
+                    "Informações incompletas!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+
+                return;
+            }
 
             string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
 
@@ -259,6 +328,16 @@ namespace DametaProject
             SqlConnection conn;
             SqlCommand comm;
             bool bIsOperationOK = true;
+
+            if (!(camposVazios("only_id") == "preenchido"))
+            {
+                MessageBox.Show("Você deve preencher: " + camposVazios("only_id"),
+                    "Informações incompletas!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+
+                return;
+            }
 
             // Lê a string que representa os dados da conexão, 
             // contidos no arquivo app.config

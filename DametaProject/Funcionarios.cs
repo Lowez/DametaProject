@@ -22,6 +22,77 @@ namespace DametaProject
         public Funcionarios()
         {
             InitializeComponent();
+
+            // Seta a data do DateTimePicker para a data atual
+            dtpDataNascimento.Value = DateTime.Now;
+        }
+        public string camposVazios(string operacao = null)
+        {
+
+            if (operacao == "only_id")
+            {
+                if (txID.Text == "")
+                {
+                    return "Código do Funcionário";
+                }
+            }
+            else
+            {
+                if (operacao == "alterar")
+                {
+                    if (txID.Text == "")
+                    {
+                        return "Código do Funcionário";
+                    }
+                }
+
+                if (txNome.Text == "")
+                {
+                    return "Nome do Funcionário";
+                }
+
+                if (dtpDataNascimento.Value == null)
+                {
+                    return "Data de Nascimento";
+                }
+
+                if (mtxCPF.Text == "   .   .   -")
+                {
+                    return "CPF";
+                }
+
+                if (mtxTelefone.Text == "(  )     -")
+                {
+                    return "Telefone";
+                }
+
+                if (cbGenero.Text == "")
+                {
+                    return "Gênero";
+                }
+
+                if (txEmail.Text == "")
+                {
+                    return "Email";
+                }
+
+                if (cbCargo.Text == "")
+                {
+                    return "Cargo";
+                }
+
+                if (txSalario.Text == "")
+                {
+                    return "Salário";
+                }
+
+                if (cbEstabelecimento.Text == "")
+                {
+                    return "Estabelecimento";
+                }
+            }
+
+            return "preenchido";
         }
 
         private void AtualizaListaDeFuncionarios()
@@ -52,6 +123,16 @@ namespace DametaProject
             SqlConnection conn;
             SqlCommand comm;
             SqlDataReader reader;
+
+            if (!(camposVazios("only_id") == "preenchido"))
+            {
+                MessageBox.Show("Você deve preencher: " + camposVazios("only_id"),
+                    "Informações incompletas!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+
+                return;
+            }
 
             string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
 
@@ -125,124 +206,132 @@ namespace DametaProject
 
         private void btIncluir_Click(object sender, EventArgs e)
         {
+            if (!(camposVazios() == "preenchido"))
             {
-                string senha = "";
-                if (cbSenha.Checked == true)
+                MessageBox.Show("Você deve preencher: " + camposVazios(),
+                    "Informações incompletas!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+
+                return;
+            }
+
+            string senha = "";
+            if (cbSenha.Checked == true)
+            {
+                string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz0123456789";
+                Random random = new Random();
+                for (int f = 0; f < 6; f++)
                 {
-                    string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz0123456789";
-                    Random random = new Random();
-                    for (int f = 0; f < 6; f++)
+                    senha = senha + chars.Substring(random.Next(0, chars.Length - 1), 1);
+                }
+            }
+            else
+            {
+                using (var form = new DigitaSenha())
+                {
+                    var result = form.ShowDialog();
+                    if (result == DialogResult.OK)
                     {
-                        senha = senha + chars.Substring(random.Next(0, chars.Length - 1), 1);
+                        senha = form.Dado.senha;
                     }
                 }
-                else
+            }
+            if (senha != "")
+            {
+                SqlConnection conn;
+                SqlCommand comm;
+                bool bIsOperationOK = true;
+
+                string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
+
+                conn = new SqlConnection(connectionString);
+
+                comm = new SqlCommand(
+                    "INSERT INTO funcionarios (nome, nascimento, email, CPF, senha, salario, telefone, generos_id,cargos_id, estabelecimentos_id) " +
+                    "VALUES (@nome,@nascimento, @email, @CPF, @senha, @salario, @telefone, @generos_id, @cargos_id, @estabelecimentos_id)", conn);
+
+                comm.Parameters.Add("@nome", System.Data.SqlDbType.NVarChar);
+                comm.Parameters["@nome"].Value = txNome.Text;
+
+                comm.Parameters.Add("@nascimento", System.Data.SqlDbType.Date);
+                comm.Parameters["@nascimento"].Value = dtpDataNascimento.Value;
+
+                comm.Parameters.Add("@email", System.Data.SqlDbType.NVarChar);
+                comm.Parameters["@email"].Value = txEmail.Text;
+
+                comm.Parameters.Add("@CPF", System.Data.SqlDbType.NVarChar);
+                comm.Parameters["@CPF"].Value = mtxCPF.Text;
+
+                comm.Parameters.Add("@senha", System.Data.SqlDbType.NVarChar);
+                comm.Parameters["@senha"].Value = senha;
+
+                comm.Parameters.Add("@salario", System.Data.SqlDbType.Money);
+                comm.Parameters["@salario"].Value = Convert.ToDouble(txSalario.Text);
+
+                comm.Parameters.Add("@telefone", System.Data.SqlDbType.NVarChar);
+                comm.Parameters["@telefone"].Value = mtxTelefone.Text;
+
+                comm.Parameters.Add("@generos_id", System.Data.SqlDbType.Int);
+                comm.Parameters["@generos_id"].Value = cbGenero.SelectedValue;
+
+                comm.Parameters.Add("@cargos_id", System.Data.SqlDbType.Int);
+                comm.Parameters["@cargos_id"].Value = cbCargo.SelectedValue;
+
+                comm.Parameters.Add("@estabelecimentos_id", System.Data.SqlDbType.Int);
+                comm.Parameters["@estabelecimentos_id"].Value = cbEstabelecimento.SelectedValue;
+
+                try
                 {
-                    using (var form = new DigitaSenha())
+                    try
                     {
-                        var result = form.ShowDialog();
-                        if (result == DialogResult.OK)
-                        {
-                            senha = form.Dado.senha;
-                        }
+                        // Abre a conexão com o Banco de Dados
+                        conn.Open();
                     }
-                }
-                if (senha != "")
-                {
-                    SqlConnection conn;
-                    SqlCommand comm;
-                    bool bIsOperationOK = true;
-
-                    string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
-
-                    conn = new SqlConnection(connectionString);
-
-                    comm = new SqlCommand(
-                        "INSERT INTO funcionarios (nome, nascimento, email, CPF, senha, salario, telefone, generos_id,cargos_id, estabelecimentos_id) " +
-                        "VALUES (@nome,@nascimento, @email, @CPF, @senha, @salario, @telefone, @generos_id, @cargos_id, @estabelecimentos_id)", conn);
-
-                    comm.Parameters.Add("@nome", System.Data.SqlDbType.NVarChar);
-                    comm.Parameters["@nome"].Value = txNome.Text;
-
-                    comm.Parameters.Add("@nascimento", System.Data.SqlDbType.NVarChar);
-                    comm.Parameters["@nascimento"].Value = dtpDataNascimento.Text;
-
-                    comm.Parameters.Add("@email", System.Data.SqlDbType.NVarChar);
-                    comm.Parameters["@email"].Value = txEmail.Text;
-
-                    comm.Parameters.Add("@CPF", System.Data.SqlDbType.NVarChar);
-                    comm.Parameters["@CPF"].Value = mtxCPF.Text;
-
-                    comm.Parameters.Add("@senha", System.Data.SqlDbType.NVarChar);
-                    comm.Parameters["@senha"].Value = senha;
-
-                    comm.Parameters.Add("@salario", System.Data.SqlDbType.Money);
-                    comm.Parameters["@salario"].Value = Convert.ToDouble(txSalario.Text);
-
-                    comm.Parameters.Add("@telefone", System.Data.SqlDbType.NVarChar);
-                    comm.Parameters["@telefone"].Value = mtxTelefone.Text;
-
-                    comm.Parameters.Add("@generos_id", System.Data.SqlDbType.Int);
-                    comm.Parameters["@generos_id"].Value = cbGenero.SelectedValue;
-
-                    comm.Parameters.Add("@cargos_id", System.Data.SqlDbType.Int);
-                    comm.Parameters["@cargos_id"].Value = cbCargo.SelectedValue;
-
-                    comm.Parameters.Add("@estabelecimentos_id", System.Data.SqlDbType.Int);
-                    comm.Parameters["@estabelecimentos_id"].Value = cbEstabelecimento.SelectedValue;
+                    catch (Exception ex)
+                    {
+                        bIsOperationOK = false;
+                        MessageBox.Show(ex.Message,
+                            "Erro ao tentar abrir o Banco de Dados",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                    }
 
                     try
                     {
-                        try
-                        {
-                            // Abre a conexão com o Banco de Dados
-                            conn.Open();
-                        }
-                        catch (Exception ex)
-                        {
-                            bIsOperationOK = false;
-                            MessageBox.Show(ex.Message,
-                                "Erro ao tentar abrir o Banco de Dados",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
-                        }
-
-                        try
-                        {
-                            comm.ExecuteNonQuery();
-                        }
-                        catch (Exception ex)
-                        {
-                            bIsOperationOK = false;
-                            MessageBox.Show(ex.Message,
-                                "Erro ao tentar executar o comando SQL.",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
-                        }
+                        comm.ExecuteNonQuery();
                     }
-                    catch { }
-                    finally
+                    catch (Exception ex)
                     {
-                        // Fecha a conexão com o Bando de Dados
-                        conn.Close();
-
-                        if (bIsOperationOK == true && cbSenha.Checked == true)
-                        {
-                            MessageBox.Show("Login: " + mtxCPF.Text + "\nSenha gerada: " + senha,
-                                "Funcionário Cadastrado com sucesso!",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Information);
-                        }
-                        else if (bIsOperationOK == true)
-                        {
-                            MessageBox.Show("Login: " + mtxCPF.Text + "\nSenha: " + senha,
-                                "Funcionário Cadastrado com sucesso!",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Information);
-                        }
-                        AtualizaListaDeFuncionarios();
-                        btLimpar_Click(sender, e);
+                        bIsOperationOK = false;
+                        MessageBox.Show(ex.Message,
+                            "Erro ao tentar executar o comando SQL.",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
                     }
+                }
+                catch { }
+                finally
+                {
+                    // Fecha a conexão com o Bando de Dados
+                    conn.Close();
+
+                    if (bIsOperationOK == true && cbSenha.Checked == true)
+                    {
+                        MessageBox.Show("Login: " + mtxCPF.Text + "\nSenha gerada: " + senha,
+                            "Funcionário Cadastrado com sucesso!",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
+                    }
+                    else if (bIsOperationOK == true)
+                    {
+                        MessageBox.Show("Login: " + mtxCPF.Text + "\nSenha: " + senha,
+                            "Funcionário Cadastrado com sucesso!",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
+                    }
+                    AtualizaListaDeFuncionarios();
+                    btLimpar_Click(sender, e);
                 }
             }
         }
@@ -268,6 +357,16 @@ namespace DametaProject
             SqlCommand comm;
             bool bIsOperationOK = true;
 
+            if (!(camposVazios("alterar") == "preenchido"))
+            {
+                MessageBox.Show("Você deve preencher: " + camposVazios("alterar"),
+                    "Informações incompletas!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+
+                return;
+            }
+
             string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
 
             conn = new SqlConnection(connectionString);
@@ -282,8 +381,8 @@ namespace DametaProject
             comm.Parameters.Add("@nome", System.Data.SqlDbType.NVarChar);
             comm.Parameters["@nome"].Value = txNome.Text;
 
-            comm.Parameters.Add("@nascimento", System.Data.SqlDbType.NVarChar);
-            comm.Parameters["@nascimento"].Value = dtpDataNascimento.Text;
+            comm.Parameters.Add("@nascimento", System.Data.SqlDbType.Date);
+            comm.Parameters["@nascimento"].Value = dtpDataNascimento.Value;
 
             comm.Parameters.Add("@email", System.Data.SqlDbType.NVarChar);
             comm.Parameters["@email"].Value = txEmail.Text;
@@ -356,6 +455,16 @@ namespace DametaProject
             SqlConnection conn;
             SqlCommand comm;
             bool bIsOperationOK = true;
+
+            if (!(camposVazios("only_id") == "preenchido"))
+            {
+                MessageBox.Show("Você deve preencher: " + camposVazios("only_id"),
+                    "Informações incompletas!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+
+                return;
+            }
 
             string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
 

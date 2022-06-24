@@ -19,6 +19,70 @@ namespace DametaProject
 
         }
 
+        public string camposVazios(string operacao = null)
+        {
+
+            if (operacao == "only_id")
+            {
+                if (txID.Text == "")
+                {
+                    return "Código do Cliente";
+                }
+            }
+            else
+            {
+                if (operacao == "alterar")
+                {
+                    if (txID.Text == "")
+                    {
+                        return "Código do Cliente";
+                    }
+                }
+
+                if (txNome.Text == "")
+                {
+                    return "Nome do Cliente";
+                }
+
+                if (mtxCPF.Text == "   .   .   -")
+                {
+                    return "CPF";
+                }
+
+                if (dtpDataNasc.Value == null)
+                {
+                    return "Data de Nascimento";
+                }
+
+                if (mtxTelefone.Text == "(  )     -")
+                {
+                    return "Telefone";
+                }
+
+                if (cbGenero.Text == "")
+                {
+                    return "Gênero";
+                }
+
+                if (mtxCEP.Text == "     -")
+                {
+                    return "CEP";
+                }
+
+                if (cbUF.Text == "")
+                {
+                    return "UF";
+                }
+
+                if (cbCidade.Text == "")
+                {
+                    return "Cidade";
+                }
+            }
+
+            return "preenchido";
+        }
+
         private void AtualizaListaDeClientes()
         {
             this.premium_usuariosTableAdapter.Fill(this.dameta_dbDataSet.premium_usuarios);
@@ -77,6 +141,16 @@ namespace DametaProject
             string cidadeID = "";
             int aux = 0;
             bool bIsOperationOK = true;
+
+            if (!(camposVazios() == "preenchido"))
+            {
+                MessageBox.Show("Você deve preencher: " + camposVazios(),
+                    "Informações incompletas!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+
+                return;
+            }
 
             string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
             conn = new SqlConnection(connectionString);
@@ -212,6 +286,16 @@ namespace DametaProject
             SqlCommand comm;
             SqlDataReader reader;
 
+            if (!(camposVazios("only_id") == "preenchido"))
+            {
+                MessageBox.Show("Você deve preencher: " + camposVazios("only_id"),
+                    "Informações incompletas!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+
+                return;
+            }
+
             string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
 
             // Inicializa a conexão com o Banco de Dados
@@ -292,6 +376,16 @@ namespace DametaProject
             string cidadeID = "";
             int aux = 0;
             bool bIsOperationOK = true;
+
+            if (!(camposVazios("alterar") == "preenchido"))
+            {
+                MessageBox.Show("Você deve preencher: " + camposVazios("alterar"),
+                    "Informações incompletas!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+
+                return;
+            }
 
             string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
             conn = new SqlConnection(connectionString);
@@ -443,6 +537,16 @@ namespace DametaProject
             SqlConnection conn;
             SqlCommand comm;
             bool bIsOperationOK = true;
+
+            if (!(camposVazios("only_id") == "preenchido"))
+            {
+                MessageBox.Show("Você deve preencher: " + camposVazios("only_id"),
+                    "Informações incompletas!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+
+                return;
+            }
 
             string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
 
