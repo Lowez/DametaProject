@@ -24,13 +24,11 @@ namespace DametaProject
         int tick_phase = 0;
         FormaDePagamento form_pagamento;
 
-        public Cartao(string cartao, FormaDePagamento form)
+        public Cartao(string cartao)
         {
             tipo_cartao = "[" + cartao + " Selecionado]";
 
             InitializeComponent();
-
-            form_pagamento = form;
 
             rtbOperacao.Text = "";
 
@@ -82,7 +80,7 @@ namespace DametaProject
 
         private void btTerminar_Click(object sender, EventArgs e)
         {
-            form_pagamento.Close();
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
 

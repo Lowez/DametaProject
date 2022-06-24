@@ -436,7 +436,6 @@
             this.Controls.Add(this.btConcluirCompra);
             this.Controls.Add(this.dgvCarrinho);
             this.Controls.Add(this.groupBox1);
-            this.Enabled = false;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Carrinho";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

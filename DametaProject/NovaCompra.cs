@@ -25,7 +25,7 @@ namespace DametaProject
 
         private void btNovaCompra_Click(object sender, EventArgs e)
         {
-            PremiumUserCheck premiumUserCheck = new PremiumUserCheck(form_carrinho);
+            PremiumUserCheck premiumUserCheck = new PremiumUserCheck();
             premiumUserCheck.Show();
         }
 

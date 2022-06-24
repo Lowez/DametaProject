@@ -13,6 +13,8 @@ namespace DametaProject
 {
     public partial class InfosCliente : Form
     {
+        public string nome_cliente = "";
+
         string CPF_cliente;
         PremiumUserCheck form_premiumUserCheck;
         Carrinho form_carrinho;
@@ -57,7 +59,6 @@ namespace DametaProject
                         MessageBoxIcon.Error);
                 }
 
-                // Tenta executar o comando e login
                 try
                 {
                     reader = comm.ExecuteReader();
@@ -70,9 +71,6 @@ namespace DametaProject
                         mtxCPF.Text = CPF_cliente;
                         mtxTelefone.Text = reader["telefone"].ToString();
                         txNome.Text = reader["nome"].ToString();
-
-                        Carrinho.cliente_id = Convert.ToInt32(reader["id"]);
-                        Carrinho.cliente_nome = reader["nome"].ToString();
                     }
                     else
                     {
@@ -101,9 +99,9 @@ namespace DametaProject
 
         private void btConfirmar_Click(object sender, EventArgs e)
         {
-            // Fecha os demais forms e habilita o Form de Carrinho
-            form_premiumUserCheck.Close();
-            form_carrinho.Enabled = true;
+            // Fecha os demais forms
+            nome_cliente = txNome.Text;
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
 
