@@ -44,29 +44,43 @@ namespace DametaProject
 
         private void txValorPago_TextChanged(object sender, EventArgs e)
         {
+            decimal valor_pago = 0;
+            decimal valor_total = 0;
+
             if (txValorPago.Text != "")
             {
-                decimal valor_pago = Convert.ToDecimal(txValorPago.Text);
-                decimal valor_total = Convert.ToDecimal(txValorTotal.Text);
+                txTroco.TextAlign = HorizontalAlignment.Center;
+                try
+                {
+                    valor_pago = Convert.ToDecimal(txValorPago.Text);
+                    valor_total = Convert.ToDecimal(txValorTotal.Text);
+                }
+                catch
+                {
+                    MessageBox.Show("Digite apenas numeros!",
+                             "Erro!",
+                             MessageBoxButtons.OK,
+                             MessageBoxIcon.Error);
+                            txValorPago.Text = "";
+                            txValorPago.Focus();
+                }
 
                 if (valor_pago < valor_total)
                 {
-                    MessageBox.Show("O valor pago é menor do que o total da compra!",
-                        "Atenção!",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information
-                        );
-                } else
+                    txTroco.Text = "Valor pago menor do que o total!";
+                    btTerminar.Enabled = false;
+                }
+                else
                 {
                     decimal troco = valor_pago - valor_total;
                     txTroco.Text = troco.ToString();
-
                     btTerminar.Enabled = true;
                     Carrinho.preco_total = 0;
                 }
-            } else
+            }
+            else
             {
-                btTerminar.Enabled = true;
+                txTroco.Text = "";
             }
         }
     }
