@@ -20,6 +20,71 @@ namespace DametaProject
 
         }
 
+        private bool ConsultarExistencia(int id)
+        {
+            SqlConnection conn;
+            SqlCommand comm;
+            SqlDataReader reader;
+            bool existe = false;
+            int ID = id;
+
+            string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
+
+            // Inicializa a conexão com o Banco de Dados
+            conn = new SqlConnection(connectionString);
+
+            comm = new SqlCommand(
+                "SELECT prod.cod_produto " +
+                "FROM produtos AS prod " +
+                "WHERE prod.cod_produto = @ID", conn);
+
+            comm.Parameters.Add("@ID", System.Data.SqlDbType.Int);
+            comm.Parameters["@ID"].Value = Convert.ToInt32(ID);
+
+            try
+            {
+                try
+                {
+                    // Abre a conexão com o Banco de Dados
+                    conn.Open();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message,
+                        "Erro ao tentar abrir o Banco de Dados",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
+
+                try
+                {
+                    // Executa o comando SQL
+                    reader = comm.ExecuteReader();
+
+                    // Se encontrou um cliente...
+                    if (reader.Read())
+                    {
+                        existe = true;
+                    }
+                    reader.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message,
+                        "Erro ao tentar executar o comando SQL.",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
+            }
+            catch { }
+            finally
+            {
+                // Fecha a conexão com o Bando de Dados
+                conn.Close();
+            }
+            return existe;
+        }
+
         public string camposVazios(string operacao = null)
         {
 
@@ -111,205 +176,216 @@ namespace DametaProject
 
         private void btAlterar_Click(object sender, EventArgs e)
         {
-            SqlConnection conn;
-            SqlCommand comm;
-            SqlDataReader reader;
-            bool bIsOperationOK = true;
-            bool pegou_estoque_id = true;
-            int estoque_id = 0;
-
-            if (!(camposVazios() == "preenchido"))
+            bool existe = ConsultarExistencia(Convert.ToInt32(txID.Text));
+            if (existe)
             {
-                MessageBox.Show("Você deve preencher: " + camposVazios(),
-                    "Informações incompletas!",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+                SqlConnection conn;
+                SqlCommand comm;
+                SqlDataReader reader;
+                bool bIsOperationOK = true;
+                bool pegou_estoque_id = true;
+                int estoque_id = 0;
 
-                return;
-            }
-
-            string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
-
-            conn = new SqlConnection(connectionString);
-
-            // Pega o ID do estoque do produto
-            SqlCommand commEstoque_id = new SqlCommand(
-                "SELECT cod_produto, estoque_id FROM produtos " +
-                "WHERE cod_produto = @id", conn
-                );
-
-            commEstoque_id.Parameters.Add("@id", System.Data.SqlDbType.Int);
-            commEstoque_id.Parameters["@id"].Value = Convert.ToInt32(txID.Text);
-
-            try
-            {
-                // Tenta abrir a conexão com o Banco de Dados
-                try
+                if (!(camposVazios() == "preenchido"))
                 {
-                    conn.Open();
-                }
-                catch (SqlException error)
-                {
-                    MessageBox.Show(error.Message,
-                        "Houve um problema ao tentar abrir a conexão com a base de dados",
+                    MessageBox.Show("Você deve preencher: " + camposVazios(),
+                        "Informações incompletas!",
                         MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
+                        MessageBoxIcon.Information);
+
+                    return;
                 }
+
+                string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
+
+                conn = new SqlConnection(connectionString);
+
+                // Pega o ID do estoque do produto
+                SqlCommand commEstoque_id = new SqlCommand(
+                    "SELECT cod_produto, estoque_id FROM produtos " +
+                    "WHERE cod_produto = @id", conn
+                    );
+
+                commEstoque_id.Parameters.Add("@id", System.Data.SqlDbType.Int);
+                commEstoque_id.Parameters["@id"].Value = Convert.ToInt32(txID.Text);
 
                 try
                 {
-                    reader = commEstoque_id.ExecuteReader();
-
-                    if (reader.Read())
+                    // Tenta abrir a conexão com o Banco de Dados
+                    try
                     {
-                        estoque_id = Convert.ToInt32(reader["estoque_id"]);
+                        conn.Open();
                     }
-                    else
+                    catch (SqlException error)
                     {
-                        MessageBox.Show("Algo inesperado ocorreu.",
-                        "Erro!",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
+                        MessageBox.Show(error.Message,
+                            "Houve um problema ao tentar abrir a conexão com a base de dados",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                    }
+
+                    try
+                    {
+                        reader = commEstoque_id.ExecuteReader();
+
+                        if (reader.Read())
+                        {
+                            estoque_id = Convert.ToInt32(reader["estoque_id"]);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Algo inesperado ocorreu.",
+                            "Erro!",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+
+                            pegou_estoque_id = false;
+                        }
+
+                        reader.Close();
+                    }
+                    catch (Exception error)
+                    {
+                        MessageBox.Show(error.Message,
+                            "Erro ao tentar executar comando SQL",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                    }
+                }
+                catch { }
+                finally
+                {
+                    conn.Close();
+                }
+
+                if (!pegou_estoque_id)
+                {
+                    return;
+                }
+
+                // Altera a quantidade do produto em seu estoque
+                SqlCommand commQtdEstoque = new SqlCommand(
+                    "UPDATE estoque SET qtd = @qtd " +
+                    "WHERE id = @estoque_id", conn
+                    );
+
+                commQtdEstoque.Parameters.Add("@qtd", SqlDbType.Int);
+                commQtdEstoque.Parameters["@qtd"].Value = Convert.ToInt32(txQtdEstoque.Text);
+
+                commQtdEstoque.Parameters.Add("@estoque_id", SqlDbType.Int);
+                commQtdEstoque.Parameters["@estoque_id"].Value = estoque_id;
+
+                try
+                {
+                    try
+                    {
+                        conn.Open();
+                    }
+                    catch (Exception error)
+                    {
+                        MessageBox.Show(error.Message,
+                            "Erro ao abrir conexão com o Banco de Dados",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                    }
+
+                    try
+                    {
+                        commQtdEstoque.ExecuteNonQuery();
+                    }
+                    catch (Exception error)
+                    {
+                        MessageBox.Show(error.Message,
+                            "Erro ao tentar executar o comando SQL2",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
 
                         pegou_estoque_id = false;
                     }
-
-                    reader.Close();
                 }
-                catch (Exception error)
+                catch { }
+                finally
                 {
-                    MessageBox.Show(error.Message,
-                        "Erro ao tentar executar comando SQL",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
+                    conn.Close();
                 }
-            }
-            catch { }
-            finally
-            {
-                conn.Close();
-            }
 
-            if (!pegou_estoque_id)
-            {
-                return;
-            }
-
-            // Altera a quantidade do produto em seu estoque
-            SqlCommand commQtdEstoque = new SqlCommand(
-                "UPDATE estoque SET qtd = @qtd " +
-                "WHERE id = @estoque_id", conn
-                );
-
-            commQtdEstoque.Parameters.Add("@qtd", SqlDbType.Int);
-            commQtdEstoque.Parameters["@qtd"].Value = Convert.ToInt32(txQtdEstoque.Text);
-
-            commQtdEstoque.Parameters.Add("@estoque_id", SqlDbType.Int);
-            commQtdEstoque.Parameters["@estoque_id"].Value = estoque_id;
-
-            try
-            {
-                try
+                if (!pegou_estoque_id)
                 {
-                    conn.Open();
+                    return;
                 }
-                catch (Exception error)
-                {
-                    MessageBox.Show(error.Message,
-                        "Erro ao abrir conexão com o Banco de Dados",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                }
+
+                comm = new SqlCommand(
+
+                   "UPDATE produtos SET cod_produto = @id, nome=@nome, preco=@preco, tipo_produtos_id=@tipo_produtos_id, fornecedores_id=@fornecedores_id " +
+                   "WHERE cod_produto = @id", conn);
+
+                comm.Parameters.Add("@id", System.Data.SqlDbType.Int);
+                comm.Parameters["@id"].Value = Convert.ToInt32(txID.Text);
+
+                comm.Parameters.Add("@nome", System.Data.SqlDbType.NVarChar);
+                comm.Parameters["@nome"].Value = txNome.Text;
+
+                comm.Parameters.Add("@preco", System.Data.SqlDbType.Money);
+                comm.Parameters["@preco"].Value = Convert.ToDecimal(txPrecoUnit.Text);
+
+                comm.Parameters.Add("@tipo_produtos_id", System.Data.SqlDbType.Int);
+                comm.Parameters["@tipo_produtos_id"].Value = Convert.ToInt32(cbTipo.SelectedValue.ToString());
+
+                comm.Parameters.Add("@fornecedores_id", System.Data.SqlDbType.Int);
+                comm.Parameters["@fornecedores_id"].Value = Convert.ToInt32(cbFornecedor.SelectedValue.ToString());
 
                 try
                 {
-                    commQtdEstoque.ExecuteNonQuery();
-                }
-                catch (Exception error)
-                {
-                    MessageBox.Show(error.Message,
-                        "Erro ao tentar executar o comando SQL2",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
+                    try
+                    {
+                        conn.Open();
+                    }
+                    catch (Exception error)
+                    {
+                        bIsOperationOK = false;
+                        MessageBox.Show(error.Message,
+                            "Erro ao abrir conexão com o Banco de Dados",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                    }
 
-                    pegou_estoque_id = false;
+                    try
+                    {
+                        comm.ExecuteNonQuery();
+                    }
+                    catch (Exception error)
+                    {
+                        bIsOperationOK = false;
+                        MessageBox.Show(error.Message,
+                            "Erro ao tentar executar o comando SQL3",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                    }
                 }
+                catch { }
+                finally
+                {
+                    conn.Close();
+
+                    if (bIsOperationOK == true)
+                    {
+                        MessageBox.Show("Produto Alterado!",
+                            "UPDATE",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
+                    }
+                }
+
+                Produtos_Load_2(sender, e);
+                btLimparForm_Click(sender, e);
             }
-            catch { }
-            finally
+            else
             {
-                conn.Close();
+                MessageBox.Show("Produto não pode ser alterado porque não existe no banco de dados!",
+                           "Registro não existe",
+                           MessageBoxButtons.OK,
+                           MessageBoxIcon.Information);
             }
-
-            if (!pegou_estoque_id)
-            {
-                return;
-            }
-
-            comm = new SqlCommand(
-
-               "UPDATE produtos SET cod_produto = @id, nome=@nome, preco=@preco, tipo_produtos_id=@tipo_produtos_id, fornecedores_id=@fornecedores_id " +
-               "WHERE cod_produto = @id", conn);
-
-            comm.Parameters.Add("@id", System.Data.SqlDbType.Int);
-            comm.Parameters["@id"].Value = Convert.ToInt32(txID.Text);
-
-            comm.Parameters.Add("@nome", System.Data.SqlDbType.NVarChar);
-            comm.Parameters["@nome"].Value = txNome.Text;
-
-            comm.Parameters.Add("@preco", System.Data.SqlDbType.Money);
-            comm.Parameters["@preco"].Value = Convert.ToDecimal(txPrecoUnit.Text);
-
-            comm.Parameters.Add("@tipo_produtos_id", System.Data.SqlDbType.Int);
-            comm.Parameters["@tipo_produtos_id"].Value = Convert.ToInt32(cbTipo.SelectedValue.ToString());
-
-            comm.Parameters.Add("@fornecedores_id", System.Data.SqlDbType.Int);
-            comm.Parameters["@fornecedores_id"].Value = Convert.ToInt32(cbFornecedor.SelectedValue.ToString());
-
-            try
-            {
-                try
-                {
-                    conn.Open();
-                }
-                catch (Exception error)
-                {
-                    bIsOperationOK = false;
-                    MessageBox.Show(error.Message,
-                        "Erro ao abrir conexão com o Banco de Dados",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                }
-
-                try
-                {
-                    comm.ExecuteNonQuery();
-                }
-                catch (Exception error)
-                {
-                    bIsOperationOK = false;
-                    MessageBox.Show(error.Message,
-                        "Erro ao tentar executar o comando SQL3",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                }
-            }
-            catch { }
-            finally
-            {
-                conn.Close();
-
-                if (bIsOperationOK == true)
-                {
-                    MessageBox.Show("Produto Alterado!",
-                        "UPDATE",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
-                }
-            }
-
-            Produtos_Load_2(sender, e);
-            btLimparForm_Click(sender, e);
         }
 
         private void btIncluir_Click(object sender, EventArgs e)
@@ -449,87 +525,98 @@ namespace DametaProject
 
         private void btExcluir_Click(object sender, EventArgs e)
         {
-            SqlConnection conn;
-            SqlCommand comm;
-            bool bIsOperationOK = true;
-
-            if (!(camposVazios("only_id") == "preenchido"))
+            bool existe = ConsultarExistencia(Convert.ToInt32(txID.Text));
+            if (existe)
             {
-                MessageBox.Show("Você deve preencher: " + camposVazios("only_id"),
-                    "Informações incompletas!",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+                SqlConnection conn;
+                SqlCommand comm;
+                bool bIsOperationOK = true;
 
-                return;
-            }
+                if (!(camposVazios("only_id") == "preenchido"))
+                {
+                    MessageBox.Show("Você deve preencher: " + camposVazios("only_id"),
+                        "Informações incompletas!",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
 
-            // Lê a string que representa os dados da conexão, 
-            // contidos no arquivo app.config
-            string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
+                    return;
+                }
 
-            // Inicializa a conexão com o Banco de Dados
-            conn = new SqlConnection(connectionString);
+                // Lê a string que representa os dados da conexão, 
+                // contidos no arquivo app.config
+                string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
 
-            // Cria um comando SQL para exclusão de dados da tabela
-            comm = new SqlCommand(
-                "DELETE FROM Produtos " +
-                "WHERE cod_produto = @id", conn);
+                // Inicializa a conexão com o Banco de Dados
+                conn = new SqlConnection(connectionString);
 
-            // Apaga o registro do banco de dados a partir da chave primária 'Codigo'
-            comm.Parameters.Add("@id", System.Data.SqlDbType.Int);
-            comm.Parameters["@id"].Value = Convert.ToInt32(txID.Text);
+                // Cria um comando SQL para exclusão de dados da tabela
+                comm = new SqlCommand(
+                    "DELETE FROM Produtos " +
+                    "WHERE cod_produto = @id", conn);
 
-            // Usa tratamento de excessão para se certificar que a operação
-            // foi bem executada. Senão, exibe as mensagens de erro para o usuário.
-            try
-            {
+                // Apaga o registro do banco de dados a partir da chave primária 'Codigo'
+                comm.Parameters.Add("@id", System.Data.SqlDbType.Int);
+                comm.Parameters["@id"].Value = Convert.ToInt32(txID.Text);
+
+                // Usa tratamento de excessão para se certificar que a operação
+                // foi bem executada. Senão, exibe as mensagens de erro para o usuário.
                 try
                 {
-                    // Abre a Conexão com o BD
-                    conn.Open();
+                    try
+                    {
+                        // Abre a Conexão com o BD
+                        conn.Open();
+                    }
+                    catch (Exception error)
+                    {
+                        bIsOperationOK = false;
+                        MessageBox.Show(error.Message,
+                            "Erro ao abrir conexão com o Banco de Dados",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                    try
+                    {
+                        // Executa o Commando SQL
+                        comm.ExecuteNonQuery();
+                    }
+                    catch (Exception error)
+                    {
+                        bIsOperationOK = false;
+                        MessageBox.Show(error.Message,
+                            "Erro ao executar comando SQL",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-                catch (Exception error)
+                catch { }
+                finally
                 {
-                    bIsOperationOK = false;
-                    MessageBox.Show(error.Message,
-                        "Erro ao abrir conexão com o Banco de Dados",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    // Fecha a Conexão com o BD
+                    conn.Close();
+
+                    if (bIsOperationOK == true)
+                    {
+                        // Chama Função que atualiza os dados no DataGridView
+                        MessageBox.Show("Registro Excluído!",
+                            "Banco de Dados",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        // Chama o mesmo método usado no botão Limpar
+                        btLimparForm_Click(sender, e);
+
+                    }
                 }
 
-                try
-                {
-                    // Executa o Commando SQL
-                    comm.ExecuteNonQuery();
-                }
-                catch (Exception error)
-                {
-                    bIsOperationOK = false;
-                    MessageBox.Show(error.Message,
-                        "Erro ao executar comando SQL",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                Produtos_Load_2(sender, e);
+                btLimparForm_Click(sender, e);
             }
-            catch { }
-            finally
+            else
             {
-                // Fecha a Conexão com o BD
-                conn.Close();
-
-                if (bIsOperationOK == true)
-                {
-                    // Chama Função que atualiza os dados no DataGridView
-                    MessageBox.Show("Registro Excluído!",
-                        "Banco de Dados",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    // Chama o mesmo método usado no botão Limpar
-                    btLimparForm_Click(sender, e);
-
-                }
+                MessageBox.Show("Produto não pode ser excluído porque não existe no banco de dados!",
+                           "Registro não existe",
+                           MessageBoxButtons.OK,
+                           MessageBoxIcon.Information);
             }
-
-            Produtos_Load_2(sender, e);
-            btLimparForm_Click(sender, e);
         }
 
         private void btConsultar_Click(object sender, EventArgs e)
@@ -598,10 +685,10 @@ namespace DametaProject
                     }
                     else
                     {
-                        MessageBox.Show("Produto não encontrado",
-                            "Erro!",
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Error);
+                        MessageBox.Show("Produto não existe no banco de dados!",
+                           "Registro não existe",
+                           MessageBoxButtons.OK,
+                           MessageBoxIcon.Information);
                     }
 
                     reader.Close();

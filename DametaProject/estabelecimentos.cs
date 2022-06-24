@@ -23,6 +23,72 @@ namespace DametaProject
             this.nomeEstabelecimento = nome_estabelecimento;
             AtualizaListaDeEstabelecimentos();
         }
+
+        private bool ConsultarExistencia(int id)
+        {
+            SqlConnection conn;
+            SqlCommand comm;
+            SqlDataReader reader;
+            bool existe = false;
+            int ID = id;
+
+            string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
+
+            // Inicializa a conexão com o Banco de Dados
+            conn = new SqlConnection(connectionString);
+
+            comm = new SqlCommand(
+                "SELECT estab.id " +
+                "FROM estabelecimentos AS estab " +
+                "WHERE estab.id = @ID", conn);
+
+            comm.Parameters.Add("@ID", System.Data.SqlDbType.Int);
+            comm.Parameters["@ID"].Value = Convert.ToInt32(ID);
+
+            try
+            {
+                try
+                {
+                    // Abre a conexão com o Banco de Dados
+                    conn.Open();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message,
+                        "Erro ao tentar abrir o Banco de Dados",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
+
+                try
+                {
+                    // Executa o comando SQL
+                    reader = comm.ExecuteReader();
+
+                    // Se encontrou um cliente...
+                    if (reader.Read())
+                    {
+                        existe = true;
+                    }
+                    reader.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message,
+                        "Erro ao tentar executar o comando SQL.",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
+            }
+            catch { }
+            finally
+            {
+                // Fecha a conexão com o Bando de Dados
+                conn.Close();
+            }
+            return existe;
+        }
+
         public string camposVazios(string operacao = null)
         {
 
@@ -196,7 +262,7 @@ namespace DametaProject
 
 
 
-        private void filtrarCidades(bool flag=true)
+        private void filtrarCidades(bool flag = true)
         {
             cbCidade.Items.Clear();
             SqlConnection conn;
@@ -319,165 +385,188 @@ namespace DametaProject
 
         private void btAlterar_Click(object sender, EventArgs e)
         {
-            SqlConnection conn;
-            SqlCommand comm;
-            bool bIsOperationOK = true;
-
-            if (!(camposVazios("alterar") == "preenchido"))
+            bool existe = ConsultarExistencia(Convert.ToInt32(txID.Text));
+            if (existe)
             {
-                MessageBox.Show("Você deve preencher: " + camposVazios("alterar"),
-                    "Informações incompletas!",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+                SqlConnection conn;
+                SqlCommand comm;
+                bool bIsOperationOK = true;
 
-                return;
-            }
-
-            string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
-
-            conn = new SqlConnection(connectionString);
-
-            comm = new SqlCommand(
-                "UPDATE estabelecimentos SET nome=@nome, nome_rua=@nome_rua, numero = @numero, telefone = @telefone, CEP=@CEP, cidades_id=@cidades_id  " +
-                "WHERE id = @id", conn);
-
-            comm.Parameters.Add("@id", System.Data.SqlDbType.Int);
-            comm.Parameters["@id"].Value = Convert.ToInt32(txID.Text);
-
-            comm.Parameters.Add("@nome", System.Data.SqlDbType.NVarChar);
-            comm.Parameters["@nome"].Value = txNome.Text;
-
-            comm.Parameters.Add("@nome_rua", System.Data.SqlDbType.NVarChar);
-            comm.Parameters["@nome_rua"].Value = txRua.Text;
-
-            comm.Parameters.Add("@numero", System.Data.SqlDbType.Int);
-            comm.Parameters["@numero"].Value = Convert.ToInt32(txNumero.Text);
-
-            comm.Parameters.Add("@telefone", System.Data.SqlDbType.NVarChar);
-            comm.Parameters["@telefone"].Value = mtxTelefone.Text;
-
-            comm.Parameters.Add("@CEP", System.Data.SqlDbType.NVarChar);
-            comm.Parameters["@CEP"].Value = mtxCEP.Text;
-
-            comm.Parameters.Add("@cidades_id", System.Data.SqlDbType.Int);
-            comm.Parameters["@cidades_id"].Value = procurarCidade();
-
-            try
-            {
-                try
+                if (!(camposVazios("alterar") == "preenchido"))
                 {
-                    conn.Open();
-                }
-                catch (Exception error)
-                {
-                    bIsOperationOK = false;
-                    MessageBox.Show(error.Message,
-                        "Erro ao abrir conexão com o Banco de Dados",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                }
-
-                try
-                {
-                    comm.ExecuteNonQuery();
-                }
-                catch (Exception error)
-                {
-                    bIsOperationOK = false;
-                    MessageBox.Show(error.Message,
-                        "Erro ao tentar executar o comando SQL",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                }
-            }
-            catch { }
-            finally
-            {
-                conn.Close();
-
-                if (bIsOperationOK == true)
-                {
-                    MessageBox.Show("Estabelecimento alterado com sucesso!",
-                        "Registro Alterado!",
+                    MessageBox.Show("Você deve preencher: " + camposVazios("alterar"),
+                        "Informações incompletas!",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
+
+                    return;
                 }
+
+                string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
+
+                conn = new SqlConnection(connectionString);
+
+                comm = new SqlCommand(
+                    "UPDATE estabelecimentos SET nome=@nome, nome_rua=@nome_rua, numero = @numero, telefone = @telefone, CEP=@CEP, cidades_id=@cidades_id  " +
+                    "WHERE id = @id", conn);
+
+                comm.Parameters.Add("@id", System.Data.SqlDbType.Int);
+                comm.Parameters["@id"].Value = Convert.ToInt32(txID.Text);
+
+                comm.Parameters.Add("@nome", System.Data.SqlDbType.NVarChar);
+                comm.Parameters["@nome"].Value = txNome.Text;
+
+                comm.Parameters.Add("@nome_rua", System.Data.SqlDbType.NVarChar);
+                comm.Parameters["@nome_rua"].Value = txRua.Text;
+
+                comm.Parameters.Add("@numero", System.Data.SqlDbType.Int);
+                comm.Parameters["@numero"].Value = Convert.ToInt32(txNumero.Text);
+
+                comm.Parameters.Add("@telefone", System.Data.SqlDbType.NVarChar);
+                comm.Parameters["@telefone"].Value = mtxTelefone.Text;
+
+                comm.Parameters.Add("@CEP", System.Data.SqlDbType.NVarChar);
+                comm.Parameters["@CEP"].Value = mtxCEP.Text;
+
+                comm.Parameters.Add("@cidades_id", System.Data.SqlDbType.Int);
+                comm.Parameters["@cidades_id"].Value = procurarCidade();
+
+                try
+                {
+                    try
+                    {
+                        conn.Open();
+                    }
+                    catch (Exception error)
+                    {
+                        bIsOperationOK = false;
+                        MessageBox.Show(error.Message,
+                            "Erro ao abrir conexão com o Banco de Dados",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                    }
+
+                    try
+                    {
+                        comm.ExecuteNonQuery();
+                    }
+                    catch (Exception error)
+                    {
+                        bIsOperationOK = false;
+                        MessageBox.Show(error.Message,
+                            "Erro ao tentar executar o comando SQL",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                    }
+                }
+                catch { }
+                finally
+                {
+                    conn.Close();
+
+                    if (bIsOperationOK == true)
+                    {
+                        MessageBox.Show("Estabelecimento alterado com sucesso!",
+                            "Registro Alterado!",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
+                    }
+                }
+                AtualizaListaDeEstabelecimentos();
+                btLimpar_Click(sender, e);
             }
-            AtualizaListaDeEstabelecimentos();
-            btLimpar_Click(sender, e);
+            else
+            {
+                MessageBox.Show("Estabelecimento não pode ser alterado porque não existe no banco de dados!",
+                           "Registro não existe",
+                           MessageBoxButtons.OK,
+                           MessageBoxIcon.Information);
+
+            }
         }
 
         private void btExcluir_Click(object sender, EventArgs e)
         {
-            SqlConnection conn;
-            SqlCommand comm;
-            bool bIsOperationOK = true;
-
-            if (!(camposVazios("only_id") == "preenchido"))
+            bool existe = ConsultarExistencia(Convert.ToInt32(txID.Text));
+            if (existe)
             {
-                MessageBox.Show("Você deve preencher: " + camposVazios("only_id"),
-                    "Informações incompletas!",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+                SqlConnection conn;
+                SqlCommand comm;
+                bool bIsOperationOK = true;
 
-                return;
-            }
-
-            string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
-
-            conn = new SqlConnection(connectionString);
-
-            comm = new SqlCommand(
-                "DELETE FROM estabelecimentos " +
-                "WHERE id = @id", conn);
-
-            comm.Parameters.Add("@id", System.Data.SqlDbType.Int);
-            comm.Parameters["@id"].Value = Convert.ToInt32(txID.Text);
-
-            try
-            {
-                try
+                if (!(camposVazios("only_id") == "preenchido"))
                 {
-                    conn.Open();
-                }
-                catch (Exception error)
-                {
-                    bIsOperationOK = false;
-                    MessageBox.Show(error.Message,
-                        "Erro ao abrir conexão com o Banco de Dados",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                }
-
-                try
-                {
-                    comm.ExecuteNonQuery();
-                }
-                catch (Exception error)
-                {
-                    bIsOperationOK = false;
-                    MessageBox.Show(error.Message,
-                        "Erro ao tentar executar o comando SQL",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                }
-            }
-            catch { }
-            finally
-            {
-                conn.Close();
-
-                if (bIsOperationOK == true)
-                {
-                    MessageBox.Show("Estabelecimento excluído com sucesso!",
-                        "Registro Excluído!",
+                    MessageBox.Show("Você deve preencher: " + camposVazios("only_id"),
+                        "Informações incompletas!",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
-                }
-            }
 
-            AtualizaListaDeEstabelecimentos();
-            btLimpar_Click(sender, e);
+                    return;
+                }
+
+                string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
+
+                conn = new SqlConnection(connectionString);
+
+                comm = new SqlCommand(
+                    "DELETE FROM estabelecimentos " +
+                    "WHERE id = @id", conn);
+
+                comm.Parameters.Add("@id", System.Data.SqlDbType.Int);
+                comm.Parameters["@id"].Value = Convert.ToInt32(txID.Text);
+
+                try
+                {
+                    try
+                    {
+                        conn.Open();
+                    }
+                    catch (Exception error)
+                    {
+                        bIsOperationOK = false;
+                        MessageBox.Show(error.Message,
+                            "Erro ao abrir conexão com o Banco de Dados",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                    }
+
+                    try
+                    {
+                        comm.ExecuteNonQuery();
+                    }
+                    catch (Exception error)
+                    {
+                        bIsOperationOK = false;
+                        MessageBox.Show(error.Message,
+                            "Erro ao tentar executar o comando SQL",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                    }
+                }
+                catch { }
+                finally
+                {
+                    conn.Close();
+
+                    if (bIsOperationOK == true)
+                    {
+                        MessageBox.Show("Estabelecimento excluído com sucesso!",
+                            "Registro Excluído!",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
+                    }
+                }
+
+                AtualizaListaDeEstabelecimentos();
+                btLimpar_Click(sender, e);
+            }
+            else
+            {
+                MessageBox.Show("Estabelecimento não pode ser excluído porque não existe no banco de dados!",
+                           "Registro não existe",
+                           MessageBoxButtons.OK,
+                           MessageBoxIcon.Information);
+            }
         }
 
         private void btLimpar_Click(object sender, EventArgs e)
@@ -553,6 +642,13 @@ namespace DametaProject
                         txNumero.Text = reader["numero"].ToString();
                         mtxTelefone.Text = reader["telefone"].ToString();
                     }
+                    else
+                    {
+                        MessageBox.Show("Estabelecimento não existe no banco de dados!",
+                           "Registro não existe",
+                           MessageBoxButtons.OK,
+                           MessageBoxIcon.Information);
+                    }
 
                     reader.Close();
                 }
@@ -598,10 +694,10 @@ namespace DametaProject
             comm.Parameters.Add("@nome", System.Data.SqlDbType.NVarChar);
             comm.Parameters["@nome"].Value = cbCidade.Text.ToString();
 
-            int auxID=0;
+            int auxID = 0;
             try
             {
-                
+
                 try
                 {
                     // Abre a conexão com o Banco de Dados
