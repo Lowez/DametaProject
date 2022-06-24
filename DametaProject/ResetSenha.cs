@@ -98,9 +98,15 @@ namespace DametaProject
                     {
                         criaArquivoTxt();
 
-                        CodigoValidacao codigoValidacao = new CodigoValidacao(reader["email"].ToString(), this);
-
-                        codigoValidacao.Show();
+                        using (CodigoValidacao codigoValidacao = new CodigoValidacao(reader["email"].ToString()))
+                        {
+                            var result = codigoValidacao.ShowDialog();
+                            if (result == DialogResult.OK)
+                            {
+                                this.DialogResult = DialogResult.OK;
+                                this.Close();
+                            }
+                        }
                     }
                     else
                     {

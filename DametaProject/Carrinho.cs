@@ -13,7 +13,7 @@ namespace DametaProject
 {
     public partial class Carrinho : Form
     {
-        public static int cliente_id = 0;
+        public static int id_cliente = 0;
         public static decimal preco_total = 0;
 
         WelcomeForm form_inicial;
@@ -165,7 +165,7 @@ namespace DametaProject
                 comm1.Parameters.Add("@preco_total", SqlDbType.Money);
                 comm1.Parameters["@preco_total"].Value = precoTotal;
 
-                if (cliente_id != 0)
+                if (id_cliente != 0)
                 {
                     comm1 = new SqlCommand(
                     "INSERT INTO compras (created, preco_total, premium_usuarios_id, estabelecimentos_id) " +
@@ -180,7 +180,7 @@ namespace DametaProject
                     comm1.Parameters["@preco_total"].Value = precoTotal;
 
                     comm1.Parameters.Add("@premium_usuario_id", SqlDbType.Int);
-                    comm1.Parameters["@premium_usuario_id"].Value = Convert.ToInt32(cliente_id);
+                    comm1.Parameters["@premium_usuario_id"].Value = Convert.ToInt32(id_cliente);
 
                     comm1.Parameters.Add("@estabelecimentos_id", SqlDbType.Int);
                     comm1.Parameters["@estabelecimentos_id"].Value = 1;
@@ -555,6 +555,8 @@ namespace DametaProject
                 if (result == DialogResult.OK)
                 {
                     txNome.Text = form_premium.nome_cliente;
+                    id_cliente = form_premium.id_cliente;
+
                     txCodigoProd.ReadOnly = false;
                 }
             }

@@ -14,6 +14,7 @@ namespace DametaProject
     public partial class InfosCliente : Form
     {
         public string nome_cliente = "";
+        public int id_cliente = 0;
 
         string CPF_cliente;
         PremiumUserCheck form_premiumUserCheck;
@@ -71,6 +72,8 @@ namespace DametaProject
                         mtxCPF.Text = CPF_cliente;
                         mtxTelefone.Text = reader["telefone"].ToString();
                         txNome.Text = reader["nome"].ToString();
+
+                        id_cliente = Convert.ToInt32(reader["id"]);
                     }
                     else
                     {

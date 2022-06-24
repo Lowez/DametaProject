@@ -36,9 +36,14 @@ namespace DametaProject
 
         private void lblResetSenha_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            ResetSenha resetSenha = new ResetSenha();
-
-            resetSenha.Show();
+            using (ResetSenha resetSenha = new ResetSenha())
+            {
+                var result = resetSenha.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    
+                }
+            }
         }
 
         private void btLogar_Click(object sender, EventArgs e)

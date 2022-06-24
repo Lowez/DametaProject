@@ -22,6 +22,7 @@ namespace DametaProject
             InitializeComponent();
 
             email_func = email;
+            txSenha.Focus();
         }
 
         private void button1_Click(object sender, EventArgs e)

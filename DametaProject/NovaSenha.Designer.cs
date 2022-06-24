@@ -45,7 +45,7 @@
             this.txSenha.Name = "txSenha";
             this.txSenha.PasswordChar = '*';
             this.txSenha.Size = new System.Drawing.Size(226, 23);
-            this.txSenha.TabIndex = 19;
+            this.txSenha.TabIndex = 1;
             // 
             // label4
             // 
@@ -64,7 +64,7 @@
             this.button1.Location = new System.Drawing.Point(137, 266);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(98, 43);
-            this.button1.TabIndex = 16;
+            this.button1.TabIndex = 3;
             this.button1.Text = "Confirmar";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -95,7 +95,7 @@
             this.txConfirmacaoSenha.Name = "txConfirmacaoSenha";
             this.txConfirmacaoSenha.PasswordChar = '*';
             this.txConfirmacaoSenha.Size = new System.Drawing.Size(226, 23);
-            this.txConfirmacaoSenha.TabIndex = 15;
+            this.txConfirmacaoSenha.TabIndex = 2;
             // 
             // NovaSenha
             // 
