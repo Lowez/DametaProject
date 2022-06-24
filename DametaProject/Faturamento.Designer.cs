@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Faturamento));
             this.faturamentoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dameta_dbDataSet = new DametaProject.dameta_dbDataSet();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
@@ -160,6 +161,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.GerarRelatorio);
             this.Controls.Add(this.reportViewer1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Faturamento";
             this.Text = "Faturamento";
             this.Load += new System.EventHandler(this.Faturamento_Load);

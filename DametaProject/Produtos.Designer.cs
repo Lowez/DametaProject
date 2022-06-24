@@ -227,9 +227,97 @@
             this.dataGridView1.DataSource = this.dtProdutoBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(33, 239);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(514, 207);
             this.dataGridView1.TabIndex = 27;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // cod_produto
+            // 
+            this.cod_produto.DataPropertyName = "cod_produto";
+            this.cod_produto.HeaderText = "Cód.Produto";
+            this.cod_produto.Name = "cod_produto";
+            this.cod_produto.ReadOnly = true;
+            this.cod_produto.Width = 80;
+            // 
+            // nome
+            // 
+            this.nome.DataPropertyName = "nome";
+            this.nome.HeaderText = "Nome";
+            this.nome.Name = "nome";
+            this.nome.ReadOnly = true;
+            // 
+            // preco
+            // 
+            this.preco.DataPropertyName = "preco";
+            this.preco.HeaderText = "Preco";
+            this.preco.Name = "preco";
+            this.preco.ReadOnly = true;
+            this.preco.Width = 50;
+            // 
+            // tipo
+            // 
+            this.tipo.DataPropertyName = "tipo";
+            this.tipo.HeaderText = "Tipo";
+            this.tipo.Name = "tipo";
+            this.tipo.ReadOnly = true;
+            // 
+            // qtd
+            // 
+            this.qtd.DataPropertyName = "qtd";
+            this.qtd.HeaderText = "Qtd";
+            this.qtd.Name = "qtd";
+            this.qtd.ReadOnly = true;
+            this.qtd.Width = 40;
+            // 
+            // fornecedor
+            // 
+            this.fornecedor.DataPropertyName = "fornecedor";
+            this.fornecedor.HeaderText = "Fornecedor";
+            this.fornecedor.Name = "fornecedor";
+            this.fornecedor.ReadOnly = true;
+            // 
+            // codprodutoDataGridViewTextBoxColumn
+            // 
+            this.codprodutoDataGridViewTextBoxColumn.DataPropertyName = "cod_produto";
+            this.codprodutoDataGridViewTextBoxColumn.HeaderText = "cod_produto";
+            this.codprodutoDataGridViewTextBoxColumn.Name = "codprodutoDataGridViewTextBoxColumn";
+            this.codprodutoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nomeDataGridViewTextBoxColumn
+            // 
+            this.nomeDataGridViewTextBoxColumn.DataPropertyName = "nome";
+            this.nomeDataGridViewTextBoxColumn.HeaderText = "nome";
+            this.nomeDataGridViewTextBoxColumn.Name = "nomeDataGridViewTextBoxColumn";
+            this.nomeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // precoDataGridViewTextBoxColumn
+            // 
+            this.precoDataGridViewTextBoxColumn.DataPropertyName = "preco";
+            this.precoDataGridViewTextBoxColumn.HeaderText = "preco";
+            this.precoDataGridViewTextBoxColumn.Name = "precoDataGridViewTextBoxColumn";
+            this.precoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // tipoDataGridViewTextBoxColumn
+            // 
+            this.tipoDataGridViewTextBoxColumn.DataPropertyName = "tipo";
+            this.tipoDataGridViewTextBoxColumn.HeaderText = "tipo";
+            this.tipoDataGridViewTextBoxColumn.Name = "tipoDataGridViewTextBoxColumn";
+            this.tipoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // qtdDataGridViewTextBoxColumn
+            // 
+            this.qtdDataGridViewTextBoxColumn.DataPropertyName = "qtd";
+            this.qtdDataGridViewTextBoxColumn.HeaderText = "qtd";
+            this.qtdDataGridViewTextBoxColumn.Name = "qtdDataGridViewTextBoxColumn";
+            this.qtdDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // fornecedorDataGridViewTextBoxColumn
+            // 
+            this.fornecedorDataGridViewTextBoxColumn.DataPropertyName = "fornecedor";
+            this.fornecedorDataGridViewTextBoxColumn.HeaderText = "fornecedor";
+            this.fornecedorDataGridViewTextBoxColumn.Name = "fornecedorDataGridViewTextBoxColumn";
+            this.fornecedorDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // dtProdutoBindingSource
             // 

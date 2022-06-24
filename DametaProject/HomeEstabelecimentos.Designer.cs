@@ -203,7 +203,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "HomeEstabelecimentos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "HomeEstabelecimentos";
+            this.Text = "Home Estabelecimentos";
             this.Load += new System.EventHandler(this.HomeEstabelecimentos_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgtdtEstabelecimentos)).EndInit();

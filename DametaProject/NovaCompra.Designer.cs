@@ -79,7 +79,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "NovaCompra";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "NovaCompra";
+            this.Text = "Nova Compra";
             this.ResumeLayout(false);
             this.PerformLayout();
 

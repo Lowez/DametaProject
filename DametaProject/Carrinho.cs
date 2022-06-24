@@ -137,8 +137,73 @@ namespace DametaProject
             form_inicial.Show();
         }
 
+        public int retornaQtd(SqlCommand commQtd, SqlConnection conn, int qtd)
+        {
+            SqlDataReader reader;
+            int qtd_atual = 0;
+
+            try
+            {
+                // Tenta abrir a conexão com o Banco de Dados
+                try
+                {
+                    conn.Open();
+                }
+                catch (SqlException error)
+                {
+                    MessageBox.Show(error.Message,
+                        "Houve um problema ao tentar abrir a conexão com a base de dados",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
+
+                try
+                {
+                    reader = commQtd.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        qtd_atual = Convert.ToInt32(reader["qtd"]);
+                        if ((qtd_atual - qtd) < 0)
+                        {
+                            qtd_atual = 0;
+                        } else
+                        {
+                            qtd_atual -= qtd;
+                        }
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ocorreu algo inesperado.",
+                        "Erro!",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    }
+
+                    reader.Close();
+                }
+                catch (Exception error)
+                {
+                    MessageBox.Show(error.Message,
+                        "Erro ao tentar executar comando",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
+            }
+            catch { }
+            finally
+            {
+                conn.Close();
+            }
+
+            return qtd_atual;
+        }
+
         private void btConcluirCompra_Click(object sender, EventArgs e)
         {
+            int estoque_id = 0;
+
             if (dgvCarrinho.Rows.Count == 0)
             {
                 MessageBox.Show("Impossível concluir uma compra vazia",
@@ -252,12 +317,37 @@ namespace DametaProject
                 comm2.Parameters.Add("@cod_produto", SqlDbType.Int);
                 comm2.Parameters.Add("@compras_id", SqlDbType.Int);
 
+                SqlCommand commEstoque = new SqlCommand(
+                    "UPDATE estoque " +
+                    "SET qtd = @qtd " +
+                    "WHERE id = @estoque_id", conn
+                    );
+
+                commEstoque.Parameters.Add("@qtd", SqlDbType.Int);
+                commEstoque.Parameters.Add("@estoque_id", SqlDbType.Int);
+
+                SqlCommand commQtd = new SqlCommand(
+                    "SELECT qtd FROM estoque " +
+                    "WHERE id = @estoque_id", conn
+                    );
+
+                commQtd.Parameters.Add("@estoque_id", SqlDbType.Int);
+
                 for (int i = 0; i < dgvCarrinho.Rows.Count; i++)
                 {
-                    comm2.Parameters["@qtd"].Value = Convert.ToInt32(dgvCarrinho.Rows[i].Cells[2].Value);
+                    int qtd = Convert.ToInt32(dgvCarrinho.Rows[i].Cells[2].Value);
+                    comm2.Parameters["@qtd"].Value = qtd;
                     comm2.Parameters["@preco_parcial"].Value = Convert.ToDecimal(dgvCarrinho.Rows[i].Cells[2].Value);
                     comm2.Parameters["@cod_produto"].Value = Convert.ToInt32(dgvCarrinho.Rows[i].Cells[0].Value);
                     comm2.Parameters["@compras_id"].Value = obterCodigoDeVenda(false);
+
+                    estoque_id = obterEstoqueId(Convert.ToInt32(dgvCarrinho.Rows[i].Cells[0].Value));
+
+                    commQtd.Parameters["@estoque_id"].Value = estoque_id;
+                    int novaQtd = retornaQtd(commQtd, conn, qtd);
+
+                    commEstoque.Parameters["@qtd"].Value = novaQtd;
+                    commEstoque.Parameters["@estoque_id"].Value = estoque_id;
 
                     try
                     {
@@ -278,6 +368,7 @@ namespace DametaProject
                         try
                         {
                             comm2.ExecuteNonQuery();
+                            commEstoque.ExecuteNonQuery();
                         }
                         catch (Exception error)
                         {
@@ -339,6 +430,72 @@ namespace DametaProject
             }
             conn.Close();
             return Convert.ToInt32(codigo);
+        }
+
+        public int obterEstoqueId(int cod_produto)
+        {
+            int estoque_id = 0;
+            SqlDataReader reader;
+            SqlConnection conn2;
+            conn2 = new SqlConnection(Properties.Settings.Default.dameta_dbConnectionString);
+
+            SqlCommand commObter = new SqlCommand(
+                "SELECT estoque_id FROM produtos " +
+                "WHERE cod_produto = @cod_produto", conn2
+                );
+
+            commObter.Parameters.Add("@cod_produto", SqlDbType.Int);
+            commObter.Parameters["@cod_produto"].Value = cod_produto;
+
+            try
+            {
+                // Tenta abrir a conexão com o Banco de Dados
+                try
+                {
+                    conn2.Open();
+                }
+                catch (SqlException error)
+                {
+                    MessageBox.Show(error.Message,
+                        "Houve um problema ao tentar abrir a conexão com a base de dados",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
+
+                // Tenta executar o comando e login
+                try
+                {
+                    reader = commObter.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        estoque_id = Convert.ToInt32(reader["estoque_id"]);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ocorreu um erro inesperado.",
+                        "Erro!",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    }
+
+                    reader.Close();
+                }
+                catch (Exception error)
+                {
+                    MessageBox.Show(error.Message,
+                        "Erro ao tentar executar comando",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
+            }
+            catch { }
+            finally
+            {
+                conn2.Close();
+            }
+
+            return estoque_id;
         }
 
         private void Carrinho_Shown(object sender, EventArgs e)
