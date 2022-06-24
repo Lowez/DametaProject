@@ -29,14 +29,14 @@ namespace DametaProject
 
         private void btInserir_Click(object sender, EventArgs e)
         {
-            Estabelecimentos form = new Estabelecimentos(true);
+            Estabelecimentos form = new Estabelecimentos("");
             form.Show();
         }
 
         private void dgtdtEstabelecimentos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             string nomeEstabelecimento = dgtdtEstabelecimentos.Rows[e.RowIndex].Cells[1].Value.ToString();
-            Estabelecimentos form = new Estabelecimentos(false, nomeEstabelecimento);
+            Estabelecimentos form = new Estabelecimentos(nomeEstabelecimento);
             form.Show();
         }
 
