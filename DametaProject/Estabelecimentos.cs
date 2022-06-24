@@ -401,18 +401,18 @@ namespace DametaProject
             SqlCommand comm;
             bool bIsOperationOK = true;
 
-            if (!(camposVazios("alterar") == "preenchido"))
+            string campoVazio = (camposVazios("alterar"));
+            if (campoVazio != "nao existe")
             {
-                MessageBox.Show("Você deve preencher: " + camposVazios("alterar"),
-                    "Informações incompletas!",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
-
-                return;
-            }
-            bool existe = ConsultarExistencia(Convert.ToInt32(txID.Text));
-            if (existe)
-            {
+                if (campoVazio != "preenchido")
+                {
+                    MessageBox.Show("Você deve preencher: " + campoVazio,
+                        "Informações incompletas!",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                    bIsOperationOK = false;
+                    return;
+                }
                 string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
 
                 conn = new SqlConnection(connectionString);
@@ -485,14 +485,6 @@ namespace DametaProject
                 }
                 AtualizaListaDeEstabelecimentos();
                 btLimpar_Click(sender, e);
-            }
-            else
-            {
-                MessageBox.Show("Estabelecimento não pode ser alterado porque não existe no banco de dados!",
-                           "Registro não existe",
-                           MessageBoxButtons.OK,
-                           MessageBoxIcon.Information);
-
             }
         }
 

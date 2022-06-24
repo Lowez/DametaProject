@@ -34,14 +34,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.dgtdtEstabelecimentos = new System.Windows.Forms.DataGridView();
-            this.btIncluir = new System.Windows.Forms.Button();
-            this.btAtualizar = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dtEstabelecimentosBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dameta_dbDataSet = new DametaProject.dameta_dbDataSet();
-            this.estabelecimentosBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.estabelecimentosTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.estabelecimentosTableAdapter();
-            this.dtEstabelecimentosTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.dtEstabelecimentosTableAdapter();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cidades = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,6 +41,14 @@
             this.numeroDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cEPDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.telefoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dtEstabelecimentosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dameta_dbDataSet = new DametaProject.dameta_dbDataSet();
+            this.btIncluir = new System.Windows.Forms.Button();
+            this.btAtualizar = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.estabelecimentosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.estabelecimentosTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.estabelecimentosTableAdapter();
+            this.dtEstabelecimentosTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.dtEstabelecimentosTableAdapter();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgtdtEstabelecimentos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtEstabelecimentosBindingSource)).BeginInit();
@@ -106,58 +106,6 @@
             this.dgtdtEstabelecimentos.TabIndex = 0;
             this.dgtdtEstabelecimentos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgtdtEstabelecimentos_CellDoubleClick);
             // 
-            // btIncluir
-            // 
-            this.btIncluir.Location = new System.Drawing.Point(166, 13);
-            this.btIncluir.Name = "btIncluir";
-            this.btIncluir.Size = new System.Drawing.Size(100, 40);
-            this.btIncluir.TabIndex = 45;
-            this.btIncluir.Text = "Incluir";
-            this.btIncluir.UseVisualStyleBackColor = true;
-            this.btIncluir.Click += new System.EventHandler(this.btInserir_Click);
-            // 
-            // btAtualizar
-            // 
-            this.btAtualizar.Location = new System.Drawing.Point(484, 13);
-            this.btAtualizar.Name = "btAtualizar";
-            this.btAtualizar.Size = new System.Drawing.Size(100, 40);
-            this.btAtualizar.TabIndex = 47;
-            this.btAtualizar.Text = "Atualizar";
-            this.btAtualizar.UseVisualStyleBackColor = true;
-            this.btAtualizar.Click += new System.EventHandler(this.btAtualizar_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(307, 27);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(171, 13);
-            this.label2.TabIndex = 46;
-            this.label2.Text = "Atualizar lista de estabelecimentos:";
-            // 
-            // dtEstabelecimentosBindingSource
-            // 
-            this.dtEstabelecimentosBindingSource.DataMember = "dtEstabelecimentos";
-            this.dtEstabelecimentosBindingSource.DataSource = this.dameta_dbDataSet;
-            // 
-            // dameta_dbDataSet
-            // 
-            this.dameta_dbDataSet.DataSetName = "dameta_dbDataSet";
-            this.dameta_dbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // estabelecimentosBindingSource
-            // 
-            this.estabelecimentosBindingSource.DataMember = "estabelecimentos";
-            this.estabelecimentosBindingSource.DataSource = this.dameta_dbDataSet;
-            // 
-            // estabelecimentosTableAdapter
-            // 
-            this.estabelecimentosTableAdapter.ClearBeforeFill = true;
-            // 
-            // dtEstabelecimentosTableAdapter
-            // 
-            this.dtEstabelecimentosTableAdapter.ClearBeforeFill = true;
-            // 
             // id
             // 
             this.id.DataPropertyName = "id";
@@ -212,6 +160,58 @@
             this.telefoneDataGridViewTextBoxColumn.HeaderText = "Telefone";
             this.telefoneDataGridViewTextBoxColumn.Name = "telefoneDataGridViewTextBoxColumn";
             this.telefoneDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // dtEstabelecimentosBindingSource
+            // 
+            this.dtEstabelecimentosBindingSource.DataMember = "dtEstabelecimentos";
+            this.dtEstabelecimentosBindingSource.DataSource = this.dameta_dbDataSet;
+            // 
+            // dameta_dbDataSet
+            // 
+            this.dameta_dbDataSet.DataSetName = "dameta_dbDataSet";
+            this.dameta_dbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // btIncluir
+            // 
+            this.btIncluir.Location = new System.Drawing.Point(166, 13);
+            this.btIncluir.Name = "btIncluir";
+            this.btIncluir.Size = new System.Drawing.Size(100, 40);
+            this.btIncluir.TabIndex = 45;
+            this.btIncluir.Text = "Incluir";
+            this.btIncluir.UseVisualStyleBackColor = true;
+            this.btIncluir.Click += new System.EventHandler(this.btInserir_Click);
+            // 
+            // btAtualizar
+            // 
+            this.btAtualizar.Location = new System.Drawing.Point(484, 13);
+            this.btAtualizar.Name = "btAtualizar";
+            this.btAtualizar.Size = new System.Drawing.Size(100, 40);
+            this.btAtualizar.TabIndex = 47;
+            this.btAtualizar.Text = "Atualizar";
+            this.btAtualizar.UseVisualStyleBackColor = true;
+            this.btAtualizar.Click += new System.EventHandler(this.btAtualizar_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(307, 27);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(171, 13);
+            this.label2.TabIndex = 46;
+            this.label2.Text = "Atualizar lista de estabelecimentos:";
+            // 
+            // estabelecimentosBindingSource
+            // 
+            this.estabelecimentosBindingSource.DataMember = "estabelecimentos";
+            this.estabelecimentosBindingSource.DataSource = this.dameta_dbDataSet;
+            // 
+            // estabelecimentosTableAdapter
+            // 
+            this.estabelecimentosTableAdapter.ClearBeforeFill = true;
+            // 
+            // dtEstabelecimentosTableAdapter
+            // 
+            this.dtEstabelecimentosTableAdapter.ClearBeforeFill = true;
             // 
             // HomeEstabelecimentos
             // 
