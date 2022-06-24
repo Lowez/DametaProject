@@ -103,7 +103,6 @@ namespace DametaProject
                     return "Estabelecimento";
                 }
             }
-
             return "preenchido";
         }
 
@@ -297,7 +296,6 @@ namespace DametaProject
                     "Informações incompletas!",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
-
                 return;
             }
 
@@ -706,5 +704,7 @@ namespace DametaProject
             string nome = dgtdtFuncionarios.Rows[e.RowIndex].Cells[0].Value.ToString();
             buscarPeloNome(nome);
         }
+
+      
     }
 }
