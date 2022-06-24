@@ -230,6 +230,7 @@
     <EmbeddedResource Include="FormaDePagamento.resx">
       <DependentUpon>FormaDePagamento.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="RelatorioFornecedoresEstabelecimentos.rdlc" />
     <EmbeddedResource Include="RelatorioFuncionarios.rdlc" />
     <EmbeddedResource Include="RelatorioFuncionarios.resx">
       <DependentUpon>RelatorioFuncionarios.cs</DependentUpon>

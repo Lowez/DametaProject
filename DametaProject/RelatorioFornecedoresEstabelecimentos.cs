@@ -28,21 +28,20 @@ namespace DametaProject
 
         private void GerarRelatorio_Click(object sender, EventArgs e)
         {
-            //this.fornecedoresEstabelecimentos.Fill(this.dameta_dbDataSet1.FornecedoresEstabelecimentos, cbNome.Text);
-            //this.reportViewer1.RefreshReport();
+            this.fornecedoresEstabelecimentos.Fill(this.dameta_dbDataSet.FornecedoresEstabelecimentos, cbNome.Text);
+            this.reportViewer2.RefreshReport();
+            if (cbNome.Text == "")
+            {
+                ReportParameter rp = new ReportParameter("estabelecimento", "");
+                this.reportViewer2.LocalReport.SetParameters(new ReportParameter[] { rp });
+            }
 
-            //if (cbNome.Text == "")
-            //{
-            //    ReportParameter rp = new ReportParameter("estabelecimento", "");
-            //    this.reportViewer1.LocalReport.SetParameters(new ReportParameter[] { rp });
-            //}
-
-            //else
-            //{
-            //    ReportParameter rp = new ReportParameter("estabelecimento", "Pesquisa no estabelecimento: " + cbNome.Text);
-            //    this.reportViewer1.LocalReport.SetParameters(new ReportParameter[] { rp });
-            //    this.reportViewer1.RefreshReport();
-            //}
+            else
+            {
+                ReportParameter rp = new ReportParameter("estabelecimento", "Pesquisa no estabelecimento: " + cbNome.Text);
+                this.reportViewer2.LocalReport.SetParameters(new ReportParameter[] { rp });
+                this.reportViewer2.RefreshReport();
+            }
         }
     }
 }
