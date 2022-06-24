@@ -14,12 +14,10 @@ namespace DametaProject
 {
     public partial class Estabelecimentos : Form
     {
-        bool inserindo = false;
         string nomeEstabelecimento = "";
-        public Estabelecimentos(bool isInserindo, string nome_estabelecimento = null)
+        public Estabelecimentos(string nome_estabelecimento = null)
         {
             InitializeComponent();
-            this.inserindo = isInserindo;
             this.nomeEstabelecimento = nome_estabelecimento;
             AtualizaListaDeEstabelecimentos();
         }
@@ -172,24 +170,8 @@ namespace DametaProject
             // TODO: This line of code loads data into the 'dameta_dbDataSet.dtEstabelecimentos' table. You can move, or remove it, as needed.
             this.dtEstabelecimentosTableAdapter.Fill(this.dameta_dbDataSet.dtEstabelecimentos);
             btLimpar_Click(sender, e);
-            if (inserindo)
+            if (nomeEstabelecimento != "")
             {
-                btAlterar.Enabled = false;
-                btExcluir.Enabled = false;
-                btConsultar.Enabled = false;
-                btIncluir.Enabled = true;
-                btLimpar.Enabled = true;
-                txID.Enabled = false;
-                label1.Enabled = false;
-            }
-            else
-            {
-                btAlterar.Enabled = true;
-                btExcluir.Enabled = true;
-                btConsultar.Enabled = true;
-                btIncluir.Enabled = false;
-                btLimpar.Enabled = true;
-
                 buscarPelaCidade(nomeEstabelecimento);
             }
             // TODO: This line of code loads data into the 'dameta_dbDataSet.estabelecimentos' table. You can move, or remove it, as needed.
