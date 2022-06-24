@@ -32,22 +32,23 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HomeEstabelecimentos));
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.dgtdtEstabelecimentos = new System.Windows.Forms.DataGridView();
+            this.btIncluir = new System.Windows.Forms.Button();
+            this.btAtualizar = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dtEstabelecimentosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dameta_dbDataSet = new DametaProject.dameta_dbDataSet();
+            this.estabelecimentosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.estabelecimentosTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.estabelecimentosTableAdapter();
+            this.dtEstabelecimentosTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.dtEstabelecimentosTableAdapter();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cidades = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nomeruaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numeroDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cEPDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.telefoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dtEstabelecimentosBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dameta_dbDataSet = new DametaProject.dameta_dbDataSet();
-            this.estabelecimentosBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.estabelecimentosTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.estabelecimentosTableAdapter();
-            this.btIncluir = new System.Windows.Forms.Button();
-            this.dtEstabelecimentosTableAdapter = new DametaProject.dameta_dbDataSetTableAdapters.dtEstabelecimentosTableAdapter();
-            this.btAtualizar = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgtdtEstabelecimentos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtEstabelecimentosBindingSource)).BeginInit();
@@ -75,11 +76,22 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Estabelecimentos";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 16);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(449, 13);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Dê um duplo clique sobre o estabelecimento que deseja alterar/excluir para ser re" +
+    "direcionado.";
+            // 
             // dgtdtEstabelecimentos
             // 
             this.dgtdtEstabelecimentos.AutoGenerateColumns = false;
             this.dgtdtEstabelecimentos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgtdtEstabelecimentos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.id,
             this.nomeDataGridViewTextBoxColumn,
             this.cidades,
             this.nomeruaDataGridViewTextBoxColumn,
@@ -93,6 +105,66 @@
             this.dgtdtEstabelecimentos.Size = new System.Drawing.Size(764, 310);
             this.dgtdtEstabelecimentos.TabIndex = 0;
             this.dgtdtEstabelecimentos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgtdtEstabelecimentos_CellDoubleClick);
+            // 
+            // btIncluir
+            // 
+            this.btIncluir.Location = new System.Drawing.Point(166, 13);
+            this.btIncluir.Name = "btIncluir";
+            this.btIncluir.Size = new System.Drawing.Size(100, 40);
+            this.btIncluir.TabIndex = 45;
+            this.btIncluir.Text = "Incluir";
+            this.btIncluir.UseVisualStyleBackColor = true;
+            this.btIncluir.Click += new System.EventHandler(this.btInserir_Click);
+            // 
+            // btAtualizar
+            // 
+            this.btAtualizar.Location = new System.Drawing.Point(484, 13);
+            this.btAtualizar.Name = "btAtualizar";
+            this.btAtualizar.Size = new System.Drawing.Size(100, 40);
+            this.btAtualizar.TabIndex = 47;
+            this.btAtualizar.Text = "Atualizar";
+            this.btAtualizar.UseVisualStyleBackColor = true;
+            this.btAtualizar.Click += new System.EventHandler(this.btAtualizar_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(307, 27);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(171, 13);
+            this.label2.TabIndex = 46;
+            this.label2.Text = "Atualizar lista de estabelecimentos:";
+            // 
+            // dtEstabelecimentosBindingSource
+            // 
+            this.dtEstabelecimentosBindingSource.DataMember = "dtEstabelecimentos";
+            this.dtEstabelecimentosBindingSource.DataSource = this.dameta_dbDataSet;
+            // 
+            // dameta_dbDataSet
+            // 
+            this.dameta_dbDataSet.DataSetName = "dameta_dbDataSet";
+            this.dameta_dbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // estabelecimentosBindingSource
+            // 
+            this.estabelecimentosBindingSource.DataMember = "estabelecimentos";
+            this.estabelecimentosBindingSource.DataSource = this.dameta_dbDataSet;
+            // 
+            // estabelecimentosTableAdapter
+            // 
+            this.estabelecimentosTableAdapter.ClearBeforeFill = true;
+            // 
+            // dtEstabelecimentosTableAdapter
+            // 
+            this.dtEstabelecimentosTableAdapter.ClearBeforeFill = true;
+            // 
+            // id
+            // 
+            this.id.DataPropertyName = "id";
+            this.id.HeaderText = "ID";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Width = 30;
             // 
             // nomeDataGridViewTextBoxColumn
             // 
@@ -132,6 +204,7 @@
             this.cEPDataGridViewTextBoxColumn.HeaderText = "CEP";
             this.cEPDataGridViewTextBoxColumn.Name = "cEPDataGridViewTextBoxColumn";
             this.cEPDataGridViewTextBoxColumn.ReadOnly = true;
+            this.cEPDataGridViewTextBoxColumn.Width = 70;
             // 
             // telefoneDataGridViewTextBoxColumn
             // 
@@ -139,68 +212,6 @@
             this.telefoneDataGridViewTextBoxColumn.HeaderText = "Telefone";
             this.telefoneDataGridViewTextBoxColumn.Name = "telefoneDataGridViewTextBoxColumn";
             this.telefoneDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // dtEstabelecimentosBindingSource
-            // 
-            this.dtEstabelecimentosBindingSource.DataMember = "dtEstabelecimentos";
-            this.dtEstabelecimentosBindingSource.DataSource = this.dameta_dbDataSet;
-            // 
-            // dameta_dbDataSet
-            // 
-            this.dameta_dbDataSet.DataSetName = "dameta_dbDataSet";
-            this.dameta_dbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // estabelecimentosBindingSource
-            // 
-            this.estabelecimentosBindingSource.DataMember = "estabelecimentos";
-            this.estabelecimentosBindingSource.DataSource = this.dameta_dbDataSet;
-            // 
-            // estabelecimentosTableAdapter
-            // 
-            this.estabelecimentosTableAdapter.ClearBeforeFill = true;
-            // 
-            // btIncluir
-            // 
-            this.btIncluir.Location = new System.Drawing.Point(166, 13);
-            this.btIncluir.Name = "btIncluir";
-            this.btIncluir.Size = new System.Drawing.Size(100, 40);
-            this.btIncluir.TabIndex = 45;
-            this.btIncluir.Text = "Incluir";
-            this.btIncluir.UseVisualStyleBackColor = true;
-            this.btIncluir.Click += new System.EventHandler(this.btInserir_Click);
-            // 
-            // dtEstabelecimentosTableAdapter
-            // 
-            this.dtEstabelecimentosTableAdapter.ClearBeforeFill = true;
-            // 
-            // btAtualizar
-            // 
-            this.btAtualizar.Location = new System.Drawing.Point(484, 13);
-            this.btAtualizar.Name = "btAtualizar";
-            this.btAtualizar.Size = new System.Drawing.Size(100, 40);
-            this.btAtualizar.TabIndex = 47;
-            this.btAtualizar.Text = "Atualizar";
-            this.btAtualizar.UseVisualStyleBackColor = true;
-            this.btAtualizar.Click += new System.EventHandler(this.btAtualizar_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(307, 27);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(171, 13);
-            this.label2.TabIndex = 46;
-            this.label2.Text = "Atualizar lista de estabelecimentos:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 16);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(449, 13);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Dê um duplo clique sobre o estabelecimento que deseja alterar/excluir para ser re" +
-    "direcionado.";
             // 
             // HomeEstabelecimentos
             // 
@@ -238,14 +249,15 @@
         private System.Windows.Forms.Button btIncluir;
         private System.Windows.Forms.BindingSource dtEstabelecimentosBindingSource;
         private dameta_dbDataSetTableAdapters.dtEstabelecimentosTableAdapter dtEstabelecimentosTableAdapter;
+        private System.Windows.Forms.Button btAtualizar;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn nomeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn cidades;
         private System.Windows.Forms.DataGridViewTextBoxColumn nomeruaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn numeroDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn cEPDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn telefoneDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Button btAtualizar;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
     }
 }
