@@ -69,7 +69,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(57, 35);
+            this.label1.Location = new System.Drawing.Point(9, 35);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(215, 13);
             this.label1.TabIndex = 6;
@@ -80,7 +80,7 @@
             this.cbNome.DataSource = this.dtEstabelecimentosBindingSource;
             this.cbNome.DisplayMember = "nome";
             this.cbNome.FormattingEnabled = true;
-            this.cbNome.Location = new System.Drawing.Point(272, 32);
+            this.cbNome.Location = new System.Drawing.Point(224, 32);
             this.cbNome.Name = "cbNome";
             this.cbNome.Size = new System.Drawing.Size(194, 21);
             this.cbNome.TabIndex = 5;
@@ -93,7 +93,7 @@
             // 
             // GerarRelatorio
             // 
-            this.GerarRelatorio.Location = new System.Drawing.Point(472, 21);
+            this.GerarRelatorio.Location = new System.Drawing.Point(424, 21);
             this.GerarRelatorio.Name = "GerarRelatorio";
             this.GerarRelatorio.Size = new System.Drawing.Size(100, 40);
             this.GerarRelatorio.TabIndex = 4;
@@ -107,10 +107,10 @@
             reportDataSource1.Value = this.relatorioDeFuncionariosBindingSource1;
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "DametaProject.RelatorioFuncionarios.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(5, 67);
+            this.reportViewer1.Location = new System.Drawing.Point(12, 67);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(636, 481);
+            this.reportViewer1.Size = new System.Drawing.Size(512, 481);
             this.reportViewer1.TabIndex = 7;
             // 
             // estabelecimentosBindingSource
@@ -154,7 +154,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(645, 550);
+            this.ClientSize = new System.Drawing.Size(532, 550);
             this.Controls.Add(this.reportViewer1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cbNome);
