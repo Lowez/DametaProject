@@ -33,8 +33,6 @@
             this.btControleEstoque = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.btFornecedores = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.btForncEstabelecimentos = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.btFuncEstabelecimento = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -70,7 +68,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(323, 124);
+            this.label2.Location = new System.Drawing.Point(431, 124);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(92, 16);
             this.label2.TabIndex = 9;
@@ -79,32 +77,12 @@
             // btFornecedores
             // 
             this.btFornecedores.Image = ((System.Drawing.Image)(resources.GetObject("btFornecedores.Image")));
-            this.btFornecedores.Location = new System.Drawing.Point(307, 143);
+            this.btFornecedores.Location = new System.Drawing.Point(412, 143);
             this.btFornecedores.Name = "btFornecedores";
             this.btFornecedores.Size = new System.Drawing.Size(130, 80);
             this.btFornecedores.TabIndex = 8;
             this.btFornecedores.UseVisualStyleBackColor = true;
             this.btFornecedores.Click += new System.EventHandler(this.btFornecedores_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(464, 124);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(226, 16);
-            this.label3.TabIndex = 11;
-            this.label3.Text = "Fornecedores por Estabelecimentos";
-            // 
-            // btForncEstabelecimentos
-            // 
-            this.btForncEstabelecimentos.Image = ((System.Drawing.Image)(resources.GetObject("btForncEstabelecimentos.Image")));
-            this.btForncEstabelecimentos.Location = new System.Drawing.Point(518, 143);
-            this.btForncEstabelecimentos.Name = "btForncEstabelecimentos";
-            this.btForncEstabelecimentos.Size = new System.Drawing.Size(130, 80);
-            this.btForncEstabelecimentos.TabIndex = 10;
-            this.btForncEstabelecimentos.UseVisualStyleBackColor = true;
-            this.btForncEstabelecimentos.Click += new System.EventHandler(this.btForncEstabelecimentos_Click);
             // 
             // label4
             // 
@@ -130,7 +108,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(295, 342);
+            this.label5.Location = new System.Drawing.Point(398, 342);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(154, 16);
             this.label5.TabIndex = 15;
@@ -139,7 +117,7 @@
             // btProdutos
             // 
             this.btProdutos.Image = ((System.Drawing.Image)(resources.GetObject("btProdutos.Image")));
-            this.btProdutos.Location = new System.Drawing.Point(307, 361);
+            this.btProdutos.Location = new System.Drawing.Point(412, 361);
             this.btProdutos.Name = "btProdutos";
             this.btProdutos.Size = new System.Drawing.Size(130, 80);
             this.btProdutos.TabIndex = 14;
@@ -150,7 +128,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(505, 342);
+            this.label6.Location = new System.Drawing.Point(716, 342);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(156, 16);
             this.label6.TabIndex = 17;
@@ -159,7 +137,7 @@
             // btFaturamento
             // 
             this.btFaturamento.Image = ((System.Drawing.Image)(resources.GetObject("btFaturamento.Image")));
-            this.btFaturamento.Location = new System.Drawing.Point(518, 361);
+            this.btFaturamento.Location = new System.Drawing.Point(728, 361);
             this.btFaturamento.Name = "btFaturamento";
             this.btFaturamento.Size = new System.Drawing.Size(130, 80);
             this.btFaturamento.TabIndex = 16;
@@ -189,7 +167,7 @@
             // btTabelaPrecos
             // 
             this.btTabelaPrecos.Image = ((System.Drawing.Image)(resources.GetObject("btTabelaPrecos.Image")));
-            this.btTabelaPrecos.Location = new System.Drawing.Point(729, 143);
+            this.btTabelaPrecos.Location = new System.Drawing.Point(728, 143);
             this.btTabelaPrecos.Name = "btTabelaPrecos";
             this.btTabelaPrecos.Size = new System.Drawing.Size(130, 80);
             this.btTabelaPrecos.TabIndex = 19;
@@ -210,8 +188,6 @@
             this.Controls.Add(this.btProdutos);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btFuncEstabelecimento);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.btForncEstabelecimentos);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btFornecedores);
             this.Controls.Add(this.label1);
@@ -232,8 +208,6 @@
         private System.Windows.Forms.Button btControleEstoque;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btFornecedores;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btForncEstabelecimentos;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btFuncEstabelecimento;
         private System.Windows.Forms.Label label5;

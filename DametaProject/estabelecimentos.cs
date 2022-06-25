@@ -14,12 +14,10 @@ namespace DametaProject
 {
     public partial class Estabelecimentos : Form
     {
-        bool inserindo = false;
         string nomeEstabelecimento = "";
-        public Estabelecimentos(bool isInserindo, string nome_estabelecimento = null)
+        public Estabelecimentos(string nome_estabelecimento = "")
         {
             InitializeComponent();
-            this.inserindo = isInserindo;
             this.nomeEstabelecimento = nome_estabelecimento;
             AtualizaListaDeEstabelecimentos();
         }
@@ -107,6 +105,18 @@ namespace DametaProject
                     {
                         return "Código do Estabelecimento";
                     }
+                    else
+                    {
+                        bool existe = ConsultarExistencia(Convert.ToInt32(txID.Text));
+                        if (!existe)
+                        {
+                            MessageBox.Show("Estabelecimento não existe no banco de dados!",
+                          "Registro não existe",
+                          MessageBoxButtons.OK,
+                          MessageBoxIcon.Information);
+                            return "nao existe";
+                        }
+                    }
                 }
 
                 if (txNome.Text == "")
@@ -160,24 +170,8 @@ namespace DametaProject
             // TODO: This line of code loads data into the 'dameta_dbDataSet.dtEstabelecimentos' table. You can move, or remove it, as needed.
             this.dtEstabelecimentosTableAdapter.Fill(this.dameta_dbDataSet.dtEstabelecimentos);
             btLimpar_Click(sender, e);
-            if (inserindo)
+            if (nomeEstabelecimento != "")
             {
-                btAlterar.Enabled = false;
-                btExcluir.Enabled = false;
-                btConsultar.Enabled = false;
-                btIncluir.Enabled = true;
-                btLimpar.Enabled = true;
-                txID.Enabled = false;
-                label1.Enabled = false;
-            }
-            else
-            {
-                btAlterar.Enabled = true;
-                btExcluir.Enabled = true;
-                btConsultar.Enabled = true;
-                btIncluir.Enabled = false;
-                btLimpar.Enabled = true;
-
                 buscarPelaCidade(nomeEstabelecimento);
             }
             // TODO: This line of code loads data into the 'dameta_dbDataSet.estabelecimentos' table. You can move, or remove it, as needed.
@@ -385,23 +379,22 @@ namespace DametaProject
 
         private void btAlterar_Click(object sender, EventArgs e)
         {
-            bool existe = ConsultarExistencia(Convert.ToInt32(txID.Text));
-            if (existe)
-            {
-                SqlConnection conn;
-                SqlCommand comm;
-                bool bIsOperationOK = true;
+            SqlConnection conn;
+            SqlCommand comm;
+            bool bIsOperationOK = true;
 
-                if (!(camposVazios("alterar") == "preenchido"))
+            string campoVazio = (camposVazios("alterar"));
+            if (campoVazio != "nao existe")
+            {
+                if (campoVazio != "preenchido")
                 {
-                    MessageBox.Show("Você deve preencher: " + camposVazios("alterar"),
+                    MessageBox.Show("Você deve preencher: " + campoVazio,
                         "Informações incompletas!",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
-
+                    bIsOperationOK = false;
                     return;
                 }
-
                 string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
 
                 conn = new SqlConnection(connectionString);
@@ -475,34 +468,27 @@ namespace DametaProject
                 AtualizaListaDeEstabelecimentos();
                 btLimpar_Click(sender, e);
             }
-            else
-            {
-                MessageBox.Show("Estabelecimento não pode ser alterado porque não existe no banco de dados!",
-                           "Registro não existe",
-                           MessageBoxButtons.OK,
-                           MessageBoxIcon.Information);
-
-            }
         }
 
         private void btExcluir_Click(object sender, EventArgs e)
         {
+
+            SqlConnection conn;
+            SqlCommand comm;
+            bool bIsOperationOK = true;
+
+            if (!(camposVazios("only_id") == "preenchido"))
+            {
+                MessageBox.Show("Você deve preencher: " + camposVazios("only_id"),
+                    "Informações incompletas!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+
+                return;
+            }
             bool existe = ConsultarExistencia(Convert.ToInt32(txID.Text));
             if (existe)
             {
-                SqlConnection conn;
-                SqlCommand comm;
-                bool bIsOperationOK = true;
-
-                if (!(camposVazios("only_id") == "preenchido"))
-                {
-                    MessageBox.Show("Você deve preencher: " + camposVazios("only_id"),
-                        "Informações incompletas!",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
-
-                    return;
-                }
 
                 string connectionString = Properties.Settings.Default.dameta_dbConnectionString;
 
@@ -743,7 +729,7 @@ namespace DametaProject
 
         private void dgtdtEstabelecimentos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            nomeEstabelecimento = dgtdtEstabelecimentos.Rows[e.RowIndex].Cells[0].Value.ToString();
+            nomeEstabelecimento = dgtdtEstabelecimentos.Rows[e.RowIndex].Cells[1].Value.ToString();
             buscarPelaCidade(nomeEstabelecimento);
         }
     }

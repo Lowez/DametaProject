@@ -210,6 +210,7 @@
     <EmbeddedResource Include="CodigoValidacao.resx">
       <DependentUpon>CodigoValidacao.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Estoque.rdlc" />
     <EmbeddedResource Include="Faturamento.rdlc" />
     <EmbeddedResource Include="Faturamento.resx">
       <DependentUpon>Faturamento.cs</DependentUpon>
@@ -227,14 +228,12 @@
     <EmbeddedResource Include="Estabelecimentos.resx">
       <DependentUpon>Estabelecimentos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Estoque.rdlc" />
     <EmbeddedResource Include="Estoque.resx">
       <DependentUpon>Estoque.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormaDePagamento.resx">
       <DependentUpon>FormaDePagamento.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RelatorioFornecedoresEstabelecimentos.rdlc" />
     <EmbeddedResource Include="RelatorioFuncionarios.rdlc" />
     <EmbeddedResource Include="RelatorioFuncionarios.resx">
       <DependentUpon>RelatorioFuncionarios.cs</DependentUpon>
@@ -281,12 +280,6 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="RelatorioFornecedoresEstabelecimentos.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="RelatorioFornecedoresEstabelecimentos.Designer.cs">
-      <DependentUpon>RelatorioFornecedoresEstabelecimentos.cs</DependentUpon>
-    </Compile>
     <Compile Include="ResetSenha.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -320,9 +313,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="RelatorioFornecedoresEstabelecimentos.resx">
-      <DependentUpon>RelatorioFornecedoresEstabelecimentos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RelatorioFornecedores.rdlc" />
     <EmbeddedResource Include="Report1.rdlc" />

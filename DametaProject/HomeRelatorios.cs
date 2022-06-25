@@ -34,11 +34,6 @@ namespace DametaProject
             form.Show();
         }
 
-        private void btForncEstabelecimentos_Click(object sender, EventArgs e)
-        {
-            RelatoriosFornecedoresEstabelecimentos form = new RelatoriosFornecedoresEstabelecimentos();
-            form.Show();
-        }
 
         private void btFuncEstabelecimento_Click(object sender, EventArgs e)
         {
